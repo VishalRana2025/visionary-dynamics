@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 /* ================= MENU DATA ================= */
 const MENU_DATA = {
@@ -33,98 +34,94 @@ const MENU_DATA = {
     "Our Partners": [],
     "Future": [],
     "Blog": [],
-    
   },
 };
 
-const Header = () => {
-  const [activeSC, setActiveSC] = useState(null);
+/* ================= ROUTE MAP ================= */
+const ROUTES = {
+  "About Us": "/about",
+  "Our Locations": "/location",
+  "Industries we Serve": "/industries",
+  "What Our Clients Say": "/clients",
 
+  "Accounting": "/accounting",
+  "Bookkeeping": "/bookkeeping",
+  "Payroll": "/payroll",
+  "Financial Reporting and Analysis": "/financial",
+  "Software Setup & Migration": "/software",
+
+  "Taxation": "/taxation",
+  "Cooperative Tax": "/cooperative",
+  "Individual Tax": "/individual",
+
+  "Business Analytics": "/business",
+
+  "Website Design & Development": "/webdesign",
+  "Search Engine Optimization": "/seo",
+  "Social Media Marketing": "/social",
+  "Email Marketing": "/email",
+  "LinkedIn Marketing": "/linkedin",
+
+  "AI": "/ai",
+  "Automation": "/automation",
+
+  "MS 365 Management": "/ms365",
+  "Mobile Device Management": "/mobile",
+  "Managed Network Services": "/network",
+};
+
+const Header = () => {
   return (
     <header className="relative z-30 bg-[#0B1F3A]/70 backdrop-blur-md">
-<div className="relative h-16 px-6 flex items-center justify-between">
-        {/* LOGO */}
-      <a href="/" className="flex items-center">
-          <div className="p-1 transition-all duration-300 scale-105 drop-shadow-[0_0_10px_rgba(56,189,248,0.6)]">
-            <img
-  src="/VD-Logo-e1737873827576.png"
-  alt="Visionary Dynamics Logo"
-  className="h-80 w-auto mix-blend-multiply"
-/>
-          </div>
-        </a>
+      
+      <div className="relative h-16 px-6 flex items-center justify-between">
 
-        {/* ================= SLIDING TEXT ================= */}
+        {/* LOGO */}
+       <div className="flex items-center h-24">
+  <img
+    src="/VD-Logo-e1737873827576.png"
+    alt="Visionary Dynamics Logo"
+    className="h-full w-auto object-contain"
+  />
+</div>
+        {/* SLIDING TEXT */}
         <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[60%] overflow-hidden">
-          <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-1 border border-white/20">
-            <div className="whitespace-nowrap animate-marquee text-base font-bold text-white">
+          <div className="bg-white/10 rounded-full px-4 py-1 border border-white/20">
+            <div className="whitespace-nowrap animate-marquee text-sm font-bold text-white">
               <span className="text-green-400 mr-2">VISIONARY DYNAMICS</span>
-              Where Vision, Strategy, and Innovation Come Together for Lasting Success
+              Where Vision, Strategy, and Innovation Come Together
             </div>
           </div>
         </div>
 
-        {/* ================= MENU ================= */}
-<nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[60px] text-base font-medium text-white">          <a href="/" className="hover:text-sky-300">Home</a>
+        {/* MENU */}
+        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[60px] text-base font-medium text-white">
+          
+          <Link to="/" className="hover:text-sky-300">Home</Link>
 
-          <MenuWithSub
-            menu="Who We Are"
-            data={MENU_DATA["Who We Are"]}
-            setActiveSC={setActiveSC}
-          />
+          <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
+          <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />
+          <MenuWithSub menu="How We Do" data={MENU_DATA["How We Do"]} />
 
-          <MenuWithSub
-            menu="What We Do"
-            data={MENU_DATA["What We Do"]}
-            setActiveSC={setActiveSC}
-          />
-
-          <MenuWithSub
-            menu="How We Do"
-            data={MENU_DATA["How We Do"]}
-            setActiveSC={setActiveSC}
-          />
-
-          <a href="#" className="hover:text-sky-300">Contact</a>
+          <Link to="/contact" className="hover:text-sky-300">Contact</Link>
         </nav>
 
         {/* CTA */}
         <div className="absolute top-[15px] right-6 hidden lg:flex">
-          <button className="px-6 py-2.5 rounded-full text-white bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-medium">
+          <button className="px-6 py-2 rounded-full bg-sky-500 hover:bg-sky-600">
             Try Free Call
           </button>
         </div>
       </div>
 
-      {/* ================= SC PANEL ================= */}
-      {activeSC && (
-        <div
-          className="fixed inset-0 z-40 bg-[#0F172A]/95 text-white"
-          onClick={() => setActiveSC(null)}
-        >
-          <div
-            className="max-w-6xl mx-auto pt-32 px-10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2 className="text-3xl font-semibold mb-6">{activeSC}</h2>
-            <button
-              className="mt-10 text-sky-400"
-              onClick={() => setActiveSC(null)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ================= STYLES ================= */}
+      {/* MARQUEE STYLE */}
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(100%); }
           100% { transform: translateX(-100%); }
         }
         .animate-marquee {
-          animation: marquee 18s linear infinite;
+          animation: marquee 15s linear infinite;
         }
       `}</style>
     </header>
@@ -132,7 +129,14 @@ const Header = () => {
 };
 
 /* ================= MENU COMPONENT ================= */
-const MenuWithSub = ({ menu, data, setActiveSC }) => {
+const MenuWithSub = ({ menu, data }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (item) => {
+    const path = ROUTES[item];
+    if (path) navigate(path);
+  };
+
   return (
     <div className="relative group">
       <button className="flex items-center gap-1 hover:text-sky-300">
@@ -143,9 +147,10 @@ const MenuWithSub = ({ menu, data, setActiveSC }) => {
       <div className="submenu">
         {Object.keys(data).map((item) => (
           <div key={item} className="relative group/item">
+            
             <div
               className="submenu-item"
-              onClick={() => setActiveSC(item)}
+              onClick={() => handleClick(item)}
             >
               {item}
               {data[item].length > 0 && <ChevronRight size={14} />}
@@ -158,7 +163,7 @@ const MenuWithSub = ({ menu, data, setActiveSC }) => {
                   <div
                     key={sub}
                     className="submenu-item"
-                    onClick={() => setActiveSC(sub)}
+                    onClick={() => handleClick(sub)}
                   >
                     {sub}
                   </div>
@@ -169,6 +174,7 @@ const MenuWithSub = ({ menu, data, setActiveSC }) => {
         ))}
       </div>
 
+      {/* STYLES */}
       <style>{`
         .submenu {
           position: absolute;
@@ -178,8 +184,6 @@ const MenuWithSub = ({ menu, data, setActiveSC }) => {
           background: rgba(15,23,42,0.95);
           border-radius: 10px;
           padding: 8px 0;
-          display: flex;
-          flex-direction: column;
           opacity: 0;
           visibility: hidden;
           transform: translateY(10px);
@@ -194,16 +198,13 @@ const MenuWithSub = ({ menu, data, setActiveSC }) => {
 
         .submenu-item {
           padding: 10px 16px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
           cursor: pointer;
-          color: white;
-          white-space: nowrap;
+          display: flex;
+          justify-content: space-between;
         }
 
         .submenu-item:hover {
-          background: rgba(56,189,248,0.15);
+          background: rgba(56,189,248,0.2);
           color: #38bdf8;
         }
 
@@ -211,12 +212,10 @@ const MenuWithSub = ({ menu, data, setActiveSC }) => {
           position: absolute;
           top: 0;
           left: 100%;
-          min-width: 260px;
-          background: rgba(15,23,42,0.97);
+          min-width: 240px;
+          background: rgba(15,23,42,0.95);
           border-radius: 10px;
           padding: 8px 0;
-          display: flex;
-          flex-direction: column;
           opacity: 0;
           visibility: hidden;
           transform: translateX(10px);
