@@ -81,7 +81,7 @@ const Header = () => {
   <img
     src="/VD-Logo-e1737873827576.png"
     alt="Visionary Dynamics Logo"
-    className="h-full w-auto object-contain"
+    className="h-14 w-auto object-contain"
   />
 </div>
         {/* SLIDING TEXT */}

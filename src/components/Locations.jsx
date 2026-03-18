@@ -662,7 +662,7 @@ export default function Locations() {
                 {
                   title: "USA",
                   subtitle: "United States",
-                  text: "The United States is one of our core markets, where we partner with startups, enterprises, and global organizations to drive digital transformation, operational excellence, and sustainable growth. Our consulting and technology solutions are designed to meet the evolving demands of highly competitive and regulated industries, including finance, healthcare, retail, manufacturing, and technology.",
+                  text: "The United States is one of our core markets, where we partner with startups, enterprises, and global organizations to drive digital transformation, operational excellence, and sustainable growth. ",
                   image: "https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                   features: [" Security", "Conference Rooms", "Tech Hub"],
                   gradient: "from-blue-900/30 to-blue-800/20",
@@ -671,7 +671,7 @@ export default function Locations() {
                 {
                   title: "U.K",
                   subtitle: "United Kingdom",
-                  text: "The United Kingdom is a strategic hub for our global operations, where we support organizations across finance, professional services, healthcare, retail, and technology. Our solutions are tailored to help businesses navigate complex regulatory environments, embrace digital transformation, and remain competitive in a rapidly evolving market.",
+                  text: "The United Kingdom is a strategic hub for our global operations, where we support organizations across finance, professional services, healthcare, retail, and technology.",
                   image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                   features: ["Market Access", "Networking", "Research Center"],
                   gradient: "from-blue-800/30 to-purple-800/20",
@@ -680,7 +680,7 @@ export default function Locations() {
                 {
                   title: "Canada",
                   subtitle: "Canada",
-                  text: "In Canada, we work closely with businesses to drive innovation, sustainability, and scalable growth across industries such as energy, financial services, healthcare, education, and technology. Our consulting and digital solutions help organizations adapt to changing market demands while maintaining strong governance and compliance standards.",
+                  text: "In Canada, we work closely with businesses to drive innovation, sustainability, and scalable growth across industries such as energy, financial services, healthcare, education, and technology.",
                   image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                   features: ["Innovation Lab", "Sustainability", "Tech Integration"],
                   gradient: "from-emerald-900/30 to-cyan-800/20",
@@ -689,7 +689,7 @@ export default function Locations() {
                 {
                   title: "India",
                   subtitle: "India",
-                  text: "India represents a dynamic and fast-growing market where we partner with enterprises, startups, and public sector organizations to accelerate digital transformation and operational excellence. Our services span industries including IT, manufacturing, healthcare, finance, education, and e-commerce.",
+                  text: "India represents a dynamic and fast-growing market where we partner with enterprises, startups, and public sector organizations to accelerate digital transformation and operational excellence.",
                   image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                   features: ["EU Gateway", "Historic Building", "Global Access"],
                   gradient: "from-amber-900/30 to-orange-800/20",
