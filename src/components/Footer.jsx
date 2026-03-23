@@ -7,6 +7,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -41,26 +42,26 @@ src="/VD-Logo-e1737873827576.png"
           {/* QUICK LINKS */}
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-white/70 text-sm">
-              <li className="hover:text-white cursor-pointer">Home</li>
-              <li className="hover:text-white cursor-pointer">Services</li>
-              <li className="hover:text-white cursor-pointer">About</li>
-              <li className="hover:text-white cursor-pointer">Contact</li>
-            </ul>
+           <ul className="space-y-2 text-white/70 text-sm">
+  <li><Link to="/" className="hover:text-white">Home</Link></li>
+  <li><Link to="/services" className="hover:text-white">Services</Link></li>
+  <li><Link to="/about" className="hover:text-white">About</Link></li>
+  <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+</ul>
           </div>
 
           {/* SERVICES */}
           <div>
             <h4 className="font-semibold mb-4">Policies</h4>
-            <ul className="space-y-2 text-white/70 text-sm">
-              <li className="hover:text-white cursor-pointer">Privacy Policy</li>
-              <li className="hover:text-white cursor-pointer">Terms & Conditions</li>
-              <li className="hover:text-white cursor-pointer">Cookie Policy</li>
-              <li className="hover:text-white cursor-pointer">Data Security Policy</li>
-              <li className="hover:text-white cursor-pointer">Intellectual Property Policy</li>
-              <li className="hover:text-white cursor-pointer">Complaint & Grievance Policy</li>
-              <li className="hover:text-white cursor-pointer">Disclaimer</li>
-            </ul>
+           <ul className="space-y-2 text-white/70 text-sm">
+  <li><Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
+  <li><Link to="/terms" className="hover:text-white">Terms & Conditions</Link></li>
+  <li><Link to="/cookies" className="hover:text-white">Cookie Policy</Link></li>
+  <li><Link to="/data-security" className="hover:text-white">Data Security Policy</Link></li>
+  <li><Link to="/ip-policy" className="hover:text-white">Intellectual Property Policy</Link></li>
+  <li><Link to="/grievance" className="hover:text-white">Complaint & Grievance Policy</Link></li>
+  <li><Link to="/disclaimer" className="hover:text-white">Disclaimer</Link></li>
+</ul>
           </div>
 
           {/* CONTACT */}
@@ -68,50 +69,67 @@ src="/VD-Logo-e1737873827576.png"
             <h4 className="font-semibold mb-4">Contact</h4>
 
             <ul className="space-y-3 text-white/70 text-sm mb-6">
-              <li className="flex items-center gap-3">
-                <Mail size={16} className="text-sky-400" />
-                contact@visionarydynamics.com
-              </li>
+             <li className="flex items-center gap-3">
+  <Mail size={16} className="text-sky-400" />
+  <a href="mailto:contact@visionarydynamics.com" className="hover:text-white">
+    contact@visionarydynamics.com
+  </a>
+</li>
 
               <li className="flex items-center gap-3">
-                <Phone size={16} className="text-sky-400" />
-                +1 (123) 456-7890
-              </li>
+  <Phone size={16} className="text-sky-400" />
+  <a href="tel:+11234567890" className="hover:text-white">
+    +1 (123) 456-7890
+  </a>
+</li>
 
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-sky-400 mt-1" />
-                <span>
-                  123 Business Avenue <br />
-                  New York, NY, USA
-                </span>
-              </li>
+  <MapPin size={16} className="text-sky-400 mt-1" />
+  <a
+    href="https://maps.google.com?q=New+York+NY+USA"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white"
+  >
+    123 Business Avenue <br />
+    New York, NY, USA
+  </a>
+</li>
             </ul>
 
             {/* SOCIAL ICONS */}
             <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="p-2 rounded-full bg-white/5 hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500/40 transition"
-              >
-                <Linkedin size={18} />
-              </a>
+             <a
+  href="https://linkedin.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="p-2 rounded-full bg-white/5 hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500/40 transition"
+>
+  <Linkedin size={18} />
+</a>
+
+             <a
+  href="https://linkedin.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="p-2 rounded-full bg-white/5 hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500/40 transition"
+>
+  <Twitter size={18} />
+</a>
 
               <a
-                href="#"
-                className="p-2 rounded-full bg-white/5 hover:bg-sky-400 hover:shadow-lg hover:shadow-sky-400/40 transition"
-              >
-                <Twitter size={18} />
-              </a>
-
-              <a
-                href="#"
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-white/5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/40 transition"
               >
                 <Facebook size={18} />
               </a>
 
               <a
-                href="#"
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-white/5 hover:bg-pink-500 hover:shadow-lg hover:shadow-pink-500/40 transition"
               >
                 <Instagram size={18} />

@@ -204,3 +204,6 @@
 .animate-float {
   animation: float-x 8s ease-in-out infinite;
 }
+html {
+  scroll-behavior: smooth;
+}
