@@ -44,7 +44,7 @@ src="/VD-Logo-e1737873827576.png"
             <h4 className="font-semibold mb-4">Quick Links</h4>
            <ul className="space-y-2 text-white/70 text-sm">
   <li><Link to="/" className="hover:text-white">Home</Link></li>
-  <li><Link to="/services" className="hover:text-white">Services</Link></li>
+  
   <li><Link to="/about" className="hover:text-white">About</Link></li>
   <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
 </ul>
@@ -54,12 +54,12 @@ src="/VD-Logo-e1737873827576.png"
           <div>
             <h4 className="font-semibold mb-4">Policies</h4>
            <ul className="space-y-2 text-white/70 text-sm">
-  <li><Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
+  <li><Link to="/privacy" className="hover:text-white">Privacy Policy</Link></li>
   <li><Link to="/terms" className="hover:text-white">Terms & Conditions</Link></li>
   <li><Link to="/cookies" className="hover:text-white">Cookie Policy</Link></li>
-  <li><Link to="/data-security" className="hover:text-white">Data Security Policy</Link></li>
-  <li><Link to="/ip-policy" className="hover:text-white">Intellectual Property Policy</Link></li>
-  <li><Link to="/grievance" className="hover:text-white">Complaint & Grievance Policy</Link></li>
+  <li><Link to="/datasecurity" className="hover:text-white">Data Security Policy</Link></li>
+  <li><Link to="/intellectual" className="hover:text-white">Intellectual Property Policy</Link></li>
+  <li><Link to="/complaint" className="hover:text-white">Complaint & Grievance Policy</Link></li>
   <li><Link to="/disclaimer" className="hover:text-white">Disclaimer</Link></li>
 </ul>
           </div>
@@ -100,7 +100,7 @@ src="/VD-Logo-e1737873827576.png"
             {/* SOCIAL ICONS */}
             <div className="flex items-center gap-4">
              <a
-  href="https://linkedin.com"
+  href="https://in.linkedin.com/company/visionarydynamicsas"
   target="_blank"
   rel="noopener noreferrer"
   className="p-2 rounded-full bg-white/5 hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500/40 transition"
@@ -109,7 +109,7 @@ src="/VD-Logo-e1737873827576.png"
 </a>
 
              <a
-  href="https://linkedin.com"
+  href="https://x.com/VisionaryD64371"
   target="_blank"
   rel="noopener noreferrer"
   className="p-2 rounded-full bg-white/5 hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-500/40 transition"
@@ -118,7 +118,7 @@ src="/VD-Logo-e1737873827576.png"
 </a>
 
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/visionarydynamicsas/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-white/5 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/40 transition"
@@ -127,7 +127,7 @@ src="/VD-Logo-e1737873827576.png"
               </a>
 
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/visionary.dynamics/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-white/5 hover:bg-pink-500 hover:shadow-lg hover:shadow-pink-500/40 transition"
