@@ -70,9 +70,14 @@ export default function PayrollPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Outsourced Payroll Services
           </h1>
-          <button className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold shadow-lg transition transform hover:scale-105">
-            Get a Free Consultation
-          </button>
+         <a
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold shadow-lg transition transform hover:scale-105"
+>
+  Get a Free Consultation
+</a>
         </div>
       </section>
 
