@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -43,6 +44,21 @@ import howItWorks3Img from "../animations/how-it-works3.png";
 
 const FinanceAccountingServices = () => {
   const [showContactForm, setShowContactForm] = useState(false);
+  const [formData, setFormData] = useState({
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  service: '',
+  message: ''
+});
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setFormData(prev => ({
+    ...prev,
+    [name]: value
+  }));
+};
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);
   const sectionRef = useRef(null);
@@ -253,29 +269,22 @@ const softwareLogos = [
   }
 ];
 
-  // Contact Form State
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    service: '',
-    message: ''
-  });
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/api/form/submit",
+      formData
+    );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you shortly.');
+    console.log("Response:", response.data);
+
+    alert("Form Submitted Successfully ✅");
+
     setShowContactForm(false);
+
+    // Reset form
     setFormData({
       name: '',
       email: '',
@@ -284,8 +293,12 @@ const softwareLogos = [
       service: '',
       message: ''
     });
-  };
 
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Error submitting form ❌");
+  }
+};
   return (
     <div className="min-h-screen bg-blue-50">
 
