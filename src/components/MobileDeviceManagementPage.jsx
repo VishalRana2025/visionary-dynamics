@@ -154,13 +154,15 @@ const MDMPage = () => {
    
       {/* Button */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <button
-          onClick={() => setShowContactForm(true)}
-          className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-teal-700 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105"
-        >
-          Start Your Consultation
-          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-        </button>
+       <a
+  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+>
+  Start Your Consultation
+  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+</a>
       </div>
  
     </div>
@@ -215,10 +217,15 @@ const MDMPage = () => {
       {/* CTA */}
       <div className="flex items-center gap-6">
  
-        <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center shadow-lg hover:scale-105 transition-all">
-          Free Consultation
-          <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition" />
-        </button>
+       <a
+  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:scale-105 transition-all"
+>
+  Free Consultation
+  <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition" />
+</a>
  
         <div className="flex items-center text-gray-600 text-sm">
           <Users className="w-4 h-4 mr-2 text-blue-500"/>
@@ -1166,12 +1173,20 @@ const MDMPage = () => {
       Join thousands of companies that trust DeviceGuard for their mobile device management
     </p>
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <button className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">
-        Start Your Free Trial
-      </button>
-      <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/10 transition">
-        Contact Sales
-      </button>
+     <a
+  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition"
+>
+  Start Your Free Trial
+</a>
+      <a
+  href="/contact"
+  className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/10 transition"
+>
+  Contact Sales
+</a>
     </div>
     <p className="text-white/80 mt-4">No credit card required • 14-day free trial</p>
   </div>

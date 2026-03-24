@@ -321,23 +321,27 @@ const MS365ManagementPage = () => {
  
               {/* Buttons */}
               <div className="flex gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-blue-600 text-white rounded-xl flex gap-2 items-center shadow-lg"
-                >
-                  Get Started
-                  <ArrowRight size={18} />
-                </motion.button>
+                <motion.a
+  href="/contact"
+  whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
+  whileTap={{ scale: 0.95 }}
+  className="px-8 py-4 bg-blue-600 text-white rounded-xl flex gap-2 items-center shadow-lg"
+>
+  Get Started
+  <ArrowRight size={18} />
+</motion.a>
  
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white text-blue-700 rounded-xl flex gap-2 items-center shadow"
-                >
-                  <Headphones size={18} />
-                  Free Consultancy
-                </motion.button>
+               <motion.a
+  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="px-8 py-4 bg-white text-blue-700 rounded-xl flex gap-2 items-center shadow"
+>
+  <Headphones size={18} />
+  Free Consultancy
+</motion.a>
               </div>
             </motion.div>
  
@@ -783,24 +787,28 @@ const MS365ManagementPage = () => {
       </p>
  
       <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-        <motion.button
-          whileHover={{scale: 1.05}}
-          whileTap={{scale: 0.95}}
-          className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition flex items-center justify-center gap-2 group"
-        >
-          <PhoneCall size={20} className="group-hover:rotate-12 transition" />
-          Schedule a Call
-        </motion.button>
+        <motion.a
+  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition flex items-center justify-center gap-2 group"
+>
+  <PhoneCall size={20} className="group-hover:rotate-12 transition" />
+  Schedule a Call
+</motion.a>
  
-        <motion.button
-          whileHover={{scale: 1.05}}
-          whileTap={{scale: 0.95}}
-          className="px-8 py-4 bg-transparent border-2 border-white/70 text-white rounded-xl font-semibold hover:bg-white/10 transition flex items-center justify-center gap-2 group"
-        >
-          <MailIcon size={20} />
-          Contact Us
-          <ArrowRight size={20} className="group-hover:translate-x-1 transition" />
-        </motion.button>
+        <motion.a
+  href="/contact"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="px-8 py-4 bg-transparent border-2 border-white/70 text-white rounded-xl font-semibold hover:bg-white/10 transition flex items-center justify-center gap-2 group"
+>
+  <MailIcon size={20} />
+  Contact Us
+  <ArrowRight size={20} className="group-hover:translate-x-1 transition" />
+</motion.a>
       </div>
     </motion.div>
   </div>

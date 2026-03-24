@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   StarIcon,
   UserGroupIcon,
@@ -14,6 +15,7 @@ import {
 } from "@heroicons/react/24/solid";
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
+  const navigate = useNavigate();
  
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
@@ -371,6 +373,7 @@ const TestimonialCard = ({ testimonial, index }) => {
 /* ================= MAIN PAGE ================= */
 export default function OurClients() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const navigate = useNavigate(); 
 
   const testimonials = [
     {
@@ -451,7 +454,7 @@ export default function OurClients() {
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
-        <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" />
+<div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm pointer-events-none" />
 
         <div className="relative container mx-auto px-6 z-10 flex flex-col items-center justify-center text-center h-full">
 
@@ -538,15 +541,23 @@ export default function OurClients() {
                 Let’s work together to achieve remarkable results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-4 bg-gradient-to-r from-sky-500 to-cyan-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
-                  Start Your Journey
-                </button>
-                <button className="px-8 py-4 bg-white/20 text-white rounded-xl font-semibold shadow-lg border border-white/30 hover:bg-white/30 transition-all hover:-translate-y-1">
-                  Schedule a Call
-                </button>
+              <button
+                onClick={() => navigate("/contact")}
+                className="px-8 py-4 bg-gradient-to-r from-sky-500 to-cyan-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+               >
+                Start Your Journey
+                 </button>
+                <button
+                onClick={() => navigate("/contact")}
+                className="px-8 py-4 bg-white/20 text-white rounded-xl font-semibold shadow-lg border border-white/30 hover:bg-white/30 transition-all hover:-translate-y-1"
+                     >
+                 Schedule a Call
+                 </button>
               </div>
             </div>
           </div>
+
+          
         </div>
       </div>
     </div>

@@ -543,9 +543,15 @@ const reports = [
       Join thousands of businesses that trust us for their financial analytics needs.
     </p>
 
-    <button className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
-      Start Your Free Trial Today
-    </button>
+    <a 
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <button className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
+    Start Your Free Trial Today
+  </button>
+</a>
 
     <p className="text-blue-200 mt-4">
       No credit card required · 14-day free trial

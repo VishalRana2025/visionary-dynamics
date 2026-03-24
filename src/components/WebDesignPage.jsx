@@ -21,6 +21,8 @@ import {
   ArrowRight
 } from "lucide-react";
 
+
+
 // ---------- Floating Objects Component ----------
 const FloatingObjects = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
@@ -540,7 +542,7 @@ const WhyChooseUs = () => (
 <section className="relative py-16 md:py-24 overflow-hidden text-white">
 
   {/* Background Image */}
-  <div className="absolute inset-0">
+  <div className="absolute inset-0 pointer-events-none">
     <img
       src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2070&q=80"
       alt="Background"
@@ -552,7 +554,7 @@ const WhyChooseUs = () => (
   <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>
 
   {/* Decorative blob elements */}
-  <div className="absolute inset-0">
+  <div className="absolute inset-0 pointer-events-none">
     <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
     <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
     <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
@@ -574,7 +576,7 @@ const WhyChooseUs = () => (
         >
 
           {/* Hover Background Image */}
-          <div className="absolute inset-0">
+<div className="absolute inset-0 pointer-events-none">
             <img
               src={reason.bgImage}
               alt=""
@@ -863,7 +865,7 @@ const FAQ = () => {
       <FloatingObjects />
       
       {/* Decorative elements */}
-      <div className="absolute inset-0">
+<div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
       </div>
@@ -993,7 +995,7 @@ const FAQ = () => {
 const CTA = () => (
   <section className="relative py-20 md:py-28 overflow-hidden">
     {/* Background Image */}
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 pointer-events-none">
       <img
         src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2070&q=80"
         alt="Team collaborating on a project"
@@ -1034,17 +1036,31 @@ const CTA = () => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
         viewport={{ once: true }}
-        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        className="relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
       >
-        <button className="group bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-indigo-500/30 flex items-center gap-3 text-lg">
-          Get Free Consultation
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </button>
-        
-        <button className="group border-2 border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 backdrop-blur-sm flex items-center gap-3 text-lg">
-          View Our Work
-          <span className="text-xl">→</span>
-        </button>
+       <button
+  onClick={() =>
+    window.open(
+      "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
+      "_blank"
+    )
+  }
+  className="group bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-indigo-500/30 flex items-center gap-3 text-lg"
+>
+  Get Free Consultation
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
+
+<a
+  href="https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="group bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-indigo-500/30 flex items-center gap-3 text-lg">
+    Get Free Consultation
+    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+  </button>
+</a>
       </motion.div>
 
       

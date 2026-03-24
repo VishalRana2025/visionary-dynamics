@@ -110,12 +110,15 @@ const BusinessAnalystPage = () => {
           Transform complex problems into actionable solutions.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <button className="px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
-            Schedule Consultation
-          </button>
-          <button className="px-8 py-4 border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105">
-            View Portfolio
-          </button>
+          <a
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+>
+  Schedule Consultation
+</a>
+         
         </div>
       </div>
 
@@ -309,18 +312,6 @@ const BusinessAnalystPage = () => {
       })}
     </div>
 
-    {/* Bottom CTA */}
-    <div className="text-center mt-16">
-      <a 
-        href="#" 
-        className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-sky-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-sky-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
-      >
-        <span>Start Your Journey</span>
-        <svg className="w-5 h-5 ml-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-      </a>
-    </div>
   </div>
 </section>
 
@@ -365,9 +356,7 @@ const BusinessAnalystPage = () => {
   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {/* Section Header */}
     <div className="text-center mb-16">
-      <span className="inline-block px-6 py-3 bg-white/70 backdrop-blur-sm text-blue-600 rounded-full text-sm font-bold border border-white/80 mb-6">
-        ✦ TRUSTED BY INDUSTRY LEADERS ✦
-      </span>
+    
       <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
         Our Impact in Numbers
       </h2>
@@ -580,16 +569,32 @@ const BusinessAnalystPage = () => {
         
         <div className="space-y-4">
           <div className="flex items-center space-x-4">
-            <Mail className="w-6 h-6" />
-            <span>business.analyst@example.com</span>
+            <a href="mailto:contact@visionarydynamics.com" className="hover:text-white">
+    contact@visionarydynamics.com
+  </a>
           </div>
           <div className="flex items-center space-x-4">
-            <Phone className="w-6 h-6" />
-            <span>+1 (555) 123-4567</span>
+             <a
+                         href="tel:+11234567890"
+                         className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105"
+                       >
+                         <Phone className="w-5 h-5 mr-2" />
+                         Call Now: +1 (123) 456-7890
+                       </a>
           </div>
           <div className="flex items-center space-x-4">
-            <MapPin className="w-6 h-6" />
-            <span>San Francisco, CA</span>
+           <li className="flex items-start gap-3">
+  <MapPin size={16} className="text-sky-400 mt-1" />
+  <a
+    href="https://maps.google.com?q=New+York+NY+USA"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white"
+  >
+    123 Business Avenue <br />
+    New York, NY, USA
+  </a>
+</li>
           </div>
         </div>
       </div>

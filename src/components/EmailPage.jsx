@@ -521,14 +521,23 @@ const EmailMarketingPage = () => {
          
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <button className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl hover:shadow-2xl transition-all transform hover:-translate-y-1 overflow-hidden">
-            <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500"></span>
-            <span className="relative flex items-center">
-              <Mail className="w-5 h-5 mr-2" />
-              Start Your Email Marketing Journey
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </button>
+         <button
+  onClick={() =>
+    window.open(
+      "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
+      "_blank"
+    )
+  }
+  className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl hover:shadow-2xl transition-all transform hover:-translate-y-1 overflow-hidden"
+>
+  <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500"></span>
+  
+  <span className="relative flex items-center">
+    <Mail className="w-5 h-5 mr-2" />
+    Start Your Email Marketing Journey
+    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+  </span>
+</button>
          
         </div>
       </div>
@@ -860,12 +869,7 @@ const EmailMarketingPage = () => {
     </div>
     
     {/* Bottom CTA with gradient */}
-    <div className="text-center mt-16">
-      <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-600 transition transform hover:scale-105 shadow-xl inline-flex items-center space-x-2 group border border-white/20 hover:border-white/30">
-        <span>Get Started with All Features</span>
-        <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-      </button>
-    </div>
+    
   </div>
   
   <style>{`
@@ -1049,12 +1053,7 @@ const EmailMarketingPage = () => {
     </div>
 
     {/* Bottom CTA */}
-    <div className="text-center mt-12">
-      <p className="text-gray-600 mb-4">Not sure which approach is right for your business?</p>
-      <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition transform hover:scale-105">
-        Get a Free Strategy Consultation
-      </button>
-    </div>
+    
   </div>
 </div>
 

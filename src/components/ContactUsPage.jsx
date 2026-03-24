@@ -19,6 +19,7 @@ import {
   Star,
   Award,
   Heart,
+  Facebook,
 } from 'lucide-react';
 
 const ContactPage = () => {
@@ -72,10 +73,10 @@ const ContactPage = () => {
   ];
 
   const socialLinks = [
-    { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter', color: 'hover:bg-[#1DA1F2]' },
-    { icon: <Linkedin className="w-5 h-5" />, href: '#', label: 'LinkedIn', color: 'hover:bg-[#0A66C2]' },
-    { icon: <Github className="w-5 h-5" />, href: '#', label: 'GitHub', color: 'hover:bg-[#333]' },
-    { icon: <Instagram className="w-5 h-5" />, href: '#', label: 'Instagram', color: 'hover:bg-[#E4405F]' }
+    { icon: <Twitter className="w-5 h-5" />, href: 'https://x.com/VisionaryD64371', label: 'Twitter', color: 'hover:bg-[#1DA1F2]' },
+    { icon: <Linkedin className="w-5 h-5" />, href: 'https://in.linkedin.com/company/visionarydynamicsas', label: 'LinkedIn', color: 'hover:bg-[#0A66C2]' },
+    { icon: <Facebook className="w-5 h-5" />, href: 'https://www.facebook.com/visionarydynamicsas/', label: 'Facebook', color: 'hover:bg-[#0A66c2]' },
+    { icon: <Instagram className="w-5 h-5" />, href: 'https://www.instagram.com/visionary.dynamics/', label: 'Instagram', color: 'hover:bg-[#E4405F]' }
   ];
 
   const features = [
@@ -167,13 +168,7 @@ const ContactPage = () => {
               <Send className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
-            <a 
-              href="#faq"
-              className="group bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-medium hover:bg-white/20 transition-all duration-300 border border-white/30 flex items-center gap-2 hover:scale-105 transform"
-            >
-              Learn More
-              <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-            </a>
+           
           </div>
 
         </div>
@@ -192,10 +187,7 @@ const ContactPage = () => {
         {/* Header Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-full mb-6 shadow-lg shadow-blue-500/25">
-              <MessageCircle className="w-4 h-4 text-white" />
-              <span className="text-sm font-medium text-white">Get in Touch</span>
-            </div>
+           
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               How can we{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -386,14 +378,16 @@ const ContactPage = () => {
                       </p>
                       <div className="flex gap-3">
                         {socialLinks.map((social, index) => (
-                          <a
-                            key={index}
-                            href={social.href}
-                            className={`w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center ${social.color} transition-all duration-300 hover:scale-110 hover:rotate-3`}
-                            aria-label={social.label}
-                          >
-                            {social.icon}
-                          </a>
+                         <a
+  key={index}
+  href={social.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  className={`w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center ${social.color} transition-all duration-300 hover:scale-110 hover:rotate-3`}
+  aria-label={social.label}
+>
+  {social.icon}
+</a>
                         ))}
                       </div>
                     </div>

@@ -346,12 +346,18 @@ const App = () => {
       </p>
       {/* CTA Buttons - Centered */}
       <div className="mt-10 flex flex-wrap gap-4 justify-center">
-        <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition flex items-center font-semibold shadow-lg shadow-blue-500/30">
-          Start Free Trial <ChevronRight className="ml-2 h-5 w-5" />
-        </button>
-        <button className="border-2 border-white/30 text-white px-8 py-3 rounded-lg hover:bg-white/10 transition backdrop-blur-sm font-semibold">
-          Compare All Plans
-        </button>
+       <button
+  onClick={() =>
+    window.open(
+      "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
+      "_blank"
+    )
+  }
+  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition flex items-center font-semibold shadow-lg shadow-blue-500/30"
+>
+  Start Free Trial 
+  <ChevronRight className="ml-2 h-5 w-5" />
+</button>
       </div>
 
     </div>
@@ -752,15 +758,7 @@ const App = () => {
     </div>
 
     {/* Bottom CTA */}
-    <div className="text-center mt-12">
-      <div className="inline-flex items-center gap-4 bg-white px-6 py-3 rounded-full shadow-md border border-gray-100">
-        <span className="text-gray-600">Still not sure?</span>
-        <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-purple-200 transition-all hover:scale-105 flex items-center gap-2">
-          <MessageCircle className="h-4 w-4" />
-          Talk to our team
-        </button>
-      </div>
-    </div>
+   
   </div>
 </section>
 
@@ -1461,13 +1459,19 @@ const App = () => {
     </p>
 
     <div className="flex flex-wrap gap-4 justify-center">
-      <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
-        Start Premium Trial
-      </button>
+      
 
-      <button className="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition">
-        Start Sales Navigator Trial
-      </button>
+      <button
+  onClick={() =>
+    window.open(
+      "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
+      "_blank"
+    )
+  }
+  className="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
+>
+  Start Sales Navigator Trial
+</button>
     </div>
   </div>
 

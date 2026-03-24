@@ -437,13 +437,19 @@ const FloatingObjects = () => (
               </h1>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-300 transition-colors text-lg">
-                  Get Free SEO Audit
-                </button>
+                <button
+  onClick={() =>
+    window.open(
+      "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
+      "_blank"
+    )
+  }
+  className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-yellow-300 transition-colors text-lg"
+>
+  Get Free SEO Audit
+</button>
 
-                <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors text-lg">
-                  Learn More
-                </button>
+
               </div>
             </motion.div>
           </div>
@@ -930,13 +936,16 @@ const FloatingObjects = () => (
                 viewport={{ once: true }}
                 className="text-center mt-12"
               >
-                <button className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold overflow-hidden shadow-2xl hover:shadow-blue-600/30 transition-shadow">
-                  <span className="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-                  <span className="relative">Start Your Success Story</span>
-                  <svg className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
+               <button
+  onClick={() => (window.location.href = "/contact")}
+  className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold overflow-hidden shadow-2xl hover:shadow-blue-600/30 transition-shadow"
+>
+  <span className="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+  <span className="relative">Start Your Success Story</span>
+  <svg className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+  </svg>
+</button>
               </motion.div>
             </motion.div>
           </div>
@@ -1107,9 +1116,12 @@ const FloatingObjects = () => (
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Still have questions? We're here to help!
               </p>
-              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                Contact Us
-              </button>
+             <button
+  onClick={() => (window.location.href = "/contact")}
+  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+>
+  Contact Us
+</button>
             </div>
           </div>
         </section>
@@ -1164,13 +1176,25 @@ const FloatingObjects = () => (
       viewport={{ once: true }}
       className="flex flex-col sm:flex-row gap-5 justify-center"
     >
-      <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition shadow-lg hover:shadow-blue-500/40">
-        Get Free SEO Audit
-      </button>
+      <a
+  href="https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition shadow-lg hover:shadow-blue-500/40">
+    Get Free SEO Audit
+  </button>
+</a>
 
-      <button className="border-2 border-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-gray-900 transition">
-        Contact Our Experts
-      </button>
+<a
+  href="https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="border-2 border-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-gray-900 transition">
+    Contact Our Experts
+  </button>
+</a>
     </motion.div>
 
   </div>

@@ -273,10 +273,18 @@ const SocialMediaMarketingPage = () => {
       <p className="text-gray-600 mb-6">
         Not sure which service is right for you?
       </p>
-      <button className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-200 transition-all duration-300 inline-flex items-center gap-2">
-        Get a Free Consultation
-        <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-      </button>
+      <button
+  onClick={() =>
+    window.open(
+      "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
+      "_blank"
+    )
+  }
+  className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-200 transition-all duration-300 inline-flex items-center gap-2"
+>
+  Get a Free Consultation
+  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
     </div>
   </div>
 </section>
@@ -459,9 +467,17 @@ const SocialMediaMarketingPage = () => {
       Join hundreds of businesses that have transformed their social media marketing with us
     </p>
 
-    <button className="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-300 transition-all duration-300 hover:scale-105">
-      Start Your Free Consultation
-    </button>
+   <button
+  onClick={() =>
+    window.open(
+      "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
+      "_blank"
+    )
+  }
+  className="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-300 transition-all duration-300 hover:scale-105"
+>
+  Start Your Free Consultation
+</button>
   </div>
 
 </section>

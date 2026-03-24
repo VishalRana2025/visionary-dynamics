@@ -683,12 +683,7 @@ const softwareLogos = [
           </div>
           
           {/* Bottom CTA */}
-          <div className="text-center mt-12">
-            <button className="px-6 py-3 bg-gradient-to-r from-blue-600/80 to-teal-600/80 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:from-blue-700 hover:to-teal-700 transition-all duration-300 inline-flex items-center hover:scale-105">
-              <MessageCircle className="h-4 w-4 mr-2" />
-              Discuss Your Specific Needs
-            </button>
-          </div>
+          
         </div>
       </section>
 

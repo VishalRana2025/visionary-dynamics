@@ -175,18 +175,16 @@ const MDMPage = () => {
  
       {/* Button */}
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <button
-          onClick={() => setShowContactForm(true)}
-          className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-teal-700 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105"
-        >
-          Start Your Consultation
-          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-        </button>
-        <button
-          className="px-8 py-4 bg-transparent border-2 border-white/20 text-white font-semibold rounded-xl hover:bg-white/5 transition-all duration-300"
-        >
-          View Services
-        </button>
+        <a
+  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+>
+  Start Your Consultation
+  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+</a>
+        
       </div>
  
    
@@ -237,9 +235,15 @@ const MDMPage = () => {
       </p>
  
       {/* Button */}
-      <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-7 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition">
-        Free Consultancy
-      </button>
+      <a
+       href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+       target="_blank"
+       rel="noopener noreferrer"
+       className="group inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:scale-105 transition-all"
+     >
+       Free Consultation
+       <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition" />
+     </a>
     </div>
  
    {/* RIGHT SIDE DASHBOARD */}
@@ -485,14 +489,6 @@ const MDMPage = () => {
         </div>
       </div>
  
-    </div>
- 
-    {/* Bottom CTA */}
-    <div className="text-center mt-16">
-      <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-xl">
-        <span>Start benefiting today</span>
-        <i className="fas fa-arrow-right ml-2"></i>
-      </button>
     </div>
  
   </div>
@@ -1197,12 +1193,20 @@ const MDMPage = () => {
       Join thousands of companies that trust DeviceGuard for their Managed Network Services
     </p>
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <button className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">
-        Start Your Free Trial
-      </button>
-      <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/10 transition">
-        Contact Sales
-      </button>
+      <a
+  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition"
+>
+  Start Your Free Trial
+</a>
+      <a
+  href="/contact"
+  className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/10 transition"
+>
+  Contact Sales
+</a>
     </div>
     <p className="text-white/80 mt-4">No credit card required • 14-day free trial</p>
   </div>

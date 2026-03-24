@@ -167,15 +167,25 @@ const SoftwareMigrationPage = () => {
       </h1>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <button className="group w-full sm:w-auto bg-white text-indigo-900 hover:bg-gray-100 font-semibold px-8 py-5 rounded-2xl shadow-2xl shadow-indigo-500/30 transition-all transform hover:scale-105 flex items-center gap-3 text-lg">
-          Get your migration roadmap
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </button>
+       <a 
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group w-full sm:w-auto bg-white text-indigo-900 hover:bg-gray-100 font-semibold px-8 py-5 rounded-2xl shadow-2xl shadow-indigo-500/30 transition-all transform hover:scale-105 flex items-center gap-3 text-lg"
+>
+  Get your migration roadmap
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</a>
 
-        <button className="w-full sm:w-auto border-2 border-white/30 hover:border-white/50 text-white font-medium px-8 py-5 rounded-2xl backdrop-blur-sm transition-all flex items-center gap-2 text-lg">
-          <Calendar className="w-5 h-5" />
-          Schedule strategy call
-        </button>
+<a 
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="w-full sm:w-auto border-2 border-white/30 hover:border-white/50 text-white font-medium px-8 py-5 rounded-2xl backdrop-blur-sm transition-all flex items-center gap-2 text-lg"
+>
+  <Calendar className="w-5 h-5" />
+  Schedule strategy call
+</a>
       </div>
 
     </div>
@@ -544,14 +554,16 @@ const SoftwareMigrationPage = () => {
     </h2>
 
     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <button className="group bg-white text-indigo-900 hover:bg-gray-100 font-semibold px-8 py-5 rounded-2xl shadow-2xl shadow-indigo-900/40 transition-all transform hover:scale-105 flex items-center justify-center gap-3 text-lg">
-        Get your migration roadmap
-        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-      </button>
-
-      <button className="border-2 border-white/30 hover:border-white/60 text-white font-medium px-8 py-5 rounded-2xl backdrop-blur-sm transition-all text-lg">
+      
+        
+      <a 
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="border-2 border-white/30 hover:border-white/60 text-white font-medium px-8 py-5 rounded-2xl backdrop-blur-sm transition-all text-lg"
+>
         Talk to a migration expert
-      </button>
+      </a>
     </div>
 
   </div>

@@ -488,9 +488,6 @@ export default function Testimonials() {
             forwards;
         }
       `}</style>
-      <div className="absolute bottom-0 left-0 w-full z-30">
-        <WaveTransition />
-      </div>
     </section>
   );
 }

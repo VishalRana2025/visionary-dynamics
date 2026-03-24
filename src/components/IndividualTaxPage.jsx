@@ -212,16 +212,7 @@ const IndividualTaxationPage = () => {
               </h1>
               
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
-                  <Calculator className="w-5 h-5" />
-                  Start Your Return
-                </button>
-                <button className="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" />
-                  Free Consultation
-                </button>
-              </div>
+              
             </div>
 
             {/* Tax Calculator Card */}
@@ -456,12 +447,7 @@ const IndividualTaxationPage = () => {
       ))}
     </div>
 
-    <div className="mt-8 text-center">
-      <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition">
-        <Download className="w-5 h-5" />
-        Download Complete Checklist
-      </button>
-    </div>
+    
 
   </div>
 </section>
@@ -709,14 +695,22 @@ const IndividualTaxationPage = () => {
             Join thousands of satisfied clients who trust us with their taxes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-              <Calculator className="w-5 h-5" />
-              Start Your Return
-            </button>
-            <button className="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-              <Phone className="w-5 h-5" />
-              Call Now: (555) 123-4567
-            </button>
+            <a
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all transform hover:scale-105"
+>
+  <Calculator className="w-5 h-5" />
+  Start Your Return
+</a>
+           <a
+             href="tel:+11234567890"
+             className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105"
+           >
+             <Phone className="w-5 h-5 mr-2" />
+             Call Now: +1 (123) 456-7890
+           </a>
           </div>
           <div className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-400">
             <span>✓ Free Consultation</span>

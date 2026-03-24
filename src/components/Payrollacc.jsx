@@ -490,16 +490,20 @@ export default function PayrollPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center justify-center">
-                <Phone className="mr-3 w-5 h-5" /> 
-                <span>Schedule Call</span>
-                <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="group border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-                <MessageSquare className="mr-3 w-5 h-5" /> 
-                <span>Chat Us</span>
-                <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <button
+  onClick={() =>
+    window.open(
+      "https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk",
+      "_blank"
+    )
+  }
+  className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center justify-center"
+>
+  <Phone className="mr-3 w-5 h-5" /> 
+  <span>Schedule Call</span>
+  <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+</button>
+             
             </div>
             
             <p className="text-gray-300 text-sm mt-6">
