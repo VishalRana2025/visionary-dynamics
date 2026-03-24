@@ -150,7 +150,7 @@ export default function WhyChooseUs() {
         <div className="absolute bottom-[10%] left-[20%] w-[900px] h-[450px] bg-sky-200/40 rounded-full blur-[180px]" />
 
         <div
-          className="absolute inset-0 opacity-[0.05]"
+          className="absolute inset-0 opacity-[0.01]"
           style={{
             backgroundImage:
               "linear-gradient(90deg, rgba(59,130,246,0.4) 1px, transparent 1px)",

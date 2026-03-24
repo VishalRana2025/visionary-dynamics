@@ -19,7 +19,7 @@ export const WaveTransition = ({ direction = "bottom" }) => {
       >
         <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
         <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
-        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df"  fillOpacity="0.5"/>
       </svg>
     </div>
   );

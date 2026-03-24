@@ -570,30 +570,30 @@ const BusinessAnalystPage = () => {
         <div className="space-y-4">
           <div className="flex items-center space-x-4">
             <a href="mailto:contact@visionarydynamics.com" className="hover:text-white">
-    contact@visionarydynamics.com
+    connect@visionarydynamicsas.com
   </a>
           </div>
           <div className="flex items-center space-x-4">
              <a
-                         href="tel:+11234567890"
+                         href="tel:+17275649476"
                          className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105"
                        >
                          <Phone className="w-5 h-5 mr-2" />
-                         Call Now: +1 (123) 456-7890
+                         Call Now: +1(727) 564-9476
                        </a>
           </div>
           <div className="flex items-center space-x-4">
            <li className="flex items-start gap-3">
   <MapPin size={16} className="text-sky-400 mt-1" />
   <a
-    href="https://maps.google.com?q=New+York+NY+USA"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-white"
-  >
-    123 Business Avenue <br />
-    New York, NY, USA
-  </a>
+  href="https://www.google.com/maps?q=7901+4th+St+N+STE+300+St+Petersburg+Florida+33702+USA"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-white"
+>
+  7901 4th St N STE 300 St. Petersburg, Florida-33702 USA <br />
+  St. Petersburg, Florida-33702 USA
+</a>
 </li>
           </div>
         </div>

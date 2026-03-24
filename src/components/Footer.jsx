@@ -72,28 +72,28 @@ src="/VD-Logo-e1737873827576.png"
              <li className="flex items-center gap-3">
   <Mail size={16} className="text-sky-400" />
   <a href="mailto:contact@visionarydynamics.com" className="hover:text-white">
-    contact@visionarydynamics.com
+   connect@visionarydynamicsas.com
   </a>
 </li>
 
               <li className="flex items-center gap-3">
   <Phone size={16} className="text-sky-400" />
-  <a href="tel:+11234567890" className="hover:text-white">
-    +1 (123) 456-7890
+  <a href="tel:+17275649476" className="hover:text-white">
+   +1(727) 564-9476
   </a>
 </li>
 
               <li className="flex items-start gap-3">
   <MapPin size={16} className="text-sky-400 mt-1" />
   <a
-    href="https://maps.google.com?q=New+York+NY+USA"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-white"
-  >
-    123 Business Avenue <br />
-    New York, NY, USA
-  </a>
+  href="https://www.google.com/maps?q=7901+4th+St+N+STE+300+St+Petersburg+Florida+33702+USA"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-white"
+>
+  7901 4th St N STE 300 St. Petersburg, Florida-33702 USA <br />
+  St. Petersburg, Florida-33702 USA
+</a>
 </li>
             </ul>
 

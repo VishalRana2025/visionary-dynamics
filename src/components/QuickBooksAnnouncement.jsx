@@ -314,7 +314,7 @@ const QuickBooksAnnouncement = () => {
         />
 
         {/* Cloud Layer 1 - Fluffy */}
-        <div className="absolute inset-0">
+        {/* <div className="absolute inset-0">
           {[
             { x: "5%", y: "10%", width: "w-64", height: "h-32", delay: 0 },
             { x: "70%", y: "15%", width: "w-96", height: "h-40", delay: 2 },
@@ -342,7 +342,7 @@ const QuickBooksAnnouncement = () => {
               }}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* Cloud Layer 2 - Wispy */}
         <div className="absolute inset-0">
@@ -466,10 +466,7 @@ const QuickBooksAnnouncement = () => {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/90 backdrop-blur-sm text-blue-800 text-sm font-semibold mb-6 shadow-lg border border-sky-200">
-              <Sparkles size={18} className="text-blue-500" />
-              QuickBooks Authorization
-            </span>
+           
 
             <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
               Elevate Your{" "}
