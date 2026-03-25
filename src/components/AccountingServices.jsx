@@ -34,6 +34,24 @@ import {
   HandCoins
 } from "lucide-react";
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+
 import increaseImg from "../animations/increase.png";
 import dashboardImg from "../animations/dashboard.png";
 import updateImg from "../animations/update.png";
@@ -346,6 +364,9 @@ const softwareLogos = [
       </div>
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
 
 
@@ -417,68 +438,80 @@ const softwareLogos = [
 
 
       {/* Additional Services - COMPREHENSIVE FINANCIAL SUPPORT */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          {/* Image background for Comprehensive Financial Support section */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80')`
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/85 via-gray-900/80 to-gray-900/85"></div>
+     <section className="relative w-full pt-24 pb-32 lg:pt-28 lg:pb-36 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-10 z-20">
+    <WaveTransition direction="top" />
+  </div>
+ 
+  {/* Background */}
+  <div className="absolute inset-0">
+    <div 
+      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2015&q=80')`
+      }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/85 via-gray-900/80 to-gray-900/85"></div>
+    </div>
+
+    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 via-transparent to-gray-900/10"></div>
+
+    <div className="absolute inset-0 opacity-5">
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+    </div>
+  </div>
+
+  {/* Content */}
+  <div className="relative max-w-7xl mx-auto z-10 mt-12 lg:mt-16">
+    
+    <div className="text-center mb-16 lg:mb-20">
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        Comprehensive Financial Support
+      </h2>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {additionalServices.map((service) => (
+        <div 
+          key={service.id}
+          className="group relative bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-6 lg:p-8 text-center hover:border-blue-400/50 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2"
+        >
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+            <div className="p-3 rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 shadow-lg">
+              {React.cloneElement(service.icon, { className: "h-6 w-6 text-white" })}
+            </div>
           </div>
-          
-          {/* Subtle gradient overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 via-transparent to-gray-900/10"></div>
-          
-          {/* Subtle pattern overlay */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '60px 60px'
-            }}></div>
+
+          <div className="pt-6">
+            <h3 className="text-xl font-bold text-white mb-3">
+              {service.title}
+            </h3>
+            <p className="text-gray-200 text-sm leading-relaxed">
+              {service.description}
+            </p>
           </div>
+
+          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-blue-500/10 group-hover:to-blue-500/5 transition-all duration-500"></div>
         </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Comprehensive Financial Support
-            </h2>
-            
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {additionalServices.map((service) => (
-              <div 
-                key={service.id} 
-                className="group relative bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-8 text-center hover:border-blue-400/50 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2"
-              >
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className={`p-3 rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 shadow-lg group-hover:from-blue-700 group-hover:to-teal-700 transition-all duration-300`}>
-                    {React.cloneElement(service.icon, { className: "h-6 w-6 text-white" })}
-                  </div>
-                </div>
-                <div className="pt-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-100 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-200 text-sm leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
-                    {service.description}
-                  </p>
-                </div>
-                
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-blue-500/10 group-hover:to-blue-500/5 transition-all duration-500"></div>
-              </div>
-            ))}
-          </div>
-          
-          {/* Bottom CTA */}
-          
-        </div>
-      </section>
+      ))}
+    </div>
+
+  </div>
+
+  {/* Bottom Wave */}
+  <div className="absolute bottom-0 left-0 w-full mt-12 z-20">
+    <WaveTransition />
+  </div>
+
+</section>
 
       {/* Process + FAQ Combined Section */}
 <section className="relative py-20 bg-blue-100 overflow-hidden">
@@ -871,7 +904,11 @@ const softwareLogos = [
 
       {/* CTA Section */}
       <section className="relative py-20 overflow-hidden">
-        
+        {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
         <div className="absolute inset-0">
           {/* Image background for CTA section */}
           <div 
