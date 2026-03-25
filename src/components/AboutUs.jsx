@@ -24,7 +24,7 @@ export const WaveTransition = ({ direction = "bottom" }) => {
 const AboutUs = () => {
   return (
     <div className="w-full">
-      <section className="relative min-h-[60vh] w-full overflow-hidden flex items-center justify-center">
+     <section className="relative min-h-[60vh] w-full overflow-hidden flex items-center justify-center bg-blue-100">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -71,196 +71,309 @@ const AboutUs = () => {
 </div>
     </section>
       {/* ================== SECTION 2: ABOUT ================== */}
-<section className="w-full py-24 px-6 bg-gradient-to-br from-blue-50 via-sky-50 to-blue-100 overflow-hidden relative">
-  {/* 3D Moving Objects Background */}
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Floating 3D Cube 1 */}
-    <div className="absolute top-1/4 left-10 animate-float-slow">
-      <div className="w-20 h-20 relative transform-style-3d animate-spin-slow">
-        <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/20 to-blue-600/20 border border-blue-300/30 transform-rotateY-90 translateZ-10" />
-        <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/20 to-blue-600/20 border border-blue-300/30 transform-rotateY--90 translateZ-10" />
-        <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/20 to-blue-600/20 border border-blue-300/30 transform-rotateX-90 translateZ-10" />
-        <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/20 to-blue-600/20 border border-blue-300/30 transform-rotateX--90 translateZ-10" />
-        <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/20 to-blue-600/20 border border-blue-300/30 transform translateZ-10" />
-        <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/20 to-blue-600/20 border border-blue-300/30 transform translateZ--10" />
-      </div>
-    </div>
-
-    {/* Floating 3D Pyramid */}
-    <div className="absolute top-1/3 right-20 animate-float-medium">
-      <div className="w-24 h-24 relative transform-style-3d animate-spin-medium">
-        {/* Base */}
-        <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/15 to-blue-500/15 border border-sky-300/25 transform rotate-45" />
-        {/* Sides */}
-        <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/15 to-blue-500/15 border border-sky-300/25 transform-3d origin-bottom rotateX-60" />
-        <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/15 to-blue-500/15 border border-sky-300/25 transform-3d origin-bottom rotateX-60 rotateY-90" />
-        <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/15 to-blue-500/15 border border-sky-300/25 transform-3d origin-bottom rotateX-60 rotateY-180" />
-        <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/15 to-blue-500/15 border border-sky-300/25 transform-3d origin-bottom rotateX-60 rotateY-270" />
-      </div>
-    </div>
-
-    {/* Floating 3D Sphere */}
-    <div className="absolute bottom-1/4 left-1/3 animate-float-slow">
-      <div className="w-16 h-16 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-sky-500/10 rounded-full animate-pulse" />
-        <div className="absolute inset-4 bg-gradient-to-r from-blue-300/15 to-sky-400/15 rounded-full animate-pulse-slow" />
-        <div className="absolute inset-8 bg-gradient-to-r from-blue-200/10 to-sky-300/10 rounded-full" />
-      </div>
-    </div>
-
-    {/* Floating 3D Cube 2 */}
-    <div className="absolute bottom-1/3 right-10 animate-float-fast">
-      <div className="w-12 h-12 relative transform-style-3d animate-spin-slow">
-        <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/20 to-blue-500/20 border border-sky-300/30 transform-rotateY-90 translateZ-6" />
-        <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/20 to-blue-500/20 border border-sky-300/30 transform-rotateY--90 translateZ-6" />
-        <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/20 to-blue-500/20 border border-sky-300/30 transform-rotateX-90 translateZ-6" />
-        <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/20 to-blue-500/20 border border-sky-300/30 transform-rotateX--90 translateZ-6" />
-        <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/20 to-blue-500/20 border border-sky-300/30 transform translateZ-6" />
-        <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/20 to-blue-500/20 border border-sky-300/30 transform translateZ--6" />
-      </div>
-    </div>
-
-    {/* Floating 3D Torus */}
-    <div className="absolute top-10 left-1/4 animate-float-medium">
-      <div className="w-28 h-28 relative transform-style-3d animate-spin-reverse">
-        <div className="absolute inset-0 rounded-full border-2 border-blue-400/20 transform rotate-45" />
-        <div className="absolute inset-4 rounded-full border-2 border-blue-400/20 transform rotate-90" />
-        <div className="absolute inset-8 rounded-full border-2 border-blue-400/20" />
-        <div className="absolute inset-12 rounded-full border-2 border-blue-400/20 transform rotate-45" />
-      </div>
-    </div>
-
-    {/* Floating Data Points */}
-    {[...Array(8)].map((_, i) => (
-      <div
-        key={i}
-        className="absolute w-2 h-2 bg-blue-400/40 rounded-full animate-float-data"
-        style={{
-          left: `${10 + i * 12}%`,
-          top: `${20 + Math.sin(i) * 30}%`,
-          animationDelay: `${i * 0.5}s`,
-          animationDuration: `${3 + i * 0.5}s`
-        }}
-      />
-    ))}
-
-    {/* Connection Lines */}
-    <div className="absolute inset-0">
-      <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.05" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M10,100 Q200,50 300,150 T500,100"
-          stroke="url(#gradient1)"
-          strokeWidth="1"
-          fill="none"
-          className="animate-dash"
-        />
-        <path
-          d="M600,200 Q500,100 400,200 T200,250"
-          stroke="url(#gradient1)"
-          strokeWidth="1"
-          fill="none"
-          className="animate-dash-reverse"
-        />
-      </svg>
-    </div>
-  </div>
-
-  {/* Content Container */}
-  <div className="w-full px-6 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
-
-    
-    {/* Image */}
-    <div className="relative">
-      <div className="rounded-3xl overflow-hidden shadow-2xl ring-1 ring-blue-200/40 transform hover:scale-[1.02] transition-transform duration-500">
-        <img
-          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
-          alt="Business meeting"
-          className="w-full h-[460px] object-cover"
-        />
-      </div>
-
-      {/* Decorative Glow */}
-      <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-blue-300/30 rounded-full blur-3xl" />
-      <div className="absolute -top-4 -left-4 w-24 h-24 bg-sky-300/20 rounded-full blur-2xl" />
-    </div>
-
-    {/* Content */}
-    <div className="space-y-8 relative">
-      {/* Floating Badge */}
-      <div className="absolute -top-4 -right-4 w-24 h-24">
-        <div className="relative w-full h-full animate-spin-slow">
-          <div className="absolute inset-0 border-2 border-blue-400/30 rounded-full" />
-          <div className="absolute inset-3 border border-blue-300/40 rounded-full" />
-          <div className="absolute inset-6 border border-blue-200/30 rounded-full" />
+ <section className="w-full py-24 px-6 bg-gradient-to-br from-blue-50/60 via-sky-50/40 to-blue-100/50 overflow-hidden relative">
+      {/* =========================
+          TRANSPARENT 3D MOVING OBJECTS BACKGROUND
+          - All elements now use fully transparent/glassmorphic styles
+          - No solid fills, only subtle borders, gradients with low opacity
+          - Ethereal, floating geometric shapes
+      ========================= */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        
+        {/* Floating 3D Cube 1 - Transparent */}
+        <div className="absolute top-1/4 left-10 animate-float-slow">
+          <div className="w-20 h-20 relative transform-style-3d animate-spin-slow">
+            <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/8 to-blue-600/5 border border-blue-300/15 backdrop-blur-[2px] transform-rotateY-90 translateZ-10" />
+            <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/8 to-blue-600/5 border border-blue-300/15 backdrop-blur-[2px] transform-rotateY--90 translateZ-10" />
+            <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/8 to-blue-600/5 border border-blue-300/15 backdrop-blur-[2px] transform-rotateX-90 translateZ-10" />
+            <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/8 to-blue-600/5 border border-blue-300/15 backdrop-blur-[2px] transform-rotateX--90 translateZ-10" />
+            <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/8 to-blue-600/5 border border-blue-300/15 backdrop-blur-[2px] transform translateZ-10" />
+            <div className="absolute w-20 h-20 bg-gradient-to-br from-blue-400/8 to-blue-600/5 border border-blue-300/15 backdrop-blur-[2px] transform translateZ--10" />
+          </div>
         </div>
+
+        {/* Floating 3D Pyramid - Transparent */}
+        <div className="absolute top-1/3 right-20 animate-float-medium">
+          <div className="w-24 h-24 relative transform-style-3d animate-spin-medium">
+            {/* Base - Transparent */}
+            <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/12 to-blue-500/10 border border-sky-300/20 backdrop-blur-[1px] transform rotate-45" />
+            {/* Sides - Transparent */}
+            <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/12 to-blue-500/10 border border-sky-300/20 backdrop-blur-[1px] transform-3d origin-bottom rotateX-60" />
+            <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/12 to-blue-500/10 border border-sky-300/20 backdrop-blur-[1px] transform-3d origin-bottom rotateX-60 rotateY-90" />
+            <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/12 to-blue-500/10 border border-sky-300/20 backdrop-blur-[1px] transform-3d origin-bottom rotateX-60 rotateY-180" />
+            <div className="absolute w-24 h-24 bg-gradient-to-r from-sky-400/12 to-blue-500/10 border border-sky-300/20 backdrop-blur-[1px] transform-3d origin-bottom rotateX-60 rotateY-270" />
+          </div>
+        </div>
+
+        {/* Floating 3D Sphere - Transparent */}
+        <div className="absolute bottom-1/4 left-1/3 animate-float-slow">
+          <div className="w-16 h-16 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400/8 to-sky-500/6 rounded-full animate-pulse border border-blue-300/12 backdrop-blur-[1px]" />
+            <div className="absolute inset-4 bg-gradient-to-r from-blue-300/10 to-sky-400/8 rounded-full animate-pulse-slow border border-blue-300/10" />
+            <div className="absolute inset-8 bg-gradient-to-r from-blue-200/6 to-sky-300/5 rounded-full border border-blue-200/8" />
+          </div>
+        </div>
+
+        {/* Floating 3D Cube 2 - Transparent */}
+        <div className="absolute bottom-1/3 right-10 animate-float-fast">
+          <div className="w-12 h-12 relative transform-style-3d animate-spin-slow">
+            <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/12 to-blue-500/8 border border-sky-300/18 backdrop-blur-[2px] transform-rotateY-90 translateZ-6" />
+            <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/12 to-blue-500/8 border border-sky-300/18 backdrop-blur-[2px] transform-rotateY--90 translateZ-6" />
+            <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/12 to-blue-500/8 border border-sky-300/18 backdrop-blur-[2px] transform-rotateX-90 translateZ-6" />
+            <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/12 to-blue-500/8 border border-sky-300/18 backdrop-blur-[2px] transform-rotateX--90 translateZ-6" />
+            <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/12 to-blue-500/8 border border-sky-300/18 backdrop-blur-[2px] transform translateZ-6" />
+            <div className="absolute w-12 h-12 bg-gradient-to-br from-sky-400/12 to-blue-500/8 border border-sky-300/18 backdrop-blur-[2px] transform translateZ--6" />
+          </div>
+        </div>
+
+        {/* Floating 3D Torus - Transparent Rings */}
+        <div className="absolute top-10 left-1/4 animate-float-medium">
+          <div className="w-28 h-28 relative transform-style-3d animate-spin-reverse">
+            <div className="absolute inset-0 rounded-full border border-blue-400/20 backdrop-blur-[1px]" />
+            <div className="absolute inset-4 rounded-full border border-blue-400/18 backdrop-blur-[1px] transform rotate-90" />
+            <div className="absolute inset-8 rounded-full border border-blue-400/15 backdrop-blur-[1px]" />
+            <div className="absolute inset-12 rounded-full border border-blue-400/12 backdrop-blur-[1px] transform rotate-45" />
+          </div>
+        </div>
+
+        {/* Floating Data Points - Transparent Glowing Dots */}
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1.5 h-1.5 bg-blue-400/25 rounded-full animate-float-data"
+            style={{
+              left: `${5 + i * 9}%`,
+              top: `${15 + Math.sin(i) * 35}%`,
+              animationDelay: `${i * 0.4}s`,
+              animationDuration: `${3 + i * 0.5}s`,
+              boxShadow: "0 0 6px rgba(59,130,246,0.2)",
+            }}
+          />
+        ))}
+
+        {/* Additional Floating Particles - Ultra Transparent */}
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className="absolute w-1 h-1 bg-sky-400/20 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDuration: `${2 + Math.random() * 4}s`,
+              animationDelay: `${Math.random() * 3}s`,
+            }}
+          />
+        ))}
+
+        {/* Connection Lines - Subtle Transparent SVG */}
+        <div className="absolute inset-0 opacity-30">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gradient-transparent" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.12" />
+                <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.06" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M10,100 Q200,50 300,150 T500,100"
+              stroke="url(#gradient-transparent)"
+              strokeWidth="1"
+              fill="none"
+              strokeDasharray="5 5"
+              className="animate-dash"
+            />
+            <path
+              d="M600,200 Q500,100 400,200 T200,250"
+              stroke="url(#gradient-transparent)"
+              strokeWidth="1"
+              fill="none"
+              strokeDasharray="5 5"
+              className="animate-dash-reverse"
+            />
+            <path
+              d="M800,50 Q850,100 820,150 T780,180"
+              stroke="url(#gradient-transparent)"
+              strokeWidth="0.8"
+              fill="none"
+              strokeDasharray="4 6"
+            />
+            <path
+              d="M150,400 Q250,380 320,410 T420,390"
+              stroke="url(#gradient-transparent)"
+              strokeWidth="0.8"
+              fill="none"
+              strokeDasharray="4 6"
+            />
+          </svg>
+        </div>
+
+        {/* Soft Gradient Orbs - Atmospheric Transparency */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-blue-400/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-l from-sky-400/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-300/3 rounded-full blur-3xl" />
       </div>
 
-      <p className="text-sm uppercase tracking-widest text-blue-700 font-semibold">
-        About Visionary Dynamics
-      </p>
+      {/* Content Container */}
+      <div className="w-full px-6 lg:px-24 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+        
+        {/* Image with Transparent Glass Effect */}
+        <div className="relative">
+          <div className="rounded-3xl overflow-hidden shadow-2xl ring-1 ring-blue-200/30 transform hover:scale-[1.02] transition-transform duration-500 bg-white/30 backdrop-blur-sm">
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+              alt="Business meeting"
+              className="w-full h-[460px] object-cover opacity-95"
+            />
+          </div>
 
-      <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
-        Your Partner in{" "}
-        <span className="text-blue-700 relative">
-          Progress
-          <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-transparent rounded-full" />
-        </span>
-      </h2>
+          {/* Decorative Glow - Transparent */}
+          <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-blue-300/15 rounded-full blur-3xl" />
+          <div className="absolute -top-4 -left-4 w-24 h-24 bg-sky-300/10 rounded-full blur-2xl" />
+        </div>
 
-      <div className="space-y-6 relative">
-        {/* Floating Icon */}
-        <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-gradient-to-r from-blue-400 to-sky-400 rounded-full animate-pulse" />
+        {/* Content */}
+        <div className="space-y-8 relative">
+          {/* Floating Badge - Transparent Rings */}
+          <div className="absolute -top-4 -right-4 w-24 h-24">
+            <div className="relative w-full h-full animate-spin-slow">
+              <div className="absolute inset-0 border border-blue-400/20 rounded-full backdrop-blur-[1px]" />
+              <div className="absolute inset-3 border border-blue-300/25 rounded-full" />
+              <div className="absolute inset-6 border border-blue-200/20 rounded-full" />
+            </div>
+          </div>
 
-        <p className="text-slate-700 text-lg leading-relaxed">
-          A group of seasoned professionals with more than six years of experience lead{" "}
-          <span className="font-semibold text-blue-700 relative">
-            Visionary Dynamics Consulting Inc.
-            <span className="absolute -bottom-0.5 left-0 w-full h-0.5 bg-blue-200/50 rounded-full" />
-          </span>{" "}
-          We are committed to providing our clients with specialized, superior solutions that enable them to reach their objectives.
+          <p className="text-sm uppercase tracking-widest text-blue-700/80 font-semibold">
+            About Visionary Dynamics
+          </p>
 
-        </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+            Your Partner in{" "}
+            <span className="text-blue-700 relative">
+              Progress
+              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500/60 to-transparent rounded-full" />
+            </span>
+          </h2>
 
-        <p className="text-slate-700 text-lg leading-relaxed">
-         We serve both individuals and companies with our expertise in IT asset management and customized financial services.{" "}
-          <span className="font-semibold text-blue-700">
-            Financial planning, bookkeeping, tax planning, management accounting, predictive analytics, financial analysis, software asset management, CMDB, 
-          </span>
-          and more are just a few of the many services we provide.{" "}
-          <span className="font-semibold text-blue-700">
-           
-          </span>
-        </p>
+          <div className="space-y-6 relative">
+            {/* Floating Icon - Transparent */}
+            <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-blue-400/40 to-sky-400/30 rounded-full animate-pulse blur-[1px]" />
 
-        <p className="text-slate-700 text-lg leading-relaxed">
-         At Visionary Dynamics, we use strategic insights and creative solutions to enable clients to maximize resources and make wise decisions.Above all, we ensure the{" "}
-          <span className="font-semibold text-blue-700">
-            security of all client information
-          </span>{" "}
-          by upholding strict confidentiality and complying with international data protection regulations.{" "}
-          {/* <span className="font-semibold text-blue-700">strict confidentiality</span> */}
-        </p>
-      </div>
+            <p className="text-slate-700 text-lg leading-relaxed">
+              A group of seasoned professionals with more than six years of experience lead{" "}
+              <span className="font-semibold text-blue-700 relative">
+                Visionary Dynamics Consulting Inc.
+                <span className="absolute -bottom-0.5 left-0 w-full h-0.5 bg-blue-200/40 rounded-full" />
+              </span>{" "}
+              We are committed to providing our clients with specialized, superior solutions that enable them to reach their objectives.
+            </p>
 
-      {/* Floating Elements Container */}
-      <div className="pt-8 relative">
-        <div className="absolute -bottom-4 -left-4 w-16 h-16">
-          <div className="relative w-full h-full animate-float-slow">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 to-sky-500/10 rounded-full" />
-            <div className="absolute inset-3 bg-gradient-to-r from-blue-300/10 to-sky-400/10 rounded-full" />
+            <p className="text-slate-700 text-lg leading-relaxed">
+              We serve both individuals and companies with our expertise in IT asset management and customized financial services.{" "}
+              <span className="font-semibold text-blue-700">
+                Financial planning, bookkeeping, tax planning, management accounting, predictive analytics, financial analysis, software asset management, CMDB, 
+              </span>
+              and more are just a few of the many services we provide.
+            </p>
+
+            <p className="text-slate-700 text-lg leading-relaxed">
+              At Visionary Dynamics, we use strategic insights and creative solutions to enable clients to maximize resources and make wise decisions. Above all, we ensure the{" "}
+              <span className="font-semibold text-blue-700">
+                security of all client information
+              </span>{" "}
+              by upholding strict confidentiality and complying with international data protection regulations.
+            </p>
+          </div>
+
+          {/* Floating Elements Container - Transparent */}
+          <div className="pt-8 relative">
+            <div className="absolute -bottom-4 -left-4 w-16 h-16">
+              <div className="relative w-full h-full animate-float-slow">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/8 to-sky-500/6 rounded-full backdrop-blur-[1px] border border-blue-300/10" />
+                <div className="absolute inset-3 bg-gradient-to-r from-blue-300/6 to-sky-400/5 rounded-full" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  
-</section>
+
+      {/* =========================
+          GLOBAL ANIMATION KEYFRAMES
+      ========================= */}
+      <style>{`
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          50% { transform: translateY(-20px) translateX(10px); }
+        }
+        
+        @keyframes float-medium {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          50% { transform: translateY(-15px) translateX(-8px); }
+        }
+        
+        @keyframes float-fast {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          50% { transform: translateY(-25px) translateX(12px); }
+        }
+        
+        @keyframes spin-slow {
+          from { transform: rotate3d(1, 1, 0, 0deg); }
+          to { transform: rotate3d(1, 1, 0, 360deg); }
+        }
+        
+        @keyframes spin-medium {
+          from { transform: rotate3d(0, 1, 1, 0deg); }
+          to { transform: rotate3d(0, 1, 1, 360deg); }
+        }
+        
+        @keyframes spin-reverse {
+          from { transform: rotate3d(1, 0, 1, 0deg); }
+          to { transform: rotate3d(1, 0, 1, -360deg); }
+        }
+        
+        @keyframes float-data {
+          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.2; }
+          50% { transform: translateY(-30px) scale(1.5); opacity: 0.5; }
+        }
+        
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.6; transform: scale(1.05); }
+        }
+        
+        @keyframes dash {
+          to { stroke-dashoffset: 20; }
+        }
+        
+        @keyframes dash-reverse {
+          to { stroke-dashoffset: -20; }
+        }
+        
+        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+        .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
+        .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+        .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+        .animate-spin-medium { animation: spin-medium 10s linear infinite; }
+        .animate-spin-reverse { animation: spin-reverse 15s linear infinite; }
+        .animate-float-data { animation: float-data 3s ease-in-out infinite; }
+        .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
+        .animate-dash { animation: dash 20s linear infinite; }
+        .animate-dash-reverse { animation: dash-reverse 20s linear infinite; }
+        
+        .transform-style-3d { transform-style: preserve-3d; }
+        .transform-rotateY-90 { transform: rotateY(90deg); }
+        .transform-rotateY--90 { transform: rotateY(-90deg); }
+        .transform-rotateX-90 { transform: rotateX(90deg); }
+        .transform-rotateX--90 { transform: rotateX(-90deg); }
+        .transform-3d { transform-style: preserve-3d; }
+        
+        .translateZ-10 { transform: translateZ(10px); }
+        .translateZ--10 { transform: translateZ(-10px); }
+        .translateZ-6 { transform: translateZ(6px); }
+        .translateZ--6 { transform: translateZ(-6px); }
+        
+        .origin-bottom { transform-origin: bottom; }
+      `}</style>
+    </section>
       {/* ================== SECTION 1: CEO MESSAGE ================== */}
 <section className="relative py-20 px-6 bg-gray-900 overflow-hidden min-h-[800px] flex items-center justify-center">
   {/* Top Wave */}

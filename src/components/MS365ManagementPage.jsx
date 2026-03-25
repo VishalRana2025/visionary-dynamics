@@ -28,7 +28,25 @@ import {
   BookOpen,
   Mail
 } from "lucide-react";
+
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
  
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.15" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.25" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" fillOpacity="0.35" />
+      </svg>
+    </div>
+  );
+};
+
 /* Animations */
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -49,7 +67,6 @@ const scaleIn = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
 };
- 
  
 // --- static content moved outside the component to avoid re-creation on every render ---
 const SERVICES = [
@@ -131,7 +148,6 @@ const TESTIMONIALS = [
 ];
  
 const MS365ManagementPage = () => {
-  // sliderRef used instead of document.getElementById for better React compatibility
   const sliderRef = useRef(null);
  
   const handlePrev = useCallback(() => {
@@ -146,26 +162,20 @@ const MS365ManagementPage = () => {
     }
   }, []);
  
-  // memoize lists so we don't recreate the element arrays each render
   const serviceCards = useMemo(() => {
     return [...SERVICES, ...SERVICES].map((service, index) => {
       const Icon = service.icon;
       return (
         <div key={index} className="min-w-[420px]">
           <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-10 shadow-lg hover:shadow-2xl transition group h-auto min-h-[320px] flex flex-col">
-            {/* Icon */}
             <div
               className={`p-5 rounded-lg bg-gradient-to-r ${service.color} w-20 h-20 flex items-center justify-center mb-6 group-hover:scale-110 transition flex-shrink-0`}
             >
               <Icon className="w-10 h-10 text-white" />
             </div>
- 
-            {/* Title */}
             <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-blue-300 transition">
               {service.name}
             </h3>
- 
-            {/* Description */}
             <p className="text-slate-300 leading-relaxed text-base">
               {service.desc}
             </p>
@@ -271,17 +281,55 @@ const MS365ManagementPage = () => {
       {/* Main Content Section */}
       <div className="relative bg-white overflow-hidden">
        
-        {/* Section Background Image */}
+        {/* Hero Section Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80')",
-}}
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80')",
+          }}
         />
  
-        {/* Black Overlay */}
-        <div className="absolute inset-0 bg-black/80"></div>
+        {/* Black Overlay - More transparent */}
+        <div className="absolute inset-0 bg-black/70"></div>
+
+        {/* Transparent Moving Background Elements for Hero Section */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Floating circles - transparent */}
+          <div className="absolute top-20 left-10 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-indigo-400/8 rounded-full blur-3xl animate-float animation-delay-2000"></div>
+          <div className="absolute top-40 right-40 w-48 h-48 bg-cyan-400/8 rounded-full blur-3xl animate-float animation-delay-4000"></div>
+          
+          {/* Small floating dots - transparent */}
+          <div className="absolute top-1/3 left-1/4 w-3 h-3 bg-blue-400/20 rounded-full animate-bounce-slow"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-indigo-400/20 rounded-full animate-bounce-slow animation-delay-1000"></div>
+          <div className="absolute top-2/3 left-1/2 w-4 h-4 bg-cyan-400/15 rounded-full animate-bounce-slow animation-delay-2000"></div>
+          
+          {/* Moving lines - transparent */}
+          <div className="absolute top-1/2 left-0 w-40 h-px bg-gradient-to-r from-blue-400/20 to-transparent animate-slide"></div>
+          <div className="absolute bottom-1/3 right-0 w-60 h-px bg-gradient-to-l from-indigo-400/20 to-transparent animate-slide animation-delay-3000"></div>
+          
+          {/* Floating geometric shapes - transparent */}
+          <div className="absolute top-1/4 right-1/4">
+            <div className="w-12 h-12 border border-blue-400/15 rounded-lg animate-spin-slow"></div>
+          </div>
+          <div className="absolute bottom-1/4 left-1/3">
+            <div className="w-16 h-16 border border-cyan-400/15 rounded-full animate-spin-slow animation-delay-1500"></div>
+          </div>
+          
+          {/* Glowing particles */}
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={`particle-${i}`}
+              className="absolute w-1 h-1 bg-blue-400/15 rounded-full animate-ping-slow"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${i * 0.5}s`,
+              }}
+            />
+          ))}
+        </div>
  
         {/* Main Content */}
         <div className="max-w-7xl mx-auto relative z-10 py-28 px-6">
@@ -322,26 +370,26 @@ const MS365ManagementPage = () => {
               {/* Buttons */}
               <div className="flex gap-4">
                 <motion.a
-  href="/contact"
-  whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
-  whileTap={{ scale: 0.95 }}
-  className="px-8 py-4 bg-blue-600 text-white rounded-xl flex gap-2 items-center shadow-lg"
->
-  Get Started
-  <ArrowRight size={18} />
-</motion.a>
+                  href="/contact"
+                  whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-blue-600 text-white rounded-xl flex gap-2 items-center shadow-lg"
+                >
+                  Get Started
+                  <ArrowRight size={18} />
+                </motion.a>
  
-               <motion.a
-  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-  target="_blank"
-  rel="noopener noreferrer"
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  className="px-8 py-4 bg-white text-blue-700 rounded-xl flex gap-2 items-center shadow"
->
-  <Headphones size={18} />
-  Free Consultancy
-</motion.a>
+                <motion.a
+                  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white text-blue-700 rounded-xl flex gap-2 items-center shadow"
+                >
+                  <Headphones size={18} />
+                  Free Consultancy
+                </motion.a>
               </div>
             </motion.div>
  
@@ -432,7 +480,6 @@ const MS365ManagementPage = () => {
                         }}
                         className={`p-4 bg-${item.color}-50 rounded-xl cursor-default group/icon relative overflow-hidden`}
                       >
-                        {/* Icon hover effect */}
                         <motion.div
                           className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
                           initial={{ x: "-100%" }}
@@ -443,7 +490,6 @@ const MS365ManagementPage = () => {
                         <Icon className={`text-${item.color}-600 mb-2 relative z-10 transition-transform group-hover/icon:rotate-12`} />
                         <span className="text-sm font-medium relative z-10">{item.name}</span>
                        
-                        {/* Pulse effect on hover */}
                         <motion.div
                           className={`absolute -bottom-2 -right-2 w-8 h-8 bg-${item.color}-200 rounded-full opacity-0 group-hover/icon:opacity-50`}
                           animate={{
@@ -468,11 +514,11 @@ const MS365ManagementPage = () => {
                 />
               </div>
  
-              {/* Floating particles inside card */}
+              {/* Floating particles inside card - transparent */}
               <motion.div
                 className="absolute inset-0 pointer-events-none"
                 animate={{
-                  opacity: [0.2, 0.4, 0.2],
+                  opacity: [0.1, 0.2, 0.1],
                 }}
                 transition={{
                   duration: 3,
@@ -483,7 +529,7 @@ const MS365ManagementPage = () => {
                 {[...Array(5)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+                    className="absolute w-1 h-1 bg-blue-400/20 rounded-full"
                     style={{
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
@@ -505,22 +551,19 @@ const MS365ManagementPage = () => {
           </div>
         </div>
  
-        {/* Key Components Section */}
+        {/* Key Components Section - With Transparent Background Elements */}
         <section className="py-20 px-6 bg-[#e9f1fb] relative overflow-hidden">
-          {/* Decorative Background Elements */}
+          {/* Transparent Decorative Background Elements */}
           <div className="absolute inset-0 pointer-events-none">
-            {/* Left floating square */}
-            <div className="absolute left-20 top-1/2 w-24 h-24 bg-blue-200/40 rotate-12 rounded-lg shadow-md"></div>
-            {/* Right floating square */}
-            <div className="absolute right-16 top-28 w-20 h-20 bg-blue-300/40 rotate-6 rounded-lg"></div>
-            {/* Small floating circle */}
-            <div className="absolute left-10 top-28 w-4 h-4 bg-cyan-400 rounded-full blur-sm"></div>
-            {/* Chart icon style decoration */}
-            <div className="absolute right-20 top-1/2 text-teal-600 opacity-70 text-4xl">
-              📊
-            </div>
-            {/* Soft gradient glow */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-300/20 rounded-full blur-3xl"></div>
+            <div className="absolute left-20 top-1/2 w-24 h-24 bg-blue-200/15 rotate-12 rounded-lg shadow-md animate-float"></div>
+            <div className="absolute right-16 top-28 w-20 h-20 bg-blue-300/15 rotate-6 rounded-lg animate-float animation-delay-2000"></div>
+            <div className="absolute left-10 top-28 w-4 h-4 bg-cyan-400/20 rounded-full blur-sm animate-bounce-slow"></div>
+            <div className="absolute right-20 top-1/2 text-teal-600/20 text-4xl animate-pulse-slow">📊</div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-300/10 rounded-full blur-3xl"></div>
+            
+            {/* Additional floating shapes */}
+            <div className="absolute bottom-20 left-1/3 w-16 h-16 border border-indigo-300/15 rounded-full animate-spin-slow"></div>
+            <div className="absolute top-1/3 right-1/4 w-12 h-12 border border-blue-300/15 rounded-lg animate-spin-slow animation-delay-3000"></div>
           </div>
  
           <div className="max-w-7xl mx-auto relative z-10">
@@ -545,21 +588,33 @@ const MS365ManagementPage = () => {
           </div>
         </section>
  
-        {/* Services Section */}
+        {/* Services Section - With Transparent Background Elements */}
         <section
           className="relative py-24 px-6 overflow-hidden"
-         style={{
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80')",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-}}
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-slate-900/70"></div>
+          {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
+          {/* Dark Overlay - More transparent */}
+          <div className="absolute inset-0 bg-slate-900/60"></div>
+          
+          {/* Transparent Floating Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-10 w-48 h-48 bg-blue-400/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 right-10 w-64 h-64 bg-indigo-400/5 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/2 left-1/3 w-2 h-2 bg-white/20 rounded-full animate-ping-slow"></div>
+            <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-white/15 rounded-full animate-ping-slow animation-delay-2000"></div>
+          </div>
  
           <div className="max-w-7xl mx-auto relative z-10">
-            {/* Heading */}
             <div className="text-center mb-16">
               <span className="text-blue-400 font-semibold block mb-2">
                 What We Offer
@@ -572,41 +627,27 @@ const MS365ManagementPage = () => {
               </h2>
             </div>
  
-            {/* Slider with Navigation */}
             <div className="relative">
-              {/* Left Arrow */}
               <button
                 onClick={handlePrev}
                 className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-3 hover:bg-white/20 transition group"
                 aria-label="Previous slide"
               >
-                <svg
-                  className="w-6 h-6 text-white group-hover:scale-110 transition"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-6 h-6 text-white group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
  
-              {/* Right Arrow */}
               <button
                 onClick={handleNext}
                 className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-3 hover:bg-white/20 transition group"
                 aria-label="Next slide"
               >
-                <svg
-                  className="w-6 h-6 text-white group-hover:scale-110 transition"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-6 h-6 text-white group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
  
-              {/* Slider */}
               <div
                 className="overflow-hidden relative"
                 onMouseEnter={() => {
@@ -631,29 +672,24 @@ const MS365ManagementPage = () => {
               </div>
             </div>
           </div>
+          <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
         </section>
  
-        {/* Why Outsource Section */}
+        {/* Why Outsource Section - With Transparent Background Elements */}
         <section className="py-20 px-6 relative overflow-hidden bg-[#e9f1fb]">
-          {/* ========== BACKGROUND ELEMENTS ========== */}
+          {/* Transparent Background Elements */}
           <div className="absolute inset-0 pointer-events-none">
-            {/* Left floating square */}
-            <div className="absolute left-16 top-1/2 w-24 h-24 bg-blue-200/40 rotate-12 rounded-lg shadow-md"></div>
-            {/* Right floating square */}
-            <div className="absolute right-16 top-32 w-20 h-20 bg-blue-300/40 rounded-lg rotate-6"></div>
-            {/* Small floating circle */}
-            <div className="absolute left-10 top-32 w-4 h-4 bg-cyan-400 rounded-full blur-sm"></div>
-            {/* Chart icon (right side) */}
-            <div className="absolute right-20 top-1/2 text-teal-600 opacity-70 text-4xl">
-              📊
-            </div>
-            {/* Soft gradient background glow */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-300/20 rounded-full blur-3xl"></div>
+            <div className="absolute left-16 top-1/2 w-24 h-24 bg-blue-200/15 rotate-12 rounded-lg shadow-md animate-float"></div>
+            <div className="absolute right-16 top-32 w-20 h-20 bg-blue-300/15 rounded-lg rotate-6 animate-float animation-delay-2000"></div>
+            <div className="absolute left-10 top-32 w-4 h-4 bg-cyan-400/20 rounded-full blur-sm animate-bounce-slow"></div>
+            <div className="absolute right-20 top-1/2 text-teal-600/20 text-4xl animate-pulse-slow">📊</div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-300/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/3 left-1/4 w-12 h-12 border border-indigo-300/15 rounded-full animate-spin-slow"></div>
           </div>
-          {/* ========== BACKGROUND ELEMENTS END ========== */}
  
           <div className="max-w-7xl mx-auto relative z-10">
-            {/* Section Header */}
             <motion.div
               initial={{opacity:0, y:20}}
               whileInView={{opacity:1, y:0}}
@@ -673,18 +709,14 @@ const MS365ManagementPage = () => {
               </p>
             </motion.div>
  
-            {/* Main Grid */}
             <div className="grid lg:grid-cols-12 gap-8">
-              {/* Feature Cards */}
               <div className="lg:col-span-7">
                 <div className="grid sm:grid-cols-2 gap-6">
                   {whyCards}
                 </div>
               </div>
  
-              {/* Right Column */}
               <div className="lg:col-span-5 space-y-6">
-                {/* Image */}
                 <motion.div
                   initial={{opacity:0, x:20}}
                   whileInView={{opacity:1, x:0}}
@@ -692,11 +724,11 @@ const MS365ManagementPage = () => {
                   className="relative rounded-2xl overflow-hidden shadow-sm group"
                 >
                   <img
-  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80"
-  loading="lazy"
-  alt="Collaborative workspace"
-  className="w-full h-48 object-cover group-hover:scale-105 transition"
-/>
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80"
+                    loading="lazy"
+                    alt="Collaborative workspace"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                     <div className="p-4 text-white">
                       <p className="text-sm font-medium">Collaborative Workspace</p>
@@ -705,7 +737,6 @@ const MS365ManagementPage = () => {
                   </div>
                 </motion.div>
  
-                {/* Stats Card */}
                 <motion.div
                   initial={{opacity:0, x:20}}
                   whileInView={{opacity:1, x:0}}
@@ -713,12 +744,12 @@ const MS365ManagementPage = () => {
                   className="relative rounded-2xl overflow-hidden shadow-xl"
                 >
                   <img
-  src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80"
-  loading="lazy"
-  alt="Team collaboration"
-  className="absolute inset-0 w-full h-full object-cover"
-/>
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-600/90"/>
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80"
+                    loading="lazy"
+                    alt="Team collaboration"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-600/80"/>
                   <div className="relative p-8 text-white">
                     <h3 className="text-xl font-semibold mb-6">
                       Trusted by 500+ Companies
@@ -748,75 +779,82 @@ const MS365ManagementPage = () => {
           </div>
         </section>
  
-       
- 
-        {/* NEW: Contact/CTA Section */}
-<section className="py-20 px-6 relative overflow-hidden">
-  {/* Background Image */}
-  <div className="absolute inset-0 z-0">
-    <img
-  src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-  alt="Microsoft 365 dashboard on laptop"
-  className="w-full h-full object-cover"
-/>
-    {/* Dark overlay matching reference image style */}
-    <div className="absolute inset-0 bg-black/75" />
+        {/* Contact/CTA Section */}
+        <section className="py-20 px-6 relative overflow-hidden">
+          {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
   </div>
  
-  <div className="max-w-4xl mx-auto relative z-10 text-center">
-    <motion.div
-      initial={{opacity:0, y:20}}
-      whileInView={{opacity:1, y:0}}
-      viewport={{once: true}}
-      className="space-y-8"
-    >
-      <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold border border-white/30">
-        Ready to Get Started?
-      </span>
  
-      <h2 className="text-4xl md:text-5xl font-bold text-white">
-        Let's Transform Your
-        <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300">
-          Microsoft 365 Experience
-        </span>
-      </h2>
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Microsoft 365 dashboard on laptop"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/70" />
+          </div>
+          
+          {/* Transparent Floating Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-10 w-48 h-48 bg-blue-400/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 right-10 w-64 h-64 bg-indigo-400/5 rounded-full blur-3xl"></div>
+          </div>
  
-      <p className="text-xl text-white/90 max-w-2xl mx-auto">
-        Join hundreds of companies that trust us with their Microsoft 365 management. Get in touch today for a free consultation.
-      </p>
+          <div className="max-w-4xl mx-auto relative z-10 text-center">
+            <motion.div
+              initial={{opacity:0, y:20}}
+              whileInView={{opacity:1, y:0}}
+              viewport={{once: true}}
+              className="space-y-8"
+            >
+              <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold border border-white/30">
+                Ready to Get Started?
+              </span>
  
-      <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-        <motion.a
-  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-  target="_blank"
-  rel="noopener noreferrer"
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition flex items-center justify-center gap-2 group"
->
-  <PhoneCall size={20} className="group-hover:rotate-12 transition" />
-  Schedule a Call
-</motion.a>
+              <h2 className="text-4xl md:text-5xl font-bold text-white">
+                Let's Transform Your
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300">
+                  Microsoft 365 Experience
+                </span>
+              </h2>
  
-        <motion.a
-  href="/contact"
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  className="px-8 py-4 bg-transparent border-2 border-white/70 text-white rounded-xl font-semibold hover:bg-white/10 transition flex items-center justify-center gap-2 group"
->
-  <MailIcon size={20} />
-  Contact Us
-  <ArrowRight size={20} className="group-hover:translate-x-1 transition" />
-</motion.a>
-      </div>
-    </motion.div>
-  </div>
-</section>
+              <p className="text-xl text-white/90 max-w-2xl mx-auto">
+                Join hundreds of companies that trust us with their Microsoft 365 management. Get in touch today for a free consultation.
+              </p>
+ 
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <motion.a
+                  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition flex items-center justify-center gap-2 group"
+                >
+                  <PhoneCall size={20} className="group-hover:rotate-12 transition" />
+                  Schedule a Call
+                </motion.a>
+ 
+                <motion.a
+                  href="/contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-transparent border-2 border-white/70 text-white rounded-xl font-semibold hover:bg-white/10 transition flex items-center justify-center gap-2 group"
+                >
+                  <MailIcon size={20} />
+                  Contact Us
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition" />
+                </motion.a>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </div>
   );
 };
  
 export default memo(MS365ManagementPage);
- 

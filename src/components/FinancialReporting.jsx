@@ -22,6 +22,24 @@ import dashboardImg from "../animations/dashboard.png";
 import updateImg from "../animations/update.png";
 import helpdeskImg from "../animations/help-desk.png";
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+
 const FinancialReportingPage = () => {
   const sectionRef = useRef(null);
  const features = [
@@ -251,6 +269,9 @@ const reports = [
 
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
 
 
@@ -324,12 +345,18 @@ const reports = [
     </div>
 
   </div>
+  
 </section>
 
       {/* Reports Section */}
-<section id="reports" className="relative py-20 px-6 overflow-hidden">
-
-  {/* Background Image */}
+<section className="relative w-full pt-16 pb-28 lg:pt-20 lg:pb-36 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-12 z-20">
+    <WaveTransition direction="top" />
+  </div>
+ 
+  {/* Background */}
   <div
     className="absolute inset-0 bg-cover bg-center"
     style={{
@@ -338,29 +365,25 @@ const reports = [
     }}
   />
 
-  {/* Dark Overlay */}
   <div className="absolute inset-0 bg-black/75"></div>
 
   {/* Content */}
-  <div className="relative container mx-auto z-10">
+  <div className="relative max-w-7xl mx-auto z-10 mt-12 lg:mt-16">
 
-    <div className="text-center max-w-3xl mx-auto mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+    <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
         Powerful financial reports at your fingertips
       </h2>
-      <p className="text-xl text-gray-200">
+      <p className="text-lg md:text-xl text-gray-200">
         Generate professional reports instantly with customizable templates and real-time data.
       </p>
     </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
       {reports.map((report, index) => (
         <div
           key={index}
-          className="bg-white/95 backdrop-blur-sm p-6 rounded-xl 
-                     border border-white/20 
-                     hover:scale-105 hover:shadow-2xl 
-                     transition-all duration-300"
+          className="bg-white/95 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:scale-105 hover:shadow-2xl transition-all duration-300"
         >
           <div className="w-16 h-16 mb-4">
             <img
@@ -386,6 +409,12 @@ const reports = [
     </div>
 
   </div>
+
+  {/* Bottom Wave */}
+  <div className="absolute bottom-0 left-0 w-full mt-12 z-20">
+    <WaveTransition />
+  </div>
+
 </section>
 
       {/* WHY CHOOSE US SECTION */}
@@ -520,6 +549,11 @@ const reports = [
 
       {/* CTA Section */}
 <section className="relative py-20 px-6 overflow-hidden">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
 
   {/* Background Image */}
   <div

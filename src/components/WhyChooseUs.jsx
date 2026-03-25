@@ -63,19 +63,21 @@ const features = [
 ];
 
 /* =========================
-   BACKGROUND OBJECTS
+   TRANSPARENT BACKGROUND OBJECTS
+   - All elements now use fully transparent/glassmorphic styles
+   - Subtle borders and shadows only, no solid colors
 ========================= */
-const bgObjects = Array.from({ length: 16 }).map((_, i) => ({
+const bgObjects = Array.from({ length: 20 }).map((_, i) => ({
   id: i,
-  size: 120 + Math.random() * 200,
+  size: 100 + Math.random() * 180,
   x: 2 + Math.random() * 96,
   y: 5 + Math.random() * 90,
-  depth: -200 + Math.random() * 400,
-  speed: 14 + Math.random() * 22,
-  type: i % 3,
+  depth: -150 + Math.random() * 350,
+  speed: 12 + Math.random() * 20,
+  type: i % 4, // added 4th type for more variety
 }));
 
-// Color mapping for hover effects
+// Color mapping for hover effects (kept for card interactions)
 const colorMapping = {
   "from-sky-400 to-cyan-400": {
     light: "rgba(56, 189, 248, 0.08)",
@@ -138,35 +140,40 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section className="relative w-screen min-h-screen py-28 overflow-hidden">
+    <section className="relative w-screen min-h-screen py-28 overflow-hidden bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100">
       {/* =========================
-          SKY CLOUD BASE LAYER
+          TRANSPARENT BASE LAYER - Clean, minimal, no heavy colors
       ========================= */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#eaf6ff] via-[#f3faff] to-[#ffffff]" />
-
-        <div className="absolute top-[10%] left-[5%] w-[600px] h-[350px] bg-white/70 rounded-full blur-[140px]" />
-        <div className="absolute top-[20%] right-[10%] w-[700px] h-[400px] bg-white/60 rounded-full blur-[160px]" />
-        <div className="absolute bottom-[10%] left-[20%] w-[900px] h-[450px] bg-sky-200/40 rounded-full blur-[180px]" />
-
+        {/* Subtle radial gradient for depth - fully transparent feel */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(56,189,248,0.03)_0%,_transparent_70%)]" />
+        
+        {/* Soft atmospheric wisps - transparent and ethereal */}
+        <div className="absolute top-[5%] left-[0%] w-[500px] h-[500px] bg-gradient-to-r from-sky-200/10 to-cyan-200/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[5%] w-[600px] h-[600px] bg-gradient-to-l from-indigo-200/10 to-transparent rounded-full blur-[140px]" />
+        <div className="absolute top-[40%] right-[20%] w-[400px] h-[400px] bg-violet-200/5 rounded-full blur-[100px]" />
+        
+        {/* Ultra-fine grid pattern - barely visible */}
         <div
-          className="absolute inset-0 opacity-[0.01]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage:
-              "linear-gradient(90deg, rgba(59,130,246,0.4) 1px, transparent 1px)",
-            backgroundSize: "140px 140px",
+            backgroundImage: `linear-gradient(90deg, rgba(56,189,248,0.3) 1px, transparent 1px),
+                              linear-gradient(0deg, rgba(56,189,248,0.3) 1px, transparent 1px)`,
+            backgroundSize: "60px 60px",
           }}
         />
       </div>
 
       {/* =========================
-          LIVING 3D OBJECT LAYER
+          TRANSPARENT LIVING 3D OBJECT LAYER
+          - All elements now use glass/transparent styles
+          - No solid fills, only borders, gradients with low opacity, and subtle glows
       ========================= */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
         {bgObjects.map((obj) => (
           <div
             key={obj.id}
-            className="absolute"
+            className="absolute will-change-transform"
             style={{
               width: obj.size,
               height: obj.size,
@@ -175,49 +182,40 @@ export default function WhyChooseUs() {
               transform: `
                 perspective(2000px)
                 translateZ(${obj.depth}px)
-                rotateX(${mouse.y * 6}deg)
-                rotateY(${mouse.x * 6}deg)
+                rotateX(${mouse.y * 5}deg)
+                rotateY(${mouse.x * 5}deg)
               `,
               animation: `float3D ${obj.speed}s ease-in-out infinite`,
             }}
           >
+            {/* Type 0: Transparent ring with subtle border glow */}
             {obj.type === 0 && (
               <div
                 className="w-full h-full rounded-full"
                 style={{
-                  border: "1px solid rgba(56,189,248,0.35)",
-                  boxShadow: "0 0 60px rgba(56,189,248,0.25)",
-                  background:
-                    "radial-gradient(circle, rgba(56,189,248,0.08), transparent 70%)",
+                  border: "1.5px solid rgba(56, 189, 248, 0.2)",
+                  boxShadow: "0 0 30px rgba(56, 189, 248, 0.1), inset 0 0 20px rgba(56, 189, 248, 0.05)",
+                  background: "radial-gradient(circle, rgba(56, 189, 248, 0.02), transparent 80%)",
+                  backdropFilter: "blur(2px)",
                 }}
               />
             )}
 
+            {/* Type 1: Transparent glass orb with soft inner glow */}
             {obj.type === 1 && (
               <div
                 className="w-full h-full rounded-full"
                 style={{
-                  background:
-                    "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(56,189,248,0.5), transparent 70%)",
-                  filter: "blur(1px)",
-                  boxShadow:
-                    "0 0 80px rgba(56,189,248,0.4), inset 0 0 40px rgba(255,255,255,0.8)",
+                  background: "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.25), rgba(56, 189, 248, 0.03), transparent 85%)",
+                  boxShadow: "0 0 40px rgba(56, 189, 248, 0.08), inset 0 0 20px rgba(255,255,255,0.2)",
+                  border: "1px solid rgba(56, 189, 248, 0.12)",
+                  backdropFilter: "blur(1px)",
                 }}
               />
             )}
 
-            {obj.type === 2 && (
-              <div
-                className="w-full h-full"
-                style={{
-                  border: "1px solid rgba(56,189,248,0.3)",
-                  borderRadius: "24px",
-                  background:
-                    "linear-gradient(45deg, transparent, rgba(56,189,248,0.08), transparent)",
-                  boxShadow: "0 0 50px rgba(56,189,248,0.25)",
-                }}
-              />
-            )}
+            
+            
           </div>
         ))}
       </div>
@@ -230,21 +228,21 @@ export default function WhyChooseUs() {
         style={{
           transform: `
             perspective(2000px)
-            translateZ(80px)
-            rotateX(${mouse.y * -0.25}deg)
-            rotateY(${mouse.x * 0.25}deg)
+            translateZ(60px)
+            rotateX(${mouse.y * -0.2}deg)
+            rotateY(${mouse.x * 0.2}deg)
           `,
-          transition: "transform 0.1s ease-out",
+          transition: "transform 0.15s cubic-bezier(0.2, 0.9, 0.4, 1.1)",
         }}
       >
-        {/* HEADER */}
+        {/* HEADER with transparent/glass styling */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center justify-center gap-8 mb-10">
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
-            <span className="px-10 py-4 text-sm font-bold text-sky-700 uppercase tracking-[0.35em] bg-white/80 backdrop-blur-xl rounded-2xl border border-sky-400/30 shadow-lg">
+            <div className="w-32 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
+            <span className="px-10 py-4 text-sm font-bold text-sky-700 uppercase tracking-[0.35em] bg-white/60 backdrop-blur-xl rounded-2xl border border-sky-400/20 shadow-lg">
               Why Choose Us
             </span>
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
+            <div className="w-32 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -255,14 +253,14 @@ export default function WhyChooseUs() {
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-4xl mx-auto bg-white/80 backdrop-blur-xl p-8 rounded-3xl border border-sky-300/30 shadow-xl">
+          <p className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-4xl mx-auto bg-white/60 backdrop-blur-xl p-8 rounded-3xl border border-sky-300/20 shadow-xl">
             We combine deep expertise with innovative technology to deliver
             measurable results that drive sustainable growth and operational
             excellence.
           </p>
         </div>
 
-        {/* CARDS */}
+        {/* CARDS GRID */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
           {features.map((feature, index) => {
             const colors = colorMapping[feature.color];
@@ -281,7 +279,7 @@ export default function WhyChooseUs() {
                   transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
                 }}
               >
-                {/* Background Color Spread Effect */}
+                {/* Background Color Spread Effect - subtle */}
                 <div
                   className="absolute inset-0 rounded-3xl transition-all duration-500 ease-out"
                   style={{
@@ -289,7 +287,7 @@ export default function WhyChooseUs() {
                       hoveredCard === index ? colors.light : "transparent",
                     boxShadow:
                       hoveredCard === index
-                        ? `0 0 0 1px ${colors.medium}, 0 25px 50px -12px ${colors.dark}40`
+                        ? `0 0 0 1px ${colors.medium}, 0 25px 50px -12px ${colors.dark}30`
                         : "none",
                     opacity: hoveredCard === index ? 1 : 0,
                     transform:
@@ -304,7 +302,7 @@ export default function WhyChooseUs() {
                     boxShadow:
                       hoveredCard === index
                         ? `inset 0 0 0 1px ${colors.medium}, 0 0 20px ${colors.dark}`
-                        : "inset 0 0 0 1px rgba(148, 163, 184, 0.1)",
+                        : "inset 0 0 0 1px rgba(148, 163, 184, 0.08)",
                   }}
                 />
 
@@ -316,7 +314,7 @@ export default function WhyChooseUs() {
                       hoveredCard === index
                         ? `linear-gradient(135deg, transparent, ${colors.medium})`
                         : "transparent",
-                    opacity: hoveredCard === index ? 1 : 0,
+                    opacity: hoveredCard === index ? 0.6 : 0,
                   }}
                 />
                 <div
@@ -326,12 +324,12 @@ export default function WhyChooseUs() {
                       hoveredCard === index
                         ? `linear-gradient(135deg, ${colors.medium}, transparent)`
                         : "transparent",
-                    opacity: hoveredCard === index ? 1 : 0,
+                    opacity: hoveredCard === index ? 0.6 : 0,
                   }}
                 />
 
-                {/* Main Card */}
-                <div className="relative bg-white/85 backdrop-blur-xl rounded-3xl p-8 border border-sky-300/30 shadow-xl overflow-hidden">
+                {/* Main Card - Glassmorphic transparent style */}
+                <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-white/40 shadow-xl overflow-hidden transition-all duration-300">
                   {/* Icon */}
                   <div
                     className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 transition-all duration-400 group-hover:scale-110`}
@@ -343,7 +341,7 @@ export default function WhyChooseUs() {
                       boxShadow:
                         hoveredCard === index
                           ? `0 15px 30px ${colors.dark}, 0 0 40px ${colors.medium}`
-                          : "0 10px 20px rgba(0,0,0,0.1)",
+                          : "0 10px 20px rgba(0,0,0,0.05)",
                     }}
                   >
                     <span
@@ -394,8 +392,7 @@ export default function WhyChooseUs() {
                   <p
                     className="text-slate-600 mb-6 leading-relaxed transition-all duration-400"
                     style={{
-                      color:
-                        hoveredCard === index ? "#475569" : "#64748b",
+                      color: hoveredCard === index ? "#475569" : "#64748b",
                     }}
                   >
                     {feature.description}
@@ -414,9 +411,7 @@ export default function WhyChooseUs() {
                           ? `linear-gradient(135deg, ${colors.dark}, ${colors.medium})`
                           : colors.light,
                       borderColor:
-                        hoveredCard === index
-                          ? "transparent"
-                          : colors.medium,
+                        hoveredCard === index ? "transparent" : colors.medium,
                       boxShadow:
                         hoveredCard === index
                           ? `0 8px 25px ${colors.dark}40`
@@ -451,24 +446,16 @@ export default function WhyChooseUs() {
       <style>{`
         @keyframes float3D {
           0% {
-            transform: translateZ(0px) rotate(0deg);
+            transform: translateZ(0px) rotate(0deg) translateY(0px);
           }
-          50% {
-            transform: translateZ(40px) rotate(180deg);
+          33% {
+            transform: translateZ(30px) rotate(120deg) translateY(-8px);
+          }
+          66% {
+            transform: translateZ(15px) rotate(240deg) translateY(5px);
           }
           100% {
-            transform: translateZ(0px) rotate(360deg);
-          }
-        }
-
-        @keyframes floatParticle {
-          0%, 100% {
-            transform: translateY(0) translateX(0) scale(1);
-            opacity: 0.4;
-          }
-          50% {
-            transform: translateY(-20px) translateX(10px) scale(1.2);
-            opacity: 0.8;
+            transform: translateZ(0px) rotate(360deg) translateY(0px);
           }
         }
       `}</style>

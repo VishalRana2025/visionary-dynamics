@@ -370,84 +370,11 @@ const QuickBooksAnnouncement = () => {
         </div>
 
         {/* Floating Cloud Icons */}
-        <div className="absolute inset-0">
-          {[
-            { Icon: Cloud, x: "15%", y: "20%", size: 40, color: "text-sky-300/70" },
-            { Icon: CloudRain, x: "85%", y: "30%", size: 36, color: "text-blue-300/70" },
-            { Icon: CloudSnow, x: "30%", y: "65%", size: 44, color: "text-cyan-300/70" },
-            { Icon: CloudFog, x: "70%", y: "55%", size: 38, color: "text-sky-400/70" },
-            { Icon: CloudLightning, x: "50%", y: "25%", size: 42, color: "text-indigo-300/70" },
-          ].map((cloudIcon, i) => (
-            <motion.div
-              key={`icon-${i}`}
-              className={`absolute ${cloudIcon.color}`}
-              style={{
-                left: cloudIcon.x,
-                top: cloudIcon.y,
-              }}
-              animate={{
-                y: [0, -15, 0],
-                rotate: [0, 5, -5, 0],
-              }}
-              transition={{
-                duration: 12 + i * 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <cloudIcon.Icon size={cloudIcon.size} />
-            </motion.div>
-          ))}
-        </div>
+       
 
-        {/* 🌧️ Rain Lines Effect */}
-        <div className="absolute inset-0 opacity-20">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={`rain-${i}`}
-              className="absolute w-px h-16 bg-gradient-to-b from-transparent via-blue-300 to-transparent"
-              style={{
-                left: `${5 + i * 8}%`,
-                top: "-5%",
-              }}
-              animate={{
-                y: ["-100%", "200%"],
-                opacity: [0, 0.5, 0],
-              }}
-              transition={{
-                duration: 2 + Math.random(),
-                repeat: Infinity,
-                delay: i * 0.3,
-                ease: "linear",
-              }}
-            />
-          ))}
-        </div>
+        
 
-        {/* 💫 Data Stream Particles */}
-        <div className="absolute inset-0">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={`stream-${i}`}
-              className="absolute w-0.5 h-32 bg-gradient-to-b from-transparent via-blue-400 to-transparent"
-              style={{
-                left: `${10 + i * 12}%`,
-                top: "-20%",
-                transform: "rotate(15deg)",
-              }}
-              animate={{
-                y: ["-100%", "200%"],
-                opacity: [0, 0.8, 0],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: i * 0.5,
-                ease: "linear",
-              }}
-            />
-          ))}
-        </div>
+       
 
         {/* Horizon Line */}
         <div className="absolute bottom-1/3 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent" />

@@ -8,12 +8,29 @@ export const WaveTransition = ({ direction = "bottom" }) => {
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
         viewBox="0 0 1440 320"
-        className="w-full h-[150px] md:h-[220px]"
+       className="w-full h-[200px] md:h-[260px]"
         preserveAspectRatio="none"
       >
-        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
-        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
-        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+        {/* 🔥 TOP CURVE FIXED HERE */}
+        <path
+  d="M0,140 
+     C240,120 480,160 720,130 
+     C960,100 1200,160 1440,140 
+     L1440,320 L0,320 Z"
+  fill="#37393b"
+  fillOpacity="0.3"
+/>
+
+        <path
+          d="M0,220C480,320 960,140 1440,220V320H0Z"
+          fill="#93C5FD"
+          fillOpacity="0.5"
+        />
+
+        <path
+          d="M0,260C480,360 960,180 1440,260V320H0Z"
+          fill="#b5c7df"
+        />
       </svg>
     </div>
   );

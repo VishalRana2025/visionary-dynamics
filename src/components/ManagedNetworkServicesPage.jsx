@@ -14,6 +14,23 @@ import {
   AlertCircle,
   ChevronRight
 } from 'lucide-react';
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
  
 const MDMPage = () => {
   const features = [
@@ -110,6 +127,9 @@ const MDMPage = () => {
      
 {/* Hero Section */}
 <section className="relative py-20 md:py-28 overflow-hidden">
+ <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
  
   {/* Background */}
   <div className="absolute inset-0">
@@ -325,6 +345,10 @@ const MDMPage = () => {
  
 {/* Benefits Section */}
 <section className="relative py-24 overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800">
+ {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
  
   {/* Add Font Awesome in your head section or component */}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -506,6 +530,9 @@ const MDMPage = () => {
  
   {/* Add Font Awesome for icons (alternative placement) */}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+ <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
  
 </section>
  
@@ -548,7 +575,7 @@ const MDMPage = () => {
 `}</style>
  
  
-<section className="py-24 bg-gradient-to-br from-blue-50 via-white to-blue-50 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+<section className="py-24 bg-gradient-to-br from-blue-100 via-blue to-blue-100 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
  
   {/* Background Elements */}
   <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-200 rounded-full blur-3xl opacity-30"></div>
@@ -859,6 +886,10 @@ const MDMPage = () => {
  
 {/* Managed Services & Packages */}
 <section className="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+ {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
  
   {/* Background Image */}
   <div
@@ -987,6 +1018,9 @@ const MDMPage = () => {
       ))}
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
  
 {/* Why Outsource to Visionaries Section */}
@@ -1173,6 +1207,11 @@ const MDMPage = () => {
 </section>
       {/* CTA Section */}
 <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image */}
   <div className="absolute inset-0 z-0">
     <img

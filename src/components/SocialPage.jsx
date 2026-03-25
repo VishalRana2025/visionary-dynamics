@@ -21,6 +21,24 @@ import {
  Star
 } from "lucide-react";
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+
 const SocialMediaMarketingPage = () => {
   const services = [
     {
@@ -163,16 +181,15 @@ const SocialMediaMarketingPage = () => {
       </div>
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
 
      {/* Services Section */}
-<section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+<section className="py-20 bg-blue-100">
   {/* Background decorative elements */}
-  <div className="absolute inset-0 overflow-hidden">
-    <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-    <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-    <div className="absolute top-40 left-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-  </div>
+  
 
   <div className="container mx-auto px-4 relative z-10">
     {/* Section Header with animated underline */}
@@ -291,6 +308,10 @@ const SocialMediaMarketingPage = () => {
 
        {/* Stats Section - Option 3: Dynamic & Animated */}
 <section className="py-20 relative">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
   {/* Background image with overlay */}
   <div className="absolute inset-0">
     <img 
@@ -360,11 +381,15 @@ const SocialMediaMarketingPage = () => {
       </div>
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
+ 
 </section>
 
       {/* Testimonials Section */}
      
-   <section className="py-20 bg-white">
+   <section className="py-20 bg-blue-100">
   <div className="container mx-auto px-4">
     {/* Header */}
     <div className="text-center max-w-3xl mx-auto mb-16">
@@ -444,7 +469,11 @@ const SocialMediaMarketingPage = () => {
 
       {/* CTA Section */}
 <section className="relative py-20 overflow-hidden">
-
+{/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image */}
   <div className="absolute inset-0">
     <img

@@ -6,6 +6,25 @@ import dashboardImg from "../animations/dashboard.png";
 import updateImg from "../animations/update.png";
 import helpdeskImg from "../animations/help-desk.png";
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+ 
+
 export default function PayrollPage() {
   const sectionRef = useRef(null);
   
@@ -79,19 +98,17 @@ export default function PayrollPage() {
   Get a Free Consultation
 </a>
         </div>
+        <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
+ 
       </section>
 
       {/* Services Section - Light Blue with Objects */}
-      <section className="relative py-24 bg-blue-50 overflow-hidden z-10">
+      <section className="relative py-24 bg-blue-100 overflow-hidden z-10">
         {/* Background Shapes - Visible but professional */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="float-shape absolute top-20 right-[5%] w-72 h-72 bg-purple-200/50 rounded-full blur-xl" 
-               style={{ animation: 'drift 22s ease-in-out infinite' }} />
-          <div className="float-shape absolute bottom-20 left-[8%] w-56 h-56 bg-pink-200/50 rounded-full blur-xl" 
-               style={{ animation: 'drift 28s ease-in-out infinite reverse' }} />
-          <div className="float-shape absolute top-[40%] right-[20%] w-32 h-32 bg-blue-300/50 rounded-full blur-lg" 
-               style={{ animation: 'drift 15s ease-in-out infinite' }} />
-          <div className="absolute bottom-[30%] left-[15%] w-24 h-24 border-2 border-indigo-300/50 rotate-45" />
+          
           <div className="absolute top-[20%] left-[30%] w-32 h-32 border-2 border-dashed border-blue-300/50 rounded-full" 
                style={{ animation: 'spin-very-slow 30s linear infinite' }} />
           <div className="absolute top-[70%] right-[25%] w-40 h-40 bg-gradient-to-br from-blue-200/40 to-indigo-200/40 rounded-full blur-lg" />
@@ -174,6 +191,11 @@ export default function PayrollPage() {
 
       {/* Forms Section - Dark Background (No Objects) */}
       <section className="relative py-24 overflow-hidden z-10">
+        {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -232,22 +254,17 @@ export default function PayrollPage() {
             ))}
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
+ 
       </section>
 
       {/* WHY CHOOSE US SECTION - Blue with Objects */}
-      <section className="relative py-20 bg-blue-50 overflow-hidden z-10">
+      <section className="relative py-20 bg-blue-100 overflow-hidden z-10">
         {/* Background Shapes - Visible but professional */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="float-shape absolute top-10 left-[15%] w-60 h-60 bg-indigo-200/50 rounded-full blur-xl" 
-               style={{ animation: 'drift 21s ease-in-out infinite' }} />
-          <div className="float-shape absolute bottom-20 right-[10%] w-72 h-72 bg-purple-200/50 rounded-full blur-xl" 
-               style={{ animation: 'drift 26s ease-in-out infinite reverse' }} />
-          <div className="float-shape absolute top-[30%] right-[25%] w-40 h-40 bg-pink-200/50 rounded-full blur-lg" 
-               style={{ animation: 'drift 17s ease-in-out infinite' }} />
-          <div className="absolute top-[60%] left-[20%] w-20 h-20 border-2 border-blue-300/50 rounded-lg" />
-          <div className="absolute top-[15%] left-[30%] w-40 h-40 border-2 border-dashed border-purple-300/50 rounded-full" 
-               style={{ animation: 'spin-very-slow 35s linear infinite' }} />
-          <div className="absolute bottom-[30%] right-[15%] w-32 h-32 bg-gradient-to-br from-indigo-200/40 to-purple-200/40 rounded-full blur-lg" />
+          
           {[...Array(9)].map((_, i) => (
             <div
               key={i}
@@ -378,31 +395,7 @@ export default function PayrollPage() {
       {/* Process Section - Light Blue with Objects */}
       <section className="py-20 relative bg-blue-100 overflow-hidden z-10">
         {/* Background Shapes - Visible but professional */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="float-shape absolute top-10 left-[10%] w-60 h-60 bg-blue-200/50 rounded-full blur-xl" 
-               style={{ animation: 'drift 19s ease-in-out infinite' }} />
-          <div className="float-shape absolute bottom-10 right-[12%] w-64 h-64 bg-indigo-200/50 rounded-full blur-xl" 
-               style={{ animation: 'drift 24s ease-in-out infinite reverse' }} />
-          <div className="float-shape absolute top-[40%] left-[25%] w-36 h-36 bg-purple-200/50 rounded-full blur-lg" 
-               style={{ animation: 'drift 16s ease-in-out infinite' }} />
-          <div className="absolute top-[20%] right-[25%] w-20 h-20 border-2 border-blue-300/50 rounded-lg" />
-          <div className="absolute top-[70%] left-[15%] w-32 h-32 border-2 border-dashed border-blue-300/50 rounded-full" 
-               style={{ animation: 'spin-very-slow 32s linear infinite' }} />
-          <div className="absolute bottom-[30%] left-[30%] w-0 h-0 border-l-[25px] border-l-transparent border-r-[25px] border-r-transparent border-b-[43px] border-b-blue-300/50 rotate-45" />
-          <div className="absolute top-[60%] right-[20%] w-24 h-24 border-2 border-indigo-300/50 rotate-45" />
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1.5 h-1.5 bg-blue-400/60 rounded-full"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float-particle ${13 + i * 2}s ease-in-out infinite`,
-                animationDelay: `${i * 0.6}s`
-              }}
-            />
-          ))}
-        </div>
+        
 
         <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-blue-50 to-transparent" />
 
@@ -475,6 +468,12 @@ export default function PayrollPage() {
 
       {/* CTA Section - Dark Background (No Objects) */}
       <section className="py-20 relative z-10">
+        {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
+ 
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

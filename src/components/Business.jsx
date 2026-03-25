@@ -14,6 +14,23 @@ import {
   Phone,
   MapPin
 } from 'lucide-react';
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
 
 const BusinessAnalystPage = () => {
   const services = [
@@ -132,20 +149,15 @@ const BusinessAnalystPage = () => {
     </div>
   </div>
 
- {/* Wave Decoration */}
-<div className="absolute bottom-0 left-0 right-0 z-10 leading-none">
-  <svg
-    className="block w-full fill-blue-50"
-    viewBox="0 0 1440 120"
-    preserveAspectRatio="none"
-  >
-    <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
-  </svg>
+ 
+<div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
 </div>
+ 
 </section>
 
      {/* Services Section */}
-<section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-50 via-blue to-sky-50">
+<section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-100 via-blue to-blue-100">
   {/* Moving Objects - Animated Bubbles */}
   <div className="absolute inset-0 overflow-hidden">
     {/* Bubble 1 */}
@@ -318,7 +330,7 @@ const BusinessAnalystPage = () => {
 
 
       {/* Stats Section */}
-<section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50">
+<section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100">
   {/* Moving Background Objects */}
   <div className="absolute inset-0 overflow-hidden">
    
@@ -417,7 +429,7 @@ const BusinessAnalystPage = () => {
       
 
       {/* Skills Section */}
-     <section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
+     <section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-100 via-blue to-blue-100">
   {/* Moving Background Objects */}
   <div className="absolute inset-0 overflow-hidden">
     {/* Large floating bubbles */}
@@ -543,6 +555,11 @@ const BusinessAnalystPage = () => {
 
      {/* Contact Section */}
 <section className="relative py-20 text-white overflow-hidden">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   
   {/* Background Image */}
   <div 

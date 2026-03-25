@@ -57,6 +57,24 @@ import {
 
 } from 'lucide-react';
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [billingCycle, setBillingCycle] = useState('monthly');
@@ -362,7 +380,9 @@ const App = () => {
 
     </div>
   </div>
-
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
  
 </section>
 
@@ -904,6 +924,11 @@ const App = () => {
 
       {/* Key Differences Summary */}
      <section className="py-24 relative overflow-hidden">
+      {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image with Dark Overlay */}
   <div className="absolute inset-0 z-0">
     <img 
@@ -1038,10 +1063,11 @@ const App = () => {
           
         </div>
       </div>
-    </div>
-
-   
+    </div>   
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
 
       {/* Pricing Section */}
@@ -1435,6 +1461,11 @@ const App = () => {
       
      {/* CTA Section */}
 <section className="relative py-16 overflow-hidden">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
 
   {/* Background Image */}
   <div className="absolute inset-0">

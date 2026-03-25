@@ -32,6 +32,24 @@ import {
     CalendarDays
 } from 'lucide-react';
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[260px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+
 const CooperativeTaxPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
@@ -162,7 +180,7 @@ const CooperativeTaxPage = () => {
       </div>
 
       {/* Right Form */}
-      <div className="hidden lg:block">
+      {/* <div className="hidden lg:block">
         <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl">
           <h3 className="text-2xl font-bold mb-6 text-white">
             Get Your Free Consultation
@@ -197,7 +215,7 @@ const CooperativeTaxPage = () => {
             </button>
           </form>
         </div>
-      </div>
+      </div> */}
 
     </div>
   </div>
@@ -212,10 +230,13 @@ const CooperativeTaxPage = () => {
     <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L0,120Z"></path>
   </svg>
 </div>
+<div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
 
       {/* Benefits Section with Light Blue BG and Moving Objects */}
-<section id="benefits" className="py-24 relative overflow-hidden bg-blue-50">
+<section id="benefits" className="py-24 relative overflow-hidden bg-blue-100">
   {/* Moving Background Objects */}
   <div className="absolute inset-0 overflow-hidden">
     {/* Floating circles */}
@@ -446,6 +467,11 @@ const CooperativeTaxPage = () => {
 
       {/* Services Section with Background Image */}
 <section id="services" className="py-20 relative overflow-hidden">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image with Overlay */}
   <div className="absolute inset-0 z-0">
     <img 
@@ -540,57 +566,16 @@ const CooperativeTaxPage = () => {
 
     
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
 
      {/* FAQ Section */}
-<section id="faq" className="py-20 relative overflow-hidden bg-blue-50">
-  {/* Visible moving objects */}
-  <div className="absolute inset-0">
-    {/* Large moving circles */}
-    <div className="absolute top-10 left-10 w-48 h-48 border-4 border-blue-300 rounded-full opacity-40 animate-spin-slow"></div>
-    <div className="absolute bottom-10 right-10 w-64 h-64 border-4 border-blue-400 rounded-full opacity-40 animate-spin-slow animation-delay-1000"></div>
-    <div className="absolute top-1/2 left-1/3 w-32 h-32 border-4 border-indigo-300 rounded-full opacity-40 animate-pulse-slow"></div>
-    
-    {/* Moving colored circles */}
-    <div className="absolute top-20 right-20 w-24 h-24 bg-blue-400 rounded-full opacity-30 animate-bounce-slow"></div>
-    <div className="absolute bottom-20 left-20 w-20 h-20 bg-indigo-400 rounded-full opacity-30 animate-bounce-slow animation-delay-500"></div>
-    
-    {/* Moving lines */}
-    <div className="absolute top-40 left-1/4 w-60 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full opacity-40 animate-slide"></div>
-    <div className="absolute bottom-40 right-1/4 w-60 h-2 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full opacity-40 animate-slide animation-delay-2000"></div>
-    
-    {/* Floating shapes */}
-    <div className="absolute top-1/3 right-20">
-      <div className="w-16 h-16 bg-green-400 opacity-30 rotate-45 animate-spin-slow"></div>
-    </div>
-    <div className="absolute bottom-1/3 left-20">
-      <div className="w-20 h-20 bg-yellow-400 opacity-30 rotate-12 animate-pulse-slow"></div>
-    </div>
-    
-    {/* Moving dots */}
-    <div className="absolute top-32 left-1/2 w-4 h-4 bg-blue-600 rounded-full opacity-60 animate-float"></div>
-    <div className="absolute bottom-32 right-1/2 w-5 h-5 bg-purple-600 rounded-full opacity-60 animate-float animation-delay-1000"></div>
-    <div className="absolute top-1/4 right-1/3 w-3 h-3 bg-pink-600 rounded-full opacity-60 animate-float animation-delay-2000"></div>
-    <div className="absolute bottom-1/4 left-1/3 w-6 h-6 bg-orange-600 rounded-full opacity-60 animate-float animation-delay-3000"></div>
-    
-    {/* Moving triangles */}
-    <div className="absolute top-60 right-40">
-      <div className="w-0 h-0 border-l-[20px] border-r-[20px] border-b-[35px] border-l-transparent border-r-transparent border-b-blue-500 opacity-40 animate-float"></div>
-    </div>
-    <div className="absolute bottom-60 left-40">
-      <div className="w-0 h-0 border-l-[25px] border-r-[25px] border-b-[40px] border-l-transparent border-r-transparent border-b-purple-500 opacity-40 animate-float animation-delay-1500"></div>
-    </div>
-    
-    {/* Moving rings */}
-    <div className="absolute top-1/2 right-1/4">
-      <div className="w-12 h-12 border-4 border-green-500 rounded-full opacity-50 animate-ping-slow"></div>
-    </div>
-    <div className="absolute bottom-1/2 left-1/4">
-      <div className="w-16 h-16 border-4 border-orange-500 rounded-full opacity-50 animate-ping-slow animation-delay-2000"></div>
-    </div>
-  </div>
+<section id="faq" className="py-20 relative overflow-hidden bg-blue-100">
+  
 
-  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     {/* Header */}
     <div className="text-center mb-12">
       
@@ -627,98 +612,62 @@ const CooperativeTaxPage = () => {
         </div>
       ))}
     </div>
-
-    
   </div>
-
-  {/* Animations */}
-  <style>{`
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes pulse-slow {
-      0%, 100% { transform: scale(1); opacity: 0.3; }
-      50% { transform: scale(1.2); opacity: 0.5; }
-    }
-    @keyframes bounce-slow {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-    @keyframes slide {
-      0% { transform: translateX(-30px); }
-      50% { transform: translateX(30px); }
-      100% { transform: translateX(-30px); }
-    }
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(10px, -10px); }
-      50% { transform: translate(20px, 0); }
-      75% { transform: translate(10px, 10px); }
-    }
-    @keyframes ping-slow {
-      0% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.5); opacity: 0.2; }
-      100% { transform: scale(1); opacity: 0.5; }
-    }
-    .animate-spin-slow { animation: spin-slow 12s linear infinite; }
-    .animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
-    .animate-bounce-slow { animation: bounce-slow 4s ease-in-out infinite; }
-    .animate-slide { animation: slide 8s ease-in-out infinite; }
-    .animate-float { animation: float 10s ease-in-out infinite; }
-    .animate-ping-slow { animation: ping-slow 3s ease-in-out infinite; }
-    .animation-delay-500 { animation-delay: 0.5s; }
-    .animation-delay-1000 { animation-delay: 1s; }
-    .animation-delay-1500 { animation-delay: 1.5s; }
-    .animation-delay-2000 { animation-delay: 2s; }
-    .animation-delay-3000 { animation-delay: 3s; }
-  `}</style>
 </section>
 
 
       {/* CTA Section */}
-     <section className="py-20 relative overflow-hidden">
+    <section className="relative overflow-hidden py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+  
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-10 z-10">
+    <WaveTransition direction="top" />
+  </div>
+
   {/* Background Image */}
   <div className="absolute inset-0 z-0">
     <img 
-      src="https://images.unsplash.com/photo-1565373679580-fc0cb538f49c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-      alt="Tax Planning Background" 
+      src="https://images.unsplash.com/photo-1565373679580-fc0cb538f49c?q=80&w=1170&auto=format&fit=crop"
+      alt="Tax Planning Background"
       className="w-full h-full object-cover"
     />
-    {/* Dark Overlay - Pure dark with opacity */}
     <div className="absolute inset-0 bg-black/70"></div>
   </div>
 
-  <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-    <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
+  {/* Content */}
+  <div className="relative z-10 max-w-5xl mx-auto text-center mt-10 lg:mt-16">
+    
+    <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white leading-tight">
       Ready to Optimize Your Cooperative's Taxes?
     </h2>
     
-    <p className="text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
+    <p className="text-lg lg:text-xl mb-10 text-gray-300 max-w-2xl mx-auto">
       Join hundreds of cooperatives that trust us with their tax preparation and planning
     </p>
     
-    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-     <a
-  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105"
->
-  Schedule Free Consultation
-</a>
+    {/* Buttons */}
+    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
       
-     <a
-  href="tel:+11234567890"
-  className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105"
->
-  <Phone className="w-5 h-5 mr-2" />
-  Call Now: +1 (123) 456-7890
-</a>
-    </div>
+      <a
+        href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg"
+      >
+        Schedule Free Consultation
+      </a>
+      
+      <a
+        href="tel:+11234567890"
+        className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105"
+      >
+        <Phone className="w-5 h-5 mr-2" />
+        Call Now: +1 (123) 456-7890
+      </a>
 
-    
+    </div>
   </div>
+
 </section>
       
     </div>

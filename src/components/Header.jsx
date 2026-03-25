@@ -95,7 +95,7 @@ const Header = () => {
         </div>
 
         {/* MENU */}
-        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[60px] text-base font-medium text-white">
+        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[70px] text-base font-medium text-white">
           
           <Link to="/" className="hover:text-sky-300">Home</Link>
 
@@ -140,7 +140,7 @@ const MenuWithSub = ({ menu, data }) => {
   return (
     <div className="relative group">
       <button className="flex items-center gap-1 hover:text-sky-300">
-        {menu} <ChevronDown size={14} />
+        {menu} <ChevronDown size={20} />
       </button>
 
       {/* SUBMENU */}

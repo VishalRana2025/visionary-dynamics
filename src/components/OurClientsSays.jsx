@@ -13,9 +13,9 @@ import {
   StarIcon as StarIconSolid,
   HeartIcon as HeartIconSolid,
 } from "@heroicons/react/24/solid";
+
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
-  const navigate = useNavigate();
  
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
@@ -24,9 +24,9 @@ export const WaveTransition = ({ direction = "bottom" }) => {
         className="w-full h-[150px] md:h-[220px]"
         preserveAspectRatio="none"
       >
-        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
-        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
-        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.15" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.25" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" fillOpacity="0.35" />
       </svg>
     </div>
   );
@@ -40,7 +40,7 @@ const heroBg =
 const lowerBg =
   "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80";
 
-/* ================= MULTI-OBJECT LIGHT BLUE 3D BACKGROUND ================= */
+/* ================= TRANSPARENT 3D BACKGROUND ================= */
 const Elegant3DBackground = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -61,10 +61,10 @@ const Elegant3DBackground = () => {
   }, [mouseX, mouseY]);
 
   const waves = [
-    { id: 1, size: 360, top: "10%", left: "10%", opacity: 0.25, speed: 28 },
-    { id: 2, size: 260, top: "20%", left: "70%", opacity: 0.22, speed: 32 },
-    { id: 3, size: 420, top: "65%", left: "15%", opacity: 0.28, speed: 36 },
-    { id: 4, size: 300, top: "70%", left: "75%", opacity: 0.24, speed: 30 },
+    { id: 1, size: 360, top: "10%", left: "10%", opacity: 0.12, speed: 28 },
+    { id: 2, size: 260, top: "20%", left: "70%", opacity: 0.1, speed: 32 },
+    { id: 3, size: 420, top: "65%", left: "15%", opacity: 0.14, speed: 36 },
+    { id: 4, size: 300, top: "70%", left: "75%", opacity: 0.11, speed: 30 },
   ];
 
   const squares = [
@@ -78,14 +78,14 @@ const Elegant3DBackground = () => {
     { id: 2, size: 180, top: "75%", left: "40%", speed: 32 },
   ];
 
-  const particles = Array.from({ length: 14 });
+  const particles = Array.from({ length: 20 });
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-      {/* Base light-blue wash */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-100 via-cyan-50 to-blue-100" />
+      {/* Base transparent light-blue wash - Very subtle */}
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-100/20 via-cyan-50/10 to-blue-100/15" />
 
-      {/* Glass Waves */}
+      {/* Transparent Glass Waves */}
       {waves.map((wave) => (
         <motion.div
           key={`wave-${wave.id}`}
@@ -97,14 +97,13 @@ const Elegant3DBackground = () => {
             height: wave.size,
             x: smoothX,
             y: smoothY,
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.6), rgba(56,189,248,0.35))",
+            background: "radial-gradient(circle, rgba(255,255,255,0.15), rgba(56,189,248,0.05))",
             opacity: wave.opacity,
-            filter: "blur(80px)",
+            filter: "blur(60px)",
           }}
           animate={{
-            y: [0, -50, 0],
-            scale: [1, 1.1, 1],
+            y: [0, -40, 0],
+            scale: [1, 1.08, 1],
           }}
           transition={{
             duration: wave.speed,
@@ -114,11 +113,11 @@ const Elegant3DBackground = () => {
         />
       ))}
 
-      {/* Floating Glass Squares */}
+      {/* Floating Transparent Glass Squares */}
       {squares.map((sq) => (
         <motion.div
           key={`square-${sq.id}`}
-          className="absolute rounded-2xl backdrop-blur-xl"
+          className="absolute rounded-2xl backdrop-blur-sm"
           style={{
             top: sq.top,
             left: sq.left,
@@ -126,14 +125,13 @@ const Elegant3DBackground = () => {
             height: sq.size,
             x: smoothX,
             y: smoothY,
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.7), rgba(14,165,233,0.25))",
-            border: "1px solid rgba(14,165,233,0.3)",
-            boxShadow: "0 0 30px rgba(14,165,233,0.35)",
+            background: "linear-gradient(135deg, rgba(255,255,255,0.12), rgba(14,165,233,0.04))",
+            border: "1px solid rgba(14,165,233,0.12)",
+            boxShadow: "0 0 20px rgba(14,165,233,0.08)",
           }}
           animate={{
             rotate: [0, 180, 360],
-            y: [0, 25, 0],
+            y: [0, 20, 0],
           }}
           transition={{
             duration: sq.speed,
@@ -143,7 +141,7 @@ const Elegant3DBackground = () => {
         />
       ))}
 
-      {/* Glowing Rings */}
+      {/* Transparent Glowing Rings */}
       {rings.map((ring) => (
         <motion.div
           key={`ring-${ring.id}`}
@@ -155,12 +153,13 @@ const Elegant3DBackground = () => {
             height: ring.size,
             x: smoothX,
             y: smoothY,
-            border: "3px solid rgba(56,189,248,0.5)",
-            boxShadow: "0 0 40px rgba(56,189,248,0.4)",
+            border: "2px solid rgba(56,189,248,0.18)",
+            boxShadow: "0 0 25px rgba(56,189,248,0.08)",
+            background: "radial-gradient(circle, rgba(56,189,248,0.02), transparent 70%)",
           }}
           animate={{
             rotate: [0, 360],
-            scale: [1, 1.1, 1],
+            scale: [1, 1.08, 1],
           }}
           transition={{
             duration: ring.speed,
@@ -170,11 +169,11 @@ const Elegant3DBackground = () => {
         />
       ))}
 
-      {/* Shimmer Particles */}
+      {/* Shimmer Particles - Transparent */}
       {particles.map((_, i) => (
         <motion.div
           key={`particle-${i}`}
-          className="absolute w-2 h-2 rounded-full bg-sky-400/40"
+          className="absolute w-1.5 h-1.5 rounded-full bg-sky-400/20"
           style={{
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
@@ -182,8 +181,8 @@ const Elegant3DBackground = () => {
             y: smoothY,
           }}
           animate={{
-            y: [0, -20, 0],
-            opacity: [0.2, 0.8, 0.2],
+            y: [0, -25, 0],
+            opacity: [0.1, 0.4, 0.1],
           }}
           transition={{
             duration: 6 + Math.random() * 6,
@@ -192,6 +191,46 @@ const Elegant3DBackground = () => {
           }}
         />
       ))}
+
+      {/* Additional Floating Glass Blobs - Transparent */}
+      {[...Array(5)].map((_, i) => (
+        <motion.div
+          key={`blob-${i}`}
+          className="absolute rounded-full backdrop-blur-sm"
+          style={{
+            width: 120 + Math.random() * 100,
+            height: 120 + Math.random() * 100,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            x: smoothX,
+            y: smoothY,
+            background: `radial-gradient(circle, rgba(255,255,255,0.08), rgba(14,165,233,0.02))`,
+            border: "1px solid rgba(14,165,233,0.08)",
+          }}
+          animate={{
+            y: [0, Math.random() * 40 - 20, 0],
+            x: [0, Math.random() * 40 - 20, 0],
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 15 + Math.random() * 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Soft Grid Overlay - Transparent */}
+      <div 
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+        }}
+      />
     </div>
   );
 };
@@ -238,7 +277,7 @@ const StatsSection = () => {
           >
             <div className="relative mx-auto w-24 h-24 mb-4 flex items-center justify-center">
               <div
-                className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${stat.color} blur-xl opacity-60 group-hover:opacity-90 transition-opacity`}
+                className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${stat.color} blur-xl opacity-30 group-hover:opacity-50 transition-opacity`}
               />
               <div
                 className={`relative w-20 h-20 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-xl`}
@@ -454,10 +493,9 @@ export default function OurClients() {
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
-<div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm pointer-events-none" />
+        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm pointer-events-none" />
 
         <div className="relative container mx-auto px-6 z-10 flex flex-col items-center justify-center text-center h-full">
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -468,15 +506,14 @@ export default function OurClients() {
           </motion.h1>
         </div>
         <div className="absolute bottom-0 left-0 w-full z-30">
-  <WaveTransition />
-</div>
- 
+          <WaveTransition />
+        </div>
       </div>
 
-      {/* TESTIMONIALS — LIGHT BLUE BG */}
-      <div className="relative py-24 overflow-hidden bg-sky-100 z-0">
+      {/* TESTIMONIALS — Transparent BG */}
+   <div className="relative py-24 overflow-hidden bg-blue-100 z-0">
         <Elegant3DBackground />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/5" />
 
         <div className="relative container mx-auto px-6 z-20">
           <div className="text-center mb-16">
@@ -496,7 +533,7 @@ export default function OurClients() {
                 className={`px-5 py-2.5 rounded-full transition-all ${
                   activeFilter === filter.id
                     ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
-                    : "bg-white text-gray-600 hover:bg-gray-50 shadow-md"
+                    : "bg-white/80 backdrop-blur-sm text-gray-600 hover:bg-white shadow-md"
                 }`}
               >
                 {filter.label}
@@ -515,49 +552,44 @@ export default function OurClients() {
       {/* LOWER — IMAGE BG + DARK OVERLAY */}
       <div className="relative py-16 overflow-hidden">
         {/* Top Wave */}
-  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
-    <WaveTransition direction="top" />
-  </div>
- 
- 
+        <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+          <WaveTransition direction="top" />
+        </div>
 
         <div
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{ backgroundImage: `url(${lowerBg})` }}
         />
-        <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" />
 
         <div className="relative container mx-auto px-6 z-20">
           <StatsSection />
 
           {/* CTA */}
           <div className="mt-10 text-center">
-
             <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-12 border border-white/20 shadow-2xl max-w-3xl mx-auto">
               <h3 className="text-3xl font-bold text-white mb-4">
                 Ready to Join Our Success Stories?
               </h3>
               <p className="text-lg text-slate-300 mb-8">
-                Let’s work together to achieve remarkable results.
+                Let's work together to achieve remarkable results.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => navigate("/contact")}
-                className="px-8 py-4 bg-gradient-to-r from-sky-500 to-cyan-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
-               >
-                Start Your Journey
-                 </button>
                 <button
-                onClick={() => navigate("/contact")}
-                className="px-8 py-4 bg-white/20 text-white rounded-xl font-semibold shadow-lg border border-white/30 hover:bg-white/30 transition-all hover:-translate-y-1"
-                     >
-                 Schedule a Call
-                 </button>
+                  onClick={() => navigate("/contact")}
+                  className="px-8 py-4 bg-gradient-to-r from-sky-500 to-cyan-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                >
+                  Start Your Journey
+                </button>
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="px-8 py-4 bg-white/20 text-white rounded-xl font-semibold shadow-lg border border-white/30 hover:bg-white/30 transition-all hover:-translate-y-1"
+                >
+                  Schedule a Call
+                </button>
               </div>
             </div>
           </div>
-
-          
         </div>
       </div>
     </div>

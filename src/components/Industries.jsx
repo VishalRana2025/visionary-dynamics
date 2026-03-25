@@ -50,53 +50,52 @@ const Parallax3DBackground = () => {
 
       {/* Glass Shapes */}
       {glassShapes.map((shape, i) => (
-        <motion.div
-          key={i}
-          className="absolute flex items-center justify-center"
-          style={{
-            width: shape.size,
-            height: shape.size,
-            top: shape.top,
-            left: shape.left,
-            x: smoothX,
-            y: smoothY,
-          }}
-          animate={{
-            rotate: [shape.rotate, shape.rotate + 20, shape.rotate],
-            y: ["0px", "18px", "0px"],
-          }}
-          transition={{
-            duration: shape.speed,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          {/* Glass Square */}
-          {shape.type === "square" && (
-            <div
-              className="w-full h-full rounded-2xl backdrop-blur-xl"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.35), rgba(14,165,233,0.15))",
-                border: "1px solid rgba(14,165,233,0.3)",
-                boxShadow: "0 0 40px rgba(14,165,233,0.35)",
-              }}
-            />
-          )}
+  <motion.div
+    key={i}
+    className="absolute flex items-center justify-center"
+    style={{
+      width: shape.size,
+      height: shape.size,
+      top: shape.top,
+      left: shape.left,
+      x: smoothX,
+      y: smoothY,
+    }}
+    animate={{
+      rotate: [shape.rotate, shape.rotate + 20, shape.rotate],
+      y: ["0px", "18px", "0px"],
+    }}
+    transition={{
+      duration: shape.speed,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  >
+    {/* Glass Square - Transparent Version */}
+    {shape.type === "square" && (
+      <div
+        className="w-full h-full rounded-2xl backdrop-blur-sm"
+        style={{
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08), rgba(14,165,233,0.04))",
+          border: "1px solid rgba(14,165,233,0.15)",
+          boxShadow: "0 0 20px rgba(14,165,233,0.12)",
+        }}
+      />
+    )}
 
-          {/* 3D Ring */}
-          {shape.type === "ring" && (
-            <div
-              className="w-full h-full rounded-full"
-              style={{
-                border: "3px solid rgba(14,165,233,0.4)",
-                boxShadow: "0 0 50px rgba(14,165,233,0.45)",
-              }}
-            />
-          )}
-        </motion.div>
-      ))}
-
+    {/* 3D Ring - Transparent Version */}
+    {shape.type === "ring" && (
+      <div
+        className="w-full h-full rounded-full"
+        style={{
+          border: "2px solid rgba(14,165,233,0.2)",
+          boxShadow: "0 0 25px rgba(14,165,233,0.1)",
+          background: "radial-gradient(circle, rgba(14,165,233,0.02), transparent 70%)",
+        }}
+      />
+    )}
+  </motion.div>
+))}
       {/* Soft Light Rays */}
       <motion.div
         className="absolute inset-0 opacity-10"

@@ -7,6 +7,29 @@ import {
   Coffee, Smartphone, Settings, HelpCircle, DollarSign, ArrowRight
 } from 'lucide-react';
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+ 
+<div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
+ 
+
 const EmailMarketingPage = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -323,6 +346,7 @@ const EmailMarketingPage = () => {
 
       {/* Hero Section - Ultra Clean */}
 <div className="relative z-20 h-[500px] md:h-[600px] flex items-center">
+
   {/* Background Image with Simple Overlay */}
   <div className="absolute inset-0">
     <img 
@@ -364,6 +388,9 @@ const EmailMarketingPage = () => {
       <p className="text-sm text-red-400 mt-2">{formErrors.email}</p>
     )}
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </div>
 
 
@@ -703,6 +730,11 @@ const EmailMarketingPage = () => {
  {/* Powerful Feature Section */}
 
 <div id="features" className="py-24 relative">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image with Dark Overlay */}
   <div className="absolute inset-0 z-0">
     {/* Dark overlay with gradient */}
@@ -887,6 +919,9 @@ const EmailMarketingPage = () => {
       animation: float-particle linear infinite;
     }
   `}</style>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </div>
 
 
@@ -1061,6 +1096,11 @@ const EmailMarketingPage = () => {
 
 {/* Challenge & Solution Section with Glassmorphism */}
 <div className="relative py-24 overflow-hidden">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image with Dark Overlay */}
   <div className="absolute inset-0">
     <img 
@@ -1238,6 +1278,9 @@ const EmailMarketingPage = () => {
       </div>
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </div>
 
 
@@ -1287,6 +1330,10 @@ const EmailMarketingPage = () => {
       
 
       <div className="relative py-16 text-blue-100 overflow-hidden">
+        {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
      {/* Background Image */}
   <div className="absolute inset-0">
     <img

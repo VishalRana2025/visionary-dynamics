@@ -18,6 +18,24 @@ import {
   ChevronDownIcon
 } from "@heroicons/react/24/outline";
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+
 const SEOPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -453,11 +471,14 @@ const FloatingObjects = () => (
               </div>
             </motion.div>
           </div>
+          <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
+ 
         </section>
 
         {/* Services Section with Floating Objects */}
         <section className="relative py-20 bg-gradient-to-b from-blue-100 to-blue-100 overflow-hidden">
-          <FloatingObjects />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             {/* Section Header with decorative elements */}
             <div className="text-center mb-16 relative">
@@ -571,7 +592,6 @@ const FloatingObjects = () => (
 
         {/* Our Process Section with Floating Objects */}
         <section className="relative py-20 bg-gradient-to-br from-blue-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-          <FloatingObjects />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -670,26 +690,11 @@ const FloatingObjects = () => (
 
         {/* Why Choose Us Section */}
         <section className="relative py-20 overflow-hidden bg-gray-900">
-          {/* Top Dark to Light Wave */}
-          <div className="absolute -top-4 left-0 w-full overflow-hidden leading-none z-30">
-            <svg
-              viewBox="0 0 1440 120"
-              className="relative block w-full h-24 md:h-32"
-              preserveAspectRatio="none"
-            >
-              <defs>
-                <linearGradient id="topWaveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.1" />
-                  <stop offset="100%" stopColor="#1f2937" stopOpacity="1" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M0,64L80,69C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58L1440,64L1440,0L0,0Z"
-                fill="url(#topWaveGradient)"
-              />
-            </svg>
-          </div>
-
+          {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+        
           {/* Background Image with Parallax Effect */}
           <div className="absolute inset-0">
             <img
@@ -872,131 +877,14 @@ const FloatingObjects = () => (
                 );
               })}
             </div>
-
-            {/* Stats Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="mt-20"
-            >
-              <div className="relative">
-                {/* Background decorative elements */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 rounded-3xl blur-3xl"></div>
-                
-                <div className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-1">
-                  <div className="bg-gradient-to-r from-gray-900 to-gray-900 rounded-2xl p-8">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                      {[
-                        { value: "98%", label: "Client Retention", gradient: "from-blue-400 to-purple-400", icon: "📊" },
-                        { value: "50+", label: "Happy Clients", gradient: "from-purple-400 to-pink-400", icon: "😊" },
-                        { value: "1+", label: "Years Experience", gradient: "from-green-400 to-emerald-400", icon: "⭐" },
-                        { value: "50+", label: "Keywords Ranked", gradient: "from-orange-400 to-red-400", icon: "🎯" }
-                      ].map((stat, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.05 }}
-                          className="text-center group"
-                        >
-                          <div className="relative">
-                            <div className="text-3xl mb-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                              {stat.icon}
-                            </div>
-                            <div className={`text-4xl lg:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r ${stat.gradient}`}>
-                              {stat.value}
-                            </div>
-                            <div className="text-sm text-gray-400 mb-2">{stat.label}</div>
-                            <div className="w-16 h-1 mx-auto bg-white/10 rounded-full overflow-hidden">
-                              <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: "100%" }}
-                                transition={{ duration: 1, delay: 0.8 + index * 0.1 }}
-                                viewport={{ once: true }}
-                                className={`h-full bg-gradient-to-r ${stat.gradient}`}
-                              ></motion.div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom CTA */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mt-12"
-              >
-               <button
-  onClick={() => (window.location.href = "/contact")}
-  className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold overflow-hidden shadow-2xl hover:shadow-blue-600/30 transition-shadow"
->
-  <span className="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-  <span className="relative">Start Your Success Story</span>
-  <svg className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-  </svg>
-</button>
-              </motion.div>
-            </motion.div>
           </div>
-
-          {/* Floating particles for dynamic effect */}
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1 h-1 bg-white/20 rounded-full"
-                initial={{
-                  x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                  y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-                }}
-                animate={{
-                  y: [null, -30, 30, -30],
-                  x: [null, 30, -30, 30],
-                }}
-                transition={{
-                  duration: Math.random() * 10 + 10,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Bottom Light to Dark Wave */}
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-30">
-            <svg
-              viewBox="0 0 1440 120"
-              className="relative block w-full h-24 md:h-32"
-              preserveAspectRatio="none"
-            >
-              <defs>
-                <linearGradient id="bottomWaveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#1f2937" stopOpacity="1" />
-                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0.5" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M0,64L80,69C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58L1440,64L1440,120L0,120Z"
-                fill="url(#bottomWaveGradient)"
-              />
-            </svg>
-          </div>
+         <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
         </section>
 
         {/* Technologies Section with Floating Objects */}
         <section className="relative py-20 bg-gradient-to-b from-blue-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-          <FloatingObjects />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             {/* Section Header with animation */}
             <motion.div
@@ -1070,7 +958,6 @@ const FloatingObjects = () => (
 
         {/* FAQ Section */}
         <section className="relative py-20 bg-blue-100 dark:bg-gray-800 overflow-hidden">
-          <FloatingObjects />
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -1129,6 +1016,11 @@ const FloatingObjects = () => (
 
       {/* CTA Section */}
 <section className="relative py-24 overflow-hidden">
+  {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   
   {/* Background Image */}
   <div className="absolute inset-0">
