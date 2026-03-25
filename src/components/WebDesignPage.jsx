@@ -273,7 +273,7 @@ const ButtonOutline = ({ children, className = "" }) => (
 
 // ---------- Hero Section ----------
 const Hero = () => (
-  <section className="relative bg-gradient-to-br from-indigo-50 via-white to-white py-16 md:py-24 overflow-hidden">
+  <section className="relative bg-gradient-to-br from-indigo-50 via-white to-white py-24 md:py-32 lg:py-40 overflow-hidden">
     
     {/* Background Image */}
     <div className="absolute inset-0 z-0">

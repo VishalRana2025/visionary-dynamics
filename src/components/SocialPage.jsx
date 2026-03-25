@@ -113,7 +113,7 @@ const SocialMediaMarketingPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-purple-50 via-white to-pink-50 overflow-hidden">
+     <section className="relative bg-gradient-to-br from-purple-50 via-white to-pink-50 overflow-hidden min-h-[60vh] py-24 md:py-32 lg:py-40">
   {/* Background Image with Dark Overlay */}
   <div className="absolute inset-0 z-0">
     <div 

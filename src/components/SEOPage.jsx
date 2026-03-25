@@ -429,7 +429,7 @@ const FloatingObjects = () => (
 
       <main className="bg-white dark:bg-gray-900">
         {/* Hero Section */}
-        <section className="relative text-white overflow-hidden">
+       <section className="relative text-white overflow-hidden py-24 md:py-32 lg:py-40">
           {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
             <img

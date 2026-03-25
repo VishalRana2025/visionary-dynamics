@@ -43,6 +43,8 @@ import {
     FileWarning
 } from 'lucide-react';
 
+
+
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
  
@@ -209,6 +211,9 @@ const IndividualTaxationPage = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section with Dark Overlay */}
       <section className="relative min-h-[600px] py-24 flex items-center text-white overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 

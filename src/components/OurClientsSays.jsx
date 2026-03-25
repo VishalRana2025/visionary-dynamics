@@ -488,7 +488,7 @@ export default function OurClients() {
     <div className="min-h-screen bg-gradient-to-b from-white to-purple-50 text-slate-800">
 
       {/* HERO */}
-      <div className="relative h-[40vh] min-h-[400px] flex items-center overflow-hidden">
+      <div className="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{ backgroundImage: `url(${heroBg})` }}

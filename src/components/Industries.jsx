@@ -7,6 +7,25 @@ import {
   UsersIcon,
 } from "@heroicons/react/24/outline";
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+ 
+
 /* HERO BACKGROUND IMAGE */
 const heroBg =
   "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1920&q=80";
@@ -202,8 +221,8 @@ export default function Industries() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white text-slate-800">
       {/* ================= HERO ================= */}
-      <div className="relative h-[25vh] pt-[96px] flex items-center overflow-hidden isolate">
-
+      <div className="relative h-[45vh] pt-[96px] flex items-center overflow-hidden isolate">
+         
         <div
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{ backgroundImage: `url(${heroBg})` }}
@@ -216,6 +235,10 @@ export default function Industries() {
             Industries We Serve
           </h1>
         </div>
+        <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
+ 
       </div>
 
       {/* ================= 3D SECTION ================= */}
@@ -300,6 +323,13 @@ export default function Industries() {
 
       {/* ================= OUR APPROACH ================= */}
       <div className="relative py-28 overflow-hidden">
+        
+        {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
+ 
         <div
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{ backgroundImage: `url(${approachBg})` }}
