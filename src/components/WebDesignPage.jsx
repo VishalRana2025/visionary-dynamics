@@ -20,6 +20,10 @@ import {
   MapPin,
   ArrowRight
 } from "lucide-react";
+// import webDesignImg from "../assets/images/web-design.gif";
+// import mobileImg from "../assets/images/mobile.gif";
+// import frontendImg from "../assets/images/frontend.gif";
+// import backendImg from "../assets/images/backend.gif";
 
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
@@ -317,74 +321,184 @@ const Hero = () => (
 
 // ---------- Services Section ----------
 const services = [
-  { 
-    icon: Monitor, 
-    title: "Custom Website Design", 
-    desc: "Unique, brand-focused designs that captivate your audience and set you apart from competitors.",
-    gradient: "from-pink-500 to-rose-500"
+  {
+    title: "Custom Website Design",
+    desc: "Unique, brand-focused designs that captivate your audience and create lasting first impressions. We craft bespoke digital experiences that reflect your brand's personality, values, and vision while ensuring intuitive navigation and engaging user journeys.",
+    image: "/images/web-design.gif",
+    gradient: "from-pink-500 to-rose-500",
+    features: ["UI/UX Design", "Branding", "Custom Layouts", "Wireframing", "Prototyping"],
+    stats: { projects: 150, satisfaction: "99%" }
   },
-  { 
-    icon: Code, 
-    title: "Frontend Development", 
-    desc: "Modern, responsive interfaces built with React, Vue, or Tailwind for blazing fast performance.",
-    gradient: "from-blue-500 to-cyan-500"
+  {
+    title: "Frontend Development",
+    desc: "Modern, fast and responsive UI development that brings designs to life with clean, maintainable code. We leverage the latest technologies to create lightning-fast, interactive applications that deliver exceptional user experiences across all browsers and devices.",
+    image: "/images/frontend.gif",
+    gradient: "from-blue-500 to-cyan-500",
+    features: ["React", "Tailwind", "Animations", "Next.js", "TypeScript"],
+    stats: { projects: 200, satisfaction: "98%" }
   },
-  { 
-    icon: Smartphone, 
-    title: "Mobile Optimization", 
-    desc: "Flawless experiences across all devices – from smartphones to desktops.",
-    gradient: "from-purple-500 to-indigo-500"
+  {
+    title: "Mobile Optimization",
+    desc: "Perfect experience across all devices with responsive designs that adapt seamlessly to any screen size. We ensure your website loads quickly, functions flawlessly, and provides an intuitive experience whether users are on smartphones, tablets, or desktops.",
+    image: "/images/mobile.gif",
+    gradient: "from-green-500 to-emerald-500",
+    features: ["Responsive Design", "Speed Optimization", "SEO", "Touch Interactions", "Cross-Browser"],
+    stats: { projects: 180, satisfaction: "97%" }
   },
-  { 
-    icon: Zap, 
-    title: "E‑Commerce Solutions", 
-    desc: "Scalable online stores with secure payments, inventory management, and smooth UX.",
-    gradient: "from-amber-500 to-orange-500"
-  },
+  {
+    title: "Backend Development",
+    desc: "Secure and scalable backend systems that power your applications with robust architecture and reliable performance. We build RESTful APIs, manage databases, and implement security protocols to ensure your data is protected and your applications run smoothly under any load.",
+    image: "/images/backend.gif",
+    gradient: "from-purple-500 to-indigo-500",
+    features: ["Node.js", "MongoDB", "API Development", "PostgreSQL", "Authentication"],
+    stats: { projects: 120, satisfaction: "99%" }
+  }
 ];
 
+// Add this CSS to your global styles or component
+const floatingAnimation = `
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(2deg);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-float-delay {
+    animation: float 7s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+`;
+
 const Services = () => (
-  <section className="relative py-16 md:py-24 bg-gradient-to-b from-blue-100 to-blue-100 overflow-hidden">
-    <FloatingObjects />
+  <section className="relative py-24 md:py-32 bg-gradient-to-br from-blue-100 via-blue to-blue-100 overflow-hidden">
+    {/* Add floating animation styles */}
+    <style>{floatingAnimation}</style>
+    
+    {/* Enhanced Background Elements */}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-blue-100 to-cyan-100 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-pink-100 to-rose-100 rounded-full blur-3xl opacity-10"></div>
+    </div>
+
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-      <SectionHeader 
-        title="Our Services" 
-        subtitle="We cover everything from concept to launch – and beyond." 
-      />
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {/* Section Header - Enhanced */}
+      <div className="text-center mb-16 md:mb-24">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-gray-200 mb-6 shadow-sm">
+          <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full animate-pulse"></div>
+          <span className="text-sm font-semibold text-gray-700">Our Expertise</span>
+          <div className="w-1.5 h-1.5 bg-purple-600 rounded-full animate-pulse"></div>
+        </div>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <span className="text-gray-900">
+            Comprehensive
+          </span>
+          <br />
+          <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Development Services
+          </span>
+        </h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          End-to-end solutions tailored to your business needs. From concept to deployment, 
+          we've got you covered with cutting-edge technology and creative expertise.
+        </p>
+      </div>
+
+      {/* Services List */}
+      <div className="space-y-24 md:space-y-32">
         {services.map((service, idx) => (
           <div 
             key={idx} 
-            className="group relative bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            className={`group relative flex flex-col lg:flex-row gap-12 lg:gap-16 items-center ${
+              idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+            }`}
           >
-            {/* Background gradient overlay on hover */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+            {/* Decorative line connector */}
+            {idx < services.length - 1 && (
+              <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-px h-24 bg-gradient-to-b from-gray-300 via-gray-200 to-transparent -bottom-28"></div>
+            )}
             
-            {/* Decorative corner element */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-gray-100 to-transparent rounded-bl-[100px] group-hover:scale-110 transition-transform duration-500"></div>
-            
-            {/* Icon with animated gradient background */}
-            <div className="relative mb-6">
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-xl blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500`}></div>
-              <div className={`relative w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500`}>
-                <service.icon className="text-white" size={28} />
+            {/* Graphic Section - Floating Animation with Rounded Corners */}
+            <div className="relative lg:w-1/2 flex justify-center">
+              {/* Subtle shadow background with glow */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} rounded-3xl blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-700`}></div>
+              
+              {/* Image Container with Floating Animation */}
+              <div className={`relative transform transition-all duration-700 group-hover:scale-105 ${
+                idx % 2 === 0 ? 'animate-float' : 'animate-float-slow'
+              }`}>
+                <img 
+                  src={service.image} 
+                  alt={service.title} 
+                  className="w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] object-contain rounded-3xl shadow-2xl"
+                  style={{
+                    borderRadius: '2rem',
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+                  }}
+                />
+                
+                {/* Decorative corner elements - also rounded */}
+                <div className={`absolute -top-4 -left-4 w-20 h-20 border-t-4 border-l-4 ${service.gradient.replace('from-', 'border-').replace('to-', '')} border-opacity-40 rounded-tl-3xl`} style={{ borderRadius: '1.5rem' }}></div>
+                <div className={`absolute -bottom-4 -right-4 w-20 h-20 border-b-4 border-r-4 ${service.gradient.replace('from-', 'border-').replace('to-', '')} border-opacity-40 rounded-br-3xl`} style={{ borderRadius: '1.5rem' }}></div>
+                
+                {/* Optional: Floating shadow effect */}
+                <div className={`absolute -inset-4 bg-gradient-to-r ${service.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10`}></div>
               </div>
             </div>
-            
-            {/* Content */}
-            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 transition-all duration-500">
-              {service.title}
-            </h3>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              {service.desc}
-            </p>
-            
-            {/* Animated underline */}
-            <div className={`h-0.5 w-0 group-hover:w-full bg-gradient-to-r ${service.gradient} transition-all duration-500`}></div>
+
+            {/* Text Section - Enhanced */}
+            <div className="lg:w-1/2 space-y-6">
+              {/* Title with badge */}
+              <div className="relative">
+                <div className="inline-block mb-3">
+                  <span className={`text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${service.gradient} bg-opacity-10 text-gray-600`}>
+                    Service {idx + 1} / {services.length}
+                  </span>
+                </div>
+                <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent mb-4`}>
+                  {service.title}
+                </h2>
+                <div className={`absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r ${service.gradient} rounded-full transform origin-left group-hover:w-32 transition-all duration-500`}></div>
+              </div>
+              
+              {/* Description - More detailed */}
+              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                {service.desc}
+              </p>
+              
+              {/* Feature tags - Enhanced with icons */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {service.features.map((feature, fIdx) => (
+                  <span 
+                    key={fIdx}
+                    className="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-50 text-gray-700 hover:bg-white hover:shadow-md transition-all duration-300 border border-gray-100 flex items-center gap-1"
+                  >
+                    <svg className="w-3 h-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {feature}
+                  </span>
+                ))}
+              </div>
+             
+              
+            </div>
           </div>
         ))}
       </div>
+
+      
     </div>
   </section>
 );
