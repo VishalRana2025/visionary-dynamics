@@ -277,45 +277,38 @@ const ButtonOutline = ({ children, className = "" }) => (
 
 // ---------- Hero Section ----------
 const Hero = () => (
-  <section className="relative bg-gradient-to-br from-indigo-50 via-white to-white py-24 md:py-32 lg:py-40 overflow-hidden">
+  <section className="relative h-[700px] flex items-center bg-gradient-to-br from-indigo-50 via-white to-white overflow-hidden">
     
-    {/* Background Image */}
+    {/* Background Video */}
     <div className="absolute inset-0 z-0">
-      <img
-        src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=2000&q=80"
-        alt="background"
+      <video
+        src="/videos/web.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black/60"></div>
     </div>
 
     {/* Content */}
-    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+    <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
       
       {/* Left Content */}
       <div className="md:w-1/2 mb-10 md:mb-0">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-          We Build <span className="text-indigo-600">Digital Experiences</span> That Drive Growth
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+          We Build <span className="text-indigo-400">Digital Experiences</span> That Drive Growth
         </h1>
       </div>
 
-      {/* Right Image */}
-      <div className="md:w-1/2 flex justify-end">
-        <div className="relative w-full max-w-md">
-          <div className="absolute inset-0 bg-indigo-200 rounded-2xl transform rotate-3 scale-105 opacity-50"></div>
-
-          <img
-            src="https://5.imimg.com/data5/SELLER/Default/2024/2/393274106/FE/ZK/LV/205056426/screenshot-2024-02-26-095403-500x500.png"
-            alt="Web design team working"
-            className="relative rounded-2xl shadow-2xl object-cover w-full h-auto"
-          />
-        </div>
-      </div>
-
     </div>
+
+    {/* Wave */}
     <div className="absolute bottom-0 left-0 w-full z-30">
-  <WaveTransition />
-</div>
+      <WaveTransition />
+    </div>
+
   </section>
 );
 
@@ -506,129 +499,278 @@ const Services = () => (
 // ---------- Our Process Section ----------
 const steps = [
   { 
-    number: "01", 
-    title: "Discovery", 
-    desc: "We learn about your business, goals, and target audience to create a solid foundation.",
-    icon: "🔍",
-    color: "from-blue-500 to-cyan-500"
+    title: "Planning", 
+    icon: "📋",
+    gradient: "from-blue-500 to-cyan-500",
+    desc: "Strategic planning and goal setting",
+    color: "blue"
   },
   { 
-    number: "02", 
-    title: "Planning & Strategy", 
-    desc: "Wireframes, sitemaps, and tech stack decisions – we map out every detail.",
-    icon: "📊",
-    color: "from-purple-500 to-pink-500"
-  },
-  { 
-    number: "03", 
     title: "Design", 
-    desc: "Beautiful, user‑centered design that reflects your brand identity.",
     icon: "🎨",
-    color: "from-orange-500 to-red-500"
+    gradient: "from-purple-500 to-pink-500",
+    desc: "User-centered visual design",
+    color: "purple"
   },
   { 
-    number: "04", 
+    title: "Content Creation", 
+    icon: "✍️",
+    gradient: "from-orange-500 to-red-500",
+    desc: "Compelling copy and visuals",
+    color: "orange"
+  },
+  { 
     title: "Development", 
-    desc: "Clean code with modern frameworks, ensuring speed, security, and scalability.",
     icon: "💻",
-    color: "from-green-500 to-emerald-500"
+    gradient: "from-green-500 to-emerald-500",
+    desc: "Clean, scalable code",
+    color: "green"
   },
   { 
-    number: "05", 
-    title: "Testing & Launch", 
-    desc: "Rigorous testing across devices and browsers, then we launch your site.",
+    title: "Testing", 
+    icon: "🧪",
+    gradient: "from-indigo-500 to-blue-500",
+    desc: "Comprehensive QA",
+    color: "indigo"
+  },
+  { 
+    title: "Launch", 
     icon: "🚀",
-    color: "from-indigo-500 to-blue-500"
+    gradient: "from-yellow-500 to-amber-500",
+    desc: "Seamless deployment",
+    color: "yellow"
   },
   { 
-    number: "06", 
-    title: "Support & Growth", 
-    desc: "Ongoing maintenance, updates, and optimization to keep you ahead.",
-    icon: "📈",
-    color: "from-yellow-500 to-amber-500"
-  },
+    title: "Maintenance", 
+    icon: "⚙️",
+    gradient: "from-teal-500 to-cyan-500",
+    desc: "Ongoing support",
+    color: "teal"
+  }
 ];
 
 const OurProcess = () => (
-  <section className="relative py-16 md:py-24 bg-gradient-to-b from-blue-100 to-blue-100 overflow-hidden">
-    <FloatingObjects />
-    
-    {/* Decorative background elements */}
-    <div className="absolute inset-0 opacity-30">
-      <div className="absolute top-0 left-0 w-64 h-64 bg-blue-100 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-100 rounded-full blur-3xl"></div>
-    </div>
-    
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-      <SectionHeader 
-        title="Our Process" 
-        subtitle="A transparent, step‑by‑step approach that ensures your project succeeds." 
-      />
+  <section className="relative py-24 md:py-32 bg-gradient-to-br from-blue-100 via-blue to-blue-100 overflow-hidden">
+    {/* Enhanced Animated Background */}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float-slow"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float-delay"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
       
-      {/* Timeline connector (hidden on mobile) */}
-      <div className="hidden lg:block relative h-0.5 bg-gray-200 mx-12 mb-12">
-        <div className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600" style={{ width: 'calc(100% / 6 * 2)' }}></div>
+      {/* Grid Pattern Overlay */}
+     <div
+  className={`absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" xmlns="http://www.w3.org/2000/svg"%3E...%3C/svg%3E')] opacity-10`}
+></div>
+</div>
+
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      {/* Enhanced Header */}
+      <div className="text-center mb-20 md:mb-24">
+        
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <span className="text-gray-900">
+            Stages of Website
+          </span>
+          <br />
+          <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x">
+            Development Timeline
+          </span>
+        </h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          A structured approach that takes your project from concept to launch and beyond.
+        </p>
+      </div>
+
+      {/* Enhanced Timeline Container */}
+      <div className="relative mt-12 md:mt-24">
+        {/* Glow Effect Behind Timeline */}
+        <div className="hidden md:block absolute left-0 right-0 top-1/2 transform -translate-y-1/2 h-2">
+          <div className="h-full bg-gradient-to-r from-transparent via-indigo-200 to-transparent blur-sm"></div>
+        </div>
+        
+        {/* Timeline Line Container */}
+        <div className="hidden md:block absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
+          {/* Background Line with Gradient */}
+          <div className="h-0.5 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded-full"></div>
+          
+          {/* Animated Progress Line */}
+          <div className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full animate-progress-line" style={{ width: '100%' }}></div>
+          
+          {/* Animated Dots on Timeline */}
+          <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between px-12">
+            {steps.map((_, idx) => (
+              <div key={idx} className="w-2 h-2 bg-indigo-400 rounded-full animate-pulse-slow" style={{ animationDelay: `${idx * 0.2}s` }}></div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Steps Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 md:gap-4 relative">
+          {steps.map((step, idx) => (
+            <div key={idx} className="relative group">
+              {/* Step Container with Hover Effects */}
+              <div className="flex flex-col items-center text-center transform transition-all duration-500 group-hover:translate-y-[-8px]">
+                {/* Icon Circle with Enhanced Effects */}
+                <div className="relative bg-white rounded-full p-1.5 z-20">
+                  {/* Outer Glow Ring */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${step.gradient} blur-xl opacity-40 group-hover:opacity-80 transition-all duration-500`}></div>
+                  
+                  {/* Main Circle with Rotating Border */}
+                  <div className={`relative z-10 w-24 h-24 md:w-20 md:h-20 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all duration-500 cursor-pointer overflow-hidden`}>
+                    {/* Shine Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <span className="text-3xl md:text-2xl filter drop-shadow-lg group-hover:scale-110 transition-transform duration-300">{step.icon}</span>
+                  </div>
+                  
+                  {/* Step Number Badge with Animation */}
+                  <div className="absolute -top-2 -right-2 w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-white group-hover:border-indigo-200 transition-all duration-300 z-30 animate-bounce-slow">
+                    <span className={`text-xs font-bold bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent`}>
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  
+                  {/* Pulse Ring */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent animate-ping-slow opacity-0 group-hover:opacity-100"></div>
+                </div>
+                
+                {/* Title with Gradient */}
+                <h3 className={`text-base md:text-sm font-bold mt-4 mb-2 bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent group-hover:scale-105 transition-all duration-300`}>
+                  {step.title}
+                </h3>
+                
+                {/* Enhanced Description Tooltip */}
+                <div className="hidden md:block absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-56 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-20 group-hover:translate-y-0 translate-y-2">
+                  <div className="bg-white rounded-2xl shadow-2xl p-4 border border-gray-100 backdrop-blur-sm">
+                    <div className={`w-1 h-8 bg-gradient-to-b ${step.gradient} rounded-full absolute left-3 top-1/2 transform -translate-y-1/2`}></div>
+                    <p className="text-xs text-gray-600 leading-relaxed pl-3">{step.desc}</p>
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rotate-45 border-t border-l border-gray-100"></div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Connector Dots for Mobile */}
+              {idx < steps.length - 1 && (
+                <div className="md:hidden absolute left-1/2 top-28 w-px h-10 bg-gradient-to-b from-gray-300 to-transparent"></div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {/* Enhanced Mobile Detailed View */}
+      <div className="md:hidden mt-12 space-y-4">
         {steps.map((step, idx) => (
-          <div 
-            key={idx} 
-            className="group relative bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden border border-gray-100"
-          >
-            {/* Background gradient on hover */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-            
-            {/* Number badge */}
-            <div className="absolute top-4 right-4">
-              <span className="text-5xl font-black text-gray-100 group-hover:text-gray-200 transition-colors duration-300">
-                {step.number}
-              </span>
-            </div>
-            
-            {/* Icon with gradient circle */}
-            <div className="relative mb-6">
-              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                <span className="text-3xl filter drop-shadow-lg">{step.icon}</span>
+          <div key={idx} className="group bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-500 hover:translate-x-2 border border-gray-100">
+            <div className="flex items-center gap-4">
+              <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                <span className="text-2xl">{step.icon}</span>
+                <div className="absolute -top-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-[10px] font-bold text-gray-700">{String(idx + 1).padStart(2, '0')}</span>
+                </div>
               </div>
-              
-              {/* Pulse effect */}
-              <div className={`absolute -inset-1 rounded-2xl bg-gradient-to-br ${step.color} opacity-20 group-hover:opacity-30 blur-md transition-opacity duration-500`}></div>
-            </div>
-            
-            {/* Title with gradient on hover */}
-            <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 transition-all duration-500">
-              {step.title}
-            </h3>
-            
-            <p className="text-gray-600 leading-relaxed mb-6">
-              {step.desc}
-            </p>
-            
-            {/* Progress indicator */}
-            <div className="relative pt-2">
-             <div className="h-1 w-full bg-gray-100 rounded-full overflow-hidden">
-              <div
-             className={`h-full w-0 group-hover:w-full bg-gradient-to-r ${step.color} rounded-full transition-all duration-1000`}
-             ></div>
-            </div>
-              
-              {/* Step number indicator */}
-              <div className="absolute -bottom-2 right-0 text-xs font-semibold text-gray-400">
-                Step {step.number} of 06
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">{step.title}</h3>
+                <p className="text-xs text-gray-500 mt-1 leading-relaxed">{step.desc}</p>
               </div>
+              <svg className="w-5 h-5 text-gray-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </div>
-            
-            {/* Connection line between steps (for desktop view) */}
-            {idx < steps.length - 1 && (
-              <div className="hidden lg:block absolute -right-4 top-1/2 transform -translate-y-1/2 z-20">
-                <ChevronRight className="w-6 h-6 text-gray-300 group-hover:text-indigo-400 transition-colors duration-300" />
-              </div>
-            )}
           </div>
         ))}
       </div>
+      
+      {/* Enhanced Summary Section */}
+      <div className="mt-20 text-center">
+        <div className="inline-flex flex-col md:flex-row items-center gap-4 p-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105">
+          <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3">
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-white animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-white font-semibold">8-12 Weeks Average Timeline</span>
+            </div>
+          </div>
+          <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 py-3">
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-white animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-white font-semibold">100% Satisfaction Guaranteed</span>
+            </div>
+          </div>
+        </div>
+        <p className="text-sm text-gray-500 mt-6 flex items-center justify-center gap-2">
+          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          Each stage is carefully executed to ensure quality, performance, and your complete satisfaction
+        </p>
+      </div>
     </div>
+
+    <style>{`
+      @keyframes blob {
+        0%, 100% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+      }
+      
+      @keyframes progress {
+        0% { width: 0%; }
+        100% { width: 100%; }
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(2deg); }
+      }
+      
+      @keyframes gradient-x {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+      
+      .animate-blob {
+        animation: blob 7s infinite;
+      }
+      
+      .animate-progress-line {
+        animation: progress 2s ease-out forwards;
+      }
+      
+      .animate-float-slow {
+        animation: float 8s ease-in-out infinite;
+      }
+      
+      .animate-float-delay {
+        animation: float 10s ease-in-out infinite;
+        animation-delay: 2s;
+      }
+      
+      .animate-pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      
+      .animate-ping-slow {
+        animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      }
+      
+      .animate-bounce-slow {
+        animation: bounce 2s ease-in-out infinite;
+      }
+      
+      .animate-gradient-x {
+        background-size: 200% 200%;
+        animation: gradient-x 3s ease infinite;
+      }
+      
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      
+      .shadow-3xl {
+        box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+      }
+    `}</style>
   </section>
 );
 
@@ -674,150 +816,133 @@ const reasons = [
 ];
 
 const WhyChooseUs = () => (
-<section className="relative py-16 md:py-24 overflow-hidden text-white">
-  {/* Top Wave */}
-  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
-    <WaveTransition direction="top" />
-  </div>
- 
+  <section className="relative py-16 md:py-24 overflow-hidden text-white">
+    {/* Top Wave */}
+    <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+      <WaveTransition direction="top" />
+    </div>
 
-  {/* Background Image */}
-  <div className="absolute inset-0 pointer-events-none">
-    <img
-      src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2070&q=80"
-      alt="Background"
-      className="w-full h-full object-cover scale-110"
-    />
-  </div>
+    {/* Background Image */}
+    <div className="absolute inset-0 pointer-events-none">
+      <img
+        src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2070&q=80"
+        alt="Background"
+        className="w-full h-full object-cover scale-110"
+      />
+    </div>
 
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>
+    {/* Dark Overlay - Made darker for better contrast */}
+    <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/90 to-black/95"></div>
 
-  {/* Decorative blob elements */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-    <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-    <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-  </div>
+    {/* Decorative blob elements - Reduced opacity */}
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+      <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+      <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
+    </div>
 
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <SectionHeader title="Why Choose Us" />
 
-    <SectionHeader
-      title="Why Choose Us"
-    />
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        {reasons.map((reason, idx) => (
+          <div
+            key={idx}
+            className="group relative bg-white/15 backdrop-blur-md rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden border border-white/20 hover:border-white/40"
+          >
+            {/* Hover Background Image - Reduced opacity to keep content readable */}
+            <div className="absolute inset-0 pointer-events-none">
+              <img
+                src={reason.bgImage}
+                alt=""
+                className="w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity duration-700 scale-110 group-hover:scale-100"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-br ${reason.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-700 mix-blend-overlay`}></div>
+            </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {/* Pattern - Reduced opacity */}
+            <div className="absolute top-0 right-0 text-8xl opacity-10 group-hover:opacity-20 transition-opacity duration-500 transform rotate-12">
+              {reason.bgPattern}
+            </div>
 
-      {reasons.map((reason, idx) => (
+            {/* Gradient Border - More visible */}
+            <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${reason.gradient} group-hover:h-1.5 transition-all duration-300`}></div>
 
-        <div
-          key={idx}
-          className="group relative bg-white/10 backdrop-blur-md rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden border border-white/10"
-        >
-
-          {/* Hover Background Image */}
-<div className="absolute inset-0 pointer-events-none">
-            <img
-              src={reason.bgImage}
-              alt=""
-              className="w-full h-full object-cover opacity-0 group-hover:opacity-30 transition-opacity duration-700 scale-110 group-hover:scale-100"
-            />
-
-            <div className={`absolute inset-0 bg-gradient-to-br ${reason.gradient} opacity-0 group-hover:opacity-70 transition-opacity duration-700 mix-blend-overlay`}></div>
-          </div>
-
-          {/* Pattern */}
-          <div className="absolute top-0 right-0 text-8xl opacity-5 group-hover:opacity-10 transition-opacity duration-500 transform rotate-12">
-            {reason.bgPattern}
-          </div>
-
-          {/* Gradient Border */}
-          <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${reason.gradient}`}></div>
-
-          <div className="relative p-8 z-10">
-
-            {/* Icon */}
-            <div className="relative mb-6">
-
-              <div className={`absolute inset-0 bg-gradient-to-r ${reason.gradient} rounded-2xl blur-lg opacity-30 group-hover:opacity-60 transition-opacity duration-500`}></div>
-
-              <div className={`relative w-20 h-20 bg-gradient-to-br ${reason.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                <reason.icon className="text-white w-8 h-8" />
+            <div className="relative p-8 z-10">
+              {/* Icon - Enhanced visibility */}
+              <div className="relative mb-6">
+                <div className={`absolute inset-0 bg-gradient-to-r ${reason.gradient} rounded-2xl blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500`}></div>
+                <div className={`relative w-20 h-20 bg-gradient-to-br ${reason.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                  <reason.icon className="text-white w-8 h-8" />
+                </div>
               </div>
 
+              {/* Title - Always readable */}
+              <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-white transition-all duration-500">
+                {reason.title}
+              </h3>
+
+              {/* Description - Always readable with better contrast */}
+              <p className="text-gray-200 leading-relaxed mb-6 group-hover:text-gray-100 transition-colors duration-500 font-medium">
+                {reason.desc}
+              </p>
+
+              {/* Stats - More prominent */}
+              <div className={`inline-flex items-center px-4 py-2 bg-gradient-to-r ${reason.gradient} bg-opacity-40 group-hover:bg-opacity-60 rounded-full backdrop-blur-sm transition-all duration-500`}>
+                <span className="text-sm font-semibold text-white">
+                  {reason.stats}
+                </span>
+              </div>
+
+              {/* Progress Ring - More visible */}
+              <div className="absolute bottom-4 right-4 opacity-40 group-hover:opacity-70 transition-opacity duration-500">
+                <svg className="w-16 h-16" viewBox="0 0 100 100">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeDasharray="251.2"
+                    strokeDashoffset={251.2 * (1 - (idx + 1) * 0.15)}
+                    className="text-white transform -rotate-90 origin-center"
+                  />
+                </svg>
+              </div>
             </div>
-
-            {/* Title */}
-            <h3 className="text-2xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-300 group-hover:to-purple-400 transition-all duration-500">
-              {reason.title}
-            </h3>
-
-            {/* Description */}
-            <p className="text-gray-300 leading-relaxed mb-6 group-hover:text-white transition-colors duration-500">
-              {reason.desc}
-            </p>
-
-            {/* Stats */}
-            <div className={`inline-flex items-center px-4 py-2 bg-gradient-to-r ${reason.gradient} bg-opacity-20 rounded-full backdrop-blur-sm`}>
-              <span className="text-sm font-semibold text-white">
-                {reason.stats}
-              </span>
-            </div>
-
-            {/* Progress Ring */}
-            <div className="absolute bottom-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
-              <svg className="w-16 h-16" viewBox="0 0 100 100">
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="40"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeDasharray="251.2"
-                  strokeDashoffset={251.2 * (1 - (idx + 1) * 0.15)}
-                  className="text-white transform -rotate-90 origin-center"
-                />
-              </svg>
-            </div>
-
           </div>
-
-        </div>
-
-      ))}
-
+        ))}
+      </div>
     </div>
-  </div>
 
-  {/* Blob Animation */}
-  <style>{`
-    @keyframes blob {
-      0% { transform: translate(0px, 0px) scale(1); }
-      33% { transform: translate(30px, -50px) scale(1.1); }
-      66% { transform: translate(-20px, 20px) scale(0.9); }
-      100% { transform: translate(0px, 0px) scale(1); }
-    }
+    {/* Blob Animation */}
+    <style>{`
+      @keyframes blob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
 
-    .animate-blob {
-      animation: blob 7s infinite;
-    }
+      .animate-blob {
+        animation: blob 7s infinite;
+      }
 
-    .animation-delay-2000 {
-      animation-delay: 2s;
-    }
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
 
-    .animation-delay-4000 {
-      animation-delay: 4s;
-    }
-  `}</style>
-  <div className="absolute bottom-0 left-0 w-full z-30">
-  <WaveTransition />
-</div>
-
-</section>
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+    `}</style>
+    
+    <div className="absolute bottom-0 left-0 w-full z-30">
+      <WaveTransition />
+    </div>
+  </section>
 );
-
 // ---------- Technologies We Use ----------
 const techs = [
   { name: "React", icon: "⚛️", category: "Frontend", proficiency: 95, color: "from-cyan-500 to-blue-500" },
