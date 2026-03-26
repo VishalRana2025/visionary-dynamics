@@ -433,7 +433,7 @@ const FloatingObjects = () => (
           {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
             <img
-              src="https://img.freepik.com/premium-photo/person-manage-search-engine-optimization-seo-digital-marketing-with-social-media-content_34141-1030.jpg"
+              src="/images/seo1img.jpg"
               alt="Digital marketing analytics"
               className="w-full h-full object-cover"
             />
@@ -478,215 +478,553 @@ const FloatingObjects = () => (
         </section>
 
         {/* Services Section with Floating Objects */}
-        <section className="relative py-20 bg-gradient-to-b from-blue-100 to-blue-100 overflow-hidden">
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-            {/* Section Header with decorative elements */}
-            <div className="text-center mb-16 relative">
-              <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm tracking-wider uppercase mb-4 block">
-                What We Offer
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 relative">
-                Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">SEO Services</span>
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mx-auto rounded-full mb-6"></div>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                We offer end-to-end SEO solutions tailored to your business needs
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => {
-                // Define color schemes for each card
-                const colorSchemes = [
-                  {
-                    bgLight: "bg-blue-100",
-                    bgDark: "dark:bg-blue-900/30",
-                    text: "text-blue-600",
-                    textDark: "dark:text-blue-400",
-                    hoverBg: "group-hover:bg-blue-600",
-                    gradientFrom: "from-blue-600",
-                    ring: "ring-blue-200"
-                  },
-                  {
-                    bgLight: "bg-purple-100",
-                    bgDark: "dark:bg-purple-900/30",
-                    text: "text-purple-600",
-                    textDark: "dark:text-purple-400",
-                    hoverBg: "group-hover:bg-purple-600",
-                    gradientFrom: "from-purple-600",
-                    ring: "ring-purple-200"
-                  },
-                  {
-                    bgLight: "bg-pink-100",
-                    bgDark: "dark:bg-pink-900/30",
-                    text: "text-pink-600",
-                    textDark: "dark:text-pink-400",
-                    hoverBg: "group-hover:bg-pink-600",
-                    gradientFrom: "from-pink-600",
-                    ring: "ring-pink-200"
-                  },
-                  {
-                    bgLight: "bg-green-100",
-                    bgDark: "dark:bg-green-900/30",
-                    text: "text-green-600",
-                    textDark: "dark:text-green-400",
-                    hoverBg: "group-hover:bg-green-600",
-                    gradientFrom: "from-green-600",
-                    ring: "ring-green-200"
-                  },
-                  {
-                    bgLight: "bg-orange-100",
-                    bgDark: "dark:bg-orange-900/30",
-                    text: "text-orange-600",
-                    textDark: "dark:text-orange-400",
-                    hoverBg: "group-hover:bg-orange-600",
-                    gradientFrom: "from-orange-600",
-                    ring: "ring-orange-200"
-                  },
-                  {
-                    bgLight: "bg-red-100",
-                    bgDark: "dark:bg-red-900/30",
-                    text: "text-red-600",
-                    textDark: "dark:text-red-400",
-                    hoverBg: "group-hover:bg-red-600",
-                    gradientFrom: "from-red-600",
-                    ring: "ring-red-200"
-                  }
-                ];
+        <section className="relative py-24 bg-blue-100 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header */}
+    <div className="text-center mb-16">
+      <span className="text-blue-600 font-semibold text-sm tracking-wider uppercase mb-4 block">
+        What We Offer
+      </span>
+      <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+        Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">SEO Services</span>
+      </h2>
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        We offer end-to-end SEO solutions tailored to your business needs
+      </p>
+    </div>
 
-                const colors = colorSchemes[index % colorSchemes.length];
-
-                return (
-                  <div
-                    key={index}
-                    className="group relative bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
-                  >
-                    {/* Background decorative element with dynamic color */}
-                    <div className={`absolute top-0 right-0 w-32 h-32 ${colors.bgLight} ${colors.bgDark} rounded-full -mr-16 -mt-16 transition-all duration-300 group-hover:scale-150`}></div>
-                    
-                    {/* Icon with gradient background - dynamic colors */}
-                    <div className="relative z-10 mb-6">
-                      <div className={`inline-flex items-center justify-center w-16 h-16 ${colors.bgLight} ${colors.bgDark} rounded-xl ${colors.text} ${colors.textDark} ${colors.hoverBg} group-hover:text-white transition-all duration-300`}>
-                        {service.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="relative z-10">
-                      <h3 className={`text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:${colors.text} dark:group-hover:${colors.textDark} transition-colors`}>
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    {/* Bottom gradient border on hover */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${colors.gradientFrom} to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300`}></div>
-                  </div>
-                );
-              })}
-            </div>
+    {/* Services - Alternating image and text with floating images */}
+    <div className="space-y-32">
+      {/* Service 1 - Keyword Research */}
+      <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="flex-1 w-full">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation">
+            <img 
+              src="/images/searchengine.jpg"
+              alt="Keyword Research"
+              className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20"></div>
           </div>
-        </section>
+        </div>
+        
+        <div className="flex-1 w-full">
+          <div className="max-w-lg mx-auto lg:mx-0">
+            <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Keyword Research & Strategy
+            </h3>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Uncover high-value keywords that your target audience is actually searching for. We analyze search intent, competition, and volume to build a winning strategy.
+            </p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">High-intent keyword targeting</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Competitor keyword gap analysis</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Long-tail keyword opportunities</span>
+              </li>
+            </ul>
+            <a href="#" className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
+              Learn more about Keyword Research
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Service 2 - On-Page SEO */}
+      <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
+        <div className="flex-1 w-full">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-1000">
+            <img 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80"
+              alt="On-Page SEO"
+              className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-pink-600/20"></div>
+          </div>
+        </div>
+        
+        <div className="flex-1 w-full">
+          <div className="max-w-lg mx-auto lg:mx-0">
+            <div className="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              On-Page SEO Optimization
+            </h3>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Optimize every element of your website to rank higher. From meta tags to content structure, we ensure search engines understand and value your pages.
+            </p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Title tags & meta descriptions</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Header structure optimization (H1-H6)</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Content & image optimization</span>
+              </li>
+            </ul>
+            <a href="#" className="inline-flex items-center gap-2 text-purple-600 font-semibold hover:gap-3 transition-all">
+              Learn more about On-Page SEO
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Service 3 - Technical SEO */}
+      <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="flex-1 w-full">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-2000">
+            <img 
+              src="/images/seoanalytics.jpg"
+              alt="Technical SEO"
+              className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-green-600/20 to-teal-600/20"></div>
+          </div>
+        </div>
+        
+        <div className="flex-1 w-full">
+          <div className="max-w-lg mx-auto lg:mx-0">
+            <div className="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Technical SEO Audit & Fixes
+            </h3>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Identify and resolve technical issues preventing search engines from properly crawling and indexing your site.
+            </p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Site speed optimization</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Mobile responsiveness</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Crawlability & indexation issues</span>
+              </li>
+            </ul>
+            <a href="#" className="inline-flex items-center gap-2 text-green-600 font-semibold hover:gap-3 transition-all">
+              Learn more about Technical SEO
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Service 4 - Link Building */}
+      <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
+        <div className="flex-1 w-full">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation">
+            <img 
+              src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              alt="Link Building"
+              className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-orange-600/20 to-red-600/20"></div>
+          </div>
+        </div>
+        
+        <div className="flex-1 w-full">
+          <div className="max-w-lg mx-auto lg:mx-0">
+            <div className="w-14 h-14 rounded-xl bg-orange-100 flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.102m3.172-3.172a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.102-1.102" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Link Building & Authority
+            </h3>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Build high-quality backlinks from authoritative websites to boost your domain authority and search rankings.
+            </p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">High-authority backlink acquisition</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Guest posting opportunities</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Competitor backlink analysis</span>
+              </li>
+            </ul>
+            <a href="#" className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:gap-3 transition-all">
+              Learn more about Link Building
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Service 5 - Local SEO */}
+      <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="flex-1 w-full">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-1000">
+            <img 
+              src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80"
+              alt="Local SEO"
+              className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-600/20 to-blue-600/20"></div>
+          </div>
+        </div>
+        
+        <div className="flex-1 w-full">
+          <div className="max-w-lg mx-auto lg:mx-0">
+            <div className="w-14 h-14 rounded-xl bg-cyan-100 flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Local SEO Optimization
+            </h3>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Dominate local search results and attract customers in your area with optimized Google Business Profile and local citations.
+            </p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Google Business Profile optimization</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Local citation building</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Review management & reputation</span>
+              </li>
+            </ul>
+            <a href="#" className="inline-flex items-center gap-2 text-cyan-600 font-semibold hover:gap-3 transition-all">
+              Learn more about Local SEO
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Service 6 - Analytics & Reporting */}
+      <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
+        <div className="flex-1 w-full">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-2000">
+            <img 
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              alt="Analytics & Reporting"
+              className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/20 to-purple-600/20"></div>
+          </div>
+        </div>
+        
+        <div className="flex-1 w-full">
+          <div className="max-w-lg mx-auto lg:mx-0">
+            <div className="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Analytics & Performance Reporting
+            </h3>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Track, measure, and optimize your SEO performance with detailed analytics and transparent monthly reports.
+            </p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Real-time ranking tracking</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">Custom monthly reports</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-600">ROI analysis & insights</span>
+              </li>
+            </ul>
+            <a href="#" className="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:gap-3 transition-all">
+              Learn more about Analytics
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style jsx>{`
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+    
+    .floating-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .animation-delay-1000 {
+      animation-delay: 1s;
+    }
+    
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+  `}</style>
+</section>
 
         {/* Our Process Section with Floating Objects */}
-        <section className="relative py-20 bg-gradient-to-br from-blue-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Our Proven SEO Process
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                A systematic approach to achieving sustainable SEO results
-              </p>
-            </div>
+      <section className="relative py-24 bg-gradient-to-br from-blue-100 via-blue to-blue-100 dark:from-blue-100 dark:via-blue-100 dark:to-blue-100 overflow-hidden">
+  {/* Animated Background Elements */}
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-slow"></div>
+    <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float-delay"></div>
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse-slow"></div>
+  </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {steps.map((step, index) => {
-                // Define icons for each step
-                const icons = [
-                  <svg key="analysis" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>,
-                  <svg key="keyword" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
-                  </svg>,
-                  <svg key="optimization" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>,
-                  <svg key="content" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>,
-                  <svg key="link" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                  </svg>,
-                  <svg key="reporting" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                ];
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    {/* Enhanced Header */}
+    <div className="text-center mb-20">
+     
+      <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <span className="text-gray-900 dark:text-white">Our Proven</span>
+        <br />
+        <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          SEO Process
+        </span>
+      </h2>
+      <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        A systematic approach to achieving sustainable SEO results
+      </p>
+    </div>
 
-                // Color schemes for each step
-                const colors = [
-                  "from-blue-500 to-cyan-500",
-                  "from-purple-500 to-pink-500",
-                  "from-green-500 to-emerald-500",
-                  "from-orange-500 to-amber-500",
-                  "from-red-500 to-rose-500",
-                  "from-indigo-500 to-blue-500"
-                ];
+    {/* Enhanced Timeline */}
+    <div className="relative mt-16 md:mt-20">
+      {/* Animated Gradient Center Line */}
+      <div className="absolute top-1/2 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-indigo-400 to-transparent dark:via-indigo-500 -translate-y-1/2 rounded-full opacity-50"></div>
+      <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gray-300 dark:bg-gray-600 -translate-y-1/2"></div>
 
-                return (
-                  <div
-                    key={index}
-                    className="group relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
-                  >
-                    {/* Gradient background on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${colors[index % colors.length]} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-                    
-                    {/* Top gradient border */}
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${colors[index % colors.length]} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
-                    
-                    <div className="p-8">
-                      {/* Header with icon and step number */}
-                      <div className="flex items-start justify-between mb-6">
-                        <div className={`p-3 bg-gradient-to-br ${colors[index % colors.length]} bg-opacity-10 rounded-xl text-gray-700 dark:text-white group-hover:scale-110 transition-transform duration-300`}>
-                          {icons[index % icons.length]}
-                        </div>
-                        <span className={`text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br ${colors[index % colors.length]} opacity-20 group-hover:opacity-30 transition-opacity`}>
-                          {step.number}
-                        </span>
-                      </div>
-                      
-                      {/* Content */}
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {step.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                        {step.description}
-                      </p>
-                      
-                      {/* Step indicator */}
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                          <div 
-                            className={`h-full bg-gradient-to-r ${colors[index % colors.length]} rounded-full transition-all duration-700`}
-                            style={{ width: `${((index + 1) / steps.length) * 100}%` }}
-                          ></div>
-                        </div>
-                        <span className="text-sm font-semibold text-gray-500 dark:text-gray-400">
-                          {index + 1}/{steps.length}
-                        </span>
-                      </div>
-                    </div>
+      <div className="flex flex-wrap md:flex-nowrap justify-between items-center relative z-10 gap-8 md:gap-0">
+        {steps.map((step, index) => {
+          const icons = [
+            <svg key="analysis" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>,
+            <svg key="keyword" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+            </svg>,
+            <svg key="opt" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>,
+            <svg key="content" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>,
+            <svg key="link" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>,
+            <svg key="report" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          ];
+
+          const colors = [
+            "from-blue-500 to-cyan-500",
+            "from-purple-500 to-pink-500",
+            "from-green-500 to-emerald-500",
+            "from-orange-500 to-amber-500",
+            "from-red-500 to-rose-500",
+            "from-indigo-500 to-blue-500"
+          ];
+
+          return (
+            <div key={index} className="flex flex-col items-center w-full group relative">
+
+              {/* TOP TEXT */}
+              {index % 2 !== 0 && (
+                <div className="mb-6 text-center transform transition-all duration-500 group-hover:-translate-y-1">
+                  <h3 className="text-sm md:text-base font-bold text-gray-800 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 transition-all duration-300">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {step.shortDesc || "Learn more"}
+                  </p>
+                </div>
+              )}
+
+              {/* CIRCLE */}
+              <div className="relative">
+                {/* Outer Glow Ring */}
+                <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${colors[index % colors.length]} blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500`}></div>
+                
+                {/* Main Circle */}
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white dark:border-gray-700 flex items-center justify-center bg-white dark:bg-gray-800 shadow-lg group-hover:shadow-2xl transition-all duration-500 group-hover:scale-110">
+                  {/* Inner Gradient Circle */}
+                  <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-r ${colors[index % colors.length]} flex items-center justify-center text-white shadow-md group-hover:shadow-lg transition-all duration-500`}>
+                    {icons[index % icons.length]}
                   </div>
-                );
-              })}
+                </div>
+
+                {/* Pulsing Dot */}
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2 h-2 bg-indigo-500 rounded-full"></div>
+
+                {/* Step Number Badge */}
+                <div className="absolute -top-3 -right-3 w-7 h-7 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-md border-2 border-indigo-200 dark:border-indigo-500">
+                  <span className="text-xs font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+              </div>
+
+              {/* BOTTOM TEXT */}
+              {index % 2 === 0 && (
+                <div className="mt-6 text-center transform transition-all duration-500 group-hover:translate-y-1">
+                  <h3 className="text-sm md:text-base font-bold text-gray-800 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 transition-all duration-300">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {step.shortDesc || "Learn more"}
+                  </p>
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          );
+        })}
+      </div>
+    </div>
+
+    {/* Summary Section */}
+    <div className="text-center mt-20">
+      <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group">
+        <svg className="w-5 h-5 text-white animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        <span className="text-white font-semibold">See Our SEO Results</span>
+        <svg className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </div>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+        Each step is meticulously executed to deliver measurable, sustainable results
+      </p>
+    </div>
+  </div>
+
+  <style>{`
+    @keyframes float-slow {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(30px, -20px) scale(1.1); }
+    }
+    
+    @keyframes float-delay {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(-20px, 30px) scale(1.1); }
+    }
+    
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.1; transform: scale(1); }
+      50% { opacity: 0.2; transform: scale(1.05); }
+    }
+    
+    .animate-float-slow {
+      animation: float-slow 8s ease-in-out infinite;
+    }
+    
+    .animate-float-delay {
+      animation: float-delay 10s ease-in-out infinite;
+    }
+    
+    .animate-pulse-slow {
+      animation: pulse-slow 4s ease-in-out infinite;
+    }
+  `}</style>
+</section>
 
         {/* Why Choose Us Section */}
         <section className="relative py-20 overflow-hidden bg-gray-900">

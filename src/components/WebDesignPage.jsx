@@ -455,7 +455,7 @@ const Services = () => (
               {/* Title with badge */}
               <div className="relative">
                 <div className="inline-block mb-3">
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${service.gradient} bg-opacity-10 text-gray-600`}>
+                  <span className={`text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${service.gradient} bg-opacity-10 text-white`}>
                     Service {idx + 1} / {services.length}
                   </span>
                 </div>
