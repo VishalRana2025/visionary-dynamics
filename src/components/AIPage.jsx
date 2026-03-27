@@ -403,7 +403,7 @@ const AIConsultingPage = () => {
 
       {/* Services Section */}
       {/* Services Section - Vibrant & Dynamic */}
-<section id="services" className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-24 relative overflow-hidden">
+<section id="services" className="bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100 py-24 relative overflow-hidden">
   {/* Animated background elements */}
   <div className="absolute inset-0 overflow-hidden">
     {/* Floating shapes */}
@@ -730,7 +730,7 @@ const AIConsultingPage = () => {
 </section>
 
       {/* Industry Expertise Section */}
-     <section className="bg-gradient-to-b from-white to-gray-50 py-24 relative overflow-hidden">
+     <section className="bg-gradient-to-b from-blue-100 to-blue-100 py-24 relative overflow-hidden">
   {/* Background decorative elements */}
   <div className="absolute inset-0">
     <div className="absolute top-20 right-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-30"></div>
@@ -958,39 +958,47 @@ const AIConsultingPage = () => {
   </div>
 </section>
       {/* FAQ Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-xl text-gray-600">
-            Common questions about our consulting services
-          </p>
-        </div>
+     <section className="bg-blue-100 py-20">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <button
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-              >
-                <span className="font-semibold text-gray-900">{faq.question}</span>
-                <ChevronRight
-                  className={`w-5 h-5 text-gray-500 transition-transform ${
-                    activeFaq === index ? 'rotate-90' : ''
-                  }`}
-                />
-              </button>
-              {activeFaq === index && (
-                <div className="px-6 pb-4 text-gray-600">
-                  {faq.answer}
-                </div>
-              )}
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Frequently Asked Questions
+      </h2>
+      <p className="text-xl text-gray-600">
+        Common questions about our consulting services
+      </p>
+    </div>
+
+    <div className="space-y-4">
+      {faqs.map((faq, index) => (
+        <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+          <button
+            className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+            onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+          >
+            <span className="font-semibold text-gray-900">
+              {faq.question}
+            </span>
+
+            <ChevronRight
+              className={`w-5 h-5 text-gray-500 transition-transform ${
+                activeFaq === index ? "rotate-90" : ""
+              }`}
+            />
+          </button>
+
+          {activeFaq === index && (
+            <div className="px-6 pb-4 text-gray-600">
+              {faq.answer}
             </div>
-          ))}
+          )}
         </div>
-      </section>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       {/* CTA Section */}
      <section id="contact" className="relative py-20 overflow-hidden">

@@ -433,7 +433,7 @@ const FloatingObjects = () => (
           {/* Background Image */}
           <div className="absolute inset-0 overflow-hidden">
             <img
-              src="/images/seo1img.jpg"
+              src="/images/seo1img.png"
               alt="Digital marketing analytics"
               className="w-full h-full object-cover"
             />
@@ -500,7 +500,7 @@ const FloatingObjects = () => (
         <div className="flex-1 w-full">
           <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation">
             <img 
-              src="/images/searchengine.jpg"
+              src="/images/searchengine.png"
               alt="Keyword Research"
               className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
             />
@@ -556,7 +556,7 @@ const FloatingObjects = () => (
         <div className="flex-1 w-full">
           <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-1000">
             <img 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80"
+              src="/images/Onpageseo.png"
               alt="On-Page SEO"
               className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
             />
@@ -612,7 +612,7 @@ const FloatingObjects = () => (
         <div className="flex-1 w-full">
           <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-2000">
             <img 
-              src="/images/seoanalytics.jpg"
+              src="/images/Techincalseo.png"
               alt="Technical SEO"
               className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
             />
@@ -668,7 +668,7 @@ const FloatingObjects = () => (
         <div className="flex-1 w-full">
           <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation">
             <img 
-              src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              src="/images/Linkbuilding.png"
               alt="Link Building"
               className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
             />
@@ -724,7 +724,7 @@ const FloatingObjects = () => (
         <div className="flex-1 w-full">
           <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-1000">
             <img 
-              src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80"
+              src="/images/Localseo.png"
               alt="Local SEO"
               className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
             />
@@ -781,7 +781,7 @@ const FloatingObjects = () => (
         <div className="flex-1 w-full">
           <div className="relative rounded-2xl overflow-hidden shadow-xl group floating-animation animation-delay-2000">
             <img 
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+              src="images/seoanalytics.png"
               alt="Analytics & Reporting"
               className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700"
             />
