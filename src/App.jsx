@@ -21,7 +21,6 @@ import Social from "./pages/Social";
 import Email from "./pages/Email";
 import LinkedIn from "./pages/LinkedIn";
 import AI from "./pages/AI";
-import Automation from "./pages/Automation";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsCondition";
@@ -57,7 +56,6 @@ export default function App() {
         <Route path="/email" element={<Email />} />
         <Route path="/linkedin" element={<LinkedIn />} />
         <Route path="/ai" element={<AI />} />
-        <Route path="/automation" element={<Automation />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsConditions />} />

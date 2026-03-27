@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { motion } from "framer-motion";
+
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
  
@@ -19,7 +20,7 @@ export const WaveTransition = ({ direction = "bottom" }) => {
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
         viewBox="0 0 1440 320"
-        className="w-full h-[150px] md:h-[220px]"
+        className="w-full h-[60px] sm:h-[100px] md:h-[150px] lg:h-[180px]"
         preserveAspectRatio="none"
       >
         <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
@@ -48,7 +49,7 @@ const BookkeepingPage = () => {
 
     const ctx = canvas.getContext("2d");
     const particles = [];
-    const particleCount = 35;
+    const particleCount = 25; // Reduced for better mobile performance
     const colors = [
       'rgba(59, 130, 246, 0.25)',
       'rgba(34, 197, 94, 0.25)',
@@ -57,7 +58,6 @@ const BookkeepingPage = () => {
       'rgba(168, 85, 247, 0.25)',
     ];
 
-    // Set canvas dimensions
     const resizeCanvas = () => {
       canvas.width = canvas.parentElement.clientWidth;
       canvas.height = canvas.parentElement.clientHeight;
@@ -66,18 +66,17 @@ const BookkeepingPage = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Particle class
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 20 + 4;
-        this.speedX = Math.random() * 0.6 - 0.3;
-        this.speedY = Math.random() * 0.6 - 0.3;
+        this.size = Math.random() * 15 + 3; // Smaller for mobile
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.speedY = Math.random() * 0.4 - 0.2;
         this.color = colors[Math.floor(Math.random() * colors.length)];
         this.shape = Math.random() > 0.5 ? 'circle' : 'triangle';
         this.rotation = Math.random() * Math.PI * 2;
-        this.rotationSpeed = Math.random() * 0.015 - 0.0075;
+        this.rotationSpeed = Math.random() * 0.01 - 0.005;
       }
 
       update() {
@@ -85,7 +84,6 @@ const BookkeepingPage = () => {
         this.y += this.speedY;
         this.rotation += this.rotationSpeed;
 
-        // Bounce off edges
         if (this.x > canvas.width - this.size || this.x < this.size) {
           this.speedX = -this.speedX;
         }
@@ -93,7 +91,6 @@ const BookkeepingPage = () => {
           this.speedY = -this.speedY;
         }
 
-        // Wrap around edges
         if (this.x > canvas.width + this.size) this.x = -this.size;
         if (this.x < -this.size) this.x = canvas.width + this.size;
         if (this.y > canvas.height + this.size) this.y = -this.size;
@@ -105,14 +102,13 @@ const BookkeepingPage = () => {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.fillStyle = this.color;
-        ctx.globalAlpha = 0.08;
+        ctx.globalAlpha = 0.06;
 
         if (this.shape === 'circle') {
           ctx.beginPath();
           ctx.arc(0, 0, this.size, 0, Math.PI * 2);
           ctx.fill();
         } else {
-          // Draw triangle (financial chart shape)
           ctx.beginPath();
           ctx.moveTo(0, -this.size);
           ctx.lineTo(this.size * 0.866, this.size * 0.5);
@@ -121,42 +117,36 @@ const BookkeepingPage = () => {
           ctx.fill();
         }
 
-        // Add subtle glow
-        ctx.shadowBlur = 6;
+        ctx.shadowBlur = 4;
         ctx.shadowColor = this.color;
         ctx.fill();
-
         ctx.restore();
       }
     }
 
-    // Create particles
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
 
-    // Animation loop
     let animationId;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Update and draw particles
       particles.forEach(particle => {
         particle.update();
         particle.draw();
       });
 
-      // Draw connections between nearby particles - more transparent
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 120) {
+          if (distance < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.04 * (1 - distance / 120)})`;
-            ctx.lineWidth = 0.4;
+            ctx.strokeStyle = `rgba(59, 130, 246, ${0.03 * (1 - distance / 100)})`;
+            ctx.lineWidth = 0.3;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -218,25 +208,25 @@ const BookkeepingPage = () => {
     {
       title: "Time Savings",
       description: "Focus on your core business while we handle the books",
-      icon: <Clock className="w-6 h-6" />,
-      stats: "Save 15+ hours/month",
+      icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6" />,
+      stats: "Save 15+ hrs/month",
     },
     {
       title: "Improved Cash Flow",
       description: "Real-time tracking and better financial management",
-      icon: <BarChart3 className="w-6 h-6" />,
+      icon: <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6" />,
       stats: "Up to 30% improvement",
     },
     {
       title: "Expert Team",
       description: "Certified bookkeepers with industry experience",
-      icon: <Users className="w-6 h-6" />,
-      stats: "5+ years average experience",
+      icon: <Users className="w-5 h-5 sm:w-6 sm:h-6" />,
+      stats: "5+ years experience",
     },
     {
       title: "Data Security",
       description: "Enterprise-grade security and confidentiality",
-      icon: <Shield className="w-6 h-6" />,
+      icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6" />,
       stats: "256-bit encryption",
     },
   ];
@@ -268,9 +258,9 @@ const BookkeepingPage = () => {
   const overlay = "absolute inset-0 bg-gradient-to-r from-[#020617]/85 via-[#020617]/75 to-[#0a2540]/85";
 
   return (
-    <div className="min-h-screen relative bg-gradient-to-br from-blue-50/30 via-sky-50/20 to-cyan-50/30">
+    <div className="min-h-screen relative bg-gradient-to-br from-blue-50/30 via-sky-50/20 to-cyan-50/30 overflow-x-hidden">
 
-      {/* Animated Background Canvas - Transparent Version */}
+      {/* Animated Background Canvas - Optimized for mobile */}
       <div className="absolute top-0 left-0 right-0 bottom-[400px] z-0 pointer-events-none">
         <canvas
           ref={canvasRef}
@@ -279,8 +269,8 @@ const BookkeepingPage = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-transparent to-cyan-50/20" />
       </div>
 
-      {/* Hero Section */}
-      <section className="relative min-h-[500px] flex items-center justify-center text-center z-10">
+      {/* Hero Section - Responsive */}
+      <section className="relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px] flex items-center justify-center text-center z-10">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -289,106 +279,96 @@ const BookkeepingPage = () => {
           }}
         />
         <div className={overlay} />
-        <div className="relative container mx-auto px-4 py-20 flex justify-center">
+        <div className="relative container mx-auto px-4 py-16 sm:py-20 md:py-24 flex justify-center">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
               <span className="text-blue-400">Bookkeeping</span> Services
             </h1>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full z-30">
-  <WaveTransition />
-</div>
+          <WaveTransition />
+        </div>
       </section>
 
-      {/* Services Section */}
-      <section className="relative w-full bg-blue-100 py-24 lg:py-32 z-10">
-  
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Comprehensive Bookkeeping Services
-      </h2>
-      <p className="text-gray-700 max-w-2xl mx-auto">
-        Everything you need for accurate financial management in one place
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      {services.map((service, index) => (
-        <div key={index} className="group relative bg-white/90 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-          
-          <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color}`} />
-
-          <div className="flex items-center gap-4 mb-3">
-            <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white`}>
-              {service.icon}
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900">
-              {service.title}
-            </h3>
+      {/* Services Section - Responsive Grid */}
+      <section className="relative w-full bg-blue-100 py-16 sm:py-20 md:py-24 lg:py-28 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
+              Comprehensive Bookkeeping Services
+            </h2>
+            <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto px-4">
+              Everything you need for accurate financial management in one place
+            </p>
           </div>
 
-          <p className="text-sm text-gray-700 leading-relaxed">
-            {service.description}
-          </p>
-
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+            {services.map((service, index) => (
+              <div key={index} className="group relative bg-white/90 p-5 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.color} rounded-t-xl`} />
+                <div className="flex items-center gap-3 sm:gap-4 mb-3">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white text-xl sm:text-2xl`}>
+                    {service.icon}
+                  </div>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900">
+                    {service.title}
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
+      </section>
 
-  </div>
-</section>
-
-      {/* Features Section */}
-     <section className="w-full bg-blue-100 py-20">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-center">
+      {/* Features Section - Responsive */}
+      <section className="w-full bg-blue-100 py-12 sm:py-16 md:py-20">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 md:mb-10 text-center px-4">
           <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-transparent bg-clip-text drop-shadow-lg">
             Accounting Challenges
           </span>
         </h1>
 
         {features.map((item, index) => (
-          <div key={index} className="relative py-20">
+          <div key={index} className="relative py-12 sm:py-16 md:py-20">
             {item.bgImage && (
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${item.bgImage})` }}
               />
             )}
-            {item.darkOverlay && (
-              <div className="absolute inset-0 bg-black/70"></div>
-            )}
-            <div className="relative z-10 max-w-7xl mx-auto px-6">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  item.reverse ? "md:grid-flow-dense" : ""
-                }`}
+                className={`flex flex-col ${
+                  item.reverse ? "md:flex-row-reverse" : "md:flex-row"
+                } gap-8 md:gap-12 items-center`}
               >
-                <div className={`${item.reverse ? "md:col-start-2" : ""}`}>
+                <div className="w-full md:w-1/2">
                   <h2
-                    className={`text-3xl md:text-4xl font-semibold mb-4 ${
+                    className={`text-2xl sm:text-3xl md:text-4xl font-semibold mb-3 sm:mb-4 ${
                       item.darkOverlay ? "text-white" : "text-gray-900"
                     }`}
                   >
                     {item.title}
                   </h2>
                   <p
-                    className={`leading-relaxed text-lg ${
+                    className={`leading-relaxed text-sm sm:text-base md:text-lg ${
                       item.darkOverlay ? "text-gray-200" : "text-gray-600"
                     }`}
                   >
                     {item.desc}
                   </p>
                 </div>
-                <div className={`${item.reverse ? "md:col-start-1" : ""}`}>
-                  <div className={`relative ${item.imageBg ? "p-8 bg-blue-100 rounded-3xl" : ""}`}>
+                <div className="w-full md:w-1/2">
+                  <div className={`relative ${item.imageBg ? "p-4 sm:p-6 md:p-8 bg-blue-100 rounded-2xl sm:rounded-3xl" : ""}`}>
                     <motion.img
                       src={item.image}
                       alt={item.title}
-                      className="rounded-2xl shadow-lg w-full"
-                      animate={{ y: [0, -15, 0] }}
+                      className="rounded-xl sm:rounded-2xl shadow-lg w-full"
+                      animate={{ y: [0, -10, 0] }}
                       transition={{
                         duration: 4,
                         delay: index * 0.4,
@@ -404,90 +384,78 @@ const BookkeepingPage = () => {
         ))}
       </section>
 
-      {/* Benefits Section */}
-      <section className="relative w-full py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
-  
-  {/* Top Wave */}
-  <div className="absolute top-0 left-0 w-full -mt-10 z-20">
-    <WaveTransition direction="top" />
-  </div>
+      {/* Benefits Section - Responsive */}
+      <section className="relative w-full py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
+        <div className="absolute top-0 left-0 w-full -mt-2 sm:-mt-5 z-20">
+          <WaveTransition direction="top" />
+        </div>
 
-  {/* Background */}
-  <div
-    className="absolute inset-0 bg-cover bg-center"
-    style={{
-      backgroundImage:
-        "url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80')",
-    }}
-  />
-  <div className={overlay} />
-
-  {/* Content */}
-  <div className="relative z-30 max-w-7xl mx-auto mt-12 lg:mt-16">
-    
-    {/* Header */}
-    <div className="text-center mb-16 lg:mb-20 text-white">
-      <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-        The Advantages of Our Bookkeeping Solutions
-      </h2>
-      <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-        Experience the difference with our professional approach
-      </p>
-    </div>
-
-    {/* Cards */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-10">
-      {benefits.map((benefit, index) => (
         <div
-          key={index}
-          className="group bg-white/90 backdrop-blur-sm p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/30"
-        >
-          <div className="relative mb-4">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-              {benefit.icon}
-            </div>
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80')",
+          }}
+        />
+        <div className={overlay} />
 
-            <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
-              {benefit.stats}
-            </div>
+        <div className="relative z-30 max-w-7xl mx-auto mt-8 sm:mt-12 lg:mt-16">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
+              The Advantages of Our Bookkeeping Solutions
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4">
+              Experience the difference with our professional approach
+            </p>
           </div>
 
-          <h3 className="text-lg lg:text-xl font-bold mb-3 text-gray-900">
-            {benefit.title}
-          </h3>
-
-          <p className="text-gray-700 text-sm leading-relaxed">
-            {benefit.description}
-          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-8 mt-6 sm:mt-8">
+            {benefits.map((benefit, index) => (
+              <div
+                key={index}
+                className="group bg-white/90 backdrop-blur-sm p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/30"
+              >
+                <div className="relative mb-3 sm:mb-4">
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    {benefit.icon}
+                  </div>
+                  <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 text-xs font-semibold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-sm whitespace-nowrap">
+                    {benefit.stats}
+                  </div>
+                </div>
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 text-gray-900">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
 
-  </div>
+        <div className="absolute bottom-0 left-0 w-full mt-6 sm:mt-8 z-20">
+          <WaveTransition />
+        </div>
+      </section>
 
-  {/* Bottom Wave */}
-  <div className="absolute bottom-0 left-0 w-full mt-10 z-20">
-    <WaveTransition />
-  </div>
-
-</section>
-
-      {/* WHY CHOOSE US SECTION */}
-     <section className="relative w-full bg-blue-100 py-20 z-10">       
-        <div className="max-w-6xl mx-auto px-4 text-center relative">
-          <div className="mb-6">
-            <div className="inline-block px-4 py-2 bg-orange-100 text-gray-700 text-sm font-semibold rounded">
+      {/* WHY CHOOSE US SECTION - Responsive */}
+      <section className="relative w-full bg-blue-100 py-16 sm:py-20 md:py-24 z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center relative">
+          <div className="mb-4 sm:mb-6">
+            <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-100 text-gray-700 text-xs sm:text-sm font-semibold rounded">
               WHY CHOOSE US
             </div>
           </div>
-          <div className="relative z-10 inline-block bg-white shadow-xl rounded-xl px-12 py-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900">
+          <div className="relative z-10 inline-block bg-white shadow-lg sm:shadow-xl rounded-lg sm:rounded-xl px-6 sm:px-8 md:px-12 py-2 sm:py-3 md:py-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue-900">
               Our Value Proposition
             </h2>
           </div>
 
+          {/* Connection lines - hidden on mobile, visible on larger screens */}
           <svg
-            className="absolute left-1/2 top-32 -translate-x-1/2 hidden lg:block"
+            className="absolute left-1/2 top-24 sm:top-28 md:top-32 -translate-x-1/2 hidden lg:block"
             width="900"
             height="220"
             viewBox="0 0 900 220"
@@ -519,132 +487,94 @@ const BookkeepingPage = () => {
             />
           </svg>
 
-          <div className="relative mt-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <img
-                  src={helpdeskImg}
-                  alt="Personal Support"
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
+          <div className="relative mt-16 sm:mt-20 md:mt-24 lg:mt-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
+            {[
+              { img: helpdeskImg, title: "PERSONAL SUPPORT", desc: "You get your own expert no bots, no confusion." },
+              { img: increaseImg, title: "BETTER VALUE", desc: "Quality accounting without the big price tag." },
+              { img: dashboardImg, title: "YOUR DASHBOARD", desc: "See your numbers anytime, anywhere." },
+              { img: updateImg, title: "LIVE UPDATE", desc: "Stay in the loop with real-time financial info." }
+            ].map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center group">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-4 sm:mb-5 md:mb-6">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="text-sm sm:text-base md:text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors text-center">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm mt-1 sm:mt-2 max-w-xs text-center group-hover:text-gray-900 transition-colors px-2">
+                  {item.desc}
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                PERSONAL SUPPORT
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                You get your own expert no bots, no confusion.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <img
-                  src={increaseImg}
-                  alt="Better Value"
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                BETTER VALUE
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                Quality accounting without the big price tag.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <img
-                  src={dashboardImg}
-                  alt="Your Dashboard"
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                YOUR DASHBOARD
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                See your numbers anytime, anywhere.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center group">
-              <div className="w-44 h-44 rounded-full bg-white shadow-xl flex items-center justify-center mb-6">
-                <img
-                  src={updateImg}
-                  alt="Live Update"
-                  className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-lg font-bold text-blue-900 group-hover:text-blue-700 transition-colors">
-                LIVE UPDATE
-              </h3>
-              <p className="text-gray-600 text-sm mt-2 max-w-xs group-hover:text-gray-900 transition-colors">
-                Stay in the loop with real-time financial info.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative w-full py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
-  
-  {/* Top Wave */}
-  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
-    <WaveTransition direction="top" />
-  </div>
- 
+      {/* CTA Section - Responsive */}
+      <section className="relative w-full py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
+        <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+          <WaveTransition direction="top" />
+        </div>
 
-  {/* Background */}
-  <div
-    className="absolute inset-0 bg-cover bg-center"
-    style={{
-      backgroundImage:
-        "url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80')",
-    }}
-  />
-  <div className={overlay} />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80')",
+          }}
+        />
+        <div className={overlay} />
 
-  {/* Content */}
-  <div className="relative z-30 max-w-6xl mx-auto mt-12 lg:mt-16 text-center text-white">
-    
-    <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 lg:p-14 border border-white/20 shadow-xl">
-      
-      <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-        Ready to Transform Your Bookkeeping?
-      </h2>
+        <div className="relative z-30 max-w-6xl mx-auto mt-8 sm:mt-12 lg:mt-16 text-center text-white">
+          <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 border border-white/20 shadow-xl">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 md:mb-6 leading-tight">
+              Ready to Transform Your Bookkeeping?
+            </h2>
+            <p className="text-gray-200 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 md:mb-10">
+              Join hundreds of businesses who trust us with their financial management.
+            </p>
 
-      <p className="text-gray-200 mb-10 text-lg">
-        Join hundreds of businesses who trust us with their financial
-        management.
-      </p>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk",
+                    "_blank"
+                  )
+                }
+                className="group bg-white text-blue-600 px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center text-sm sm:text-base"
+              >
+                <Phone className="mr-2 sm:mr-3 w-4 h-4 sm:w-5 sm:h-5" />
+                <span>Schedule Call</span>
+                <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
 
-      {/* Button */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
-        <button
-          onClick={() =>
-            window.open(
-              "https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk",
-              "_blank"
-            )
+            <p className="text-gray-300 text-xs sm:text-sm mt-5 sm:mt-6 md:mt-8">
+              Get a free consultation within 24 hours
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Responsive Styles */}
+      <style>{`
+        @media (max-width: 640px) {
+          .animate-float {
+            animation-duration: 6s;
           }
-          className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 hover:scale-105 hover:shadow-xl flex items-center justify-center"
-        >
-          <Phone className="mr-3 w-5 h-5" />
-          <span>Schedule Call</span>
-          <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-        </button>
-      </div>
-
-      <p className="text-gray-300 text-sm mt-8">
-        Get a free consultation within 24 hours
-      </p>
-
-    </div>
-  </div>
-
-</section>
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .animate-float {
+            animation-duration: 8s;
+          }
+        }
+      `}</style>
     </div>
   );
 };

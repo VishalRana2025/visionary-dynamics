@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -37,66 +37,52 @@ const MENU_DATA = {
   },
 };
 
-/* ================= ROUTE MAP ================= */
+/* ================= ROUTES ================= */
 const ROUTES = {
   "About Us": "/about",
   "Our Locations": "/location",
   "Industries we Serve": "/industries",
   "What Our Clients Say": "/clients",
-
   "Accounting": "/accounting",
   "Bookkeeping": "/bookkeeping",
   "Payroll": "/payroll",
   "Financial Reporting and Analysis": "/financial",
   "Software Setup & Migration": "/software",
-
   "Taxation": "/taxation",
   "Cooperative Tax": "/cooperative",
   "Individual Tax": "/individual",
-
   "Business Analytics": "/business",
-
   "Website Design & Development": "/webdesign",
   "Search Engine Optimization": "/seo",
   "Social Media Marketing": "/social",
   "Email Marketing": "/email",
   "LinkedIn Marketing": "/linkedin",
-
   "AI": "/ai",
-  "Automation": "/automation",
-
   "MS 365 Management": "/ms365",
   "Mobile Device Management": "/mobile",
   "Managed Network Services": "/network",
 };
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="relative z-30 bg-[#0B1F3A]/70 backdrop-blur-md">
-      
+    <header className="relative z-50 bg-[#0B1F3A]/70 backdrop-blur-md">
+
       <div className="relative h-16 px-6 flex items-center justify-between">
 
         {/* LOGO */}
-       <div className="flex items-center h-24">
-  <img
-    src="/VD-Logo-e1737873827576.png"
-    alt="Visionary Dynamics Logo"
-    className="h-14 w-auto object-contain"
-  />
-</div>
-        {/* SLIDING TEXT */}
-        <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[60%] overflow-hidden">
-          <div className="bg-white/10 rounded-full px-4 py-1 border border-white/20">
-            <div className="whitespace-nowrap animate-marquee text-sm font-bold text-white">
-              <span className="text-green-400 mr-2">VISIONARY DYNAMICS</span>
-              Where Vision, Strategy, and Innovation Come Together
-            </div>
-          </div>
+        <div className="flex items-center h-24">
+          <img
+            src="/VD-Logo-e1737873827576.png"
+            alt="Logo"
+            className="h-14"
+          />
         </div>
 
-        {/* MENU */}
-        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[70px] text-base font-medium text-white">
-          
+        {/* DESKTOP MENU */}
+        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[70px] text-white">
+
           <Link to="/" className="hover:text-sky-300">Home</Link>
 
           <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
@@ -107,28 +93,76 @@ const Header = () => {
         </nav>
 
         {/* CTA */}
-        <div className="absolute top-[15px] right-6 hidden lg:flex">
+        <div className="hidden lg:flex">
           <button className="px-6 py-2 rounded-full bg-sky-500 hover:bg-sky-600">
             Try Free Call
           </button>
         </div>
+
+        {/* MOBILE BUTTON */}
+        <button
+          className="lg:hidden text-white text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? "✖" : "☰"}
+        </button>
       </div>
 
-      {/* MARQUEE STYLE */}
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(100%); }
-          100% { transform: translateX(-100%); }
-        }
-        .animate-marquee {
-          animation: marquee 15s linear infinite;
-        }
-      `}</style>
+      {/* MOBILE MENU */}
+      {isOpen && (
+        <div className="lg:hidden bg-[#0B1F3A] text-white px-6 py-6 space-y-4">
+
+          <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
+
+          {Object.keys(MENU_DATA).map((section) => (
+            <div key={section}>
+              <p className="font-semibold text-sky-400">{section}</p>
+
+              {Object.keys(MENU_DATA[section]).map((item) => (
+                <div
+                  key={item}
+                  className="ml-3 mt-1 text-sm cursor-pointer hover:text-sky-300"
+                >
+                  <Link
+                    to={ROUTES[item] || "#"}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item}
+                  </Link>
+
+                  {/* Sub-items */}
+                  {MENU_DATA[section][item].length > 0 && (
+                    <div className="ml-4 text-xs text-gray-300">
+                      {MENU_DATA[section][item].map((sub) => (
+                        <Link
+                          key={sub}
+                          to={ROUTES[sub] || "#"}
+                          className="block mt-1 hover:text-sky-300"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {sub}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+
+          <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
+
+          <button className="w-full mt-4 px-4 py-2 bg-sky-500 rounded">
+            Try Free Call
+          </button>
+        </div>
+      )}
+
     </header>
   );
 };
 
-/* ================= MENU COMPONENT ================= */
+/* ================= DESKTOP DROPDOWN ================= */
 const MenuWithSub = ({ menu, data }) => {
   const navigate = useNavigate();
 
@@ -140,29 +174,29 @@ const MenuWithSub = ({ menu, data }) => {
   return (
     <div className="relative group">
       <button className="flex items-center gap-1 hover:text-sky-300">
-        {menu} <ChevronDown size={20} />
+        {menu} <ChevronDown size={18} />
       </button>
 
-      {/* SUBMENU */}
-      <div className="submenu">
+      <div className="absolute top-full left-0 min-w-[240px] bg-[#0f172a] rounded-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
+
         {Object.keys(data).map((item) => (
           <div key={item} className="relative group/item">
-            
+
             <div
-              className="submenu-item"
+              className="px-4 py-2 flex justify-between cursor-pointer hover:bg-sky-500/20"
               onClick={() => handleClick(item)}
             >
               {item}
               {data[item].length > 0 && <ChevronRight size={14} />}
             </div>
 
-            {/* SUB-SUBMENU */}
             {data[item].length > 0 && (
-              <div className="subsubmenu">
+              <div className="absolute left-full top-0 min-w-[240px] bg-[#0f172a] rounded-lg opacity-0 invisible group-hover/item:visible group-hover/item:opacity-100 transition">
+
                 {data[item].map((sub) => (
                   <div
                     key={sub}
-                    className="submenu-item"
+                    className="px-4 py-2 cursor-pointer hover:bg-sky-500/20"
                     onClick={() => handleClick(sub)}
                   >
                     {sub}
@@ -173,61 +207,6 @@ const MenuWithSub = ({ menu, data }) => {
           </div>
         ))}
       </div>
-
-      {/* STYLES */}
-      <style>{`
-        .submenu {
-          position: absolute;
-          top: 130%;
-          left: 0;
-          min-width: 240px;
-          background: rgba(15,23,42,0.95);
-          border-radius: 10px;
-          padding: 8px 0;
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(10px);
-          transition: all 0.3s ease;
-        }
-
-        .group:hover .submenu {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
-        }
-
-        .submenu-item {
-          padding: 10px 16px;
-          cursor: pointer;
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .submenu-item:hover {
-          background: rgba(56,189,248,0.2);
-          color: #38bdf8;
-        }
-
-        .subsubmenu {
-          position: absolute;
-          top: 0;
-          left: 100%;
-          min-width: 240px;
-          background: rgba(15,23,42,0.95);
-          border-radius: 10px;
-          padding: 8px 0;
-          opacity: 0;
-          visibility: hidden;
-          transform: translateX(10px);
-          transition: all 0.3s ease;
-        }
-
-        .group\\/item:hover .subsubmenu {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(0);
-        }
-      `}</style>
     </div>
   );
 };
