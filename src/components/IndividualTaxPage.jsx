@@ -234,37 +234,6 @@ const IndividualTaxationPage = () => {
               </h1>
             </div>
 
-            {/* Tax Calculator Card */}
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-              <h3 className="text-2xl font-bold mb-6 text-white">Estimate Your Refund</h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm mb-2 text-gray-300">Annual Income</label>
-                  <div className="relative">
-                    <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input 
-                      type="text" 
-                      placeholder="75,000"
-                      className="w-full bg-white/10 border border-white/20 rounded-lg py-3 px-10 text-white placeholder-gray-400 focus:outline-none focus:border-white"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm mb-2 text-gray-300">Filing Status</label>
-                  <select className="w-full bg-white/10 border border-white/20 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-white">
-                    <option className="bg-gray-900 text-white">Single</option>
-                    <option className="bg-gray-900 text-white">Married Filing Jointly</option>
-                    <option className="bg-gray-900 text-white">Head of Household</option>
-                  </select>
-                </div>
-                <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition mt-4">
-                  Calculate Estimate
-                </button>
-                <p className="text-xs text-center text-gray-400 mt-4">
-                  *Estimate only. Final refund depends on your specific situation.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full z-30">

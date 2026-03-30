@@ -98,10 +98,9 @@ export default function PayrollPage() {
   Get a Free Consultation
 </a>
         </div>
-        <div className="absolute bottom-0 left-0 w-full z-30">
+        <div className="absolute bottom-0 left-0 w-full z-0 pointer-events-none">
   <WaveTransition />
 </div>
- 
       </section>
 
       {/* Services Section - Light Blue with Objects */}

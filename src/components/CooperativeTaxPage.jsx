@@ -155,9 +155,9 @@ const CooperativeTaxPage = () => {
             "url('https://images.pexels.com/photos/4386339/pexels-photo-4386339.jpeg')",
         }}
       >
-        <div className="absolute inset-0 bg-black/75"></div>
+       <div className="absolute inset-0 bg-black/75 pointer-events-none"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
             <div className="w-full lg:w-2/3 text-center lg:text-left">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
@@ -173,14 +173,14 @@ const CooperativeTaxPage = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-                <a
-                  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center"
-                >
-                  Schedule Free Consultation
-                </a>
+               <a
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg text-center"
+>
+  Schedule Free Consultation
+</a>
                 <a
                   href="tel:+17275649476"
                   className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105 gap-2"
@@ -193,9 +193,9 @@ const CooperativeTaxPage = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full z-30">
-          <WaveTransition />
-        </div>
+        <div className="absolute bottom-0 left-0 w-full z-0 pointer-events-none">
+  <WaveTransition />
+</div>
       </section>
 
       {/* Benefits Section - Responsive */}

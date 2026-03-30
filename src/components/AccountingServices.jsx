@@ -358,9 +358,9 @@ const FinanceAccountingServices = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 w-full z-30">
-          <WaveTransition />
-        </div>
+        <div className="absolute bottom-0 left-0 w-full z-0 pointer-events-none">
+  <WaveTransition />
+</div>
       </section>
 
       {/* Main Services Grid - Responsive Cards */}

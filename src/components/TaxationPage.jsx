@@ -211,14 +211,15 @@ const TaxationPage = () => {
       </p>
 
       <div className="flex flex-wrap justify-center gap-4">
-        <button className="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center">
-          Schedule Consultation
-          <ArrowRight className="ml-2 w-5 h-5" />
-        </button>
-
-        <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition">
-          Learn More
-        </button>
+        <a
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center"
+>
+  Schedule Consultation
+  <ArrowRight className="ml-2 w-5 h-5" />
+</a>
       </div>
     </div>
   </div>
@@ -422,13 +423,7 @@ const TaxationPage = () => {
 
               {/* Professional pricing and CTA */}
               <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                <a
-                  href="#"
-                  className={`inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r ${color.gradient} text-white text-sm font-semibold rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 group/btn`}
-                >
-                  <span>Get started</span>
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </a>
+               
               </div>
             </div>
 
@@ -439,85 +434,6 @@ const TaxationPage = () => {
       })}
     </div>
   </div>
-
- <style>{`
-    @keyframes float-3d {
-      0%, 100% { transform: translateZ(50px) translateY(0px) rotateX(20deg) rotateY(30deg); }
-      50% { transform: translateZ(80px) translateY(-30px) rotateX(25deg) rotateY(40deg); }
-    }
-    @keyframes float-3d-slow {
-      0%, 100% { transform: translateZ(30px) translateY(0px) rotateX(10deg) rotateY(20deg); }
-      50% { transform: translateZ(60px) translateY(-20px) rotateX(15deg) rotateY(30deg); }
-    }
-    @keyframes float-3d-delay {
-      0%, 100% { transform: translateZ(80px) translateY(0px) rotateX(15deg) rotateY(45deg); }
-      50% { transform: translateZ(110px) translateY(-40px) rotateX(20deg) rotateY(55deg); }
-    }
-    @keyframes pulse-3d {
-      0%, 100% { transform: translateZ(20px) scale(1); opacity: 0.2; }
-      50% { transform: translateZ(60px) scale(1.3); opacity: 0.3; }
-    }
-    @keyframes pulse-3d-delay {
-      0%, 100% { transform: translateZ(40px) scale(1); opacity: 0.15; }
-      50% { transform: translateZ(80px) scale(1.4); opacity: 0.25; }
-    }
-    @keyframes spin-3d {
-      from { transform: translateZ(60px) rotateX(60deg) rotateY(0deg) rotateZ(0deg); }
-      to { transform: translateZ(60px) rotateX(60deg) rotateY(360deg) rotateZ(360deg); }
-    }
-    @keyframes spin-3d-reverse {
-      from { transform: translateZ(80px) rotateY(45deg) rotateZ(0deg); }
-      to { transform: translateZ(80px) rotateY(45deg) rotateZ(-360deg); }
-    }
-    @keyframes float-particle {
-      0% { transform: translateZ(20px) translateY(0px) translateX(0px); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateZ(100px) translateY(-100vh) translateX(50px); opacity: 0; }
-    }
-    @keyframes grid-move {
-      0% { transform: translateX(0) translateY(0); }
-      25% { transform: translateX(-10px) translateY(-5px); }
-      50% { transform: translateX(-20px) translateY(-10px); }
-      75% { transform: translateX(-10px) translateY(-5px); }
-      100% { transform: translateX(0) translateY(0); }
-    }
-    @keyframes ray-move {
-      0% { transform: translateX(-100%); }
-      50% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    .animate-float-3d {
-      animation: float-3d 8s ease-in-out infinite;
-    }
-    .animate-float-3d-slow {
-      animation: float-3d-slow 12s ease-in-out infinite;
-    }
-    .animate-float-3d-delay {
-      animation: float-3d-delay 10s ease-in-out infinite;
-    }
-    .animate-pulse-3d {
-      animation: pulse-3d 6s ease-in-out infinite;
-    }
-    .animate-pulse-3d-delay {
-      animation: pulse-3d-delay 8s ease-in-out infinite;
-    }
-    .animate-spin-3d {
-      animation: spin-3d 20s linear infinite;
-    }
-    .animate-spin-3d-reverse {
-      animation: spin-3d-reverse 25s linear infinite;
-    }
-    .animate-grid-move {
-      animation: grid-move 15s ease-in-out infinite;
-    }
-    .animate-ray-move {
-      animation: ray-move 12s ease-in-out infinite;
-    }
-    .perspective-1000 {
-      perspective: 1000px;
-    }
-  `}</style>
 </div>
 
 
@@ -1011,7 +927,7 @@ const TaxationPage = () => {
         Still have questions? We're here to help!
       </p>
       <a
-        href="#"
+        href="/contact"
         className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group"
       >
         <span>Contact Our Support Team</span>
@@ -1019,53 +935,6 @@ const TaxationPage = () => {
       </a>
     </div>
   </div>
-
-  <style>{`
-    @keyframes float-3d {
-      0%, 100% { transform: translateZ(20px) translateY(0px) rotateX(10deg) rotateY(15deg); }
-      50% { transform: translateZ(50px) translateY(-25px) rotateX(15deg) rotateY(25deg); }
-    }
-    @keyframes float-3d-slow {
-      0%, 100% { transform: translateZ(30px) translateY(0px) rotateX(5deg) rotateY(20deg); }
-      50% { transform: translateZ(60px) translateY(-20px) rotateX(10deg) rotateY(30deg); }
-    }
-    @keyframes float-3d-delay {
-      0%, 100% { transform: translateZ(40px) translateY(0px) rotateX(15deg) rotateY(25deg); }
-      50% { transform: translateZ(70px) translateY(-30px) rotateX(20deg) rotateY(35deg); }
-    }
-    @keyframes spin-3d {
-      from { transform: translateZ(40px) rotateX(45deg) rotateY(0deg) rotateZ(0deg); }
-      to { transform: translateZ(40px) rotateX(45deg) rotateY(360deg) rotateZ(360deg); }
-    }
-    @keyframes spin-3d-reverse {
-      from { transform: translateZ(50px) rotateY(35deg) rotateZ(0deg); }
-      to { transform: translateZ(50px) rotateY(35deg) rotateZ(-360deg); }
-    }
-    @keyframes float-particle {
-      0% { transform: translateZ(20px) translateY(0px) translateX(0px); opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.6; }
-      100% { transform: translateZ(100px) translateY(-100vh) translateX(50px); opacity: 0; }
-    }
-    .animate-float-3d {
-      animation: float-3d 8s ease-in-out infinite;
-    }
-    .animate-float-3d-slow {
-      animation: float-3d-slow 12s ease-in-out infinite;
-    }
-    .animate-float-3d-delay {
-      animation: float-3d-delay 10s ease-in-out infinite;
-    }
-    .animate-spin-3d {
-      animation: spin-3d 20s linear infinite;
-    }
-    .animate-spin-3d-reverse {
-      animation: spin-3d-reverse 25s linear infinite;
-    }
-    .perspective-1000 {
-      perspective: 1000px;
-    }
-  `}</style>
 </div>
 
       {/* CTA Section */}
@@ -1093,10 +962,15 @@ const TaxationPage = () => {
       Let our experts handle your taxes while you focus on what matters most.
     </p>
 
-    <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-2xl hover:-translate-y-1">
-      Schedule Your Free Consultation
-      <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-    </button>
+   <a
+  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-2xl hover:-translate-y-1"
+>
+  Schedule Your Free Consultation
+  <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</a>
   </div>
 </div>
     </div>
