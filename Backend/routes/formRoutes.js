@@ -2,11 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Form = require("../models/Form");
 
-// POST: Save form
+// POST: Save form (ONLY MongoDB)
 router.post("/", async (req, res) => {
   try {
-    const { type, name, email, phone, message } = req.body;
+    const { name, email, phone, message } = req.body;
 
+    const type = req.body.type || "Accounting"; // ✅ keep fallback
+
+    // ✅ Save to MongoDB
     const newForm = new Form({
       type,
       name,
@@ -17,7 +20,11 @@ router.post("/", async (req, res) => {
 
     await newForm.save();
 
-    res.status(200).json({ message: "Form saved successfully" });
+    // ✅ Response
+    res.status(200).json({
+      message: "Form saved successfully",
+    });
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error saving form" });

@@ -427,78 +427,39 @@ const BusinessAnalystPage = () => {
             </div>
             
             <div className="flex-1">
-              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 lg:p-8">
-                <form className="space-y-4 sm:space-y-5">
-                  <input 
-                    type="text" 
-                    placeholder="Your Name"
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:border-white text-sm sm:text-base"
-                  />
-                  <input 
-                    type="email" 
-                    placeholder="Email Address"
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:border-white text-sm sm:text-base"
-                  />
-                  <textarea 
-                    rows={4}
-                    placeholder="Tell me about your project"
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:border-white text-sm sm:text-base"
-                  ></textarea>
-                  <button className="w-full px-4 sm:px-6 py-2.5 sm:py-3 md:py-4 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 text-sm sm:text-base">
-                    Send Message
-                  </button>
-                </form>
-              </div>
-            </div>
+  <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 lg:p-8 h-full">
+
+    <iframe
+      src="https://api.visionarydynamicsas.com/widget/form/w8R9vf9vv3doKIkkjU7u"
+      style={{
+        width: "100%",
+        height: "400px",
+        border: "none",
+        borderRadius: "8px",
+      }}
+      id="inline-w8R9vf9vv3doKIkkjU7u"
+      data-layout="{'id':'INLINE'}"
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="Business Analyst Form"
+      data-height="339"
+      data-layout-iframe-id="inline-w8R9vf9vv3doKIkkjU7u"
+      data-form-id="w8R9vf9vv3doKIkkjU7u"
+      title="Business Analyst Form"
+      className="w-full"
+    />
+
+  </div>
+</div>
           </div>
         </div>
       </section>
 
-      {/* Animation Keyframes */}
-      <style>{`
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px) translateX(0px); }
-          50% { transform: translateY(-15px) translateX(8px); }
-        }
-        
-        @keyframes float-medium {
-          0%, 100% { transform: translateY(0px) translateX(0px); }
-          50% { transform: translateY(-10px) translateX(-5px); }
-        }
-        
-        @keyframes float-fast {
-          0%, 100% { transform: translateY(0px) translateX(0px); }
-          50% { transform: translateY(-8px) translateX(4px); }
-        }
-        
-        @keyframes float-particle {
-          0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
-          50% { transform: translateY(-20px) translateX(10px); opacity: 0.5; }
-        }
-        
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        
-        @keyframes ping-slow {
-          0% { transform: scale(1); opacity: 0.4; }
-          75%, 100% { transform: scale(2); opacity: 0; }
-        }
-        
-        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
-        .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
-        .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
-        .animate-float-particle { animation: float-particle 5s ease-in-out infinite; }
-        .animate-shimmer { animation: shimmer 2s infinite; }
-        .animate-ping-slow { animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite; }
-        
-        @media (max-width: 640px) {
-          .animate-float-slow { animation-duration: 10s; }
-          .animate-float-medium { animation-duration: 8s; }
-          .animate-float-fast { animation-duration: 6s; }
-        }
-      `}</style>
+     
     </div>
   );
 };

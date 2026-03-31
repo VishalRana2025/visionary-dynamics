@@ -63,6 +63,7 @@ import howItWorks3Img from "../animations/how-it-works3.png";
 const FinanceAccountingServices = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const [formData, setFormData] = useState({
+    type: '', 
     name: '',
     email: '',
     phone: '',
@@ -291,29 +292,40 @@ const FinanceAccountingServices = () => {
     }
   ];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/form/submit",
-        formData
-      );
-      console.log("Response:", response.data);
-      alert("Form Submitted Successfully ✅");
-      setShowContactForm(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        message: ''
-      });
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Error submitting form ❌");
-    }
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    // ✅ Add dynamic type from selected service
+    const payload = {
+      ...formData,
+      type: formData.service || "General"
+    };
+
+    const response = await axios.post(
+      "http://localhost:5000/api/form",
+      payload
+    );
+
+    console.log("Response:", response.data);
+    alert("Form Submitted Successfully ✅");
+
+    setShowContactForm(false);
+
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: '',
+      message: ''
+    });
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Error submitting form ❌");
+  }
+};
 
   return (
     <div className="min-h-screen bg-blue-50 overflow-x-hidden">

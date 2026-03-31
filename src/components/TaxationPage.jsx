@@ -670,50 +670,27 @@ const TaxationPage = () => {
             </div>
 
             {/* Form */}
-            <form className="space-y-5">
-              <div className="group">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <input 
-                    type="email" 
-                    placeholder="you@example.com" 
-                    className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-gray-900 bg-white/80 backdrop-blur-sm"
-                  />
-                </div>
-              </div>
-
-              <div className="group">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number (optional)</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-gray-400 group-focus-within:text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <input 
-                    type="tel" 
-                    placeholder="+1 (555) 000-0000" 
-                    className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none text-gray-900 bg-white/80 backdrop-blur-sm"
-                  />
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <button className="w-full group relative overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-1">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
-                <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-6 py-4 rounded-xl text-white font-bold text-lg hover:bg-opacity-90 transition-all flex items-center justify-center gap-3">
-                  <span>Get Free Consultation</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              </button>
-            </form>
+           <div className="space-y-5">
+  <iframe
+    src="https://api.visionarydynamicsas.com/widget/form/vPyj7lYiQxstLAQ1zD8p"
+    style={{
+      width: "100%",
+      height: "500px",
+      border: "none",
+      borderRadius: "12px",
+    }}
+    id="inline-vPyj7lYiQxstLAQ1zD8p"
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-activation-type="alwaysActivated"
+    data-deactivation-type="neverDeactivate"
+    data-form-name="Taxation Form"
+    data-height="328"
+    data-form-id="vPyj7lYiQxstLAQ1zD8p"
+    title="Taxation Form"
+    className="w-full"
+  />
+</div>
           </div>
         </div>
       </div>
