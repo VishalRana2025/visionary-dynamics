@@ -14,8 +14,29 @@ import {
    ChevronDown
 } from 'lucide-react';
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+ 
+
 function FAQItem({ faq }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  
 
   return (
     <div className="border border-gray-200 rounded-xl shadow-sm overflow-hidden">
@@ -223,6 +244,10 @@ const TaxationPage = () => {
       </div>
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
+ 
 </div>
 
 {/* Tax Services Grid */}
@@ -439,7 +464,11 @@ const TaxationPage = () => {
 
         {/* Integrated Stats Section - With Background */}
 <div className="relative py-24 text-white overflow-hidden">
-
+{/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image */}
   <div className="absolute inset-0">
     <img
@@ -457,6 +486,7 @@ const TaxationPage = () => {
     
     {/* Section Label */}
     <div className="text-center mb-16">
+      
       <span className="text-sm font-semibold tracking-wider uppercase bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full border border-white/20">
         Our Impact in Numbers
       </span>
@@ -509,6 +539,9 @@ const TaxationPage = () => {
 
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </div>
   
       {/* Why Choose Us - Light Blue BG with Moving 3D Objects */}
@@ -697,52 +730,7 @@ const TaxationPage = () => {
     </div>
   </div>
 
-  <style>{`
-    @keyframes float-3d {
-      0%, 100% { transform: translateZ(20px) translateY(0px) rotateX(10deg) rotateY(15deg); }
-      50% { transform: translateZ(40px) translateY(-20px) rotateX(15deg) rotateY(25deg); }
-    }
-    @keyframes float-3d-slow {
-      0%, 100% { transform: translateZ(30px) translateY(0px) rotateX(5deg) rotateY(20deg); }
-      50% { transform: translateZ(50px) translateY(-15px) rotateX(10deg) rotateY(30deg); }
-    }
-    @keyframes float-3d-delay {
-      0%, 100% { transform: translateZ(40px) translateY(0px) rotateX(15deg) rotateY(25deg); }
-      50% { transform: translateZ(60px) translateY(-25px) rotateX(20deg) rotateY(35deg); }
-    }
-    @keyframes spin-3d {
-      from { transform: translateZ(30px) rotateX(50deg) rotateY(0deg) rotateZ(0deg); }
-      to { transform: translateZ(30px) rotateX(50deg) rotateY(360deg) rotateZ(360deg); }
-    }
-    @keyframes spin-3d-reverse {
-      from { transform: translateZ(50px) rotateY(40deg) rotateZ(0deg); }
-      to { transform: translateZ(50px) rotateY(40deg) rotateZ(-360deg); }
-    }
-    @keyframes float-particle {
-      0% { transform: translateZ(20px) translateY(0px) translateX(0px); opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.6; }
-      100% { transform: translateZ(80px) translateY(-100vh) translateX(30px); opacity: 0; }
-    }
-    .animate-float-3d {
-      animation: float-3d 8s ease-in-out infinite;
-    }
-    .animate-float-3d-slow {
-      animation: float-3d-slow 12s ease-in-out infinite;
-    }
-    .animate-float-3d-delay {
-      animation: float-3d-delay 10s ease-in-out infinite;
-    }
-    .animate-spin-3d {
-      animation: spin-3d 20s linear infinite;
-    }
-    .animate-spin-3d-reverse {
-      animation: spin-3d-reverse 25s linear infinite;
-    }
-    .perspective-1000 {
-      perspective: 1000px;
-    }
-  `}</style>
+ 
 </div>
 
 {/* Industries We Serve - Alternative Design */}
@@ -900,6 +888,7 @@ const TaxationPage = () => {
 
     {/* Bottom CTA */}
     <div className="text-center mt-12 pt-8 border-t border-blue-200/50">
+    
       <p className="text-gray-600 mb-4">
         Still have questions? We're here to help!
       </p>
@@ -916,7 +905,12 @@ const TaxationPage = () => {
 
       {/* CTA Section */}
 <div className="relative py-24 text-white overflow-hidden">
-
+{/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
+ 
   {/* Background Image */}
   <div className="absolute inset-0">
     <img
