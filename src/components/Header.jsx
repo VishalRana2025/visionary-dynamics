@@ -58,6 +58,7 @@ const ROUTES = {
   "Email Marketing": "/email",
   "LinkedIn Marketing": "/linkedin",
   "AI": "/ai",
+  "Automation": "/automation",
   "MS 365 Management": "/ms365",
   "Mobile Device Management": "/mobile",
   "Managed Network Services": "/network",

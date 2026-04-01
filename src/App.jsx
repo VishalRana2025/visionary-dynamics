@@ -32,6 +32,7 @@ import Disclaimer from "./pages/Disclaimer";
 import MS365Management from "./pages/MS365Management";
 import MobileDeviceManagement from "./pages/MobileDeviceManagement";
 import ManagedNetworkServices from "./pages/ManagedNetworkServices";
+import Automation from "./pages/Automation";
 export default function App() {
   return (
     
@@ -67,6 +68,7 @@ export default function App() {
         <Route path="/ms365" element={<MS365Management />} />
         <Route path="/mobile" element={<MobileDeviceManagement />} />
         <Route path="/network" element={<ManagedNetworkServices />} />
+        <Route path="/automation" element={<Automation />} />
         {/* Fallback Route (Optional but recommended) */}
         <Route
           path="*"
