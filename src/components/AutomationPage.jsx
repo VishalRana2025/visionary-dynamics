@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import { 
   Zap, 
   TrendingUp, 
@@ -57,10 +58,30 @@ const App = () => {
   const [hoveredStep, setHoveredStep] = useState(null); // ✅ ADD THIS
 
 const integrationSteps = [
-  { step: 1, title: "Audit & Map", desc: "Identify repetitive workflows, bottlenecks, and data silos across departments.", icon: Target },
-  { step: 2, title: "Select Stack", desc: "Choose API-first tools that align with scalability (CRM, ERP, iPaaS).", icon: Layers },
-  { step: 3, title: "Connect & Orchestrate", desc: "Use middleware or native connectors to sync data in real-time.", icon: GitBranch },
-  { step: 4, title: "Monitor & Optimize", desc: "Track KPIs, error rates, and iterate with AI-driven insights.", icon: Brain }
+  {
+    step: 1,
+    title: "Identify Opportunities",
+    desc: "Analyze workflows to find repetitive tasks and areas where AI can improve speed and efficiency.",
+    icon: Target
+  },
+  {
+    step: 2,
+    title: "Apply Smart Tools",
+    desc: "Integrate AI-powered tools that automate tasks, assist in data processing, and support daily operations.",
+    icon: Layers
+  },
+  {
+    step: 3,
+    title: "Streamline Workflows",
+    desc: "Connect systems and processes to enable smoother operations and faster data flow across teams.",
+    icon: GitBranch
+  },
+  {
+    step: 4,
+    title: "Improve & Scale",
+    desc: "Continuously refine processes using AI insights to enhance performance, accuracy, and overall efficiency.",
+    icon: Brain
+  }
 ];
 
   const automationAreas = [
@@ -141,10 +162,10 @@ const techTools = [
   </div>
 
   {/* Dark Overlay (MAIN ADDITION 🔥) */}
-  <div className="absolute inset-0 bg-black/50"></div>
+ <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
 
   {/* Grid Overlay */}
-  <div className="absolute inset-0 bg-grid-slate-200 opacity-30 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]" />
+  <div className="absolute inset-0 bg-grid-slate-200 opacity-30  pointer-events-none [mask-image:radial-gradient(ellipse_at_center,white,transparent)]" />
 
   {/* Content */}
   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
@@ -162,16 +183,16 @@ const techTools = [
           </span>
         </h1>
 
-
-        <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
-          <button className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-indigo-900/40 transition-all duration-200">
-            Start integration audit <ArrowRight className="w-4 h-4" />
-          </button>
-
-          <button className="inline-flex items-center gap-2 bg-white/10 border border-white/30 hover:border-indigo-300 text-white font-semibold px-6 py-3 rounded-xl backdrop-blur-md transition-all">
-            <Play className="w-4 h-4" /> See live demo
-          </button>
-        </div>
+         
+         <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
+  <Link
+    to="/contact"
+    className="relative z-10 inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-indigo-900/40 transition-all duration-200"
+  >
+    Contact Us 
+    <ArrowRight className="w-4 h-4" />
+  </Link>
+</div>
 
        
 
@@ -209,7 +230,7 @@ const techTools = [
 
     </div>
   </div>
-  <div className="absolute bottom-0 left-0 w-full z-30">
+<div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
   <WaveTransition />
 </div>
 </div>
@@ -408,7 +429,7 @@ const techTools = [
                   <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl">
                     <Link2 className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800">Unified API & native connectors</h3>
+                  <h3 className="text-xl font-bold text-gray-800">Some Apps used in Automation Process</h3>
                 </div>
                 
               </div>
@@ -447,14 +468,14 @@ const techTools = [
    {/* Background Image */}
   <div className="absolute inset-0">
     <img
-      src="https://connect.redhat.com/sites/default/files/2022-10/robot.jpg" // 👉 replace with your image
+      src="https://steppingstone.io/wp-content/uploads/2019/12/Automating-Processes.jpg" // 👉 replace with your image
       alt="background"
       className="w-full h-full object-cover"
     />
   </div>
 
    {/* Dark Overlay (for readability) */}
-  <div className="absolute inset-0 bg-black/60"></div>
+  <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
 
   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -539,110 +560,103 @@ const techTools = [
 
     </div>
   </div>
-  <div className="absolute bottom-0 left-0 w-full z-30">
+  <div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
   <WaveTransition />
 </div>
  
 </div>
 
       {/* Integration roadmap CTA with real-world timeline */}
-    <div className="relative py-24 bg-gradient-to-b from-blue-100 via-blue-100 to-blue-100 overflow-hidden">
+    <div className="py-20 bg-blue-100">
+  <div className="max-w-7xl mx-auto px-4">
 
-  {/* Background Glow */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute top-0 left-1/3 w-96 h-96 bg-indigo-200/30 rounded-full blur-3xl"></div>
-    <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl"></div>
-  </div>
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden grid lg:grid-cols-2">
 
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* LEFT */}
+      <div className="p-8 lg:p-12">
+        <h3 className="text-2xl font-bold text-gray-900">
+          Start your <span className="text-indigo-600">AI-powered journey</span>
+        </h3>
 
-    <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
+        <p className="text-gray-600 mt-3">
+          Improve your workflows with smarter automation, better insights, and faster execution.
+        </p>
 
-      <div className="grid lg:grid-cols-2">
+        {/* Features */}
+        <ul className="mt-6 space-y-3">
+          {[
+            "Automate key workflows",
+            "Improve accuracy and speed",
+            "Scale operations efficiently"
+          ].map((item, i) => (
+            <li key={i} className="flex items-center gap-2 text-gray-700 text-sm">
+              <CheckCircle2 className="w-4 h-4 text-green-500" />
+              {item}
+            </li>
+          ))}
+        </ul>
 
-        {/* LEFT SIDE */}
-        <div className="p-10 lg:p-14">
+        {/* CTA */}
+        <button className="mt-8 bg-gray-900 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg transition">
+          Get Started
+        </button>
+      </div>
 
-          <h3 className="text-3xl font-bold text-gray-900 leading-tight">
-            Start your{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-              integration journey
-            </span>
-          </h3>
+      {/* RIGHT */}
+     <div className="p-8 lg:p-12 bg-gray-50">
+  <h4 className="text-sm font-semibold text-indigo-600 mb-6">
+    How We Improve Your Services
+  </h4>
 
-          <p className="text-gray-500 mt-4 text-lg">
-            Build a powerful automation layer connecting your tools, systems, and AI workflows.
-          </p>
+  <div className="space-y-6">
 
-          {/* Features */}
-          <ul className="mt-8 space-y-4">
-            {[
-              "2-week pilot: automate 3 key workflows",
-              "Dedicated solutions architect + success team",
-              "Scalable pricing: pay only for active automations"
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3 group">
-                <div className="mt-1 w-6 h-6 flex items-center justify-center rounded-full bg-emerald-500/20 group-hover:scale-110 transition">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                </div>
-                <span className="text-gray-700 text-sm leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
+    {[
+      {
+        title: "Identify Opportunities",
+        time: "Step 1",
+        desc: "We analyze your processes to find areas where automation can save time."
+      },
+      {
+        title: "Apply Smart Tools",
+        time: "Step 2",
+        desc: "We introduce AI-powered tools to streamline repetitive tasks."
+      },
+      {
+        title: "Optimize Workflows",
+        time: "Step 3",
+        desc: "We connect systems and improve data flow for better efficiency."
+      },
+      {
+        title: "Continuous Improvement",
+        time: "Step 4",
+        desc: "We refine processes using insights to boost performance over time."
+      }
+    ].map((step, i) => (
+      <div key={i} className="flex gap-4 items-start">
 
-          {/* CTA */}
-          <button className="mt-10 inline-flex items-center gap-2 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-indigo-600 hover:to-violet-600 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg transition-all duration-300 hover:scale-105">
-            Book strategy call
-            <ArrowRight className="w-4 h-4" />
-          </button>
-
+        {/* Step Number */}
+        <div className="w-8 h-8 flex items-center justify-center rounded-full bg-indigo-600 text-white text-xs font-semibold">
+          {i + 1}
         </div>
 
-        {/* RIGHT SIDE (TIMELINE) */}
-        <div className="relative p-10 lg:p-14 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-
-          {/* Header */}
-          <div className="flex items-center gap-2 text-indigo-700 font-semibold mb-6">
-            <Clock className="w-5 h-5" />
-            Implementation timeline
+        {/* Content */}
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="font-medium text-gray-900">{step.title}</span>
+            <span className="text-xs text-indigo-600">{step.time}</span>
           </div>
-
-          {/* Timeline Steps */}
-          <div className="space-y-6">
-
-            {[
-              { title: "Discovery & audit", time: "Week 1", progress: "25%" },
-              { title: "Integration build & test", time: "Week 2-3", progress: "50%" },
-              { title: "Pilot & training", time: "Week 4", progress: "75%" },
-              { title: "Full rollout & optimization", time: "Month 2 →", progress: "100%" }
-            ].map((step, i) => (
-              <div key={i} className="group">
-
-                <div className="flex justify-between text-sm font-medium text-gray-700">
-                  <span>{step.title}</span>
-                  <span className="text-indigo-600">{step.time}</span>
-                </div>
-
-                {/* Progress Bar */}
-                <div className="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 relative transition-all duration-700 group-hover:brightness-110"
-                    style={{ width: step.progress }}
-                  >
-                    <div className="absolute inset-0 bg-white/30 animate-pulse"></div>
-                  </div>
-                </div>
-
-              </div>
-            ))}
-
-          </div>
+          <p className="text-sm text-gray-600 mt-1">{step.desc}</p>
         </div>
 
       </div>
-    </div>
+    ))}
+
   </div>
 </div>
+
+    </div>
+  </div>
+   </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 // AIConsultingPage.jsx
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import {
   Brain,
   Zap,
@@ -159,97 +160,106 @@ const services = [
 
  const methodology = [
   {
-    phase: "Phase 1: Audit & Discovery",
+    phase: "1. Automation",
     icon: <Search className="w-8 h-8" />,
-    description: "We analyze your current accounting, marketing, and development processes to identify opportunities.",
+    description:
+      "AI helps automate repetitive and time-consuming tasks like data entry, reports, and routine operations.",
     steps: [
-      "Process audit",
-      "Tool assessment",
-      "Data review",
-      "Team interviews",
-      "Goal alignment"
+      "Reduce manual effort",
+      "Save time",
+      "Automate routine tasks",
+      "Improve workflow efficiency",
+      "Focus on high-value work"
     ],
-    duration: "2-3 weeks"
+    duration: "Efficiency Boost"
   },
   {
-    phase: "Phase 2: Strategy & Planning",
+    phase: "2. Data Analysis",
     icon: <Target className="w-8 h-8" />,
-    description: "We create a tailored roadmap for AI integration across your business functions.",
+    description:
+      "AI processes large amounts of data quickly and accurately to generate valuable insights.",
     steps: [
-      "Use case selection",
-      "Tool evaluation",
-      "Budget planning",
-      "Timeline creation",
-      "Success metrics"
+      "Fast data processing",
+      "Identify patterns",
+      "Generate insights",
+      "Better decision-making",
+      "Smart strategies"
     ],
-    duration: "3-4 weeks"
+    duration: "Smart Insights"
   },
   {
-    phase: "Phase 3: Implementation",
+    phase: "3. Accuracy & Error Reduction",
     icon: <Rocket className="w-8 h-8" />,
-    description: "We deploy AI solutions in your accounting, marketing, and development workflows.",
+    description:
+      "AI minimizes human errors and ensures more reliable and consistent results across services.",
     steps: [
-      "Tool setup",
-      "Integration",
-      "Team training",
-      "Testing",
-      "Adjustments"
+      "Reduce human errors",
+      "Improve consistency",
+      "Ensure accuracy",
+      "Reliable outputs",
+      "Quality improvement"
     ],
-    duration: "6-8 weeks"
+    duration: "High Accuracy"
   },
   {
-    phase: "Phase 4: Optimization",
+    phase: "4. Speed & Efficiency",
     icon: <TrendingUp className="w-8 h-8" />,
-    description: "We continuously monitor and optimize your AI systems for maximum ROI.",
+    description:
+      "AI speeds up workflows and enhances productivity, enabling faster service delivery.",
     steps: [
-      "Performance tracking",
-      "Fine-tuning",
-      "Reporting setup",
-      "Ongoing support",
-      "Knowledge transfer"
+      "Faster execution",
+      "Boost productivity",
+      "Optimize workflows",
+      "Quick turnaround",
+      "Maintain quality"
     ],
-    duration: "Ongoing"
+    duration: "Faster Delivery"
   }
 ];
-
   const expertiseAreas = [
-    {
-      title: "Financial Services",
-      description: "Risk modeling, fraud detection, algorithmic trading, customer analytics",
-      icon: "💰",
-      experts: "12+ experts"
-    },
-    {
-      title: "Healthcare",
-      description: "Clinical decision support, patient analytics, operational efficiency",
-      icon: "🏥",
-      experts: "15+ experts"
-    },
-    {
-      title: "Retail & CPG",
-      description: "Demand forecasting, personalization, supply chain optimization",
-      icon: "🛒",
-      experts: "10+ experts"
-    },
-    {
-      title: "Manufacturing",
-      description: "Predictive maintenance, quality control, process optimization",
-      icon: "🏭",
-      experts: "8+ experts"
-    },
-    {
-      title: "Technology",
-      description: "Product innovation, developer productivity, customer success",
-      icon: "💻",
-      experts: "20+ experts"
-    },
-    {
-      title: "Energy & Utilities",
-      description: "Grid optimization, predictive maintenance, sustainability",
-      icon: "⚡",
-      experts: "7+ experts"
-    }
-  ];
+  {
+    title: "Financial Services",
+    description:
+      "Using AI to automate financial processes, detect anomalies, and generate faster, data-driven insights for better decision-making.",
+    icon: "💰",
+   
+  },
+  {
+    title: "Healthcare",
+    description:
+      "Applying AI to streamline patient data management, support clinical decisions, and improve operational efficiency.",
+    icon: "🏥",
+   
+  },
+  {
+    title: "Retail & CPG",
+    description:
+      "Leveraging AI for demand forecasting, customer behavior analysis, and personalized experiences to boost sales and efficiency.",
+    icon: "🛒",
+   
+  },
+  {
+    title: "Manufacturing",
+    description:
+      "Integrating AI to monitor production, predict maintenance needs, and enhance quality control processes.",
+    icon: "🏭",
+   
+  },
+  {
+    title: "Technology",
+    description:
+      "Enhancing development workflows with AI-driven automation, faster debugging, and smarter product optimization.",
+    icon: "💻",
+   
+  },
+  {
+    title: "Energy & Utilities",
+    description:
+      "Utilizing AI for system monitoring, demand prediction, and efficient resource management to support sustainable operations.",
+    icon: "⚡",
+   
+  }
+];
 
   const thoughtLeadership = [
     {
@@ -400,10 +410,12 @@ const services = [
           <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Business Transformation</span>
         </h1>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="px-8 py-4 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center group">
-            Book a Strategy Session
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </button>
+          <Link to="/contact">
+  <button className="px-8 py-4 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center group">
+    Contact Us 
+    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+  </button>
+</Link>
           
         </div>
       </div>
@@ -659,12 +671,7 @@ const services = [
         Deep domain knowledge across key sectors
       </p>
 
-      {/* Decorative dots */}
-      <div className="flex justify-center gap-2 mt-6">
-        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-        <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-        <div className="w-2 h-2 bg-purple-300 rounded-full"></div>
-      </div>
+      
     </div>
 
     {/* Expertise Grid */}
@@ -714,33 +721,6 @@ const services = [
             <p className="text-gray-600 mb-6 leading-relaxed">
               {area.description}
             </p>
-            
-            {/* Key highlights (if available) */}
-            <div className="space-y-2 mb-6">
-              {area.highlights ? area.highlights.map((highlight, idx) => (
-                <div key={idx} className="flex items-center text-sm text-gray-500">
-                  <CheckCircle className={`w-4 h-4 ${color.text} mr-2`} />
-                  {highlight}
-                </div>
-              )) : (
-                <div className="flex items-center text-sm text-gray-500">
-                  <CheckCircle className={`w-4 h-4 ${color.text} mr-2`} />
-                  Specialized expertise
-                </div>
-              )}
-            </div>
-            
-            {/* Learn more link with animated arrow */}
-            <a 
-              href="#" 
-              className={`inline-flex items-center ${color.text} font-semibold group-hover:gap-3 transition-all`}
-            >
-              <span>Explore industry</span>
-              <span className={`w-8 h-8 ${color.light} rounded-full flex items-center justify-center ml-2 group-hover:bg-${color.text} group-hover:text-white transition-all`}>
-                <ChevronRight className="w-4 h-4" />
-              </span>
-            </a>
-            
             {/* Bottom gradient line */}
             <div className={`absolute bottom-0 left-6 right-6 h-1 bg-gradient-to-r ${color.gradient} rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
           </div>
