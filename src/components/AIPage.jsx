@@ -49,6 +49,24 @@ import {
   Code
 } from "lucide-react";
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+
 const AIConsultingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
@@ -359,7 +377,7 @@ const services = [
       
 
       {/* Hero Section - Consulting Focused */}
-    <section className="relative overflow-hidden text-white">
+   <section className="relative overflow-hidden text-white h-[500px]">
   {/* Background Image with Overlay */}
   <div className="absolute inset-0 z-0">
     <img 
@@ -391,6 +409,9 @@ const services = [
       </div>
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
     
      
@@ -487,6 +508,11 @@ const services = [
 
       {/* Methodology Section */}
      <section id="methodology" className="relative py-24 overflow-hidden">
+      {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image with Dark Overlay */}
   <div className="absolute inset-0 z-0">
     <img 
@@ -608,6 +634,9 @@ const services = [
       })}
     </div>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </section>
 
       {/* Industry Expertise Section */}
@@ -723,6 +752,11 @@ const services = [
     
       {/* CTA Section */}
      <section id="contact" className="relative py-20 overflow-hidden">
+      {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
   {/* Background Image with Dark Overlay */}
   <div className="absolute inset-0 z-0">
     <img 
