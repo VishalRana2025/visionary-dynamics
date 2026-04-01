@@ -468,7 +468,7 @@ const techTools = [
    {/* Background Image */}
   <div className="absolute inset-0">
     <img
-      src="https://steppingstone.io/wp-content/uploads/2019/12/Automating-Processes.jpg" // 👉 replace with your image
+      src="/images/Automation.jpg" // 👉 replace with your image
       alt="background"
       className="w-full h-full object-cover"
     />
