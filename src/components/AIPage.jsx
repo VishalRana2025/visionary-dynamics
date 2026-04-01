@@ -44,7 +44,9 @@ import {
   Calendar,
   ThumbsUp,
   Check,
-  Search
+  Search,
+  Smartphone,
+  Code
 } from "lucide-react";
 
 const AIConsultingPage = () => {
@@ -61,82 +63,77 @@ const AIConsultingPage = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
- const consultingServices = [
+ // Replace consultingServices with services
+const services = [
   {
-    icon: <Brain className="w-8 h-8" />,
-    title: "Business AI Integration",
-    description: "Seamlessly integrate AI capabilities into your existing business processes and systems.",
+    icon: <BarChart3 className="w-10 h-10" />,
+    title: "Data Analytics & Insights",
+    description: "Transform raw data into actionable intelligence with AI-powered analytics that predict trends and optimize decision-making.",
     features: [
-      "System audit",
-      "Integration plan",
-      "API setup",
-      "Workflow mapping",
-      "Performance tuning"
-    ],
-    color: "purple"
-  },
-  {
-    icon: <Target className="w-8 h-8" />,
-    title: "Customer Experience AI",
-    description: "Use AI to personalize customer interactions and deliver exceptional experiences at scale.",
-    features: [
-      "Journey mapping",
-      "Personalization",
-      "Chatbot setup",
-      "Sentiment analysis",
-      "Feedback loops"
+      "Predictive analytics & forecasting",
+      "Real-time data visualization",
+      "Automated reporting & dashboards",
+      "Customer behavior analysis"
     ],
     color: "blue"
   },
   {
-    icon: <LineChart className="w-8 h-8" />,
-    title: "Business Intelligence",
-    description: "Turn complex data into clear, actionable insights for better decision-making.",
+    icon: <MessageSquare className="w-10 h-10" />,
+    title: "Intelligent Customer Support",
+    description: "Deliver exceptional customer experiences with AI-enhanced support systems that understand context and provide instant solutions.",
     features: [
-      "Data visualization",
-      "KPI tracking",
-      "Real-time reporting",
-      "Dashboard creation",
-      "Insight generation"
+      "AI-powered chatbots & virtual assistants",
+      "Sentiment analysis & customer insights",
+      "Automated ticket routing & prioritization",
+      "24/7 multilingual support"
+    ],
+    color: "purple"
+  },
+  {
+    icon: <Smartphone className="w-10 h-10" />,
+    title: "Smart Automation Solutions",
+    description: "Streamline operations and reduce manual effort with intelligent automation that learns and adapts to your workflows.",
+    features: [
+      "Robotic process automation (RPA)",
+      "Intelligent document processing",
+      "Workflow optimization",
+      "Automated quality assurance"
     ],
     color: "green"
   },
   {
-    icon: <Users className="w-8 h-8" />,
-    title: "AI Workforce Enablement",
-    description: "Empower your employees with AI tools and training to boost productivity and innovation.",
+    icon: <TrendingUp className="w-10 h-10" />,
+    title: "Marketing Intelligence",
+    description: "Supercharge your marketing efforts with AI-driven insights that optimize campaigns and maximize ROI.",
     features: [
-      "Tool selection",
-      "Hands-on training",
-      "Use case library",
-      "Ongoing support",
-      "Productivity tracking"
+      "Personalized content recommendations",
+      "Campaign performance prediction",
+      "Customer segmentation & targeting",
+      "Social media sentiment analysis"
     ],
     color: "orange"
   },
   {
-    icon: <Shield className="w-8 h-8" />,
-    title: "AI Risk Management",
-    description: "Identify, assess, and mitigate risks associated with AI implementation and usage.",
+    icon: <Shield className="w-10 h-10" />,
+    title: "AI-Enhanced Security",
+    description: "Protect your digital assets with intelligent security systems that detect and respond to threats in real-time.",
     features: [
-      "Risk assessment",
-      "Compliance checks",
-      "Security protocols",
-      "Incident response",
-      "Regular audits"
+      "Threat detection & prevention",
+      "Anomaly detection algorithms",
+      "Automated incident response",
+      "Compliance monitoring"
     ],
     color: "red"
   },
   {
-    icon: <Rocket className="w-8 h-8" />,
-    title: "Innovation Labs",
-    description: "Set up dedicated AI innovation teams to explore new possibilities and create competitive advantages.",
+    icon: <Code className="w-10 h-10" />,
+    title: "Smart Development",
+    description: "Accelerate software development with AI-assisted coding, testing, and deployment tools that boost productivity.",
     features: [
-      "Lab setup",
-      "Ideation sessions",
-      "Rapid prototyping",
-      "Pilot programs",
-      "Scale planning"
+      "AI-powered code assistance",
+      "Automated testing & QA",
+      "Intelligent deployment pipelines",
+      "Performance optimization"
     ],
     color: "indigo"
   }
@@ -389,10 +386,7 @@ const AIConsultingPage = () => {
             Book a Strategy Session
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </button>
-          <button className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white/10 transition-all flex items-center justify-center">
-            <Play className="w-4 h-4 mr-2" />
-            See Client Results
-          </button>
+          
         </div>
       </div>
     </div>
@@ -402,52 +396,25 @@ const AIConsultingPage = () => {
      
 
       {/* Services Section */}
-      {/* Services Section - Vibrant & Dynamic */}
+      
 <section id="services" className="bg-gradient-to-br from-blue-100 via-blue-100 to-blue-100 py-24 relative overflow-hidden">
   {/* Animated background elements */}
-  <div className="absolute inset-0 overflow-hidden">
-    {/* Floating shapes */}
-    <div className="absolute top-20 left-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
-    <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float animation-delay-2000"></div>
-    <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float animation-delay-4000"></div>
-    
-    {/* Grid pattern */}
-    <div className="absolute inset-0" style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-      opacity: 0.4
-    }}></div>
-  </div>
+ 
 
   <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {/* Header with decorative elements */}
     <div className="text-center mb-16 relative">
-      {/* Decorative line */}
-      <div className="absolute left-1/2 -translate-x-1/2 -top-8 w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
-      
-      <span className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm uppercase tracking-wider bg-white/80 backdrop-blur-sm px-5 py-2 rounded-full shadow-sm border border-blue-100 mb-6">
-        <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-        Our Expertise
-      </span>
       
       <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-        AI Consulting <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Services</span>
+         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">What Our AI Can Do</span>
       </h2>
-      
-      <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-        End-to-end AI solutions tailored to your business needs, delivered by industry experts
-      </p>
-
       {/* Decorative dots */}
-      <div className="flex justify-center gap-2 mt-8">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="w-2 h-2 bg-blue-400 rounded-full opacity-60" style={{ animation: `pulse 2s ${i * 0.2}s infinite` }}></div>
-        ))}
-      </div>
+      
     </div>
 
     {/* Services Grid - 3 columns with enhanced cards */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {consultingServices.map((service, index) => {
+      {services.map((service, index) => {
         // Icon color combinations
         const iconStyles = {
           purple: { bg: 'bg-purple-100', text: 'text-purple-600', gradient: 'from-purple-500 to-purple-600', light: 'bg-purple-50' },
@@ -514,81 +481,9 @@ const AIConsultingPage = () => {
         );
       })}
     </div>
-
-    {/* Stats section with glass morphism */}
-    <div className="mt-20 grid grid-cols-1 md:grid-cols-4 gap-6">
-      {[
-        { icon: <Briefcase className="w-6 h-6" />, value: '100+', label: 'Projects Delivered', color: 'blue' },
-        { icon: <Users className="w-6 h-6" />, value: '50+', label: 'AI Experts', color: 'purple' },
-        { icon: <Globe className="w-6 h-6" />, value: '5+', label: 'Countries', color: 'green' },
-        { icon: <Award className="w-6 h-6" />, value: '98%', label: 'Client Satisfaction', color: 'orange' }
-      ].map((stat, index) => (
-        <div key={index} className="group relative">
-          {/* Glass background */}
-          <div className="absolute inset-0 bg-white/40 backdrop-blur-sm rounded-2xl border border-white/60 shadow-lg"></div>
-          
-          {/* Content */}
-          <div className="relative p-6 flex items-center space-x-4">
-            <div className={`w-14 h-14 bg-${stat.color}-100 rounded-xl flex items-center justify-center text-${stat.color}-600 group-hover:scale-110 group-hover:rotate-3 transition-all`}>
-              {stat.icon}
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
-              <p className="text-gray-600 text-sm">{stat.label}</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    {/* Enhanced CTA section */}
-    <div className="relative mt-20">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-xl opacity-30"></div>
-      
-      <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 overflow-hidden">
-        {/* Animated particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float ${5 + Math.random() * 10}s infinite`
-              }}
-            ></div>
-          ))}
-        </div>
-
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to transform your business?
-            </h3>
-            <p className="text-blue-100 text-lg max-w-xl">
-              Join 200+ companies that have already started their AI journey with us.
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button className="group bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all flex items-center">
-              <Calendar className="w-5 h-5 mr-2" />
-              Book free consultation
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-all border border-white/30">
-              View case studies
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-
- 
 </section>
+
 
       {/* Methodology Section */}
      <section id="methodology" className="relative py-24 overflow-hidden">
@@ -611,13 +506,10 @@ const AIConsultingPage = () => {
   <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {/* Section header with decorative elements - updated for dark background */}
     <div className="text-center mb-16">
-      <div className="inline-flex items-center gap-2 bg-purple-900/30 backdrop-blur-sm text-purple-300 px-4 py-2 rounded-full mb-4 border border-purple-500/20">
-        <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
-        <span className="text-sm font-semibold uppercase tracking-wider">How We Work</span>
-      </div>
+      
       
       <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-        Our Consulting <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Methodology</span>
+        Transforming Businesses <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400"> with AI</span>
       </h2>
       
       <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -714,17 +606,6 @@ const AIConsultingPage = () => {
           </div>
         );
       })}
-    </div>
-
-    {/* Bottom CTA - updated for dark background */}
-    <div className="mt-16 text-center">
-      <div className="inline-flex items-center gap-4 bg-white/5 backdrop-blur-md px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all border border-white/10">
-        <span className="text-gray-300">Ready to start your journey?</span>
-        <button className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all flex items-center">
-          Book a consultation
-          <ArrowRight className="w-4 h-4 ml-2" />
-        </button>
-      </div>
     </div>
   </div>
 </section>
@@ -840,166 +721,6 @@ const AIConsultingPage = () => {
   </div>
 </section>
     
-
-      {/* Resources Section */}
-    <section className="relative py-20 overflow-hidden">
-  {/* Full Section Background Image with Dark Overlay */}
-  <div className="absolute inset-0 z-0">
-    <img 
-      src="https://png.pngtree.com/thumb_back/fw800/background/20190223/ourmid/pngtree-creative-blue-robot-face-smart-technology-background-material-facecitymotor-carstarry-skydata-image_73222.jpg" 
-      alt="Business resources and strategy" 
-      className="w-full h-full object-cover"
-    />
-    {/* Dark gradient overlay - covers entire section */}
-    <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/80 to-gray-900/90"></div>
-    
-    {/* Subtle pattern overlay */}
-    <div className="absolute inset-0 opacity-10" style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-    }}></div>
-  </div>
-
-  {/* Content - positioned over the background */}
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="rounded-3xl overflow-hidden backdrop-blur-sm bg-white/5 p-8 md:p-12 border border-white/10">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        {/* Left column - Resources list */}
-        <div>
-          
-          
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-            AI Consulting Resources
-          </h2>
-          
-          <p className="text-xl text-white/80 mb-8">
-            Tools and guides to start your AI journey
-          </p>
-          
-          <div className="space-y-4 mb-8">
-            {resources.map((resource, index) => (
-              <div 
-                key={index} 
-                className="group flex items-center bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all border border-white/10 hover:border-white/20"
-              >
-                <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mr-4 text-2xl group-hover:scale-110 transition-transform">
-                  {resource.icon}
-                </div>
-                <div className="flex-grow">
-                  <p className="font-semibold text-white">{resource.title}</p>
-                  <p className="text-sm text-white/60">{resource.description}</p>
-                </div>
-                <button className="ml-auto bg-white/10 p-3 rounded-lg hover:bg-white/20 transition-all group-hover:scale-110">
-                  <Download className="w-4 h-4 text-white" />
-                </button>
-              </div>
-            ))}
-          </div>
-          
-          
-        </div>
-
-        {/* Right column - Assessment form */}
-        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl relative">
-          <div className="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-            Limited Time
-          </div>
-          
-          <h3 className="text-2xl font-bold mb-2 flex items-center text-white">
-            <Calendar className="w-6 h-6 mr-2" />
-            Custom Assessment
-          </h3>
-          
-          <p className="mb-6 text-white/80">
-            Schedule a 30-minute strategy session with our experts
-          </p>
-          
-          <form className="space-y-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 pl-10 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/20 transition-all"
-              />
-              <Users className="absolute left-3 top-3.5 w-4 h-4 text-white/50" />
-            </div>
-            
-            <div className="relative">
-              <input
-                type="email"
-                placeholder="Work Email"
-                className="w-full px-4 py-3 pl-10 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/20 transition-all"
-              />
-              <Mail className="absolute left-3 top-3.5 w-4 h-4 text-white/50" />
-            </div>
-            
-            <div className="relative">
-              <select className="w-full px-4 py-3 pl-10 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/20 transition-all appearance-none">
-                <option value="" disabled selected className="text-gray-900">Select Industry</option>
-                <option className="text-gray-900">Financial Services</option>
-                <option className="text-gray-900">Healthcare</option>
-                <option className="text-gray-900">Retail</option>
-                <option className="text-gray-900">Manufacturing</option>
-                <option className="text-gray-900">Technology</option>
-              </select>
-              <Briefcase className="absolute left-3 top-3.5 w-4 h-4 text-white/50" />
-              <ChevronDown className="absolute right-3 top-3.5 w-4 h-4 text-white/50" />
-            </div>
-            
-            <button className="w-full bg-white text-purple-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all hover:shadow-xl hover:scale-[1.02] flex items-center justify-center group">
-              Request Consultation
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </form>
-          
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-      {/* FAQ Section */}
-     <section className="bg-blue-100 py-20">
-  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        Frequently Asked Questions
-      </h2>
-      <p className="text-xl text-gray-600">
-        Common questions about our consulting services
-      </p>
-    </div>
-
-    <div className="space-y-4">
-      {faqs.map((faq, index) => (
-        <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-          <button
-            className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-            onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-          >
-            <span className="font-semibold text-gray-900">
-              {faq.question}
-            </span>
-
-            <ChevronRight
-              className={`w-5 h-5 text-gray-500 transition-transform ${
-                activeFaq === index ? "rotate-90" : ""
-              }`}
-            />
-          </button>
-
-          {activeFaq === index && (
-            <div className="px-6 pb-4 text-gray-600">
-              {faq.answer}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
-
       {/* CTA Section */}
      <section id="contact" className="relative py-20 overflow-hidden">
   {/* Background Image with Dark Overlay */}
@@ -1056,10 +777,7 @@ const AIConsultingPage = () => {
         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
       </button>
       
-      <button className="group px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/10 hover:border-white/50 transition-all inline-flex items-center justify-center backdrop-blur-sm">
-        <Download className="w-5 h-5 mr-2" />
-        Download Capability Brochure
-      </button>
+      
     </div>
   </div>
 </section>
