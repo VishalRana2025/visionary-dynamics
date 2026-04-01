@@ -16,22 +16,37 @@ import {
 
 export const WaveTransition = ({ direction = "bottom" }) => {
   const isTop = direction === "top";
- 
+
   return (
-    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+    <div className={`relative w-full ${isTop ? "rotate-180" : ""}`}>
       <svg
         viewBox="0 0 1440 320"
-        className="w-full h-[150px] md:h-[220px]"
+        className="block w-full h-[160px] md:h-[220px]"
         preserveAspectRatio="none"
       >
-        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
-        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
-        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+        {/* BACK WAVE */}
+        <path
+          d="M0,200C320,300 640,80 960,200C1280,320 1440,120 1440,200V320H0Z"
+          fill="#37393b"
+          opacity="0.3"
+        />
+
+        {/* MIDDLE WAVE */}
+        <path
+          d="M0,220C480,340 960,120 1440,220V320H0Z"
+          fill="#93C5FD"
+          opacity="0.6"
+        />
+
+        {/* FRONT WAVE */}
+        <path
+          d="M0,260C480,380 960,160 1440,260V320H0Z"
+          fill="#b5c7df"
+        />
       </svg>
     </div>
   );
 };
- 
 
 function FAQItem({ faq }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +54,7 @@ function FAQItem({ faq }) {
   
 
   return (
-    <div className="border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+    <div className="border border-gray-200 rounded-xl shadow-sm">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50 transition"
@@ -58,7 +73,7 @@ function FAQItem({ faq }) {
       <div
         className={`transition-all duration-300 ease-in-out ${
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        } overflow-hidden`}
+        }`}
       >
         <div className="p-5 pt-0 text-gray-600">
           {faq.answer}
@@ -206,7 +221,7 @@ const TaxationPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <div className="relative bg-blue-900 text-white overflow-hidden">
+      <div className="relative bg-blue-900 text-white ">
 
   {/* Background Image */}
   <div className="absolute inset-0">
@@ -244,14 +259,15 @@ const TaxationPage = () => {
       </div>
     </div>
   </div>
-  <div className="absolute bottom-0 left-0 w-full z-30">
+ 
+ <div className="absolute bottom-0 left-0 w-full pointer-events-none">
   <WaveTransition />
 </div>
  
 </div>
 
 {/* Tax Services Grid */}
-<div className="relative py-24 bg-gradient-to-br from-blue-100 via-sky-50 to-cyan-50 overflow-hidden">
+<div className="relative py-24 bg-gradient-to-br from-blue-100 via-sky-50 to-cyan-50">    
   {/* Moving 3D Background Elements - Only these move */}
   <div className="absolute inset-0 perspective-1000 pointer-events-none">
     {/* Animated floating cubes - MOVING */}
@@ -407,7 +423,7 @@ const TaxationPage = () => {
         return (
           <div
             key={index}
-            className="group relative bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-100 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden"
+            className="group relative bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-100 hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 "
           >
             {/* Animated gradient background on hover */}
             <div className={`absolute inset-0 bg-gradient-to-br ${color.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
@@ -463,7 +479,7 @@ const TaxationPage = () => {
 
 
         {/* Integrated Stats Section - With Background */}
-<div className="relative py-24 text-white overflow-hidden">
+<div className="relative py-24 text-white ">
 {/* Top Wave */}
   <div className="absolute top-0 left-0 w-full -mt-1 z-10">
     <WaveTransition direction="top" />
@@ -539,13 +555,13 @@ const TaxationPage = () => {
 
     </div>
   </div>
-  <div className="absolute bottom-0 left-0 w-full z-30">
+  <div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
   <WaveTransition />
 </div>
 </div>
   
       {/* Why Choose Us - Light Blue BG with Moving 3D Objects */}
-<div className="relative py-24 overflow-hidden">
+<div className="relative py-24 ">
   {/* Light Blue Base Background */}
   <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50"></div>
   
@@ -667,7 +683,7 @@ const TaxationPage = () => {
         <div className="absolute -inset-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-2xl"></div>
         
         {/* Main Form Card */}
-        <div className="relative bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/50">
+        <div className="relative bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl  border border-white/50">
           {/* Top gradient bar */}
           <div className="h-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"></div>
           
@@ -734,7 +750,7 @@ const TaxationPage = () => {
 </div>
 
 {/* Industries We Serve - Alternative Design */}
-<div className="relative py-24 overflow-hidden">
+<div className="relative py-24 ">
   {/* Background */}
   <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-sky-50 to-cyan-50"></div>
   
@@ -796,7 +812,7 @@ const TaxationPage = () => {
 </div>
 
 {/* FAQ Section with Light Blue BG and Moving Objects */}
-<div className="relative py-24 overflow-hidden">
+<div className="relative py-24 ">
   {/* Light Blue Base Background */}
   <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50"></div>
   
@@ -904,7 +920,7 @@ const TaxationPage = () => {
 </div>
 
       {/* CTA Section */}
-<div className="relative py-24 text-white overflow-hidden">
+<div className="relative py-24 text-white ">
 {/* Top Wave */}
   <div className="absolute top-0 left-0 w-full -mt-1 z-10">
     <WaveTransition direction="top" />
