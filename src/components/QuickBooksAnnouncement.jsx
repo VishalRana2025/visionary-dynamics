@@ -6,12 +6,9 @@ import {
   Zap,
   Handshake,
   ChevronRight,
-  Sparkles,
+ 
   Cloud,
-  CloudRain,
-  CloudSnow,
-  CloudFog,
-  CloudLightning,
+ 
 } from "lucide-react";
 
 /* IMAGE IMPORTS */
@@ -242,7 +239,7 @@ const QuickBooksAnnouncement = () => {
       id: 2,
       image: integrationImg,
       icon: <Zap size={26} className="text-emerald-600" />,
-      title: "Seamless Integration & Support",
+      title: "Seamless Integration",
       desc:
         "End-to-end setup and ongoing assistance aligned with your business workflows and compliance needs.",
       features: [
@@ -313,36 +310,7 @@ const QuickBooksAnnouncement = () => {
           }}
         />
 
-        {/* Cloud Layer 1 - Fluffy */}
-        {/* <div className="absolute inset-0">
-          {[
-            { x: "5%", y: "10%", width: "w-64", height: "h-32", delay: 0 },
-            { x: "70%", y: "15%", width: "w-96", height: "h-40", delay: 2 },
-            { x: "25%", y: "25%", width: "w-80", height: "h-36", delay: 1 },
-            { x: "60%", y: "35%", width: "w-72", height: "h-28", delay: 3 },
-            { x: "10%", y: "40%", width: "w-48", height: "h-24", delay: 4 },
-          ].map((cloud, i) => (
-            <motion.div
-              key={`cloud-1-${i}`}
-              className={`absolute ${cloud.width} ${cloud.height} rounded-full bg-gradient-to-br from-white/90 to-white/70 shadow-xl`}
-              style={{
-                left: cloud.x,
-                top: cloud.y,
-                filter: "blur(2px)",
-              }}
-              animate={{
-                x: [-10, 10, -10],
-                y: [0, -5, 0],
-              }}
-              transition={{
-                duration: 15 + i * 3,
-                repeat: Infinity,
-                delay: cloud.delay,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div> */}
+        
 
         {/* Cloud Layer 2 - Wispy */}
         <div className="absolute inset-0">
@@ -368,13 +336,6 @@ const QuickBooksAnnouncement = () => {
             />
           ))}
         </div>
-
-        {/* Floating Cloud Icons */}
-       
-
-        
-
-       
 
         {/* Horizon Line */}
         <div className="absolute bottom-1/3 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent" />

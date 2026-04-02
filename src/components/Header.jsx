@@ -9,8 +9,8 @@ const MENU_DATA = {
     "Our Locations": [],
     "Industries we Serve": [],
     "What Our Clients Say": [],
-    "Career": [],
-    "Our Gallery": [],
+    // "Career": [],
+    // "Our Gallery": [],
   },
   "What We Do": {
     "Accounting": ["Bookkeeping", "Payroll","Financial Reporting and Analysis","Software Setup & Migration"],
@@ -31,8 +31,8 @@ const MENU_DATA = {
   },
   "How We Do": {
     "Tools we use": ["AI", "Automation", "Cloud"],
-    "Our Partners": [],
-    "Future": [],
+    // "Our Partners": [],
+    // "Future": [],
     "Blog": [],
   },
 };
@@ -59,6 +59,7 @@ const ROUTES = {
   "LinkedIn Marketing": "/linkedin",
   "AI": "/ai",
   "Automation": "/automation",
+  "Cloud": "/cloud",
   "MS 365 Management": "/ms365",
   "Mobile Device Management": "/mobile",
   "Managed Network Services": "/network",
