@@ -17,7 +17,10 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173", // frontend URL
+  origin: [
+    "http://localhost:5173", // local
+    "https://visionary-dynamics-lvoxryq22-visionary-dynamics-projects.vercel.app" // vercel
+  ],
   credentials: true
 }));
 
