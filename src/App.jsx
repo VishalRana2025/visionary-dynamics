@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // Pages
 import Home from "./pages/Home";
@@ -34,53 +34,96 @@ import MobileDeviceManagement from "./pages/MobileDeviceManagement";
 import ManagedNetworkServices from "./pages/ManagedNetworkServices";
 import Automation from "./pages/Automation";
 import Cloud from "./pages/Cloud";
+import AdminPage from "./pages/AdminPage";
+
+// Auth Pages
+import LoginPage from "./pages/LoginPage";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+
+
+// Protected
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRoute from "./components/AdminRoute";
+
 export default function App() {
   return (
-    
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/location" element={<OurLocation />} />
-        <Route path="/industries" element={<IndustriesWeServes />} />
-        <Route path="/Clients" element={<OurClients />} />
-        <Route path="/accounting" element={<Accounting />} />
-        <Route path="/bookkeeping" element={<BookKeeping />} />
-        <Route path="/payroll" element={<Payroll />} />
-        <Route path="/financial" element={<FinancialAnalysics />} />
-        <Route path="/software" element={<SoftwareMigration />} />
-        <Route path="/taxation" element={<Taxation />} />
-        <Route path="/cooperative" element={<CooperativeTax />} />
-        <Route path="/individual" element={<IndividualTax />} />
-        <Route path="/business" element={<BusinessAnalytics />} />
-        <Route path="/webdesign" element={<WebDesign />} />
-        <Route path="/seo" element={<Seo />} />
-        <Route path="/social" element={<Social />} />
-        <Route path="/email" element={<Email />} />
-        <Route path="/linkedin" element={<LinkedIn />} />
-        <Route path="/ai" element={<AI />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/terms" element={<TermsConditions />} />
-        <Route path="/cookies" element={<CookiePolicy />} />
-        <Route path="/datasecurity" element={<DataSecurityPolicy />} />
-        <Route path="/intellectual" element={<IntellectualPolicy />} />
-        <Route path="/complaint" element={<ComplaintPolicy />} />
-        <Route path="/disclaimer" element={<Disclaimer />} />
-        <Route path="/ms365" element={<MS365Management />} />
-        <Route path="/mobile" element={<MobileDeviceManagement />} />
-        <Route path="/network" element={<ManagedNetworkServices />} />
-        <Route path="/automation" element={<Automation />} />
-        <Route path="/cloud" element={<Cloud />} />
-        {/* Fallback Route (Optional but recommended) */}
-        <Route
-          path="*"
-          element={
-            <div style={{ padding: "2rem", textAlign: "center" }}>
-              <h1>404 - Page Not Found</h1>
-            </div>
-          }
-        />
-      </Routes>
-   
+    <Routes>
+
+      {/* Public Routes */}
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/location" element={<OurLocation />} />
+      <Route path="/industries" element={<IndustriesWeServes />} />
+      <Route path="/clients" element={<OurClients />} />
+
+      {/* Auth */}
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<Signup />} />
+
+      {/* 🔐 Protected Dashboard */}
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* 🔐 Admin */}
+      <Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <AdminPage />
+    </AdminRoute>
+  }
+/>
+
+      {/* Other Pages */}
+      <Route path="/accounting" element={<Accounting />} />
+      <Route path="/bookkeeping" element={<BookKeeping />} />
+      <Route path="/payroll" element={<Payroll />} />
+      <Route path="/financial" element={<FinancialAnalysics />} />
+      <Route path="/software" element={<SoftwareMigration />} />
+      <Route path="/taxation" element={<Taxation />} />
+      <Route path="/cooperative" element={<CooperativeTax />} />
+      <Route path="/individual" element={<IndividualTax />} />
+      <Route path="/business" element={<BusinessAnalytics />} />
+      <Route path="/webdesign" element={<WebDesign />} />
+      <Route path="/seo" element={<Seo />} />
+      <Route path="/social" element={<Social />} />
+      <Route path="/email" element={<Email />} />
+      <Route path="/linkedin" element={<LinkedIn />} />
+      <Route path="/ai" element={<AI />} />
+      <Route path="/contact" element={<ContactUs />} />
+
+      {/* Policies */}
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<TermsConditions />} />
+      <Route path="/cookies" element={<CookiePolicy />} />
+      <Route path="/datasecurity" element={<DataSecurityPolicy />} />
+      <Route path="/intellectual" element={<IntellectualPolicy />} />
+      <Route path="/complaint" element={<ComplaintPolicy />} />
+      <Route path="/disclaimer" element={<Disclaimer />} />
+
+      {/* Services */}
+      <Route path="/ms365" element={<MS365Management />} />
+      <Route path="/mobile" element={<MobileDeviceManagement />} />
+      <Route path="/network" element={<ManagedNetworkServices />} />
+      <Route path="/automation" element={<Automation />} />
+      <Route path="/cloud" element={<Cloud />} />
+
+      {/* 404 */}
+      <Route
+        path="*"
+        element={
+          <div style={{ padding: "2rem", textAlign: "center" }}>
+            <h1>404 - Page Not Found</h1>
+          </div>
+        }
+      />
+    </Routes>
   );
 }
