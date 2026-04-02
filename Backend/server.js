@@ -16,15 +16,21 @@ const app = express();
 connectDB();
 
 // Middleware
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://visionary-dynamics-krvj9cdyu-visionary-dynamics-projects.vercel.app"
+];
+
 app.use(cors({
-  origin: [
-    "http://localhost:5173", // local
-    "https://visionary-dynamics-lvoxryq22-visionary-dynamics-projects.vercel.app" // vercel
-  ],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
-
-app.use(express.json());
 
 // 🔐 SESSION (required for Google OAuth)
 app.use(
