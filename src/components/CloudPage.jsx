@@ -20,6 +20,24 @@ import {
 
 } from "lucide-react";
 
+export const WaveTransition = ({ direction = "bottom" }) => {
+  const isTop = direction === "top";
+ 
+  return (
+    <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
+      <svg
+        viewBox="0 0 1440 320"
+        className="w-full h-[150px] md:h-[220px]"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
+        <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
+        <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
+      </svg>
+    </div>
+  );
+};
+
 const CloudPage = () => {
   const [animated, setAnimated] = useState(false);
   const [hoveredStep, setHoveredStep] = useState(null);
@@ -122,16 +140,16 @@ const CloudPage = () => {
     }
   ];
 
-  const tools = [
-    { name: "AWS", icon: <Server className="w-4 h-4" /> },
-    { name: "Azure", icon: <Cloud className="w-4 h-4" /> },
-    { name: "Google Cloud", icon: <Globe className="w-4 h-4" /> },
-    { name: "APIs & Integrations", icon: <Workflow className="w-4 h-4" /> },
-    { name: "CRM Systems", icon: <Database className="w-4 h-4" /> },
-    { name: "ERP Solutions", icon: <TrendingUp className="w-4 h-4" /> },
-    { name: "Automation Tools", icon: <Zap className="w-4 h-4" /> },
-    { name: "Analytics Dashboards", icon: <BarChart3 className="w-4 h-4" /> }
-  ];
+ const tools = [
+  { name: 'AWS', icon: '☁️' },
+  { name: 'Azure', icon: '🔷' },
+  { name: 'Google Cloud', icon: '☁️' },
+  { name: 'Docker', icon: '🐳' },
+  { name: 'Kubernetes', icon: '⚙️' },
+  { name: 'Terraform', icon: '🏗️' },
+  { name: 'Jenkins', icon: '🤖' },
+  { name: 'GitHub Actions', icon: '⚡' },
+];
 
   return (
    <div className="relative w-full overflow-hidden bg-gradient-to-b from-blue-100 via-blue-100 to-blue-100">
@@ -172,12 +190,15 @@ const CloudPage = () => {
       and deliver speed, accuracy, and scalability across your business.
     </p>
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </div>
 
 
         {/* first session  */}
 
-       <div className="mb-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <div className="mb-24 mt-16 px-4 sm:px-6 lg:px-8 py-16 sm:py-20 relative max-w-7xl mx-auto">
       <div className="relative">
         {/* Section Header with Enhanced Design */}
         <div className="text-center mb-16">
@@ -299,25 +320,37 @@ const CloudPage = () => {
         </div>
         </div>
 
-        {/* BENEFITS - Enhanced with Stats */}
-       <div className="relative mb-24 overflow-hidden">
 
-  {/* Background Image */}
+
+        {/* Key BENEFITS Section */}
+      <div className="relative mb-24 mt-16 px-6 py-20 overflow-hidden 
+                min-h-[400px] md:min-h-[600px] 
+                flex items-center justify-center">
+        {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
+
+  {/* Background Image + Gradient Overlay */}
   <div
     className="absolute inset-0 bg-cover bg-center"
     style={{
-      backgroundImage: "url('/images/cloud-benefits.jpg')" // change path if needed
+      backgroundImage: `
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+        url('https://images.stockcake.com/public/8/d/4/8d46f9f6-9e60-44c8-83b7-fa199a51e409_large/team-meeting-discussion-stockcake.jpg')
+      `
     }}
   />
 
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-black/60"></div>
-
   {/* Content */}
-<div className="relative mb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
     {/* Heading */}
     <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-white mb-4">Key Benefits</h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        Key Benefits
+      </h2>
       <p className="text-gray-300 max-w-2xl mx-auto">
         Why leading businesses choose our cloud integration solutions
       </p>
@@ -328,105 +361,156 @@ const CloudPage = () => {
       {benefits.map((item, i) => (
         <div
           key={i}
-          className={`group bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${
-            animated ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }`}
+          className={`group relative overflow-hidden
+            bg-white/10 backdrop-blur-xl border border-white/20 
+            rounded-2xl p-6 
+            shadow-[0_8px_32px_rgba(0,0,0,0.25)] 
+            hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] 
+            transition-all duration-300 transform hover:-translate-y-2
+            ${animated ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
+          `}
           style={{ transitionDelay: `${i * 100}ms` }}
         >
+
+          {/* Glass Shine Effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-20 pointer-events-none"></div>
+
           {/* Icon */}
           <div className="bg-gradient-to-br from-blue-500 to-purple-500 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <div className="text-white">{item.icon}</div>
           </div>
 
           {/* Title */}
-          <h3 className="text-xl font-bold text-gray-900 mb-2">
+          <h3 className="text-xl font-bold text-white mb-2">
             {item.title}
           </h3>
 
           {/* Description */}
-          <p className="text-gray-600 text-sm mb-4">
+          <p className="text-gray-200 text-sm mb-4">
             {item.desc}
           </p>
-
-          {/* Stats */}
-          <div className="border-t border-gray-200 pt-4 mt-2">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {item.stat}
-            </div>
-            <div className="text-xs text-gray-500 mt-1">
-              {item.statLabel}
-            </div>
-          </div>
         </div>
       ))}
     </div>
-
   </div>
+  <div className="absolute bottom-0 left-0 w-full z-30">
+  <WaveTransition />
+</div>
 </div>
 
         {/* TECHNOLOGIES - Enhanced Grid */}
-       <div className="mb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Technologies We Use</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Leveraging industry-leading cloud platforms and integration tools
-            </p>
+      <div className="mb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  
+  {/* Heading */}
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      Technologies We Use
+    </h2>
+    <p className="text-gray-600 max-w-2xl mx-auto">
+      Leveraging industry-leading cloud platforms and integration tools
+    </p>
+  </div>
+
+  {/* Tools Grid */}
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {tools.map((tool, i) => (
+      <div
+        key={i}
+        className={`group relative overflow-hidden 
+          bg-gradient-to-br from-white to-gray-50 
+          border border-gray-200 
+          rounded-xl p-5 
+          shadow-md hover:shadow-xl 
+          transition-all duration-300 
+          transform hover:-translate-y-1 hover:scale-105 
+          text-center cursor-pointer
+          ${animated ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
+        `}
+        style={{ transitionDelay: `${i * 50}ms` }}
+      >
+
+        {/* Glow Hover Effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+
+        {/* Content */}
+        <div className="flex flex-col items-center justify-center gap-2 relative z-10">
+
+          {/* Icon */}
+          <div className="text-blue-600 group-hover:scale-125 group-hover:text-purple-600 transition-all duration-300">
+            <span className="text-3xl">{tool.icon}</span>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {tools.map((tool, i) => (
-              <div
-                key={i}
-                className={`group bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-center ${
-                  animated ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                }`}
-                style={{ transitionDelay: `${i * 50}ms` }}
-              >
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <div className="text-blue-600 group-hover:scale-110 transition-transform">
-                    {tool.icon}
-                  </div>
-                  <span className="font-medium text-gray-700">{tool.name}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+
+          {/* Name */}
+          <span className="font-semibold text-gray-700 group-hover:text-gray-900 transition">
+            {tool.name}
+          </span>
+
         </div>
 
+      </div>
+    ))}
+  </div>
+
+</div>
+
         {/* CTA - Enhanced */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-2xl">
-          {/* Animated Background */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse-slow"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
-          </div>
-          
-          <div className="relative px-8 py-12 md:py-16 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to Upgrade Your Business with Cloud?
-            </h2>
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-              Let's help you automate, integrate, and scale your operations with our cutting-edge cloud solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-white text-blue-600 font-semibold px-8 py-3 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                Contact Us
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                href="/demo"
-                className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-xl hover:bg-white/10 transition-all duration-300"
-              >
-                Watch Demo
-                <Clock className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-     
+       <div className="relative overflow-hidden rounded-2xl shadow-2xl h-[400px] flex items-center justify-center">
+          {/* Top Wave */}
+  <div className="absolute top-0 left-0 w-full -mt-1 z-10">
+    <WaveTransition direction="top" />
+  </div>
+ 
+
+  {/* Background Image + Gradient Overlay */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage: `
+        
+        url('https://img.freepik.com/premium-photo/business-background_921096-1222.jpg')
+      `
+    }}
+  />
+
+  {/* Optional Pattern Overlay (extra premium look) */}
+  <div className="absolute inset-0 bg-black/60"></div>
+
+  {/* Animated Background Blobs */}
+  <div className="absolute inset-0 opacity-20">
+    <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse-slow"></div>
+    <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
+  </div>
+
+  {/* Content */}
+  <div className="relative px-8 py-12 md:py-16 text-center">
+    <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+      Ready to Upgrade Your Business with Cloud?
+    </h2>
+
+    <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+      Let's help you automate, integrate, and scale your operations with our cutting-edge cloud solutions.
+    </p>
+
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="/contact"
+        className="inline-flex items-center gap-2 bg-white text-blue-600 font-semibold px-8 py-3 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105"
+      >
+        Contact Us
+        <ArrowRight className="w-4 h-4" />
+      </a>
+
+      <a
+        href="/demo"
+        className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-xl hover:bg-white/10 transition-all duration-300"
+      >
+        Watch Demo
+        <Clock className="w-4 h-4" />
+      </a>
+    </div>
+  </div>
+
+</div>
 
     
     </div>
