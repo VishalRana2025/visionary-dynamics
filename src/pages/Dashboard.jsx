@@ -23,12 +23,12 @@ export default function Dashboard() {
 
     // 🔹 FETCH OFFERS
     axios
-      .get("http://localhost:5000/api/offers")
+      .get(" https://visionary-dynamics.onrender.com/api/offers")
       .then((res) => setOffers(res.data));
 
     // 🔹 FETCH PAYMENT HISTORY
     axios
-      .get("http://localhost:5000/api/payment/history", {
+      .get("https://visionary-dynamics.onrender.com/api/payment/history", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ export default function Dashboard() {
       alert("Simulated Payment Success ✅");
 
       await axios.post(
-        "http://localhost:5000/api/payment/save",
+        "https://visionary-dynamics.onrender.com/api/payment/save",
         {
           offer,
           razorpay_payment_id: "fake_payment_123",
@@ -58,7 +58,7 @@ export default function Dashboard() {
 
       // 🔄 refresh history
       const res = await axios.get(
-        "http://localhost:5000/api/payment/history",
+        "https://visionary-dynamics.onrender.com/api/payment/history",
         {
           headers: {
             Authorization: `Bearer ${token}`,

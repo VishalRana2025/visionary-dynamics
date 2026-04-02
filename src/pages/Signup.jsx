@@ -30,9 +30,9 @@ export default function Signup() {
       setError("");
 
       const res = await axios.post(
-        "http://localhost:5000/api/register",
-        formData
-      );
+  " https://visionary-dynamics.onrender.com",
+  formData
+)
 
       console.log(res.data);
 

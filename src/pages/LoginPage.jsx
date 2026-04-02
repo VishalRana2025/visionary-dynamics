@@ -22,9 +22,9 @@ export default function LoginPage() {
       setError("");
 
       const res = await axios.post(
-        "http://localhost:5000/api/login",
-        data
-      );
+  " https://visionary-dynamics.onrender.com",
+  data
+)
 
       // ✅ Save token
       localStorage.setItem("token", res.data.token);
