@@ -22,9 +22,9 @@ export default function LoginPage() {
       setError("");
 
       const res = await axios.post(
-  " https://visionary-dynamics.onrender.com",
+  `${import.meta.env.VITE_API_URL}/api/login`,
   data
-)
+);
 
       // ✅ Save token
       localStorage.setItem("token", res.data.token);

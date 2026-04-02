@@ -30,10 +30,10 @@ export default function Signup() {
       setError("");
 
       const res = await axios.post(
-  " https://visionary-dynamics.onrender.com",
+  `${import.meta.env.VITE_API_URL}/api/register`,
   formData
-)
 
+);
       console.log(res.data);
 
       // redirect to login
