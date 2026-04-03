@@ -17,40 +17,26 @@ export default function LoginPage() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    try {
-      setLoading(true);
-      setError("");
+  try {
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/login`,
+      data
+    );
 
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/login`,
-        data
-      );
+     console.log("LOGIN RESPONSE FULL:", JSON.stringify(res.data, null, 2));
 
-      // ✅ Save token
-      localStorage.setItem("token", res.data.token);
+    // ✅ Save login
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+     navigate("/", { replace: true });
+    // 🔥 REDIRECT TO HOME
+    navigate("/", { replace: true });
 
-      // ✅ Save user (🔥 IMPORTANT FIX)
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-      // ✅ Decode token (optional)
-      const decoded = jwtDecode(res.data.token);
-
-      // 🔥 Trigger header update (IMPORTANT)
-      window.dispatchEvent(new Event("login"));
-
-      // 🎯 Role-based redirect
-      if (decoded.role === "admin") {
-        navigate("/admin");
-      } else {
-        navigate("/dashboard");
-      }
-
-    } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="min-h-screen flex">
@@ -114,7 +100,7 @@ export default function LoginPage() {
                 Forgot Password?
               </span>
             </div>
-
+            
             {/* BUTTON */}
             <button
               type="submit"

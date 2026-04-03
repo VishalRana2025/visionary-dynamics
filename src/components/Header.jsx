@@ -1,47 +1,104 @@
+import { useLocation } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 /* ================= MENU DATA ================= */
-const MENU_DATA = { /* keep same */ };
+const MENU_DATA = {
+  "Who We Are": {
+    "About Us": [],
+    "Our Locations": [],
+    "Industries we Serve": [],
+    "What Our Clients Say": [],
+  },
+  "What We Do": {
+    "Accounting": ["Bookkeeping", "Payroll","Financial Reporting and Analysis","Software Setup & Migration"],
+    "Taxation": ["Cooperative Tax", "Individual Tax"],
+    "Business Analytics": [],
+    "Marketing": [
+      "Website Design & Development",
+      "Search Engine Optimization",
+      "Social Media Marketing",
+      "Email Marketing",
+      "LinkedIn Marketing",
+    ],
+    "IT Asset Management": [
+      "MS 365 Management",
+      "Mobile Device Management",
+      "Managed Network Services",
+    ],
+  },
+  "How We Do": {
+    "Tools we use": ["AI", "Automation", "Cloud"],
+    "Blog": [],
+  },
+};
+
 
 /* ================= ROUTES ================= */
-const ROUTES = { /* keep same */ };
+const ROUTES = {
+  "About Us": "/about",
+  "Our Locations": "/location",
+  "Industries we Serve": "/industries",
+  "What Our Clients Say": "/clients",
+  "Accounting": "/accounting",
+  "Bookkeeping": "/bookkeeping",
+  "Payroll": "/payroll",
+  "Financial Reporting and Analysis": "/financial",
+  "Software Setup & Migration": "/software",
+  "Taxation": "/taxation",
+  "Cooperative Tax": "/cooperative",
+  "Individual Tax": "/individual",
+  "Business Analytics": "/business",
+  "Website Design & Development": "/webdesign",
+  "Search Engine Optimization": "/seo",
+  "Social Media Marketing": "/social",
+  "Email Marketing": "/email",
+  "LinkedIn Marketing": "/linkedin",
+  "AI": "/ai",
+  "Automation": "/automation",
+  "Cloud": "/cloud",
+  "MS 365 Management": "/ms365",
+  "Mobile Device Management": "/mobile",
+  "Managed Network Services": "/network",
+};
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const [showLogin, setShowLogin] = useState(false); // 🔥 NEW
-  const navigate = useNavigate(); // ✅ FIXED
+  const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
 
   /* 🔐 LOAD USER */
-  useEffect(() => {
-    const loadUser = () => {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      } else {
-        setUser(null);
-      }
-    };
+ 
+const location = useLocation();
 
-    loadUser();
-    window.addEventListener("login", loadUser);
+useEffect(() => {
+  const storedUser = localStorage.getItem("user");
 
-    return () => {
-      window.removeEventListener("login", loadUser);
-    };
-  }, []);
+  console.log("STORED USER:", storedUser); // 🔍
+
+  if (storedUser && storedUser !== "undefined") {
+    try {
+      const parsed = JSON.parse(storedUser);
+      setUser(parsed);
+    } catch (err) {
+      console.error("Parse error:", err);
+      setUser(null);
+    }
+  } else {
+    setUser(null);
+  }
+
+}, [location]); // 🔥 KEY
 
   /* 🔴 LOGOUT */
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    window.dispatchEvent(new Event("login"));
-    navigate("/");
-  };
+ const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  navigate("/", { replace: true });
+};
 
   return (
     <header className="relative z-50 bg-[#0B1F3A]/70 backdrop-blur-md">
@@ -53,46 +110,45 @@ const Header = () => {
           <img src="/VD-Logo-e1737873827576.png" alt="Logo" className="h-14" />
         </div>
 
-        {/* MENU */}
+        {/* DESKTOP MENU */}
         <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[70px] text-white">
+
           <Link to="/" className="hover:text-sky-300">Home</Link>
+
           <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
           <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />
           <MenuWithSub menu="How We Do" data={MENU_DATA["How We Do"]} />
+
           <Link to="/contact" className="hover:text-sky-300">Contact</Link>
         </nav>
 
-        {/* 🔐 AUTH BUTTONS */}
+        {/* AUTH BUTTONS */}
         <div className="hidden lg:flex items-center gap-3">
 
-          {!user ? (
-            // 🔥 OPEN MODAL INSTEAD OF PAGE
-            <button
-              onClick={() => setShowLogin(true)}
-              className="px-6 py-2 rounded-full bg-sky-500 hover:bg-sky-600"
-            >
-              Login
-            </button>
-          ) : (
-            <>
-              <Link to="/dashboard" className="px-4 py-2 rounded-full bg-green-500">
-                Dashboard
-              </Link>
+        {!user ? (
+  <Link
+    to="/login"
+    className="px-6 py-2 rounded-full bg-sky-500"
+  >
+    Login
+  </Link>
+) : (
+  <>
+    <Link
+      to="/dashboard"
+      className="px-4 py-2 rounded-full bg-green-500"
+    >
+      Dashboard
+    </Link>
 
-              {user?.role === "admin" && (
-                <Link to="/admin" className="px-4 py-2 rounded-full bg-purple-600">
-                  Admin Panel 👑
-                </Link>
-              )}
-
-              <button
-                onClick={handleLogout}
-                className="px-4 py-2 rounded-full bg-red-500"
-              >
-                Logout
-              </button>
-            </>
-          )}
+    <button
+      onClick={handleLogout}
+      className="px-4 py-2 rounded-full bg-red-500"
+    >
+      Logout
+    </button>
+  </>
+)}
 
         </div>
 
@@ -138,7 +194,7 @@ const Header = () => {
         </div>
       )}
 
-      {/* 🔥 LOGIN MODAL */}
+      {/* LOGIN MODAL */}
       {showLogin && (
         <LoginModal onClose={() => setShowLogin(false)} />
       )}
@@ -147,8 +203,9 @@ const Header = () => {
   );
 };
 
-/* ================= DROPDOWN ================= */
-const MenuWithSub = ({ menu, data }) => {
+
+/* ================= SAFE DROPDOWN ================= */
+const MenuWithSub = ({ menu, data = {} }) => {
   const navigate = useNavigate();
 
   const handleClick = (item) => {
@@ -166,15 +223,33 @@ const MenuWithSub = ({ menu, data }) => {
 
         {Object.keys(data).map((item) => (
           <div key={item} className="relative group/item">
+
             <div
               className="px-4 py-2 flex justify-between cursor-pointer hover:bg-sky-500/20"
               onClick={() => handleClick(item)}
             >
               {item}
-              {data[item].length > 0 && <ChevronRight size={14} />}
+              {data[item]?.length > 0 && <ChevronRight size={14} />}
             </div>
+
+            {data[item]?.length > 0 && (
+              <div className="absolute left-full top-0 min-w-[240px] bg-[#0f172a] rounded-lg opacity-0 invisible group-hover/item:visible group-hover/item:opacity-100 transition">
+
+                {data[item].map((sub) => (
+                  <div
+                    key={sub}
+                    className="px-4 py-2 cursor-pointer hover:bg-sky-500/20"
+                    onClick={() => handleClick(sub)}
+                  >
+                    {sub}
+                  </div>
+                ))}
+
+              </div>
+            )}
           </div>
         ))}
+
       </div>
     </div>
   );

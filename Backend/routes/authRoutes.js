@@ -66,45 +66,40 @@ router.post("/register", async (req, res) => {
 // 🔐 LOGIN
 router.post("/login", async (req, res) => {
   try {
-    console.log("BODY:", req.body);
-
-    if (!req.body) {
-      return res.status(400).json({ message: "No body received" });
-    }
-
     const { email, password } = req.body;
-
-    console.log("EMAIL:", email);
-    console.log("PASSWORD:", password);
 
     const user = await User.findOne({ email });
 
-    console.log("USER:", user);
-
     if (!user) {
-      return res.status(400).json({ message: "User not found" });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
-
-    console.log("HASH:", user.password);
 
     const isMatch = await bcrypt.compare(password, user.password);
 
-    console.log("MATCH:", isMatch);
-
     if (!isMatch) {
-      return res.status(400).json({ message: "Wrong password" });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
 
     const token = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
     );
 
-    res.json({ token });
+    // ✅ THIS IS THE FIX
+    res.json({
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
 
   } catch (err) {
-    console.log("FULL ERROR:", err);
-    res.status(500).json({ error: err.message });
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
