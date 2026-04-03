@@ -25,14 +25,12 @@ export default function LoginPage() {
 
     // ✅ Save user
     localStorage.setItem("token", res.data.token);
-    localStorage.setItem("user", JSON.stringify(res.data.user));
+localStorage.setItem("user", JSON.stringify(res.data.user));
+
+window.dispatchEvent(new Event("storage"));
 
     // 🔥 PASTE THIS HERE
-    if (res.data.user.role === "admin") {
-      navigate("/admin");
-    } else {
-      navigate("/dashboard");
-    }
+    navigate("/", { replace: true });
 
   } catch (err) {
     console.error(err);

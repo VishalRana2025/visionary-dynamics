@@ -12,27 +12,38 @@ export default function UserDashboard() {
     fetchPayments();
   }, []);
 
-  // ✅ GET OFFERS
+  // 🔥 GET OFFERS
   const fetchOffers = async () => {
     try {
       const res = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/offers`
       );
-      setOffers(res.data);
+
+      setOffers(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Offers error:", err);
+      setOffers([]);
     }
   };
 
-  // ✅ GET PAYMENTS
+  // 🔥 GET PAYMENTS (FIXED)
   const fetchPayments = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/payment`
+        `${import.meta.env.VITE_API_URL}/api/payment/history`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
-      setPayments(res.data);
+
+      console.log("PAYMENTS:", res.data);
+
+      setPayments(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
-      console.error("Payments error:", err);
+      console.error("Payment error:", err);
+      setPayments([]);
     }
   };
 
@@ -44,17 +55,14 @@ export default function UserDashboard() {
         Welcome, {user?.name} 👋
       </h1>
 
-      {/* OFFERS SECTION */}
+      {/* OFFERS */}
       <div className="mb-10">
         <h2 className="text-2xl font-semibold mb-4">🔥 Available Offers</h2>
 
         <div className="grid md:grid-cols-3 gap-6">
           {offers.length > 0 ? (
             offers.map((offer) => (
-              <div
-                key={offer._id}
-                className="bg-white p-5 rounded-xl shadow"
-              >
+              <div key={offer._id} className="bg-white p-5 rounded-xl shadow">
                 <h3 className="font-bold text-lg">{offer.title}</h3>
                 <p className="text-gray-600">{offer.description}</p>
                 <p className="text-green-600 font-semibold mt-2">
@@ -90,10 +98,8 @@ export default function UserDashboard() {
                       {new Date(pay.createdAt).toLocaleDateString()}
                     </td>
                     <td className="p-2">₹ {pay.amount}</td>
-                    <td className="p-2">
-                      <span className="text-green-600">
-                        {pay.status}
-                      </span>
+                    <td className="p-2 text-green-600">
+                      {pay.status || "Paid"}
                     </td>
                   </tr>
                 ))

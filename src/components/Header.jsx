@@ -75,29 +75,31 @@ const Header = () => {
 const location = useLocation();
 
 useEffect(() => {
-  const storedUser = localStorage.getItem("user");
+  const loadUser = () => {
+    const storedUser = localStorage.getItem("user");
 
-  console.log("STORED USER:", storedUser); // 🔍
-
-  if (storedUser && storedUser !== "undefined") {
-    try {
-      const parsed = JSON.parse(storedUser);
-      setUser(parsed);
-    } catch (err) {
-      console.error("Parse error:", err);
+    if (storedUser && storedUser !== "undefined") {
+      setUser(JSON.parse(storedUser));
+    } else {
       setUser(null);
     }
-  } else {
-    setUser(null);
-  }
+  };
 
-}, [location]); // 🔥 KEY
+  loadUser();
+
+  window.addEventListener("storage", loadUser);
+
+  return () => {
+    window.removeEventListener("storage", loadUser);
+  };
+
+}, [location]);
 
   /* 🔴 LOGOUT */
  const handleLogout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
-  navigate("/", { replace: true });
+  navigate("/");
 };
 
   return (

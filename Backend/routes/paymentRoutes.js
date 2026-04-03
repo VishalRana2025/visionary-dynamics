@@ -58,7 +58,6 @@ router.get("/", (req, res) => {
   res.send("Payment route working ✅");
 });
 
-
 // 💾 SAVE PAYMENT
 router.post("/save", auth, async (req, res) => {
   try {
@@ -67,26 +66,28 @@ router.post("/save", auth, async (req, res) => {
       amount: req.body.offer.price,
       offer: req.body.offer,
       paymentId: req.body.razorpay_payment_id,
+      status: "Paid",
     });
 
     res.json(payment);
-
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Error saving payment" });
   }
 });
 
-
-// 📜 GET PAYMENT HISTORY
+// 📜 GET PAYMENT HISTORY (FIXED)
 router.get("/history", auth, async (req, res) => {
   try {
-    const payments = await Payment.find({ userId: req.user.id }).sort({ date: -1 });
+    const payments = await Payment.find({
+      userId: req.user.id,
+    }).sort({ createdAt: -1 });
 
-    res.json(payments);
-
+    // ✅ ALWAYS RETURN ARRAY
+    res.json(payments || []);
   } catch (err) {
-    res.status(500).json({ message: "Error fetching history" });
+    console.error(err);
+    res.status(500).json([]);
   }
 });
 
