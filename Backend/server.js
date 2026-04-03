@@ -15,6 +15,10 @@ const app = express();
 // Connect MongoDB
 connectDB();
 
+// 🔥 ✅ BODY PARSER (MOST IMPORTANT FIX)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Middleware
 const allowedOrigins = [
   "http://localhost:5173",
@@ -35,7 +39,7 @@ app.use(cors({
 // 🔐 SESSION (required for Google OAuth)
 app.use(
   session({
-    secret: "secret_key",
+    secret: process.env.SESSION_SECRET || "secret_key", // ✅ better practice
     resave: false,
     saveUninitialized: true,
   })
