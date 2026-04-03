@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Pages
 import Home from "./pages/Home";
@@ -22,6 +22,8 @@ import Email from "./pages/Email";
 import LinkedIn from "./pages/LinkedIn";
 import AI from "./pages/AI";
 import ContactUs from "./pages/ContactUs";
+
+// Policies
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsCondition";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -29,80 +31,62 @@ import DataSecurityPolicy from "./pages/DataSecurityPolicy";
 import IntellectualPolicy from "./pages/IntellectualPolicy";
 import ComplaintPolicy from "./pages/ComplaintPolicy";
 import Disclaimer from "./pages/Disclaimer";
+
+// Services
 import MS365Management from "./pages/MS365Management";
 import MobileDeviceManagement from "./pages/MobileDeviceManagement";
 import ManagedNetworkServices from "./pages/ManagedNetworkServices";
 import Automation from "./pages/Automation";
 import Cloud from "./pages/Cloud";
-import AdminPage from "./pages/AdminPage";
+
+// Auth
+import LoginPage from "./pages/LoginPage";
+import Signup from "./pages/Signup";
+
+// Dashboards
 import UserDashboard from "./pages/UserDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 
-// Auth Pages
-import LoginPage from "./pages/LoginPage";
-import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard";
-
-
-// Protected
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminRoute from "./components/AdminRoute";
-
 export default function App() {
+
+  // ✅ Get user safely
+  const storedUser = localStorage.getItem("user");
+  const user =
+    storedUser && storedUser !== "undefined"
+      ? JSON.parse(storedUser)
+      : null;
+
   return (
     <Routes>
 
-      {/* Public Routes */}
+      {/* 🌐 PUBLIC ROUTES */}
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/location" element={<OurLocation />} />
       <Route path="/industries" element={<IndustriesWeServes />} />
       <Route path="/clients" element={<OurClients />} />
 
-      {/* Auth */}
+      {/* 🔐 AUTH */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<Signup />} />
 
-      {/* 🔐 Protected Dashboard */}
+      {/* 👤 USER DASHBOARD */}
       <Route
         path="/dashboard"
+        element={user ? <UserDashboard /> : <Navigate to="/login" />}
+      />
+
+      {/* 👑 ADMIN DASHBOARD */}
+      <Route
+        path="/admin"
         element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
+          user?.role === "admin"
+            ? <AdminDashboard />
+            : <Navigate to="/" />
         }
       />
 
-      {/* 🔐 Admin */}
-      <Route
-  path="/admin"
-  element={
-    <AdminRoute>
-      <AdminPage />
-    </AdminRoute>
-  }
-/>
-<Routes>
-
-  {/* USER DASHBOARD */}
-  <Route
-    path="/dashboard"
-    element={user ? <UserDashboard /> : <Navigate to="/login" />}
-  />
-
-  {/* ADMIN DASHBOARD (PROTECTED) */}
-  <Route
-    path="/admin"
-    element={
-      user?.role === "admin"
-        ? <AdminDashboard />
-        : <Navigate to="/" />
-    }
-  />
-
-</Routes>
-
-      {/* Other Pages */}
+      {/* 📄 OTHER PAGES */}
       <Route path="/accounting" element={<Accounting />} />
       <Route path="/bookkeeping" element={<BookKeeping />} />
       <Route path="/payroll" element={<Payroll />} />
@@ -120,7 +104,7 @@ export default function App() {
       <Route path="/ai" element={<AI />} />
       <Route path="/contact" element={<ContactUs />} />
 
-      {/* Policies */}
+      {/* 📜 POLICIES */}
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsConditions />} />
       <Route path="/cookies" element={<CookiePolicy />} />
@@ -129,14 +113,14 @@ export default function App() {
       <Route path="/complaint" element={<ComplaintPolicy />} />
       <Route path="/disclaimer" element={<Disclaimer />} />
 
-      {/* Services */}
+      {/* ⚙️ SERVICES */}
       <Route path="/ms365" element={<MS365Management />} />
       <Route path="/mobile" element={<MobileDeviceManagement />} />
       <Route path="/network" element={<ManagedNetworkServices />} />
       <Route path="/automation" element={<Automation />} />
       <Route path="/cloud" element={<Cloud />} />
 
-      {/* 404 */}
+      {/* ❌ 404 */}
       <Route
         path="*"
         element={
@@ -145,6 +129,7 @@ export default function App() {
           </div>
         }
       />
+
     </Routes>
   );
 }
