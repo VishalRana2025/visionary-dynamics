@@ -35,6 +35,8 @@ import ManagedNetworkServices from "./pages/ManagedNetworkServices";
 import Automation from "./pages/Automation";
 import Cloud from "./pages/Cloud";
 import AdminPage from "./pages/AdminPage";
+import UserDashboard from "./pages/UserDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 
 // Auth Pages
 import LoginPage from "./pages/LoginPage";
@@ -80,6 +82,25 @@ export default function App() {
     </AdminRoute>
   }
 />
+<Routes>
+
+  {/* USER DASHBOARD */}
+  <Route
+    path="/dashboard"
+    element={user ? <UserDashboard /> : <Navigate to="/login" />}
+  />
+
+  {/* ADMIN DASHBOARD (PROTECTED) */}
+  <Route
+    path="/admin"
+    element={
+      user?.role === "admin"
+        ? <AdminDashboard />
+        : <Navigate to="/" />
+    }
+  />
+
+</Routes>
 
       {/* Other Pages */}
       <Route path="/accounting" element={<Accounting />} />

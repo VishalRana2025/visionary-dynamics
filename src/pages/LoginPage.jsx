@@ -23,20 +23,21 @@ export default function LoginPage() {
       data
     );
 
-     console.log("LOGIN RESPONSE FULL:", JSON.stringify(res.data, null, 2));
-
-    // ✅ Save login
+    // ✅ Save user
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("user", JSON.stringify(res.data.user));
-     navigate("/", { replace: true });
-    // 🔥 REDIRECT TO HOME
-    navigate("/", { replace: true });
+
+    // 🔥 PASTE THIS HERE
+    if (res.data.user.role === "admin") {
+      navigate("/admin");
+    } else {
+      navigate("/dashboard");
+    }
 
   } catch (err) {
     console.error(err);
   }
 };
-
 
   return (
     <div className="min-h-screen flex">
