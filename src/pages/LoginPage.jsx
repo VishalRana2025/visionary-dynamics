@@ -22,15 +22,21 @@ export default function LoginPage() {
       setError("");
 
       const res = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/login`,
-  data
-);
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        data
+      );
 
       // ✅ Save token
       localStorage.setItem("token", res.data.token);
 
-      // ✅ Decode token
+      // ✅ Save user (🔥 IMPORTANT FIX)
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      // ✅ Decode token (optional)
       const decoded = jwtDecode(res.data.token);
+
+      // 🔥 Trigger header update (IMPORTANT)
+      window.dispatchEvent(new Event("login"));
 
       // 🎯 Role-based redirect
       if (decoded.role === "admin") {
@@ -69,6 +75,7 @@ export default function LoginPage() {
               <label className="text-sm">Email Address</label>
               <input
                 type="email"
+                autoComplete="email"
                 {...register("email", { required: "Email is required" })}
                 className="w-full mt-1 px-4 py-2 border rounded-lg"
               />
@@ -84,6 +91,7 @@ export default function LoginPage() {
               <label className="text-sm">Password</label>
               <input
                 type="password"
+                autoComplete="current-password"
                 {...register("password", {
                   required: "Password is required",
                 })}

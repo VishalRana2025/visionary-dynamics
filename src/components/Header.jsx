@@ -66,28 +66,34 @@ const Header = () => {
   const [user, setUser] = useState(null);
 
   /* 🔐 LOAD USER (FIXED) */
-  useEffect(() => {
+useEffect(() => {
+  const loadUser = () => {
     const storedUser = localStorage.getItem("user");
-
     if (storedUser) {
-      try {
-        const parsedUser = JSON.parse(storedUser);
-        console.log("USER FROM STORAGE:", parsedUser);
-        setUser(parsedUser);
-      } catch (err) {
-        console.error("User parse error:", err);
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
-      }
+      setUser(JSON.parse(storedUser));
+    } else {
+      setUser(null);
     }
-  }, []);
+  };
 
+  // initial load
+  loadUser();
+
+  // 🔥 listen for login event
+  window.addEventListener("login", loadUser);
+
+  return () => {
+    window.removeEventListener("login", loadUser);
+  };
+}, []);
   /* 🔴 LOGOUT */
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.location.href = "/";
-  };
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+
+  window.dispatchEvent(new Event("login")); // 🔥 update UI
+  navigate("/");
+};
 
   return (
     <header className="relative z-50 bg-[#0B1F3A]/70 backdrop-blur-md">
@@ -209,30 +215,27 @@ const Header = () => {
           <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
 
           {/* 🔐 MOBILE AUTH */}
-          {!user ? (
-            <Link to="/login" className="block mt-4 bg-sky-500 px-4 py-2 rounded">
-              Login
-            </Link>
-          ) : (
-            <>
-              <Link to="/dashboard" className="block mt-4 bg-green-500 px-4 py-2 rounded">
-                Dashboard
-              </Link>
+         {!user ? (
+  <Link to="/login" className="px-6 py-2 bg-sky-500 rounded-full">
+    Login
+  </Link>
+) : (
+  <>
+    <Link
+      to="/dashboard"
+      className="px-4 py-2 bg-green-500 rounded-full"
+    >
+      Dashboard
+    </Link>
 
-              {user?.role === "admin" && (
-                <Link to="/admin" className="block mt-4 bg-purple-600 px-4 py-2 rounded">
-                  Admin Panel
-                </Link>
-              )}
-
-              <button
-                onClick={handleLogout}
-                className="block w-full mt-4 bg-red-500 px-4 py-2 rounded"
-              >
-                Logout
-              </button>
-            </>
-          )}
+    <button
+      onClick={handleLogout}
+      className="px-4 py-2 bg-red-500 rounded-full"
+    >
+      Logout
+    </button>
+  </>
+)}
 
         </div>
       )}
