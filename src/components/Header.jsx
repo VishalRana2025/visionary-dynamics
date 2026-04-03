@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 
 /* ================= MENU DATA ================= */
 const MENU_DATA = {
@@ -66,15 +65,18 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
 
-  /* 🔐 CHECK LOGIN */
+  /* 🔐 LOAD USER (FIXED) */
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
 
-    if (token) {
+    if (storedUser) {
       try {
-        const decoded = jwtDecode(token);
-        setUser(decoded);
+        const parsedUser = JSON.parse(storedUser);
+        console.log("USER FROM STORAGE:", parsedUser);
+        setUser(parsedUser);
       } catch (err) {
+        console.error("User parse error:", err);
+        localStorage.removeItem("user");
         localStorage.removeItem("token");
       }
     }
@@ -83,6 +85,7 @@ const Header = () => {
   /* 🔴 LOGOUT */
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     window.location.href = "/";
   };
 
@@ -124,18 +127,16 @@ const Header = () => {
             </Link>
           ) : (
             <>
-              {/* USER */}
-              {user.role === "user" && (
-                <Link
-                  to="/dashboard"
-                  className="px-4 py-2 rounded-full bg-green-500"
-                >
-                  Dashboard
-                </Link>
-              )}
+              {/* ✅ SHOW DASHBOARD FOR ALL LOGGED USERS */}
+              <Link
+                to="/dashboard"
+                className="px-4 py-2 rounded-full bg-green-500"
+              >
+                Dashboard
+              </Link>
 
-              {/* ADMIN */}
-              {user.role === "admin" && (
+              {/* ✅ ADMIN PANEL (only for admin) */}
+              {user?.role === "admin" && (
                 <Link
                   to="/admin"
                   className="px-4 py-2 rounded-full bg-purple-600"
@@ -214,15 +215,13 @@ const Header = () => {
             </Link>
           ) : (
             <>
-              {user.role === "admin" && (
+              <Link to="/dashboard" className="block mt-4 bg-green-500 px-4 py-2 rounded">
+                Dashboard
+              </Link>
+
+              {user?.role === "admin" && (
                 <Link to="/admin" className="block mt-4 bg-purple-600 px-4 py-2 rounded">
                   Admin Panel
-                </Link>
-              )}
-
-              {user.role === "user" && (
-                <Link to="/dashboard" className="block mt-4 bg-green-500 px-4 py-2 rounded">
-                  Dashboard
                 </Link>
               )}
 
@@ -241,6 +240,7 @@ const Header = () => {
     </header>
   );
 };
+
 
 /* ================= DROPDOWN ================= */
 const MenuWithSub = ({ menu, data }) => {
