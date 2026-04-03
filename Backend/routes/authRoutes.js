@@ -2,29 +2,22 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
+
 const User = require("../models/User");
 const auth = require("../middleware/auth");
 const roleMiddleware = require("../middleware/role");
 
 const router = express.Router();
 
-
 // 🔑 REGISTER
 router.post("/register", async (req, res) => {
   try {
-    console.log("REGISTER BODY:", req.body);
-
-    if (!req.body) {
-      return res.status(400).json({ message: "Request body missing" });
-    }
-
     const { name, email, password, adminCode } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // 🔍 Check if user exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
@@ -33,11 +26,7 @@ router.post("/register", async (req, res) => {
     const hashed = await bcrypt.hash(password, 10);
 
     let role = "user";
-
-    // 🔐 Admin code check
-    if (adminCode === "12345") {
-      role = "admin";
-    }
+    if (adminCode === "12345") role = "admin";
 
     const user = await User.create({
       name,
@@ -62,20 +51,17 @@ router.post("/register", async (req, res) => {
   }
 });
 
-
 // 🔐 LOGIN
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-
     if (!user) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
@@ -86,7 +72,6 @@ router.post("/login", async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    // ✅ THIS IS THE FIX
     res.json({
       token,
       user: {
@@ -98,11 +83,10 @@ router.post("/login", async (req, res) => {
     });
 
   } catch (err) {
-    console.log(err);
+    console.log("LOGIN ERROR:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 // 👥 GET ALL USERS (ADMIN ONLY)
 router.get("/users", auth, roleMiddleware("admin"), async (req, res) => {
@@ -115,13 +99,21 @@ router.get("/users", auth, roleMiddleware("admin"), async (req, res) => {
   }
 });
 
+// 👥 GET USER COUNT (ADMIN ONLY)
+router.get("/users/count", auth, roleMiddleware("admin"), async (req, res) => {
+  try {
+    const count = await User.countDocuments();
+    res.json({ count });
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching count" });
+  }
+});
 
 // 🔴 GOOGLE LOGIN
 router.get(
   "/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
-
 
 // 🔴 GOOGLE CALLBACK
 router.get(
@@ -146,11 +138,9 @@ router.get(
   }
 );
 
-
-// 🔐 ADMIN TEST ROUTE
+// 🔐 ADMIN TEST
 router.get("/admin", auth, roleMiddleware("admin"), (req, res) => {
   res.json({ message: "Admin only access" });
 });
-
 
 module.exports = router;

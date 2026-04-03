@@ -1,13 +1,36 @@
 const express = require("express");
 const router = express.Router();
 
-// Sample offers (you can move to DB later)
-router.get("/", (req, res) => {
-  res.json([
-    { id: 1, title: "50% Off Accounting", price: 499 },
-    { id: 2, title: "SEO Package", price: 999 },
-    { id: 3, title: "Website Development", price: 1999 },
-  ]);
+const Offer = require("../models/Offer");
+const auth = require("../middleware/auth");
+const roleMiddleware = require("../middleware/role");
+
+// GET OFFERS
+router.get("/", async (req, res) => {
+  const offers = await Offer.find();
+  res.json(offers);
+});
+
+// ADD OFFER (ADMIN ONLY)
+router.post("/", auth, roleMiddleware("admin"), async (req, res) => {
+  const offer = await Offer.create(req.body);
+  res.json(offer);
+});
+
+// UPDATE OFFER
+router.put("/:id", auth, roleMiddleware("admin"), async (req, res) => {
+  const updated = await Offer.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+  res.json(updated);
+});
+
+// DELETE OFFER
+router.delete("/:id", auth, roleMiddleware("admin"), async (req, res) => {
+  await Offer.findByIdAndDelete(req.params.id);
+  res.json({ message: "Deleted" });
 });
 
 module.exports = router;
