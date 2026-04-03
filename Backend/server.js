@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 
-// 🔐 NEW IMPORTS
+// 🔐 AUTH / SESSION
 const session = require("express-session");
 const passport = require("passport");
 
@@ -12,58 +12,84 @@ require("./config/passport");
 
 const app = express();
 
-// Connect MongoDB
+// ========================
+// ✅ CONNECT DATABASE
+// ========================
 connectDB();
 
-// 🔥 ✅ BODY PARSER (MOST IMPORTANT FIX)
+
+// ========================
+// ✅ BODY PARSER (MUST BE FIRST)
+// ========================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Middleware
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://visionary-dynamics-krvj9cdyu-visionary-dynamics-projects.vercel.app"
-];
 
+// ========================
+// ✅ CORS CONFIG (FIXED)
+// ========================
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (
+      !origin || // allow Postman / mobile apps
+      origin.includes("vercel.app") || // ✅ allow ALL Vercel deployments
+      origin === "http://localhost:5173"
+    ) {
       callback(null, true);
     } else {
+      console.log("❌ Blocked by CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true
 }));
 
-// 🔐 SESSION (required for Google OAuth)
+
+// ========================
+// 🔐 SESSION CONFIG
+// ========================
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "secret_key", // ✅ better practice
+    secret: process.env.SESSION_SECRET || "super_secret_key",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false, // ✅ better for production
+    cookie: {
+      secure: false, // ⚠️ set true if using HTTPS only
+      httpOnly: true,
+    },
   })
 );
 
+
+// ========================
 // 🔐 PASSPORT INIT
+// ========================
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
+
+// ========================
+// 📦 ROUTES
+// ========================
 app.use("/api/form", require("./routes/formRoutes"));
 app.use("/api/offers", require("./routes/offerRoutes"));
 app.use("/api/payment", require("./routes/paymentRoutes"));
-
-// ✅ AUTH ROUTES (LOGIN + GOOGLE)
 app.use("/api", require("./routes/authRoutes"));
 
-// Test route
+
+// ========================
+// 🧪 TEST ROUTE
+// ========================
 app.get("/", (req, res) => {
   res.send("API Running...");
 });
 
-// Start server
+
+// ========================
+// 🚀 START SERVER
+// ========================
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () =>
-  console.log(`🚀 Server running on port ${PORT}`)
-);
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
