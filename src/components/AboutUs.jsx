@@ -244,7 +244,7 @@ const AboutUs = () => {
                 <div className="relative bg-gradient-to-br from-blue-500 to-indigo-600 p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl shadow-2xl transition-all duration-500 group-hover:scale-[1.02]">
                   <div className="overflow-hidden rounded-xl sm:rounded-2xl border-2 sm:border-4 border-white shadow-xl">
                     <img
-                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+                      src="/images/ceoimage.png"
                       alt="Aakash Dhandhania - CEO & Founder"
                       className="w-full h-auto aspect-[3/4] object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
