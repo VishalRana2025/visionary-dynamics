@@ -111,7 +111,31 @@ useEffect(() => {
         <div className="flex items-center h-24">
           <img src="/VD-Logo-e1737873827576.png" alt="Logo" className="h-14" />
         </div>
+          
 
+         <div className="hidden lg:flex justify-center absolute top-1 w-full mt-2">
+  
+  {/* BOUNDARY BOX */}
+  <div className="w-[60%] overflow-hidden border border-grey-100 rounded-md px-4 py-2">
+    
+    {/* SLIDING TRACK */}
+    <div className="flex animate-marquee">
+
+      {/* TEXT */}
+      <div className="flex whitespace-nowrap">
+        <span className="text-green-400 font-bold mr-2">
+          VISIONARY DYNAMICS
+        </span>
+        <span className="text-white font-bold mr-10">
+          Where Vision, Strategy, and Innovation Come Together for Lasting Success
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+        
         {/* DESKTOP MENU */}
         <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[70px] text-white">
 
@@ -125,7 +149,14 @@ useEffect(() => {
         </nav>
 
         {/* AUTH BUTTONS */}
-        <div className="hidden lg:flex items-center gap-3">
+
+       <Link
+      to="/contact"
+      className="relative z-50 px-6 py-2 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold shadow-md hover:scale-105 transition cursor-pointer"
+    >
+      Contact Us
+    </Link>
+        {/* <div className="hidden lg:flex items-center gap-3">
 
         {!user ? (
   <Link
@@ -152,7 +183,7 @@ useEffect(() => {
   </>
 )}
 
-        </div>
+        </div> */}
 
         {/* MOBILE BUTTON */}
         <button
