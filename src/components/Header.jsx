@@ -113,25 +113,30 @@ useEffect(() => {
         </div>
           
 
-         <div className="hidden lg:flex justify-center absolute top-1 w-full mt-2">
-  
-  {/* BOUNDARY BOX */}
-  <div className="w-[60%] overflow-hidden border border-grey-100 rounded-md px-4 py-2">
-    
-    {/* SLIDING TRACK */}
-    <div className="flex animate-marquee">
+        <div className="hidden lg:flex justify-center absolute top-2 w-full">
 
-      {/* TEXT */}
-      <div className="flex whitespace-nowrap">
-        <span className="text-green-400 font-bold mr-2">
-          VISIONARY DYNAMICS
-        </span>
-        <span className="text-white font-bold mr-10">
-          Where Vision, Strategy, and Innovation Come Together for Lasting Success
-        </span>
+  {/* GLASS CONTAINER */}
+  <div className="w-[65%] overflow-hidden rounded-xl px-6 py-2 
+    bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+
+    {/* FADE EDGES */}
+    <div className="relative">
+
+      {/* SLIDING TRACK */}
+      <div className="flex animate-marquee whitespace-nowrap text-lg font-semibold tracking-wide">
+
+        {/* TEXT BLOCK */}
+        <div className="flex items-center mr-12">
+          <span className="text-green-400 font-bold mr-2">
+            VISIONARY DYNAMICS
+          </span>
+          <span className="text-white">
+            Where Vision, Strategy, and Innovation Come Together for Lasting Success
+          </span>
+        </div>
       </div>
-
     </div>
+
   </div>
 </div>
 

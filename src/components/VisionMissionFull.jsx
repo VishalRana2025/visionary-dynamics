@@ -394,7 +394,7 @@ const VisionMissionFull = () => {
         className="relative w-full pt-16 pb-18 overflow-hidden bg-cover bg-center"
         style={{
           backgroundImage:
-            "url(https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2070&q=80)",
+            "url(https://static.vecteezy.com/system/resources/previews/056/546/949/non_2x/success-roadmap-journey-milestone-or-career-path-achievement-route-or-pathway-to-achieve-goals-accomplishment-assessment-or-way-to-success-businessman-look-at-achievement-milestone-to-success-vector.jpg)",
         }}
       >
         {/* Top Wave */}

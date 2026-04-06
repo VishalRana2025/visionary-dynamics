@@ -34,7 +34,7 @@ export const WaveTransition = ({ direction = "bottom" }) => {
 
 /* HERO BACKGROUND IMAGE */
 const heroBg =
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1920&q=80";
+  "https://img.freepik.com/premium-photo/business-people-handshake-collaboration-thank-you-contract-meeting-with-diversity-teamwork-collaboration-happy-manager-b2b-partnership-investment-company-growth-staff-applause_590464-82212.jpg";
 
 /* LOWER SECTION BACKGROUND IMAGE */
 const lowerBg =
@@ -488,9 +488,9 @@ export default function OurClients() {
     <div className="min-h-screen bg-gradient-to-b from-white to-purple-50 text-slate-800">
 
       {/* HERO */}
-      <div className="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden">
+      <div className="relative h-[50vh] min-h-[400px] flex items-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center scale-105"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
         <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm pointer-events-none" />

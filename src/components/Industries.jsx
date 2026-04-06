@@ -28,7 +28,7 @@ export const WaveTransition = ({ direction = "bottom" }) => {
 
 /* HERO BACKGROUND IMAGE */
 const heroBg =
-  "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1920&q=80";
+  "https://wallpaperaccess.com/full/656670.jpg";
 
 /* APPROACH BACKGROUND IMAGE */
 const approachBg =
@@ -221,14 +221,14 @@ export default function Industries() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white text-slate-800">
       {/* ================= HERO ================= */}
-      <div className="relative h-[45vh] pt-[96px] flex items-center overflow-hidden isolate">
+      <div className="relative h-[50vh] pt-[16px] flex items-center overflow-hidden isolate">
          
         <div
-          className="absolute inset-0 bg-cover bg-center scale-105"
+          className="absolute inset-0 bg-cover bg-center scale-10"
           style={{ backgroundImage: `url(${heroBg})` }}
         />
 
-        <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10" />
+        <div className="absolute inset-0 bg-slate-900/80 backdrop-sm z-10" />
 
         <div className="relative container mx-auto px-6 z-40 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white">
