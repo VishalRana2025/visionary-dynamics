@@ -1,14 +1,18 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./config/db");
 const path = require("path");
 
-// 🔐 AUTH / SESSION
+// DB
+const connectDB = require("./config/db");
+
+// Routes
+const paymentRoutes = require("./routes/paymentRoutes");
+const blogRoutes = require("./routes/blogRoutes");
+
+// Auth
 const session = require("express-session");
 const passport = require("passport");
-
-// 🔐 INIT PASSPORT CONFIG
 require("./config/passport");
 
 const app = express();
@@ -19,33 +23,22 @@ const app = express();
 connectDB();
 
 // ========================
+// ✅ CORS (MUST BE FIRST)
+// ========================
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
+
+
+// ========================
 // ✅ BODY PARSER
 // ========================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ========================
-// ✅ CORS CONFIG (FIXED)
-// ========================
-app.use(cors({
-  origin: function (origin, callback) {
-    if (
-      !origin ||
-      origin.includes("vercel.app") ||
-      origin.includes("azurewebsites.net") || // ✅ ADD THIS FOR AZURE
-      origin === "http://localhost:5173"
-    ) {
-      callback(null, true);
-    } else {
-      console.log("❌ Blocked by CORS:", origin);
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
-}));
-
-// ========================
-// 🔐 SESSION CONFIG
+// 🔐 SESSION
 // ========================
 app.use(
   session({
@@ -53,33 +46,42 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // ⚠️ Azure uses HTTPS → can set true later
+      secure: false,
       httpOnly: true,
     },
   })
 );
 
 // ========================
-// 🔐 PASSPORT INIT
+// 🔐 PASSPORT
 // ========================
 app.use(passport.initialize());
 app.use(passport.session());
 
 // ========================
-// 📦 API ROUTES
+// 📦 ROUTES
 // ========================
+app.use("/api/blogs", blogRoutes);   // ✅ ONLY ONCE
 app.use("/api/form", require("./routes/formRoutes"));
 app.use("/api/offers", require("./routes/offerRoutes"));
-app.use("/api/payment", require("./routes/paymentRoutes"));
+app.use("/api/payment", paymentRoutes);
 app.use("/api", require("./routes/authRoutes"));
+app.use("/uploads", express.static("uploads"));
 
 // ========================
-// 🌐 SERVE FRONTEND (IMPORTANT)
+// 📸 STATIC UPLOADS
 // ========================
-app.use(express.static(path.join(__dirname, "dist")));
+app.use("/uploads", express.static("uploads"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+// ========================
+// 🌐 SERVE FRONTEND
+// ========================
+const distPath = path.join(__dirname, "dist");
+
+app.use(express.static(distPath));
+
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
 });
 
 // ========================

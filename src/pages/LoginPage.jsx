@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import { startPayment } from "../utils/payment";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
@@ -17,25 +17,41 @@ export default function LoginPage() {
   } = useForm();
 
   const onSubmit = async (data) => {
-  try {
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/login`,
-      data
-    );
+    try {
+      setLoading(true);
 
-    // ✅ Save user
-    localStorage.setItem("token", res.data.token);
-localStorage.setItem("user", JSON.stringify(res.data.user));
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        data
+      );
 
-window.dispatchEvent(new Event("storage"));
+      // ✅ Save token + user
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
 
-    // 🔥 PASTE THIS HERE
-    navigate("/", { replace: true });
+      // 🔄 Trigger UI update (optional)
+      window.dispatchEvent(new Event("storage"));
 
-  } catch (err) {
-    console.error(err);
-  }
-};
+      // ✅ Check if user selected a plan before login
+     const savedPlan = localStorage.getItem("selectedPlan");
+
+if (savedPlan) {
+  const plan = JSON.parse(savedPlan);
+
+  localStorage.removeItem("selectedPlan");
+
+  startPayment(plan); // 🔥 DIRECT PAYMENT
+} else {
+  navigate("/", { replace: true });
+}
+
+    } catch (err) {
+      console.error(err);
+      setError("Invalid email or password");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex">
@@ -44,7 +60,7 @@ window.dispatchEvent(new Event("storage"));
       <div className="w-full lg:w-1/2 flex items-center justify-center bg-white px-8">
         <div className="w-full max-w-md">
 
-          <h2 className="text-3xl font-bold mb-2">Welcome Back !</h2>
+          <h2 className="text-3xl font-bold mb-2">Welcome Back!</h2>
           <p className="text-gray-500 mb-6">
             Please enter your details
           </p>
@@ -99,7 +115,7 @@ window.dispatchEvent(new Event("storage"));
                 Forgot Password?
               </span>
             </div>
-            
+
             {/* BUTTON */}
             <button
               type="submit"

@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 // Pages
 import Home from "./pages/Home";
@@ -22,6 +23,16 @@ import Email from "./pages/Email";
 import LinkedIn from "./pages/LinkedIn";
 import AI from "./pages/AI";
 import ContactUs from "./pages/ContactUs";
+import AccountingPricing from "./pages/AccountingPricing";
+import CartPage from "./pages/CartPage";
+import DevelopmentPricing from "./pages/DevelopmentPricing";
+import MarketingPricing from "./pages/MarketingPricing";
+import BlogPage from "./pages/BlogPage";
+import CreateBlog from "./pages/CreateBlog";
+import BlogDetails from "./pages/BlogDetails";
+import EditBlog from "./pages/EditBlog";
+ 
+
 
 // Policies
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -56,80 +67,107 @@ export default function App() {
       ? JSON.parse(storedUser)
       : null;
 
-  return (
-    <Routes>
+ 
 
-      {/* 🌐 PUBLIC ROUTES */}
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/location" element={<OurLocation />} />
-      <Route path="/industries" element={<IndustriesWeServes />} />
-      <Route path="/clients" element={<OurClients />} />
+return (
+  <div className="flex flex-col min-h-screen">
 
-      {/* 🔐 AUTH */}
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<Signup />} />
+    <Toaster position="top-right" />
 
-      {/* 👤 USER DASHBOARD */}
-      <Route
-        path="/dashboard"
-        element={user ? <UserDashboard /> : <Navigate to="/login" />}
-      />
+    
+    {/* ✅ MAIN CONTENT */}
+    <main className="flex-grow">
+      <Routes>
 
-      {/* 👑 ADMIN DASHBOARD */}
-      <Route
-        path="/admin"
-        element={
-          user?.role === "admin"
-            ? <AdminDashboard />
-            : <Navigate to="/" />
-        }
-      />
+        {/* 🌐 PUBLIC ROUTES */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/location" element={<OurLocation />} />
+        <Route path="/industries" element={<IndustriesWeServes />} />
+        <Route path="/clients" element={<OurClients />} />
 
-      {/* 📄 OTHER PAGES */}
-      <Route path="/accounting" element={<Accounting />} />
-      <Route path="/bookkeeping" element={<BookKeeping />} />
-      <Route path="/payroll" element={<Payroll />} />
-      <Route path="/financial" element={<FinancialAnalysics />} />
-      <Route path="/software" element={<SoftwareMigration />} />
-      <Route path="/taxation" element={<Taxation />} />
-      <Route path="/cooperative" element={<CooperativeTax />} />
-      <Route path="/individual" element={<IndividualTax />} />
-      <Route path="/business" element={<BusinessAnalytics />} />
-      <Route path="/webdesign" element={<WebDesign />} />
-      <Route path="/seo" element={<Seo />} />
-      <Route path="/social" element={<Social />} />
-      <Route path="/email" element={<Email />} />
-      <Route path="/linkedin" element={<LinkedIn />} />
-      <Route path="/ai" element={<AI />} />
-      <Route path="/contact" element={<ContactUs />} />
+        {/* 🔐 AUTH */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/cart" element={<CartPage />} />
 
-      {/* 📜 POLICIES */}
-      <Route path="/privacy" element={<PrivacyPolicy />} />
-      <Route path="/terms" element={<TermsConditions />} />
-      <Route path="/cookies" element={<CookiePolicy />} />
-      <Route path="/datasecurity" element={<DataSecurityPolicy />} />
-      <Route path="/intellectual" element={<IntellectualPolicy />} />
-      <Route path="/complaint" element={<ComplaintPolicy />} />
-      <Route path="/disclaimer" element={<Disclaimer />} />
+        {/* 💰 PRICING */}
+        <Route path="/pricing" element={<Navigate to="/pricing/development" />} />
+        <Route path="/pricing/development" element={<DevelopmentPricing />} />
+        <Route path="/pricing/marketing" element={<MarketingPricing />} />
+        <Route path="/pricing/accounting" element={<AccountingPricing />} />
 
-      {/* ⚙️ SERVICES */}
-      <Route path="/ms365" element={<MS365Management />} />
-      <Route path="/mobile" element={<MobileDeviceManagement />} />
-      <Route path="/network" element={<ManagedNetworkServices />} />
-      <Route path="/automation" element={<Automation />} />
-      <Route path="/cloud" element={<Cloud />} />
+        {/* 👤 USER */}
+        <Route
+          path="/dashboard"
+          element={user ? <UserDashboard /> : <Navigate to="/login" />}
+        />
 
-      {/* ❌ 404 */}
-      <Route
-        path="*"
-        element={
-          <div style={{ padding: "2rem", textAlign: "center" }}>
-            <h1>404 - Page Not Found</h1>
-          </div>
-        }
-      />
+        {/* 📝 BLOG */}
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/create" element={<CreateBlog />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
+        <Route path="/edit/:id" element={<EditBlog />} />
 
-    </Routes>
-  );
+        {/* 👑 ADMIN */}
+        <Route
+          path="/admin"
+          element={
+            user?.role === "admin"
+              ? <AdminDashboard />
+              : <Navigate to="/" />
+          }
+        />
+
+        {/* 📄 OTHER */}
+        <Route path="/accounting" element={<Accounting />} />
+        <Route path="/bookkeeping" element={<BookKeeping />} />
+        <Route path="/payroll" element={<Payroll />} />
+        <Route path="/financial" element={<FinancialAnalysics />} />
+        <Route path="/software" element={<SoftwareMigration />} />
+        <Route path="/taxation" element={<Taxation />} />
+        <Route path="/cooperative" element={<CooperativeTax />} />
+        <Route path="/individual" element={<IndividualTax />} />
+        <Route path="/business" element={<BusinessAnalytics />} />
+        <Route path="/webdesign" element={<WebDesign />} />
+        <Route path="/seo" element={<Seo />} />
+        <Route path="/social" element={<Social />} />
+        <Route path="/email" element={<Email />} />
+        <Route path="/linkedin" element={<LinkedIn />} />
+        <Route path="/ai" element={<AI />} />
+        <Route path="/contact" element={<ContactUs />} />
+
+        {/* 📜 POLICIES */}
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsConditions />} />
+        <Route path="/cookies" element={<CookiePolicy />} />
+        <Route path="/datasecurity" element={<DataSecurityPolicy />} />
+        <Route path="/intellectual" element={<IntellectualPolicy />} />
+        <Route path="/complaint" element={<ComplaintPolicy />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
+
+        {/* ⚙️ SERVICES */}
+        <Route path="/ms365" element={<MS365Management />} />
+        <Route path="/mobile" element={<MobileDeviceManagement />} />
+        <Route path="/network" element={<ManagedNetworkServices />} />
+        <Route path="/automation" element={<Automation />} />
+        <Route path="/cloud" element={<Cloud />} />
+
+        {/* ❌ 404 */}
+        <Route
+          path="*"
+          element={
+            <div className="p-10 text-center">
+              <h1>404 - Page Not Found</h1>
+            </div>
+          }
+        />
+
+      </Routes>
+    </main>
+
+  
+
+  </div>
+);
 }

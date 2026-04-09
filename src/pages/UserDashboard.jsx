@@ -1,119 +1,144 @@
-import React from "react";
-import { CreditCard, Gift, History } from "lucide-react";
+import { Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 const UserDashboard = () => {
-  const offers = [
-    { id: 1, title: "50% Off Premium Plan", expiry: "30 Apr 2026" },
-    { id: 2, title: "Flat ₹500 Cashback", expiry: "15 May 2026" },
-  ];
+  const [payments, setPayments] = useState([]);
+  const [offers, setOffers] = useState([]);
+  const [selectedPlans, setSelectedPlans] = useState([]);
 
-  const paymentMethods = [
-    { id: 1, type: "Visa", last4: "4242" },
-    { id: 2, type: "MasterCard", last4: "8899" },
-  ];
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  const paymentHistory = [
-    { id: 1, date: "01 Apr 2026", amount: "₹999", status: "Success" },
-    { id: 2, date: "20 Mar 2026", amount: "₹499", status: "Success" },
-    { id: 3, date: "05 Mar 2026", amount: "₹199", status: "Failed" },
-  ];
+  // 🔐 Protect route
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
+  // 📊 Fetch payments
+  useEffect(() => {
+    if (user?._id) {
+      axios
+        .get(`http://localhost:5000/api/payment/history/${user._id}`)
+        .then((res) => setPayments(res.data))
+        .catch(console.log);
+    }
+  }, [user]);
+
+  // 🎁 Offers
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/offers")
+      .then((res) => {
+        if (res.data.length === 0) {
+          setOffers([
+            { _id: 1, title: "🔥 50% OFF", description: "Use SAVE50" },
+            { _id: 2, title: "🎁 New User", description: "₹200 OFF" },
+          ]);
+        } else {
+          setOffers(res.data);
+        }
+      });
+  }, []);
+
+  // 🛒 Toggle plans
+  const togglePlan = (plan) => {
+    if (selectedPlans.find((p) => p.id === plan.id)) {
+      setSelectedPlans(selectedPlans.filter((p) => p.id !== plan.id));
+    } else {
+      setSelectedPlans([...selectedPlans, plan]);
+    }
+  };
+
+  // 💰 Total
+  const totalAmount = selectedPlans.reduce((sum, p) => sum + p.price, 0);
+
+  // 💳 Multi-payment
+const handleMultiPayment = async () => {
+  try {
+    const res = await axios.post(
+      "http://localhost:5000/api/payment/create-checkout-session",
+      {
+        plans: selectedPlans.map((p) => ({
+          name: p.name,
+          price: Number(p.price), // ✅ FIX
+        })),
+        userId: user._id,
+      }
+    );
+
+    window.location.href = res.data.url;
+  } catch (err) {
+    console.log("❌ Payment Error:", err.response?.data || err.message);
+  }
+};
+
+  // 📊 Chart data
+  const chartData = payments.map((p) => ({
+    date: new Date(p.createdAt).toLocaleDateString(),
+    amount: p.amount,
+  }));
+
+  const totalSpent = payments.reduce((sum, p) => sum + p.amount, 0);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#0B1F3A] to-black p-6 text-white">
       <div className="max-w-7xl mx-auto space-y-8">
 
         {/* HEADER */}
-        <div className="bg-white rounded-2xl shadow p-6">
-          <h1 className="text-2xl font-bold text-gray-800">
-            Welcome Back 👋
-          </h1>
-          <p className="text-gray-500">Manage your account & payments</p>
+        <div className="bg-white/10 p-6 rounded-2xl">
+          <h1 className="text-3xl font-bold">Welcome {user.name}</h1>
+          <p>Total Spent: ₹{totalSpent}</p>
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-          {/* OFFERS */}
-          <div className="bg-white rounded-2xl shadow p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <Gift className="text-blue-500" />
-              <h2 className="text-lg font-semibold">Offers</h2>
-            </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* 🎁 OFFERS */}
+          <div className="bg-white/10 p-6 rounded-2xl">
+            <h2 className="mb-4">Offers 🎁</h2>
 
             {offers.map((offer) => (
-              <div
-                key={offer.id}
-                className="border rounded-xl p-4 mb-3 hover:bg-gray-50 transition"
-              >
-                <p className="font-medium">{offer.title}</p>
-                <p className="text-sm text-gray-500">
-                  Expires: {offer.expiry}
-                </p>
+              <div key={offer._id} className="bg-yellow-400 text-black p-3 mb-2 rounded">
+                <p>{offer.title}</p>
+                <p>{offer.description}</p>
               </div>
             ))}
           </div>
 
-          {/* PAYMENT METHODS */}
-          <div className="bg-white rounded-2xl shadow p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <CreditCard className="text-green-500" />
-              <h2 className="text-lg font-semibold">Payment Methods</h2>
-            </div>
+          {/* 📊 HISTORY */}
+          <div className="bg-white/10 p-6 rounded-2xl">
+            <h2 className="mb-4">History</h2>
 
-            {paymentMethods.map((card) => (
-              <div
-                key={card.id}
-                className="flex justify-between items-center border rounded-xl p-4 mb-3"
-              >
-                <div>
-                  <p className="font-medium">{card.type}</p>
-                  <p className="text-sm text-gray-500">
-                    **** {card.last4}
-                  </p>
-                </div>
-                <button className="text-red-500 text-sm">Remove</button>
+            {payments.map((p) => (
+              <div key={p._id} className="flex justify-between mb-2">
+                <span>₹{p.amount}</span>
+                <span>{p.status}</span>
               </div>
             ))}
-
-            <button className="w-full mt-2 bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600">
-              + Add Payment Method
-            </button>
-          </div>
-
-          {/* PAYMENT HISTORY */}
-          <div className="bg-white rounded-2xl shadow p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <History className="text-purple-500" />
-              <h2 className="text-lg font-semibold">Payment History</h2>
-            </div>
-
-            <div className="space-y-3">
-              {paymentHistory.map((payment) => (
-                <div
-                  key={payment.id}
-                  className="flex justify-between items-center border rounded-xl p-4"
-                >
-                  <div>
-                    <p className="font-medium">{payment.amount}</p>
-                    <p className="text-sm text-gray-500">
-                      {payment.date}
-                    </p>
-                  </div>
-                  <span
-                    className={`text-sm font-medium ${
-                      payment.status === "Success"
-                        ? "text-green-500"
-                        : "text-red-500"
-                    }`}
-                  >
-                    {payment.status}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
 
         </div>
+
+        {/* 📈 CHART */}
+        <div className="bg-white/10 p-6 rounded-2xl">
+          <h2 className="mb-4">Analytics</h2>
+
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={chartData}>
+              <XAxis dataKey="date" stroke="#ccc" />
+              <YAxis stroke="#ccc" />
+              <Tooltip />
+              <Bar dataKey="amount" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
       </div>
     </div>
   );

@@ -1,57 +1,37 @@
 const express = require("express");
 const router = express.Router();
+const Stripe = require("stripe");
 
-const Payment = require("../models/Payment");
-const auth = require("../middleware/auth");
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// 💾 SAVE PAYMENT
-router.post("/save", auth, async (req, res) => {
+router.post("/create-checkout-session", async (req, res) => {
   try {
-    const payment = await Payment.create({
-      userId: req.user.id,
-      amount: req.body.offer.price,
-      offer: req.body.offer,
-      paymentId: req.body.razorpay_payment_id,
-      status: "Paid",
+    const { plans } = req.body;
+
+    const line_items = plans.map((plan) => ({
+      price_data: {
+        currency: "inr",
+        product_data: {
+          name: plan.name,
+        },
+        unit_amount: Math.round(plan.price * 100),
+      },
+      quantity: 1,
+    }));
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items,
+      success_url: "http://localhost:5173/success",
+      cancel_url: "http://localhost:5173/cancel",
     });
 
-    res.json(payment);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Error saving payment" });
-  }
-});
+    res.json({ url: session.url });
 
-// 📜 GET HISTORY
-router.get("/history", auth, async (req, res) => {
-  try {
-    const payments = await Payment.find({
-      userId: req.user.id,
-    }).sort({ createdAt: -1 });
-
-    res.json(payments);
-  } catch (err) {
-    res.status(500).json({ message: "Error fetching history" });
-  }
-});
-
-// 📊 ANALYTICS
-router.get("/analytics", async (req, res) => {
-  try {
-    const result = await Payment.aggregate([
-      {
-        $group: {
-          _id: null,
-          totalAmount: { $sum: "$amount" },
-          count: { $sum: 1 },
-        },
-      },
-    ]);
-
-    res.json(result[0] || { totalAmount: 0, count: 0 });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Error fetching analytics" });
+  } catch (error) {
+    console.error("Stripe Error:", error.message);
+    res.status(500).json({ error: error.message });
   }
 });
 
