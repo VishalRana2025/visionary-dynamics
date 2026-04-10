@@ -23,12 +23,6 @@ jobs:
         with:
           node-version: '24.x'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -52,4 +46,4 @@ jobs:
           app-name: 'Visionarydynamicsas'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5224DEAC94B842259DFB94F33773733E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8638CC051D4B4373999053FF79DFA659 }}
