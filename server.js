@@ -6,9 +6,9 @@ const path = require("path");
 // DB
 const connectDB = require("./config/db");
 
-// Routes
-const paymentRoutes = require("./Backend/routes/paymentRoutes");
-const blogRoutes = require("./Backend/routes/blogRoutes");
+// Routes (✅ FIXED PATHS)
+const paymentRoutes = require("./routes/paymentRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 // Auth
 const session = require("express-session");
@@ -23,13 +23,12 @@ const app = express();
 connectDB();
 
 // ========================
-// ✅ CORS (MUST BE FIRST)
+// ✅ CORS (IMPORTANT FOR AZURE)
 // ========================
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "*",   // 🔥 change from localhost to * for now
   credentials: true,
 }));
-
 
 // ========================
 // ✅ BODY PARSER
@@ -59,14 +58,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // ========================
-// 📦 ROUTES
+// 📦 ROUTES (✅ FIXED PATHS)
 // ========================
-app.use("/api/blogs", blogRoutes);   // ✅ ONLY ONCE
-app.use("/api/form", require("./Backend/routes/formRoutes"));
-app.use("/api/offers", require("./Backend/routes/offerRoutes"));
+app.use("/api/blogs", blogRoutes);
+app.use("/api/form", require("./routes/formRoutes"));
+app.use("/api/offers", require("./routes/offerRoutes"));
 app.use("/api/payment", paymentRoutes);
-app.use("/api", require("./Backend/routes/authRoutes"));
-app.use("/uploads", express.static("uploads"));
+app.use("/api", require("./routes/authRoutes"));
 
 // ========================
 // 📸 STATIC UPLOADS
@@ -74,7 +72,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/uploads", express.static("uploads"));
 
 // ========================
-// 🌐 SERVE FRONTEND
+// 🌐 SERVE FRONTEND (OPTIONAL)
 // ========================
 const distPath = path.join(__dirname, "dist");
 
@@ -85,7 +83,7 @@ app.get(/.*/, (req, res) => {
 });
 
 // ========================
-// 🚀 START SERVER
+// 🚀 START SERVER (✅ CORRECT PORT)
 // ========================
 const PORT = process.env.PORT || 5000;
 
