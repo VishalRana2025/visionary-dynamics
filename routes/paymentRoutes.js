@@ -33,6 +33,8 @@ router.post("/create-checkout-session", async (req, res) => {
     console.error("Stripe Error:", error.message);
     res.status(500).json({ error: error.message });
   }
+
+  console.log("STRIPE KEY:", process.env.STRIPE_SECRET_KEY);
 });
 
 module.exports = router;
