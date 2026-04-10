@@ -173,6 +173,7 @@ const AboutUs = () => {
                   A group of seasoned professionals with more than six years of experience lead{" "}
                   <span className="font-semibold text-blue-700">Visionary Dynamics Consulting Inc.</span>{" "}
                   We are committed to providing our clients with specialized, superior solutions that enable them to reach their objectives.
+                  “Visionary Dynamics is a wholly integrated division operating under the strategic direction of Ecliptic Insight Ventures.”
                 </p>
 
                 <p className="text-base sm:text-lg leading-relaxed">
