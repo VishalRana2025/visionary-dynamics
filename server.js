@@ -7,8 +7,8 @@ const path = require("path");
 const connectDB = require("./config/db");
 
 // Routes
-const paymentRoutes = require("./routes/paymentRoutes");
-const blogRoutes = require("./routes/blogRoutes");
+const paymentRoutes = require("./Backend/routes/paymentRoutes");
+const blogRoutes = require("./Backend/routes/blogRoutes");
 
 // Auth
 const session = require("express-session");
@@ -62,10 +62,10 @@ app.use(passport.session());
 // 📦 ROUTES
 // ========================
 app.use("/api/blogs", blogRoutes);   // ✅ ONLY ONCE
-app.use("/api/form", require("./routes/formRoutes"));
-app.use("/api/offers", require("./routes/offerRoutes"));
+app.use("/api/form", require("./Backend/routes/formRoutes"));
+app.use("/api/offers", require("./Backend/routes/offerRoutes"));
 app.use("/api/payment", paymentRoutes);
-app.use("/api", require("./routes/authRoutes"));
+app.use("/api", require("./Backend/routes/authRoutes"));
 app.use("/uploads", express.static("uploads"));
 
 // ========================
