@@ -31,7 +31,9 @@ import BlogPage from "./pages/BlogPage";
 import CreateBlog from "./pages/CreateBlog";
 import BlogDetails from "./pages/BlogDetails";
 import EditBlog from "./pages/EditBlog";
- 
+import ProcessPage from "./pages/ProcessPage";
+import VirtualAssistance from "./pages/VirtualAssistance";
+import RPO from "./pages/RPO";
 
 
 // Policies
@@ -136,6 +138,9 @@ return (
         <Route path="/linkedin" element={<LinkedIn />} />
         <Route path="/ai" element={<AI />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/process" element={<ProcessPage />} /> 
+        <Route path="/virtualassistance" element={<VirtualAssistance />} />
+        <Route path="/rpo" element={<RPO />} />
 
         {/* 📜 POLICIES */}
         <Route path="/privacy" element={<PrivacyPolicy />} />

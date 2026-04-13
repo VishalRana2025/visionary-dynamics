@@ -397,42 +397,6 @@ export default function WhyChooseUs() {
                   >
                     {feature.description}
                   </p>
-
-                  {/* Button */}
-                  <button
-                    className="relative px-5 py-2.5 text-sm font-semibold rounded-xl border transition-all duration-400 overflow-hidden group-hover:shadow-lg"
-                    style={{
-                      color:
-                        hoveredCard === index
-                          ? "white"
-                          : colors.dark.replace("0.25", "0.9"),
-                      background:
-                        hoveredCard === index
-                          ? `linear-gradient(135deg, ${colors.dark}, ${colors.medium})`
-                          : colors.light,
-                      borderColor:
-                        hoveredCard === index ? "transparent" : colors.medium,
-                      boxShadow:
-                        hoveredCard === index
-                          ? `0 8px 25px ${colors.dark}40`
-                          : "none",
-                    }}
-                  >
-                    <span className="relative z-10 flex items-center">
-                      Learn More
-                      <span className="ml-2 transition-transform duration-400 group-hover:translate-x-1">
-                        →
-                      </span>
-                    </span>
-
-                    <div
-                      className="absolute inset-0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
-                      }}
-                    />
-                  </button>
                 </div>
               </div>
             );

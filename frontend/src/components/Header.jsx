@@ -1,8 +1,7 @@
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import React, { useState, useEffect } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
-
+import { ChevronDown, ChevronRight, ShoppingCart } from "lucide-react";
 /* ================= MENU DATA ================= */
 const MENU_DATA = {
   "Who We Are": {
@@ -71,7 +70,8 @@ const ROUTES = {
 "MarketingPricing": "/pricing/marketing",
 "AccountingPricing": "/pricing/accounting",
  "Blog": "/blog",
-
+"VirtualAssistance": "/virtualassistance",
+"RPO": "/rpo"
 };
 
 const Header = () => {
@@ -122,7 +122,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#0B1F3A]/70 backdrop-blur-md">
+<header className="fixed top-0 left-0 w-full h-16 md:h-20 z-50 bg-[#0B1F3A]/70 backdrop-blur-md">
       <div className="relative h-16 px-6 flex items-center justify-between">
 
         {/* LOGO */}
@@ -149,7 +149,7 @@ const Header = () => {
 </div>
 
         {/* MENU */}
-        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[70px] text-white">
+        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-full text-white">
           <Link to="/">Home</Link>
           <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
           <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />
@@ -193,26 +193,54 @@ const Header = () => {
 
       {/* MOBILE MENU */}
       {isOpen && (
-        <div className="lg:hidden bg-[#0B1F3A] text-white px-6 py-6 space-y-4">
-          <Link to="/">Home</Link>
-          <Link to="/contact">Contact</Link>
+  <div className="lg:hidden absolute top-16 left-0 w-full bg-[#0B1F3A] text-white px-6 py-6 z-50 space-y-4">
 
-          {!user ? (
-            <button onClick={() => setShowLogin(true)} className="bg-sky-500 px-4 py-2 rounded">
-              Login
-            </button>
-          ) : (
-            <>
-              <Link to="/dashboard" className="block bg-green-500 px-4 py-2 rounded">
-                Dashboard
-              </Link>
-              <button onClick={handleLogout} className="block w-full bg-red-500 px-4 py-2 rounded">
-                Logout
-              </button>
-            </>
-          )}
-        </div>
-      )}
+    {/* 🔹 HOME */}
+    <Link to="/" className="block text-lg font-semibold">Home</Link>
+
+    {/* 🔹 SAME MENU */}
+    <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
+    <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />
+    <MenuWithSub menu="How We Do" data={MENU_DATA["How We Do"]} />
+    <MenuWithSub menu="PRICING" data={MENU_DATA["PRICING"]} />
+
+    {/* 🔹 CART BUTTON */}
+    <Link
+      to="/cart"
+      className="flex items-center gap-2 mt-4 bg-purple-600 px-4 py-2 rounded"
+    >
+      <ShoppingCart size={18} />
+      Cart
+    </Link>
+
+    {/* 🔹 LOGIN / USER */}
+    {!user ? (
+      <button
+        onClick={() => setShowLogin(true)}
+        className="w-full mt-3 bg-sky-500 px-4 py-2 rounded"
+      >
+        Login
+      </button>
+    ) : (
+      <>
+        <Link
+          to="/dashboard"
+          className="block mt-3 bg-green-500 px-4 py-2 rounded text-center"
+        >
+          Dashboard
+        </Link>
+
+        <button
+          onClick={handleLogout}
+          className="w-full mt-2 bg-red-500 px-4 py-2 rounded"
+        >
+          Logout
+        </button>
+      </>
+    )}
+
+  </div>
+)}
 
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     </header>
@@ -260,6 +288,7 @@ const UserDropdown = ({ handleLogout }) => {
 /* ================= MENU ================= */
 const MenuWithSub = ({ menu, data = {} }) => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const handleClick = (item) => {
     const path = ROUTES[item];
@@ -268,14 +297,25 @@ const MenuWithSub = ({ menu, data = {} }) => {
 
   return (
     <div className="relative group">
-      <button className="flex items-center gap-1">
+
+      {/* 🔹 MENU BUTTON */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1"
+      >
         {menu} <ChevronDown size={18} />
       </button>
 
-      <div className="absolute top-full left-0 min-w-[240px] bg-[#0f172a] rounded-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
+      {/* 🔹 DROPDOWN */}
+      <div
+        className={`absolute top-full left-0 min-w-[240px] bg-[#0f172a] z-[999] rounded-lg transition
+        ${open ? "opacity-100 visible" : "opacity-0 invisible"}
+        lg:group-hover:visible lg:group-hover:opacity-100`}
+      >
         {Object.keys(data).map((item) => (
           <div key={item} className="relative group/item">
 
+            {/* 🔹 MAIN ITEM */}
             <div
               className="px-4 py-2 flex justify-between cursor-pointer hover:bg-sky-500/20"
               onClick={() => handleClick(item)}
@@ -284,8 +324,9 @@ const MenuWithSub = ({ menu, data = {} }) => {
               {data[item]?.length > 0 && <ChevronRight size={14} />}
             </div>
 
+            {/* 🔹 SUBMENU */}
             {data[item]?.length > 0 && (
-              <div className="absolute left-full top-0 min-w-[240px] bg-[#0f172a] rounded-lg opacity-0 invisible group-hover/item:visible group-hover/item:opacity-100 transition">
+              <div className="absolute left-full top-0 min-w-[240px] bg-[#0f172a] z-[999] rounded-lg opacity-0 invisible group-hover/item:visible group-hover/item:opacity-100 transition">
                 {data[item].map((sub) => (
                   <div
                     key={sub}
@@ -297,7 +338,6 @@ const MenuWithSub = ({ menu, data = {} }) => {
                 ))}
               </div>
             )}
-
           </div>
         ))}
       </div>

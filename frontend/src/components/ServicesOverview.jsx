@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   CheckCircle,
   BarChart3,
@@ -21,10 +22,10 @@ export const WaveTransition = ({ direction = "bottom" }) => {
   return (
     <div className={`relative w-full overflow-hidden ${isTop ? "rotate-180 -mb-1" : "-mt-1"}`}>
       <svg
-        viewBox="0 0 1440 320"
-        className="w-full h-[150px] md:h-[220px]"
-        preserveAspectRatio="none"
-      >
+  viewBox="0 0 1440 320"
+  className="w-full h-[150px] md:h-[220px] pointer-events-none"
+  preserveAspectRatio="none"
+>
         <path d="M0,190C320,280 640,120 960,190C1280,260 1440,120 1440,190V320H0Z" fill="#37393b" fillOpacity="0.3" />
         <path d="M0,220C480,320 960,140 1440,220V320H0Z" fill="#93C5FD" fillOpacity="0.5" />
         <path d="M0,260C480,360 960,180 1440,260V320H0Z" fill="#b5c7df" />
@@ -39,10 +40,11 @@ const ServicesOverview = () => {
   const [isHovered, setIsHovered] = useState(false); // ⬅️ NEW: hover pause
   const ref = useRef(null);
   useInView(ref, { once: true, amount: 0.3 });
-
+  const navigate = useNavigate();
   const services = [
     {
       title: "Accounting Services",
+      route: "/accounting",
       description:
         "Accurate financial reporting and strategic insights to manage cash flow and reduce costs.",
       icon: BarChart3,
@@ -59,6 +61,7 @@ const ServicesOverview = () => {
     },
     {
       title: "Marketing Services",
+      route: "/seo",
       description:
         "Data-driven marketing strategies to grow visibility, engagement, and ROI.",
       icon: Target,
@@ -75,6 +78,7 @@ const ServicesOverview = () => {
     },
     {
       title: "IT Asset Management",
+      route: "/software",
       description:
         "End-to-end IT asset lifecycle management for compliance and cost optimization.",
       icon: Shield,
@@ -121,7 +125,7 @@ const ServicesOverview = () => {
   const active = services[activeService];
 
   return (
-    <section className="w-full min-h-screen py-28 px-4 sm:px-8 lg:px-16 relative overflow-hidden">
+    <section className="w-full min-h-screen py-28 px-4 sm:px-8 lg:px-16 relative">
       
       {/* ===== TOP FADE BLEND IN ===== */}
       <div className="absolute top-0 left-0 w-full h-40 pointer-events-none z-[5]">
@@ -140,7 +144,7 @@ const ServicesOverview = () => {
         />
 
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background:
               "linear-gradient(to bottom, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.80) 50%, rgba(51, 65, 85, 0.85) 100%)",
@@ -184,7 +188,7 @@ const ServicesOverview = () => {
             <button
               key={index}
               onClick={() => setActiveService(index)}
-              className={`px-6 py-3 rounded-xl font-semibold flex items-center gap-3 transition-all duration-300 relative overflow-hidden group backdrop-blur-sm ${
+              className={`px-6 py-3 rounded-xl font-semibold flex items-center gap-3 transition-all duration-300 relative group backdrop-blur-sm ${
                 activeService === index
                   ? `bg-gradient-to-r ${service.color} text-white shadow-2xl shadow-blue-500/30 scale-105`
                   : "bg-white/10 text-slate-300 border border-white/20 hover:bg-white/20 hover:shadow-lg hover:scale-105"
@@ -214,7 +218,7 @@ const ServicesOverview = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl p-8 md:p-12 shadow-2xl w-full relative overflow-hidden border border-white/10 backdrop-blur-lg"
+            className="rounded-3xl p-8 md:p-12 shadow-2xl w-full relative border border-white/10 backdrop-blur-lg"
             style={{
               background:
                 "linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.05) 100%)",
@@ -223,7 +227,7 @@ const ServicesOverview = () => {
           >
             {/* Card Background */}
             <div
-              className="absolute inset-0 bg-cover bg-center"
+             className="absolute inset-0 bg-cover bg-center pointer-events-none"
               style={{
                 backgroundImage: `url(${active.backgroundImage})`,
                 opacity: 0.15,
@@ -232,7 +236,7 @@ const ServicesOverview = () => {
 
             {/* Card Overlay */}
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 pointer-events-none"
               style={{
                 background:
                   "linear-gradient(to bottom, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.90) 100%)",
@@ -294,21 +298,21 @@ const ServicesOverview = () => {
                   </p>
 
                   <button
-                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 group"
-                    style={{
-                      background:
-                        active.color === "from-blue-600 to-cyan-500"
-                          ? "linear-gradient(135deg, #3B82F6, #06B6D4)"
-                          : active.color ===
-                            "from-purple-600 to-pink-500"
-                          ? "linear-gradient(135deg, #8B5CF6, #EC4899)"
-                          : "linear-gradient(135deg, #10B981, #059669)",
-                      color: "white",
-                    }}
-                  >
-                    <span>Learn More</span>
-                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </button>
+  onClick={() => navigate(active.route)}
+  className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 group cursor-pointer active:scale-95"
+  style={{
+    background:
+      active.color === "from-blue-600 to-cyan-500"
+        ? "linear-gradient(135deg, #3B82F6, #06B6D4)"
+        : active.color === "from-purple-600 to-pink-500"
+        ? "linear-gradient(135deg, #8B5CF6, #EC4899)"
+        : "linear-gradient(135deg, #10B981, #059669)",
+    color: "white",
+  }}
+>
+  <span>Learn More</span>
+  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+</button>
                 </div>
 
                 {/* Right */}
@@ -348,7 +352,7 @@ const ServicesOverview = () => {
       <div className="absolute bottom-0 left-0 w-full h-40 pointer-events-none z-[5]">
         <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 via-blue-500/10 to-transparent" />
       </div>
-     <div className="absolute bottom-0 left-0 w-full z-30">
+    <div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
   <WaveTransition />
 </div>
     </section>

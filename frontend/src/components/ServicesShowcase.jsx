@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   Users,
   Headphones,
@@ -40,11 +41,12 @@ const ServicesShowcase = () => {
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
-
+  const navigate = useNavigate();
   const processes = [
     {
       step: "01",
       title: "Accounting & Compliance Process",
+      route: "/accounting", 
       category: "Finance Process",
       description:
         "A compliance-driven financial process that captures transactions, validates records, prepares reports, and ensures regulatory adherence with audit-ready documentation.",
@@ -61,6 +63,7 @@ const ServicesShowcase = () => {
       step: "02",
       title: "Recruitment Process Outsourcing",
       category: "RPO Process",
+       route: "/rpo",
       description:
         "A structured hiring process that defines role requirements, sources qualified candidates, evaluates talent, and ensures seamless onboarding with measurable outcomes.",
       icon: Users,
@@ -75,6 +78,7 @@ const ServicesShowcase = () => {
     {
       step: "03",
       title: "Virtual Assistance Process",
+      route: "/virtualassistance",
       category: "VA Process",
       description:
         "A standardized operational process that manages daily tasks, customer communication, and data handling through clearly defined workflows and service-level benchmarks.",
@@ -122,7 +126,7 @@ const ServicesShowcase = () => {
  
       {/* ================= IMAGE BACKGROUND ================= */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: "url(/business-analytics.avif)",
           backgroundSize: "cover",
@@ -130,10 +134,10 @@ const ServicesShowcase = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="absolute inset-0 bg-[#0a192f]/45" />
+        <div className="absolute inset-0 pointer-events-none bg-[#0a192f]/45" />
 
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 pointer-events-none opacity-20"
           style={{
             backgroundImage: `
               linear-gradient(90deg, rgba(59,130,246,0.1) 1px, transparent 1px),
@@ -143,7 +147,7 @@ const ServicesShowcase = () => {
           }}
         />
 
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           {[...Array(25)].map((_, i) => (
             <motion.div
               key={i}
@@ -168,12 +172,12 @@ const ServicesShowcase = () => {
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-br from-[#020b1c]/60 via-[#071b33]/50 to-[#020b1c]/70" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-[#020b1c]/60 via-[#071b33]/50 to-[#020b1c]/70" />
 
       <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
 
       {/* ================= CONTENT ================= */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-50 w-full">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -250,7 +254,7 @@ const ServicesShowcase = () => {
             <motion.div
               key={current.title}
               {...crossfade}
-              className="bg-white/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/30 p-8 sticky top-24 lg:col-span-2"
+              className="relative z-50 bg-white/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/30 p-8 sticky top-24 lg:col-span-2"
             >
               <div
                 className="inline-flex p-4 rounded-2xl mb-6"
@@ -294,13 +298,16 @@ const ServicesShowcase = () => {
                 ))}
               </div>
 
-              <button
-                onClick={() => setOpen(true)}
-                className="w-full py-3 rounded-xl font-semibold text-white transition hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
-                style={{ backgroundColor: current.color }}
-              >
-                Start This Process
-              </button>
+             <button
+  onClick={() => {
+    console.log("BUTTON CLICKED ✅");
+    navigate(current.route);
+  }}
+  className="w-full py-3 rounded-xl font-semibold text-white"
+  style={{ backgroundColor: current.color }}
+>
+  Start This Process
+</button>
             </motion.div>
           </AnimatePresence>
         </div>
