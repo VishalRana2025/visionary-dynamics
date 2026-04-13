@@ -30,15 +30,6 @@ src="/VD-Logo-e1737873827576.png"
             </p>
           </div>
 
-          {/* ABOUT */}
-          <div>
-            <h4 className="font-semibold mb-4">About</h4>
-            <p className="text-white/70 text-sm leading-relaxed">
-              Empowering businesses with modern technology, innovation, and
-              scalable digital solutions.
-            </p>
-          </div>
-
           {/* QUICK LINKS */}
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
@@ -47,6 +38,9 @@ src="/VD-Logo-e1737873827576.png"
   
   <li><Link to="/about" className="hover:text-white">About</Link></li>
   <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+   <li><Link to="/accounting" className="hover:text-white">Accounting</Link></li>
+    <li><Link to="/webdesign" className="hover:text-white">Marketing</Link></li>
+     <li><Link to="/contact" className="hover:text-white">I.T</Link></li>
 </ul>
           </div>
 
