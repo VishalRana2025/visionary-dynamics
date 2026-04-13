@@ -64,7 +64,6 @@ const ContactPage = () => {
       icon: <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />,
       title: 'Office',
       details: '7901 4th St N STE 300 St. Petersburg, Florida-33702 USA',
-      subDetails: 'Available for meetings',
       gradient: 'from-purple-500 to-pink-600',
       lightBg: 'bg-purple-50',
       textColor: 'text-purple-600',
@@ -211,10 +210,10 @@ const ContactPage = () => {
                   {item.title}
                 </h3>
                 <p className="text-gray-600 mb-1 sm:mb-2 font-medium text-sm sm:text-base break-words">{item.details}</p>
-                <p className="text-xs sm:text-sm text-gray-500 flex items-center gap-1">
+                {/* <p className="text-xs sm:text-sm text-gray-500 flex items-center gap-1">
                   <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
                   {item.subDetails}
-                </p>
+                </p> */}
 
                 <div className={`absolute bottom-0 left-0 w-0 h-0.5 sm:h-1 bg-gradient-to-r ${item.gradient} group-hover:w-full transition-all duration-500 rounded-b-xl sm:rounded-b-2xl`}></div>
               </div>

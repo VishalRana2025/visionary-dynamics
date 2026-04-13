@@ -149,7 +149,7 @@ const Header = () => {
 </div>
 
         {/* MENU */}
-        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-full text-white">
+        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[120%] text-white">
           <Link to="/">Home</Link>
           <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
           <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />

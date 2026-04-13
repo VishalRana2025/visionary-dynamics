@@ -46,7 +46,7 @@ const ServicesShowcase = () => {
     {
       step: "01",
       title: "Accounting & Compliance Process",
-      route: "/accounting", 
+      route: "/contact", 
       category: "Finance Process",
       description:
         "A compliance-driven financial process that captures transactions, validates records, prepares reports, and ensures regulatory adherence with audit-ready documentation.",
@@ -63,7 +63,7 @@ const ServicesShowcase = () => {
       step: "02",
       title: "Recruitment Process Outsourcing",
       category: "RPO Process",
-       route: "/rpo",
+       route: "/contact",
       description:
         "A structured hiring process that defines role requirements, sources qualified candidates, evaluates talent, and ensures seamless onboarding with measurable outcomes.",
       icon: Users,

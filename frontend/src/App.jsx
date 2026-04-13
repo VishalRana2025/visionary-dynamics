@@ -34,6 +34,7 @@ import EditBlog from "./pages/EditBlog";
 import ProcessPage from "./pages/ProcessPage";
 import VirtualAssistance from "./pages/VirtualAssistance";
 import RPO from "./pages/RPO";
+import ScrollToTop from "./ScrollToTop";
 
 
 // Policies
@@ -73,7 +74,7 @@ export default function App() {
 
 return (
   <div className="flex flex-col min-h-screen">
-
+     <ScrollToTop />
     <Toaster position="top-right" />
 
     
