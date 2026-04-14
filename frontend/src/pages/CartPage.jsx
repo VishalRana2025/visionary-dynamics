@@ -42,43 +42,54 @@ export default function CartPage() {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">🛒 Your Cart</h2>
+   <div className="min-h-screen bg-gray-50 py-10 px-4">
+  <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-6">
 
-      {cart.length === 0 ? (
-        <p>No items in cart</p>
-      ) : (
-        <>
-          {cart.map((item, index) => (
-            <div
-              key={`${item.id}-${index}`}
-              className="flex justify-between items-center border-b py-2"
-            >
-              <span>
-                {item.name} ({item.service})
-              </span>
+    <h2 className="text-2xl font-bold mb-6">🛒 Your Cart</h2>
 
-              <span>₹{item.price}</span>
-
-              <button
-                onClick={() => handleRemove(item.id)}
-                className="text-red-500 hover:underline"
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-
-          <h3 className="mt-4 font-bold text-lg">Total: ₹{total}</h3>
-
-          <button
-            onClick={handleCheckout}
-            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    {cart.length === 0 ? (
+      <p className="text-gray-500">No items in cart</p>
+    ) : (
+      <>
+        {cart.map((item, index) => (
+          <div
+            key={`${item.id}-${index}`}
+            className="flex justify-between items-center border-b py-3"
           >
-            Checkout
-          </button>
-        </>
-      )}
-    </div>
+            <span className="font-medium text-gray-700">
+              {item.name} ({item.service})
+            </span>
+
+            <span className="font-semibold text-gray-900">
+              ₹{item.price}
+            </span>
+
+            <button
+              onClick={() => handleRemove(item.id)}
+              className="text-red-500 hover:text-red-700 font-medium"
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+
+        <div className="mt-6 flex justify-between items-center">
+          <h3 className="text-lg font-bold">Total:</h3>
+          <span className="text-xl font-bold text-blue-600">
+            ₹{total}
+          </span>
+        </div>
+
+        <button
+          onClick={handleCheckout}
+          className="mt-6 w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+        >
+          Checkout
+        </button>
+      </>
+    )}
+
+  </div>
+</div>
   );
 }

@@ -278,7 +278,7 @@ const handleSubmit = async (e) => {
                   </div>
 
                   <div className="flex-1">
-                    <div className="flex items-center gap-6 mb-3">
+                    <div className="flex items-center gap-3 mb-3">
                       <process.icon
                         className="w-6 h-6"
                         style={{ color: process.color }}
@@ -315,22 +315,28 @@ const handleSubmit = async (e) => {
               {...crossfade}
               className="relative z-50 bg-white/95 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/30 p-8 sticky top-24 lg:col-span-2"
             >
-              <div
-                className="inline-flex p-4 rounded-2xl mb-6"
-                style={{ backgroundColor: `${current.color}20` }}
-              >
-                <current.icon
-                  className="w-10 h-10"
-                  style={{ color: current.color }}
-                />
-              </div>
+              <div className="flex items-center gap-3 mb-4">
+  
+  {/* ICON */}
+  <div
+    className="p-4 rounded-2xl"
+    style={{ backgroundColor: `${current.color}20` }}
+  >
+    <current.icon
+      className="w-10 h-10"
+      style={{ color: current.color }}
+    />
+  </div>
 
-              <span
-                className="inline-block mb-2 text-sm font-semibold uppercase tracking-wide"
-                style={{ color: current.color }}
-              >
-                {current.category}
-              </span>
+  {/* TEXT */}
+  <span
+    className="text-sm font-semibold uppercase tracking-wide"
+    style={{ color: current.color }}
+  >
+    {current.category}
+  </span>
+
+</div>
 
               <h3 className="text-3xl font-bold text-slate-900 mb-3">
                 {current.title}

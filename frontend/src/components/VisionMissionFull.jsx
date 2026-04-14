@@ -242,7 +242,8 @@ const VisionMissionFull = () => {
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ type: "spring", delay: 0.2 }}
-                  className="inline-block mb-4"
+                  className="inline-block mt-8 mb-4"
+
                 >
                   <div className={`p-5 rounded-3xl bg-gradient-to-br ${data.gradient} shadow-2xl`}>
                     {data.icon}

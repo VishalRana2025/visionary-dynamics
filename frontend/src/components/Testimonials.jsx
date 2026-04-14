@@ -211,7 +211,7 @@ export default function Testimonials() {
 
   return (
     <section 
-      className="relative w-full min-h-screen py-20 px-4 md:px-8 lg:px-16 overflow-hidden"
+     className="relative w-full min-h-[70vh] pt-24 md:pt-28 lg:pt-32 pb-8 md:pb-10 px-4 md:px-8 lg:px-16 overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -306,7 +306,7 @@ export default function Testimonials() {
           </button>
 
           {/* 3 Cards Layout - Reduced Height */}
-          <div className="relative h-[300px] md:h-[340px] lg:h-[380px]">
+          <div className="relative h-[280px] md:h-[320px] lg:h-[360px]">
             {/* Left Card (Previous) */}
             <div className="absolute left-0 top-0 w-[28%] md:w-[30%] h-full transition-all duration-500 ease-out" style={{
               transform: `translateX(${isAnimating ? '-5%' : '0%'})`,

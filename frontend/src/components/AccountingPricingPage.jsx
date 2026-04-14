@@ -187,7 +187,7 @@ const handlePlanClick = (plan) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue to-blue-100">
       {/* Hero Section */}
       <div className="relative w-full pt-20">
         <div
