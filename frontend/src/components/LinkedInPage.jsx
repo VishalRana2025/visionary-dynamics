@@ -380,7 +380,7 @@ const App = () => {
 
     </div>
   </div>
-  <div className="absolute bottom-0 left-0 w-full z-30">
+ <div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
   <WaveTransition />
 </div>
  
@@ -642,14 +642,7 @@ const App = () => {
     )}
 
     {/* Bottom CTA */}
-    <div className="text-center mt-16">
-      <div className="inline-flex items-center gap-3 bg-gray-50 px-6 py-3 rounded-full">
-        <span className="text-gray-600">Need help choosing?</span>
-        <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:shadow-lg transition-shadow">
-          Talk to an Expert
-        </button>
-      </div>
-    </div>
+    
   </div>
 
 </section>

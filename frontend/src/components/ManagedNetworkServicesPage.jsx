@@ -127,7 +127,8 @@ const MDMPage = () => {
      
 {/* Hero Section */}
 <section className="relative py-20 md:py-28 overflow-hidden">
- <div className="absolute bottom-0 left-0 w-full z-30">
+<div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
+
   <WaveTransition />
 </div>
  

@@ -11,7 +11,9 @@
 @layer base {
   body {
     @apply antialiased;
-    background-color: #f5f7fb; /* soft light grey */
+     margin: 0;          
+    padding: 0;        
+    background-color: #0c192b;/* soft light grey */
     color: #0f172a; /* slate-900 */
   }
 }

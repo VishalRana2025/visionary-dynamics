@@ -144,14 +144,17 @@ const SocialMediaMarketingPage = () => {
           </span>
         </h1>
         <div className="flex flex-wrap gap-4">
-          <button className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 flex items-center gap-2">
-            Get Started
-            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <button className="flex items-center gap-3 px-8 py-4 rounded-full font-semibold border-2 border-white/30 text-white hover:bg-white hover:text-purple-600 transition-all duration-300">
-            <Play className="w-5 h-5" />
-            Watch Demo
-          </button>
+         <a
+  href="https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="group bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 flex items-center gap-2">
+    Get Started
+    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+  </button>
+</a>
+         
         </div>
         
       
@@ -347,9 +350,7 @@ const SocialMediaMarketingPage = () => {
         </div>
         
         {/* CTA Button */}
-        <button className="mt-8 bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-300/30 transition-all duration-300 hover:scale-105">
-          Learn More About Our Process
-        </button>
+        
       </div>
       
       {/* Stats grid */}

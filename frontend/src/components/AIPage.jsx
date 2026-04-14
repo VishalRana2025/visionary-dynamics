@@ -785,11 +785,18 @@ const services = [
     
     {/* CTA Buttons */}
     <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-      <button className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all inline-flex items-center justify-center">
-        <Calendar className="w-5 h-5 mr-2" />
-        Schedule Free Consultation
-        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-      </button>
+      <a
+  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block"
+>
+  <button className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:shadow-2xl hover:scale-105 transition-all inline-flex items-center justify-center cursor-pointer">
+    <Calendar className="w-5 h-5 mr-2" />
+    Schedule Free Consultation
+    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+  </button>
+</a>
       
       
     </div>

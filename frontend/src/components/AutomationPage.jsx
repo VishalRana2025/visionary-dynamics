@@ -597,9 +597,7 @@ const techTools = [
         </ul>
 
         {/* CTA */}
-        <button className="mt-8 bg-gray-900 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg transition">
-          Get Started
-        </button>
+       
       </div>
 
       {/* RIGHT */}

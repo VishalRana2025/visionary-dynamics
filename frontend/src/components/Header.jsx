@@ -122,14 +122,14 @@ const Header = () => {
   };
 
   return (
-<header className="fixed top-0 left-0 w-full h-16 md:h-20 z-50 bg-[#0B1F3A]/70 backdrop-blur-md">
-      <div className="relative h-16 px-6 flex items-center justify-between">
+<header className="fixed top-0 left-0 w-full h-14 md:h-16 z-50 bg-[#0B1F3A] backdrop-blur-md">
+        <div className="relative h-full px-6 flex items-center justify-between">
 
         {/* LOGO */}
         <img src="/VD-Logo-e1737873827576.png" className="h-14" />
 
         {/* 🔥 MOVING SLIDER */}
-<div className="hidden lg:flex justify-center absolute top-2 left-0 w-full pointer-events-none">
+{/* <div className="hidden lg:flex justify-center absolute top-2 left-0 w-full pointer-events-none">
   <div className="w-[45%] overflow-hidden rounded-xl px-6 py-2 
     bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
 
@@ -146,10 +146,10 @@ const Header = () => {
 
     </div>
   </div>
-</div>
+</div> */}
 
         {/* MENU */}
-        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-[120%] text-white">
+        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-white">
           <Link to="/">Home</Link>
           <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
           <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />
@@ -194,7 +194,7 @@ const Header = () => {
 
       {/* MOBILE MENU */}
       {isOpen && (
-  <div className="lg:hidden absolute top-16 left-0 w-full bg-[#0B1F3A] text-white px-6 py-6 z-50 space-y-4">
+  <div className="lg:hidden absolute top-14 md:top-16 left-0 w-full bg-[#0B1F3A] text-white px-6 py-6 z-50 space-y-4">
 
     {/* 🔹 HOME */}
     <Link to="/" className="block text-lg font-semibold">Home</Link>

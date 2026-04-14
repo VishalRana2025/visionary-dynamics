@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { X } from "lucide-react";
 import {
   Users,
   Headphones,
@@ -39,9 +40,67 @@ const crossfade = {
 
 const ServicesShowcase = () => {
   const [active, setActive] = useState(0);
-  const [open, setOpen] = useState(false);
+const [showContactForm, setShowContactForm] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const navigate = useNavigate();
+  
+  
+  const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  service: "",
+  message: "",
+});
+const navigate = useNavigate();
+  const handleInputChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:5000/api/form", { // 👈 your route
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        type: formData.service || "Accounting", // 🔥 map service → type
+      }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Form submitted successfully ✅");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "",
+        message: "",
+      });
+
+      setShowContactForm(false);
+    } else {
+      alert(data.error || "Something went wrong ❌");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Server error ❌");
+  }
+};
   const processes = [
     {
       step: "01",
@@ -111,7 +170,7 @@ const ServicesShowcase = () => {
 
   useEffect(() => {
     const handler = (e) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") setShowContactForm(false) 
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -299,10 +358,7 @@ const ServicesShowcase = () => {
               </div>
 
              <button
-  onClick={() => {
-    console.log("BUTTON CLICKED ✅");
-    navigate(current.route);
-  }}
+  onClick={() => setShowContactForm(true)}
   className="w-full py-3 rounded-xl font-semibold text-white"
   style={{ backgroundColor: current.color }}
 >
@@ -314,76 +370,114 @@ const ServicesShowcase = () => {
       </div>
 
       {/* ================= POPUP ================= */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-10 relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="p-4 rounded-2xl"
-                  style={{ backgroundColor: `${current.color}20` }}
+{showContactForm && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 z-50">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4 sm:p-6 md:p-8">
+              <div className="flex justify-between items-center mb-5 sm:mb-6 md:mb-8">
+                <div>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Start Your Financial Transformation</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm">Fill out the form below and we'll get back to you within 24 hours</p>
+                </div>
+                <button 
+                  onClick={() => setShowContactForm(false)}
+                  className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full transition-colors"
                 >
-                  <current.icon
-                    className="w-8 h-8"
-                    style={{ color: current.color }}
+                  <X className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500" />
+                </button>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div>
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">Email *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
+                      required
+                    />
+                  </div>  
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div>
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">Company</label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">Service Interest *</label>
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleInputChange}
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
+                    required
+                  >
+                    <option value="">Select a service</option>
+                    <option value="bookkeeping">Bookkeeping</option>
+                    <option value="financial-reporting">Financial Reporting</option>
+                    <option value="payroll">Payroll Processing</option>
+                    <option value="tax">Rpo</option>
+                    <option value="all">V.A</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">Message *</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
+                    placeholder="Tell us about your business and financial needs..."
+                    required
                   />
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900">
-                    {current.title}
-                  </h3>
-                  <p
-                    className="text-sm font-semibold uppercase"
-                    style={{ color: current.color }}
-                  >
-                    {current.category}
-                  </p>
-                </div>
-              </div>
 
-              <p className="text-slate-600 mb-6">
-                Tell us about your goals and our experts will tailor this process
-                to align with your business workflows and objectives.
-              </p>
-
-              <div className="space-y-3 mb-8">
-                {current.features.map((feature, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <CheckCircle
-                      className="w-5 h-5"
-                      style={{ color: current.color }}
-                    />
-                    <span className="text-slate-700 font-medium">
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                className="w-full py-3 rounded-xl text-white font-semibold transition hover:shadow-xl hover:scale-[1.02]"
-                style={{ backgroundColor: current.color }}
-              >
-                Request Consultation
-              </button>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                <button
+                  type="submit"
+                  className="w-full py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-lg sm:rounded-xl hover:from-blue-700 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
+                >
+                  Request Consultation
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="absolute bottom-0 left-0 w-full z-30">
         <WaveTransition />
       </div>

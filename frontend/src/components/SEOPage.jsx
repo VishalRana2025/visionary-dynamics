@@ -980,20 +980,7 @@ const FloatingObjects = () => (
     </div>
 
     {/* Summary Section */}
-    <div className="text-center mt-20">
-      <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group">
-        <svg className="w-5 h-5 text-white animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-        <span className="text-white font-semibold">See Our SEO Results</span>
-        <svg className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </div>
-      <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-        Each step is meticulously executed to deliver measurable, sustainable results
-      </p>
-    </div>
+    
   </div>
 
   <style>{`

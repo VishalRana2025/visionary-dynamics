@@ -500,13 +500,7 @@ const CloudPage = () => {
         <ArrowRight className="w-4 h-4" />
       </a>
 
-      <a
-        href="/demo"
-        className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-xl hover:bg-white/10 transition-all duration-300"
-      >
-        Watch Demo
-        <Clock className="w-4 h-4" />
-      </a>
+     
     </div>
   </div>
 
