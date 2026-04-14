@@ -306,7 +306,7 @@ export default function Testimonials() {
           </button>
 
           {/* 3 Cards Layout - Reduced Height */}
-          <div className="relative h-[380px] md:h-[420px] lg:h-[460px]">
+          <div className="relative h-[300px] md:h-[340px] lg:h-[380px]">
             {/* Left Card (Previous) */}
             <div className="absolute left-0 top-0 w-[28%] md:w-[30%] h-full transition-all duration-500 ease-out" style={{
               transform: `translateX(${isAnimating ? '-5%' : '0%'})`,

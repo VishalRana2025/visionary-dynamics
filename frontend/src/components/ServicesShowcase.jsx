@@ -278,7 +278,7 @@ const handleSubmit = async (e) => {
                   </div>
 
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
+                    <div className="flex items-center gap-6 mb-3">
                       <process.icon
                         className="w-6 h-6"
                         style={{ color: process.color }}
