@@ -33,9 +33,9 @@ const MENU_DATA = {
     "Blog": [],
   },
    "Pricing": {
-  "AccountingPricing": [],
-  "MarketingPricing": [],
-  "DevelopmentPricing": [],
+  "Accounting Pricing": [],
+  "Marketing Pricing": [],
+  "Development Pricing": [],
 },
  
 };
@@ -154,8 +154,8 @@ const Header = () => {
           <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
           <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />
           <MenuWithSub menu="How We Do" data={MENU_DATA["How We Do"]} />
-           <Link to="/contact">Contact</Link>
           <MenuWithSub menu="Pricing" data={MENU_DATA["Pricing"]} />
+          <Link to="/contact">Contact Us</Link>
         </nav>
 
         {/* RIGHT SIDE */}
