@@ -197,13 +197,13 @@ export default function Locations() {
       image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       features: ["Innovation Lab", "Sustainability", "Tech Integration"],
     },
-    {
-      title: "India",
-      subtitle: "India",
-      text: "India represents a dynamic and fast-growing market where we partner with enterprises, startups, and public sector organizations to accelerate digital transformation and operational excellence.",
-      image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      features: ["EU Gateway", "Historic Building", "Global Access"],
-    },
+{
+  title: "United Arab Emirates",
+  subtitle: "UAE",
+  text: "The UAE is a global business hub where we collaborate with enterprises, startups, and government organizations to drive digital innovation, smart infrastructure, and scalable growth solutions.",
+  image: "https://dubai.savills.ae/_images/downtown-dubai-7-760.jpg",
+  features: ["Global Business Hub", "Smart Infrastructure", "Strategic Location"],
+},
   ];
 
   return (

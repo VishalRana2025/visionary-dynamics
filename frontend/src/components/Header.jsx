@@ -66,9 +66,9 @@ const ROUTES = {
   "MS 365 Management": "/ms365",
   "Mobile Device Management": "/mobile",
   "Managed Network Services": "/network",
-"DevelopmentPricing": "/pricing/development",
-"MarketingPricing": "/pricing/marketing",
-"AccountingPricing": "/pricing/accounting",
+"Development Pricing": "/pricing/development",
+"Marketing Pricing": "/pricing/marketing",
+"Accounting Pricing": "/pricing/accounting",
  "Blog": "/blog",
 "VirtualAssistance": "/virtualassistance",
 "RPO": "/rpo"
