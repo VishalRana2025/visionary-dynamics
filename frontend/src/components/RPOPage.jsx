@@ -73,24 +73,24 @@ const RPOShowcase = () => {
       
 
       {/* Hero Section */}
-     <section 
+    <section 
   className="pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden relative bg-cover bg-center"
   style={{
     backgroundImage: "url('https://contentstatic.timesjobs.com/photo/74902695/slideshows/5-tips-to-prepare-for-group-discussion-rounds.jpg')"
   }}
 >
-  <div className="absolute inset-0 bg-black/60"></div>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/60 z-0"></div>
 
-  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+  {/* CONTENT */}
+  <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
     
     <div className="flex items-center justify-center text-center">
       
       <div 
-        data-animate="hero-text" 
         style={{
-          opacity: isVisible['hero-text'] ? 1 : 0,
-          transform: isVisible['hero-text'] ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
+          opacity: 1, // 🔥 TEMP FIX
+          transform: 'translateY(0)',
         }}
         className="space-y-6 text-white max-w-3xl mx-auto"
       >
@@ -106,20 +106,23 @@ const RPOShowcase = () => {
           Scale your workforce efficiently, reduce time-to-hire by 40%, and access top talent globally.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-          <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all flex items-center justify-center group">
-            Start Free Consultation
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
+       <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+  <a
+    href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all flex items-center justify-center group"
+  >
+    Start Free Consultation
+  </a>
+</div>
 
       </div>
     </div>
   </div>
-
-  <div className="absolute bottom-0 left-0 w-full z-30">
-    <WaveTransition />
-  </div>
+   <div className="absolute bottom-0 left-0 w-full z-0 pointer-events-none">
+  <WaveTransition />
+</div>
 </section>
 
 
@@ -388,7 +391,7 @@ const RPOShowcase = () => {
 </section>
 
       {/* Our Rpo services */}
- <section className="py-20 bg-gradient-to-br from-blue-100 to-blue-100 overflow-hidden">
+ <section className="py-20 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
   <div className="container mx-auto px-4">
     {/* Title */}
     <div className="text-center mb-16">
@@ -405,16 +408,10 @@ const RPOShowcase = () => {
       <div className="relative w-[900px] h-[900px] mx-auto hidden md:block">
         
         {/* Rotating Dashed Circle Line */}
-        <div className="absolute inset-0 rounded-full pointer-events-none" style={{
-          border: '3px dashed #22c55e',
-          animation: 'rotate 20s linear infinite'
-        }}></div>
+        <div className="absolute inset-0 rounded-full pointer-events-none rotating-border"></div>
         
         {/* Rotating Dotted Circle Line (opposite direction) */}
-        <div className="absolute inset-6 rounded-full pointer-events-none" style={{
-          border: '2px dotted #86efac',
-          animation: 'rotateReverse 15s linear infinite'
-        }}></div>
+        <div className="absolute inset-6 rounded-full pointer-events-none rotating-border-reverse"></div>
         
         {/* Inner Static Ring */}
         <div className="absolute inset-12 rounded-full border border-green-200 pointer-events-none"></div>
@@ -601,6 +598,37 @@ const RPOShowcase = () => {
       </div>
     </div>
   </div>
+
+  {/* Add animation styles */}
+  <style jsx>{`
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes rotateReverse {
+      from {
+        transform: rotate(360deg);
+      }
+      to {
+        transform: rotate(0deg);
+      }
+    }
+    
+    .rotating-border {
+      border: 3px dashed #22c55e;
+      animation: rotate 20s linear infinite;
+    }
+    
+    .rotating-border-reverse {
+      border: 2px dotted #86efac;
+      animation: rotateReverse 15s linear infinite;
+    }
+  `}</style>
 </section>
 
       {/* Why Choose Us */}
@@ -888,14 +916,18 @@ const RPOShowcase = () => {
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         
-        <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all flex items-center justify-center group">
-          Schedule a Consultation
-          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-        </button>
+       <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+  <a
+    href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all flex items-center justify-center group"
+  >
+    Start Free Consultation
+  </a>
+</div>
 
-        <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-all">
-          Download RPO Guide
-        </button>
+       
 
       </div>
     </div>
