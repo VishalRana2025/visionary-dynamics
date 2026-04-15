@@ -126,7 +126,7 @@ const Header = () => {
 
   return (
 <header className="fixed top-0 left-0 w-full h-14 md:h-16 z-50 bg-[#0B1F3A] backdrop-blur-md">
-        <div className="relative h-full px-6 flex items-center justify-between">
+        <div className="h-full px-6 flex items-center justify-between">
 
         {/* LOGO */}
         <img src="/VD-Logo-e1737873827576.png" className="h-14" />
@@ -152,7 +152,7 @@ const Header = () => {
 </div> */}
 
         {/* MENU */}
-        <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-white">
+       <nav className="hidden lg:flex items-center gap-8 whitespace-nowrap text-white">
           <Link to="/">Home</Link>
           <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
           <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />
@@ -321,7 +321,7 @@ const MenuWithSub = ({ menu, data = {} }) => {
       {/* BUTTON */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1"
+        className="flex items-center gap-1 whitespace-nowrap"
       >
         {menu} <ChevronDown size={18} />
       </button>

@@ -261,7 +261,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* CARDS GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 items-stretch">
           {features.map((feature, index) => {
             const colors = colorMapping[feature.color];
 
@@ -329,7 +329,7 @@ export default function WhyChooseUs() {
                 />
 
                 {/* Main Card - Glassmorphic transparent style */}
-                <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-white/40 shadow-xl overflow-hidden transition-all duration-300">
+                <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-white/40 shadow-xl overflow-hidden transition-all duration-300 h-full flex flex-col">
                   {/* Icon */}
                   <div
                     className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 transition-all duration-400 group-hover:scale-110`}

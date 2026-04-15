@@ -375,7 +375,7 @@ const QuickBooksAnnouncement = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch"
         >
           {cards.map((card) => (
             <motion.div
@@ -392,7 +392,7 @@ const QuickBooksAnnouncement = () => {
               <div className="absolute -inset-4 bg-gradient-to-br from-blue-100/30 to-sky-100/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Main Card */}
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl shadow-blue-100/30 border border-white/80 hover:border-sky-200/50 transition-all duration-300">
+              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl shadow-blue-100/30 border border-white/80 hover:border-sky-200/50 transition-all duration-300 h-full flex flex-col">
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent z-10" />
@@ -407,7 +407,7 @@ const QuickBooksAnnouncement = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <div
                     className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${card.gradient} shadow-lg mb-4 border border-white/50`}
                   >
