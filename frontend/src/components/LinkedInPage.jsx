@@ -267,7 +267,7 @@ const App = () => {
       icon: <Building2 className="h-6 w-6" />,
       description: "Grow your professional network",
       features: ["Advanced profile views", "15 InMail credits/month", "Company insights", "Open profile"],
-      plan: "Premium Business",
+      plan: "Business Pro",
       color: "purple"
     },
     {
@@ -275,7 +275,7 @@ const App = () => {
       icon: <Target className="h-6 w-6" />,
       description: "Find and close more deals",
       features: ["40+ search filters", "50 InMail credits/month", "Lead recommendations", "CRM integration"],
-      plan: "Sales Navigator",
+      plan: "Sales Accelerator",
       color: "green"
     },
     {
@@ -283,40 +283,40 @@ const App = () => {
       icon: <TeamIcon className="h-6 w-6" />,
       description: "Lead your team to success",
       features: ["Team collaboration", "Deal spotlight", "Team analytics", "Admin controls"],
-      plan: "Sales Navigator Team",
+      plan: "Sales Accelerator Team",
       color: "orange"
     }
   ];
 
   const faqData = [
   {
-    q: "What's the main difference between Premium Business and Sales Navigator?",
-    a: "Premium Business is designed for individual professionals to enhance their profile, network, and career opportunities. It focuses on personal branding, profile visibility, and professional development. Sales Navigator is specifically built for sales professionals with advanced search capabilities (40+ filters), lead recommendations, real-time alerts, and CRM integration to find and close deals.",
+    q: "What's the main difference between Business Pro and Sales Accelerator?",
+    a: "Business Pro is designed for individual professionals to enhance their profile, network, and career opportunities. It focuses on personal branding, profile visibility, and professional development. Sales Accelerator is specifically built for sales professionals with advanced search capabilities (40+ filters), lead recommendations, real-time alerts, and CRM integration to find and close deals.",
     category: "general"
   },
   {
-    q: "Can I use both Premium and Sales Navigator?",
-    a: "Yes, you can have both subscriptions, but it's usually unnecessary as Sales Navigator includes all Premium features plus additional sales-specific tools. However, some power users choose to maintain both for different purposes.",
+    q: "Can I use both Business Pro and Sales Accelerator?",
+    a: "Yes, you can have both subscriptions, but it's usually unnecessary as Sales Accelerator includes all Business Pro features plus additional sales-specific tools. However, some power users choose to maintain both for different purposes.",
     category: "general"
   },
   {
     q: "How many InMail messages do I get?",
-    a: "Premium Business includes 15 InMail credits per month, while Sales Navigator includes 50 credits per month. Unused credits don't roll over to the next month. Additional InMail credits can be purchased as needed.",
+    a: "Business Pro includes 15 InMail credits per month, while Sales Accelerator includes 50 credits per month. Unused credits don't roll over to the next month. Additional InMail credits can be purchased as needed.",
     category: "messaging"
   },
   {
-    q: "What search filters does Sales Navigator have that Premium doesn't?",
-    a: "Sales Navigator offers 40+ advanced filters including seniority level, years in position, company size, geography, function, tenure, and boolean search capabilities. Premium has basic filters like location, industry, and company size.",
+    q: "What search filters does Sales Accelerator have that Business Pro doesn't?",
+    a: "Sales Accelerator offers 40+ advanced filters including seniority level, years in position, company size, geography, function, tenure, and boolean search capabilities. Business Pro has basic filters like location, industry, and company size.",
     category: "search"
   },
   {
-    q: "Can I export data from Sales Navigator to my CRM?",
-    a: "Yes, Sales Navigator allows you to export leads and integrate directly with major CRMs like Salesforce, HubSpot, Microsoft Dynamics, and more. You can sync leads, accounts, and activity data in real-time.",
+    q: "Can I export data from Sales Accelerator to my CRM?",
+    a: "Yes, Sales Accelerator allows you to export leads and integrate directly with major CRMs like Salesforce, HubSpot, Microsoft Dynamics, and more. You can sync leads, accounts, and activity data in real-time.",
     category: "integration"
   },
   {
     q: "Is there a free trial available?",
-    a: "Yes, both Premium and Sales Navigator offer a 30-day free trial. No credit card is required to start your trial. You can cancel anytime during the trial period with no charges.",
+    a: "Yes, both Premium and Sales Accelerator offer a 30-day free trial. No credit card is required to start your trial. You can cancel anytime during the trial period with no charges.",
     category: "billing"
   },
   {
@@ -415,7 +415,7 @@ const App = () => {
               }`}
             >
               <Crown className={`h-5 w-5 ${activeTab === 'premium' ? 'text-yellow-300' : 'text-purple-400'}`} />
-              Premium Business
+              Business Pro
               {activeTab === 'premium' && (
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
               )}
@@ -430,7 +430,7 @@ const App = () => {
               }`}
             >
               <Target className={`h-5 w-5 ${activeTab === 'salesnav' ? 'text-yellow-300' : 'text-green-400'}`} />
-              Sales Navigator
+              Sales Accelerator
               {activeTab === 'salesnav' && (
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></span>
               )}
@@ -444,12 +444,12 @@ const App = () => {
         {activeTab === 'premium' ? (
           <span className="flex items-center justify-center gap-2">
             <Crown className="h-4 w-4 text-purple-500" />
-            Showing Premium Business features
+            Showing Business Pro features
           </span>
         ) : (
           <span className="flex items-center justify-center gap-2">
             <Target className="h-4 w-4 text-green-500" />
-            Showing Sales Navigator features
+            Showing Sales Accelerator features
           </span>
         )}
       </div>
@@ -631,7 +631,7 @@ const App = () => {
                 <div className="mt-6 pt-4 border-t border-gray-100">
                   <div className="flex items-center gap-2 text-xs">
                     <Rocket className={`h-4 w-4 ${color.text}`} />
-                    <span className="text-gray-500">Sales Navigator Exclusive Features</span>
+                    <span className="text-gray-500">Sales Accelerator Exclusive Features</span>
                   </div>
                 </div>
               </div>
@@ -649,7 +649,7 @@ const App = () => {
 
 
       {/* Detailed Comparison Table */}
-      <section id="comparison" className="py-24 bg-gradient-to-b from-blue-100 to-blue-100 relative overflow-hidden">
+<section id="comparison" className="pt-10 pb-24 bg-gradient-to-b from-blue-100 to-blue-100 relative overflow-hidden">
   {/* Decorative background elements */}
   <div className="absolute inset-0 pointer-events-none">
     <div className="absolute top-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
@@ -659,7 +659,7 @@ const App = () => {
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
     
     {/* Section Header - Enhanced */}
-    <div className="text-center mb-16">
+    <div className="text-center mb-6">
       
       <h2 className="text-4xl md:text-5xl font-bold mb-4">
         <span className="text-gray-900">Side-by-Side </span>
@@ -671,14 +671,17 @@ const App = () => {
       </p>
 
       {/* Plan headers */}
-      <div className="flex justify-center items-center gap-8 mt-10">
+    <div className="relative flex justify-center items-center mt-2">
+
+  <div className="absolute left-[58%] top-6 mb-12 flex items-center gap-8">
+
         <div className="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-purple-100">
           <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white">
             <Crown className="h-5 w-5" />
           </div>
           <div className="text-left">
-            <p className="text-sm text-gray-500">Premium</p>
-            <p className="font-bold text-gray-900">Business</p>
+            <p className="text-sm text-gray-500">Business</p>
+            <p className="font-bold text-gray-900">Pro</p>
           </div>
         </div>
         
@@ -690,11 +693,13 @@ const App = () => {
           </div>
           <div className="text-left">
             <p className="text-sm text-gray-500">Sales</p>
-            <p className="font-bold text-gray-900">Navigator</p>
+            <p className="font-bold text-gray-900">Accelerator</p>
           </div>
         </div>
       </div>
+      </div>
     </div>
+    
 
     {/* Comparison Table - Redesigned */}
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
@@ -964,7 +969,7 @@ const App = () => {
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold text-white mb-2">Premium Business</h3>
+          <h3 className="text-2xl font-bold text-white mb-2">Business Pro</h3>
           <p className="text-gray-300 mb-6">Best for individual professionals focused on:</p>
           
           <ul className="space-y-5">
@@ -1018,7 +1023,7 @@ const App = () => {
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold text-white mb-2">Sales Navigator</h3>
+          <h3 className="text-2xl font-bold text-white mb-2">Sales Accelerator</h3>
           <p className="text-gray-300 mb-6">Designed for sales professionals focusing on:</p>
           
           <ul className="space-y-5">
@@ -1189,7 +1194,7 @@ const App = () => {
           </div>
 
           {/* Plan details */}
-          <h3 className="text-2xl font-bold text-gray-900 mb-1">Premium Business</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-1">Business Pro</h3>
           <p className="text-sm text-gray-500 mb-4">For professionals</p>
           
           {/* Price */}
@@ -1241,7 +1246,7 @@ const App = () => {
           </div>
 
           {/* Plan details */}
-          <h3 className="text-2xl font-bold text-gray-900 mb-1">Sales Navigator Core</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-1">Sales Accelerator Core</h3>
           <p className="text-sm text-gray-500 mb-4">For individual sales pros</p>
           
           {/* Price */}
@@ -1298,7 +1303,7 @@ const App = () => {
           </div>
 
           {/* Plan details */}
-          <h3 className="text-2xl font-bold text-gray-900 mb-1">Sales Navigator Advanced</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-1">Sales Accelerator Advanced</h3>
           <p className="text-sm text-gray-500 mb-4">For sales teams</p>
           
           {/* Price */}
@@ -1494,7 +1499,7 @@ const App = () => {
   }
   className="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
 >
-  Start Sales Navigator Trial
+  Start Sales Accelerator Trial
 </button>
     </div>
   </div>
