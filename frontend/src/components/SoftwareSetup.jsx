@@ -167,15 +167,7 @@ const SoftwareMigrationPage = () => {
       </h1>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-       <a 
-  href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="group w-full sm:w-auto bg-white text-indigo-900 hover:bg-gray-100 font-semibold px-8 py-5 rounded-2xl shadow-2xl shadow-indigo-500/30 transition-all transform hover:scale-105 flex items-center gap-3 text-lg"
->
-  Get your migration roadmap
-  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</a>
+      
 
 <a 
   href="https://api.visionarydynamicsas.com/widget/booking/WvhcpLf9ARBqdkX75EQk"
