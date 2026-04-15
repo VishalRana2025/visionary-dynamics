@@ -1,7 +1,8 @@
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import LoginModal from "./LoginModal";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown, ChevronRight, ShoppingCart } from "lucide-react";
+
 /* ================= MENU DATA ================= */
 const MENU_DATA = {
   "Who We Are": {
@@ -292,16 +293,32 @@ const UserDropdown = ({ handleLogout }) => {
 const MenuWithSub = ({ menu, data = {} }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const menuRef = useRef();
 
   const handleClick = (item) => {
     const path = ROUTES[item];
-    if (path) navigate(path);
+    if (path) {
+      navigate(path);
+      setOpen(false); // ✅ close after click
+    }
   };
 
-  return (
-    <div className="relative group">
+  // ✅ CLOSE ON OUTSIDE CLICK
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
 
-      {/* 🔹 MENU BUTTON */}
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={menuRef} className="relative">
+
+      {/* BUTTON */}
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1"
@@ -309,16 +326,14 @@ const MenuWithSub = ({ menu, data = {} }) => {
         {menu} <ChevronDown size={18} />
       </button>
 
-      {/* 🔹 DROPDOWN */}
+      {/* DROPDOWN */}
       <div
         className={`absolute top-full left-0 min-w-[240px] bg-[#0f172a] z-[999] rounded-lg transition
-        ${open ? "opacity-100 visible" : "opacity-0 invisible"}
-        lg:group-hover:visible lg:group-hover:opacity-100`}
+        ${open ? "opacity-100 visible" : "opacity-0 invisible"}`}
       >
         {Object.keys(data).map((item) => (
           <div key={item} className="relative group/item">
 
-            {/* 🔹 MAIN ITEM */}
             <div
               className="px-4 py-2 flex justify-between cursor-pointer hover:bg-sky-500/20"
               onClick={() => handleClick(item)}
@@ -327,9 +342,8 @@ const MenuWithSub = ({ menu, data = {} }) => {
               {data[item]?.length > 0 && <ChevronRight size={14} />}
             </div>
 
-            {/* 🔹 SUBMENU */}
             {data[item]?.length > 0 && (
-              <div className="absolute left-full top-0 min-w-[240px] bg-[#0f172a] z-[999] rounded-lg opacity-0 invisible group-hover/item:visible group-hover/item:opacity-100 transition">
+              <div className="absolute left-full top-0 min-w-[240px] bg-[#0f172a] rounded-lg opacity-0 invisible group-hover/item:visible group-hover/item:opacity-100 transition">
                 {data[item].map((sub) => (
                   <div
                     key={sub}

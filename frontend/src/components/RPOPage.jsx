@@ -280,7 +280,8 @@ const RPOShowcase = () => {
 
        {/* Stats Section */}
       <section
-  className="py-16 relative overflow-hidden bg-cover bg-center bg-no-repeat"
+  
+  className="py-16 min-h-[80vh] relative overflow-hidden bg-cover bg-center bg-no-repeat"
   style={{
     backgroundImage: "url('https://tse1.mm.bing.net/th/id/OIP.UjXZCrAhUC_LmUI1yipX4QHaEK?rs=1&pid=ImgDetMain&o=7&rm=3')" // 👉 change your image path
   }}
