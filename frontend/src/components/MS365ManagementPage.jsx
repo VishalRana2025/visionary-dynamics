@@ -368,29 +368,19 @@ const MS365ManagementPage = () => {
               </motion.p>
  
               {/* Buttons */}
-              <div className="flex gap-4">
-                <motion.a
-                  href="/contact"
-                  whileHover={{ scale: 1.05, backgroundColor: "#2563eb" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-blue-600 text-white rounded-xl flex gap-2 items-center shadow-lg"
-                >
-                  Get Started
-                  <ArrowRight size={18} />
-                </motion.a>
- 
-                <motion.a
-                  href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white text-blue-700 rounded-xl flex gap-2 items-center shadow"
-                >
-                  <Headphones size={18} />
-                  Free Consultancy
-                </motion.a>
-              </div>
+             <div className="flex gap-4">
+  <motion.a
+    href="https://api.visionarydynamicsas.com/widget/booking/W8AoTbUqrhyFWuU8A7Sw"
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition-all duration-300 font-semibold"
+  >
+    <Headphones className="w-5 h-5" />
+    Free Consultation
+  </motion.a>
+</div>
             </motion.div>
  
             {/* RIGHT CARD - Enhanced Animations */}

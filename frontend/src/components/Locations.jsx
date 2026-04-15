@@ -458,12 +458,12 @@ export default function Locations() {
                           {active.address}
                         </p>
                       </div>
-                      <button 
+                      {/* <button 
                         onClick={() => window.open(`https://www.google.com/maps/search/${encodeURIComponent(active.address)}`, "_blank")}
                         className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30 hover:from-blue-700 hover:to-blue-800 transition whitespace-nowrap"
                       >
                         Get Directions
-                      </button>
+                      </button> */}
                     </div>
                   </motion.div>
                 </AnimatePresence>

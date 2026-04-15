@@ -20,7 +20,9 @@ const MENU_DATA = {
       "Social Media Marketing",
       "Email Marketing",
       "LinkedIn Marketing",
+      
     ],
+    "RPO": [],
     "IT Asset Management": [
       "MS 365 Management",
       "Mobile Device Management",

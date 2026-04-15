@@ -45,6 +45,7 @@ const ServicesOverview = () => {
     {
       title: "Accounting Services",
       route: "/accounting",
+      showButton: true,
       description:
         "Accurate financial reporting and strategic insights to manage cash flow and reduce costs.",
       icon: BarChart3,
@@ -61,7 +62,8 @@ const ServicesOverview = () => {
     },
     {
       title: "Marketing Services",
-      route: "/seo",
+      route: "",
+       showButton: false,
       description:
         "Data-driven marketing strategies to grow visibility, engagement, and ROI.",
       icon: Target,
@@ -78,7 +80,8 @@ const ServicesOverview = () => {
     },
     {
       title: "IT Asset Management",
-      route: "/software",
+      route: "",
+       showButton: false,
       description:
         "End-to-end IT asset lifecycle management for compliance and cost optimization.",
       icon: Shield,
@@ -297,22 +300,19 @@ const ServicesOverview = () => {
                     {active.description}
                   </p>
 
-                  <button
-  onClick={() => navigate(active.route)}
-  className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 group cursor-pointer active:scale-95"
-  style={{
-    background:
-      active.color === "from-blue-600 to-cyan-500"
-        ? "linear-gradient(135deg, #3B82F6, #06B6D4)"
-        : active.color === "from-purple-600 to-pink-500"
-        ? "linear-gradient(135deg, #8B5CF6, #EC4899)"
-        : "linear-gradient(135deg, #10B981, #059669)",
-    color: "white",
-  }}
->
-  <span>Learn More</span>
-  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-</button>
+                  {active.title === "Accounting Services" && (
+  <button
+    onClick={() => navigate(active.route)}
+    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 group cursor-pointer active:scale-95"
+    style={{
+      background: "linear-gradient(135deg, #3B82F6, #06B6D4)",
+      color: "white",
+    }}
+  >
+    <span>Learn More</span>
+    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+  </button>
+)}
                 </div>
 
                 {/* Right */}

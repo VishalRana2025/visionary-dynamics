@@ -1311,18 +1311,7 @@ const CTA = () => (
         viewport={{ once: true }}
         className="relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
       >
-       <button
-  onClick={() =>
-    window.open(
-      "https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn",
-      "_blank"
-    )
-  }
-  className="group bg-white text-indigo-900 hover:bg-indigo-50 font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-indigo-500/30 flex items-center gap-3 text-lg"
->
-  Get Free Consultation
-  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</button>
+       
 
 <a
   href="https://api.visionarydynamicsas.com/widget/booking/mD00AZHzMYkdAb3d4RBn"

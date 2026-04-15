@@ -382,7 +382,7 @@ const handleSubmit = async (e) => {
             <div className="p-4 sm:p-6 md:p-8">
               <div className="flex justify-between items-center mb-5 sm:mb-6 md:mb-8">
                 <div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Start Your Financial Transformation</h3>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">Start Your Transformation</h3>
                   <p className="text-gray-600 text-xs sm:text-sm">Fill out the form below and we'll get back to you within 24 hours</p>
                 </div>
                 <button 

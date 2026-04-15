@@ -428,9 +428,9 @@ const VisionMissionFull = () => {
               { year: " May 2025", title: "Expanded to Global Presence", desc: "" },
               { year: " Jun 2025", title: "Launched Marketting Servoices", desc: "" },
               { year: " Jul 2025", title: "Our First Development Team", desc: "" },
-              { year: " Oct 2025", title: "Launched virtual Assistant Services", desc: "" },
+              { year: " Oct 2025", title: "Launched Virtual Assistant Services", desc: "" },
               { year: " Nov 2025", title: "Reached 50+ Client", desc: "" },
-              { year: " Dec 2025", title: "Launched Rpo Services", desc: "" },
+              { year: " Dec 2025", title: "Launched RPO Services", desc: "" },
             ].map((milestone, index) => (
               <motion.div
                 key={index}

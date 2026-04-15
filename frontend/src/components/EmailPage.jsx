@@ -366,23 +366,7 @@ const EmailMarketingPage = () => {
     <p className="text-xl md:text-2xl text-white/80 mb-8">
       Join 10,000+ marketers. Get insights in 5 minutes a week.
     </p>
-    
-    {/* Simple inline form */}
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Your email address"
-        className="flex-1 px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
-      />
-      <button
-        type="submit"
-        className="px-6 py-3 rounded-lg bg-white text-gray-900 font-semibold hover:bg-gray-100 transition"
-      >
-        Subscribe
-      </button>
-    </form>
+   
     
     {formErrors.email && (
       <p className="text-sm text-red-400 mt-2">{formErrors.email}</p>

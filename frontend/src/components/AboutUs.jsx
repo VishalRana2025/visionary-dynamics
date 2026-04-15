@@ -98,7 +98,7 @@ const AboutUs = () => {
       </section>
 
       {/* ==================== SECTION 2: ABOUT VISIONARY DYNAMICS ==================== */}
-      <section className="w-full py-16 sm:py-20 md:py-24 lg:py-28 px-5 sm:px-6 md:px-8 bg-gradient-to-br from-blue-50/80 via-sky-50/60 to-blue-100/40 overflow-hidden relative">
+      <section className="w-full py-16 sm:py-20 md:py-24 lg:py-28 px-5 sm:px-6 md:px-8 bg-blue-100">
         {/* Decorative floating elements - optimized for performance */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Soft gradient orbs */}
