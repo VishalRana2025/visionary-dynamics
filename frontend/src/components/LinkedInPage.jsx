@@ -254,14 +254,7 @@ const App = () => {
   ];
 
   const useCases = [
-    {
-      role: "Job Seeker",
-      icon: <Briefcase className="h-6 w-6" />,
-      description: "Find your dream job with Premium Career",
-      features: ["See who viewed your profile", "Salary insights", "Applicant insights", "Online courses"],
-      plan: "Premium Career",
-      color: "blue"
-    },
+   
     {
       role: "Business Professional",
       icon: <Building2 className="h-6 w-6" />,
@@ -673,32 +666,27 @@ const App = () => {
       {/* Plan headers */}
     <div className="relative flex justify-center items-center mt-2">
 
-  <div className="absolute left-[58%] top-6 mb-12 flex items-center gap-8">
+  <div className="absolute left-[58%] top-6 flex items-center gap-16">
 
-        <div className="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-purple-100">
-          <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white">
-            <Crown className="h-5 w-5" />
-          </div>
-          <div className="text-left">
-            <p className="text-sm text-gray-500">Business</p>
-            <p className="font-bold text-gray-900">Pro</p>
-          </div>
-        </div>
-        
-        <div className="text-gray-300 text-xl font-light">VS</div>
-        
-        <div className="flex items-center gap-3 bg-white px-6 py-3 rounded-xl shadow-sm border border-green-100">
-          <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center text-white">
-            <Target className="h-5 w-5" />
-          </div>
-          <div className="text-left">
-            <p className="text-sm text-gray-500">Sales</p>
-            <p className="font-bold text-gray-900">Accelerator</p>
-          </div>
-        </div>
-      </div>
+    <div className="flex items-center gap-5 bg-white px-6 py-3 rounded-xl shadow-sm border border-purple-100">
+      <div className="text-left">
+        <p className="font-bold text-gray-900">Business</p>
+        <p className="font-bold text-gray-900">Pro</p>
       </div>
     </div>
+    
+    <div className="mx-6 text-gray-300 text-xl font-light">VS</div>
+    
+    <div className="flex items-center gap-5 bg-white px-6 py-3 rounded-xl shadow-sm border border-green-100">
+      <div className="text-left">
+        <p className="font-bold text-gray-900">Sales</p>
+        <p className="font-bold text-gray-900">Accelerator</p>
+      </div>
+    </div>
+
+  </div>
+ </div>
+</div>
     
 
     {/* Comparison Table - Redesigned */}
@@ -804,19 +792,11 @@ const App = () => {
     </div>
 
     {/* Use Cases Grid - Redesigned */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {useCases.map((useCase, idx) => {
         // Color schemes for each card
         const colorSchemes = {
-          blue: {
-            light: "bg-blue-50",
-            medium: "bg-blue-100",
-            dark: "text-blue-600",
-            border: "border-blue-200",
-            gradient: "from-blue-500 to-blue-600",
-            hover: "group-hover:border-blue-300",
-            badge: "bg-blue-600"
-          },
+         
           purple: {
             light: "bg-purple-50",
             medium: "bg-purple-100",
@@ -1120,59 +1100,10 @@ const App = () => {
     </div>
 
     {/* Pricing Cards Grid */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       
-      {/* Premium Career Card */}
-      <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-blue-200 hover:-translate-y-2">
-        {/* Hover gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
-        
-        <div className="relative z-10">
-          {/* Icon */}
-          <div className="relative mb-6 inline-block">
-            <div className="absolute inset-0 bg-blue-400 rounded-xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity"></div>
-            <div className="relative w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Briefcase className="h-7 w-7" />
-            </div>
-          </div>
-
-          {/* Plan details */}
-          <h3 className="text-2xl font-bold text-gray-900 mb-1">Premium Career</h3>
-          <p className="text-sm text-gray-500 mb-4">For job seekers</p>
-          
-          {/* Price */}
-          <div className="mb-6">
-            <span className="text-4xl font-bold text-gray-900">
-              ${billingCycle === 'annual' ? '23.99' : '29.99'}
-            </span>
-            <span className="text-gray-500 text-sm ml-1">/month</span>
-            {billingCycle === 'annual' && (
-              <div className="mt-1 text-xs text-green-600 font-medium">Billed annually</div>
-            )}
-          </div>
-
-          {/* CTA Button */}
-          <button className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all hover:shadow-lg hover:shadow-blue-200 mb-6">
-            Start Free Trial
-          </button>
-
-          {/* Features */}
-          <ul className="space-y-3">
-            <li className="flex items-center gap-2 text-sm text-gray-600">
-              <CheckCircle className="h-4 w-4 text-green-500" />
-              Who's viewed your profile
-            </li>
-            <li className="flex items-center gap-2 text-sm text-gray-600">
-              <CheckCircle className="h-4 w-4 text-green-500" />
-              Salary insights
-            </li>
-            <li className="flex items-center gap-2 text-sm text-gray-600">
-              <CheckCircle className="h-4 w-4 text-green-500" />
-              Applicant insights
-            </li>
-          </ul>
-        </div>
-      </div>
+     
+     
 
       {/* Premium Business Card - Featured */}
       <div className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-purple-500 hover:-translate-y-2">
