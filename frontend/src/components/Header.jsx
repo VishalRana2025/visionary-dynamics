@@ -129,7 +129,13 @@ const Header = () => {
         <div className="h-full px-6 flex items-center justify-between">
 
         {/* LOGO */}
-        <img src="/VD-Logo-e1737873827576.png" className="h-14" />
+        <Link to="/">
+  <img
+    src="/VD-Logo-e1737873827576.png"
+    className="h-14 cursor-pointer"
+    alt="logo"
+  />
+</Link>
 
         {/* 🔥 MOVING SLIDER */}
 {/* <div className="hidden lg:flex justify-center absolute top-2 left-0 w-full pointer-events-none">

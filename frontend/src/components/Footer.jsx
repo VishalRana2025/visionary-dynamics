@@ -19,11 +19,13 @@ const Footer = () => {
 
           {/* LOGO */}
          <div className="space-y-4">
-            <img
-src="/VD-Logo-e1737873827576.png"
-              alt="Visionary Dynamics"
-              className="h-12 w-auto mb-4"
-            />
+<Link to="/">
+  <img
+    src="/VD-Logo-e1737873827576.png"
+    alt="Visionary Dynamics"
+    className="h-12 w-auto mb-4 cursor-pointer"
+  />
+</Link>
             <p className="text-white/70 text-sm leading-relaxed">
               Smart solutions and scalable IT services helping businesses grow
               through innovation and technology.

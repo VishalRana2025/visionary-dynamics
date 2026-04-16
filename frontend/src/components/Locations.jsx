@@ -234,9 +234,7 @@ export default function Locations() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-white drop-shadow-lg">
             Our Locations
           </h1>
-          <p className="mt-3 sm:mt-4 text-blue-100/80 text-sm sm:text-base md:text-lg max-w-xl mx-auto px-4">
-            Global presence with local expertise
-          </p>
+         
         </motion.div>
         <div className="absolute bottom-0 left-0 w-full z-30">
           <WaveTransition />
