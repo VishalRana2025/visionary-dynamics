@@ -75,6 +75,7 @@ export const WaveTransition = ({ direction = "bottom" }) => {
   );
 };
 
+
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [billingCycle, setBillingCycle] = useState('monthly');
