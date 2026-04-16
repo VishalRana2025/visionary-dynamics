@@ -70,6 +70,7 @@ export default function Signup() {
             <input
               type="text"
               name="name"
+               value={formData.name} 
               placeholder="Enter your name"
               className="w-full mt-1 px-4 py-2 border rounded-lg"
               onChange={handleChange}
@@ -83,6 +84,7 @@ export default function Signup() {
             <input
               type="email"
               name="email"
+               value={formData.email} 
               placeholder="Enter your email"
               className="w-full mt-1 px-4 py-2 border rounded-lg"
               onChange={handleChange}
@@ -96,6 +98,7 @@ export default function Signup() {
             <input
               type="password"
               name="password"
+               value={formData.password}
               placeholder="Enter password"
               className="w-full mt-1 px-4 py-2 border rounded-lg"
               onChange={handleChange}
@@ -104,16 +107,17 @@ export default function Signup() {
           </div>
 
           {/* 🔐 ADMIN CODE */}
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <label className="text-sm">Admin Code (optional)</label>
             <input
               type="text"
               name="adminCode"
+              value={formData.adminCode}
               placeholder="Enter admin code"
               className="w-full mt-1 px-4 py-2 border rounded-lg"
               onChange={handleChange}
             />
-          </div>
+          </div> */}
 
           {/* BUTTON */}
           <button
