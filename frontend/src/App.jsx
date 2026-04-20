@@ -35,7 +35,7 @@ import ProcessPage from "./pages/ProcessPage";
 import VirtualAssistance from "./pages/VirtualAssistance";
 import RPO from "./pages/RPO";
 import ScrollToTop from "./ScrollToTop";
-
+import Feedback from "./pages/Feedback";
 
 // Policies
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -99,6 +99,7 @@ return (
         <Route path="/pricing/development" element={<DevelopmentPricing />} />
         <Route path="/pricing/marketing" element={<MarketingPricing />} />
         <Route path="/pricing/accounting" element={<AccountingPricing />} />
+        <Route path="/feedback" element={<Feedback />} />
 
         {/* 👤 USER */}
         <Route
