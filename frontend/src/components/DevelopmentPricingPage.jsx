@@ -235,7 +235,7 @@ const PricingPage = () => {
     return (
       <div 
         className={`relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 flex flex-col h-full transform ${
-          isHovered ? 'scale-105 shadow-2xl -translate-y-2' : 'scale-100 shadow-lg'
+          isHovered ? 'shadow-2xl -translate-y-2' : 'shadow-lg'
         } ${plan.popular ? 'ring-2 ring-orange-400 shadow-xl' : 'border border-gray-100'}`}
         onMouseEnter={() => onHover(plan.id)}
         onMouseLeave={() => onHover(null)}
@@ -254,7 +254,7 @@ const PricingPage = () => {
         <div className="relative z-10 p-8">
           {/* Icon and Name */}
           <div className="flex items-center justify-between mb-4">
-            <div className={`text-5xl transition-transform duration-500 ${isHovered ? 'scale-110 rotate-12' : ''}`}>
+            <div className={`text-5xl transition-transform duration-500 ${isHovered ? 'rotate-6' : ''}`}>
               {plan.icon}
             </div>
           </div>

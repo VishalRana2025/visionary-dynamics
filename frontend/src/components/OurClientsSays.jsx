@@ -417,24 +417,23 @@ export default function OurClients() {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      position: "CEO",
-      company: "TechNova Solutions",
+      name: "James",
+      position: "President",
+      company: "",
       content:
-        "Working with this team has been transformative for our business. Their expertise in digital transformation helped us increase our online revenue by 150% within the first year.",
+        "Visionary Dynamics has been an outstanding partner—highly supportive, reliable, and dedicated to driving real efficiency and transformation in our business. Their professionalism, collaboration, and commitment to delivering results have made a significant impact. We truly value the work they’ve done and look forward to many more great achievements together. ",
       rating: 5,
       date: "2 weeks ago",
       tags: ["Technology", "E-commerce"],
-      avatar:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop",
+     
     },
     {
       id: 2,
-      name: "Michael Rodriguez",
-      position: "Operations Director",
-      company: "Global Finance Inc",
+      name: "Brad Coffman",
+      position: "Ceo",
+      company: "valorembrokers",
       content:
-        "They helped us streamline operations and reduce costs by over 30%. Highly recommend their services.",
+        "Visionary Dynamics has been a truly reliable partner, consistently demonstrating exceptional professionalism and a strong commitment to delivering results. Their ability to execute on time and maintain high standards has made a meaningful impact on our business, clients, and referrals. We genuinely appreciate their dedication, growth, and the value they continue to bring. ",
       rating: 5,
       date: "1 month ago",
       tags: ["Finance", "Consulting"],
@@ -443,11 +442,11 @@ export default function OurClients() {
     },
     {
       id: 3,
-      name: "Emily Chen",
-      position: "Marketing Director",
-      company: "HealthPlus Network",
+      name: "Saket  ",
+      position: "President",
+      company: "Squegg",
       content:
-        "Their team brought clarity to our processes and confidence to our decisions. From strategy to execution, everything was precise, transparent, and results-driven.",
+        "Working with Visionary Dynamics has been an absolute pleasure. Their team brings exceptional energy, professionalism, and expertise, making the entire experience seamless and highly effective. We truly appreciate their dedication and look forward to expanding our collaboration into new areas",
       rating: 5,
       date: "3 weeks ago",
       tags: ["Healthcare", "Marketing"],
