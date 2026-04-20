@@ -329,7 +329,7 @@ const TestimonialCard = ({ testimonial, index }) => {
         <div className="p-8">
           <div className="flex items-start justify-between mb-6">
             <div className="flex items-center gap-4">
-              <div className="relative">
+              {/* <div className="relative">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center shadow-md border-2 border-white">
                   <img
                     src={testimonial.avatar}
@@ -340,12 +340,12 @@ const TestimonialCard = ({ testimonial, index }) => {
                 <div className="absolute -bottom-1 -right-1 bg-green-500 text-white p-1 rounded-full border-2 border-white">
                   <ShieldCheckIcon className="w-4 h-4" />
                 </div>
-              </div>
+              </div> */}
 
               <div>
-                <h3 className="font-bold text-gray-900">
+                <h2 className="font-bold text-gray-900">
                   {testimonial.name}
-                </h3>
+                </h2>
                 <p className="text-sm text-gray-500">
                   {testimonial.position}
                 </p>
