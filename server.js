@@ -69,6 +69,7 @@ app.use(express.static(distPath));
 // 🧠 SITEMAP (🔥 FIXED)
 // ========================
 app.get("/sitemap.xml", async (req, res) => {
+  console.log("🔥 NEW SITEMAP RUNNING");
   try {
     const smStream = new SitemapStream({
       hostname: "https://visionarydynamicsas.com",
