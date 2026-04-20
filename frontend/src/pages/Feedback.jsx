@@ -156,9 +156,9 @@ export default function FeedbackForm() {
 >
   {/* Logo from public */}
   <img
-    src="/VD-logo.png"
+    src="/VD-Logo.png"
     alt="Logo"
-    className="w-20 h-20 object-contain mb-4 drop-shadow-lg"
+    className="w-60 h-60 object-contain mb-4 drop-shadow-lg"
   />
 
   <h2 className="text-5xl font-black mb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
