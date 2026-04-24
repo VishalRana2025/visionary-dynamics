@@ -21,9 +21,9 @@ export default function LoginPage() {
       setLoading(true);
 
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/login`,
-        data
-      );
+  "https://visionarydynamicsas.com/api/login",
+  data
+);
 
       // ✅ Save token + user
       localStorage.setItem("token", res.data.token);
