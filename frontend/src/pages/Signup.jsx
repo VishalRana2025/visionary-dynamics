@@ -30,9 +30,8 @@ export default function Signup() {
       setError("");
 
       const res = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/register`,
+  "https://visionarydynamicsas.com/api/register",
   formData
-
 );
       console.log(res.data);
 
