@@ -220,13 +220,7 @@ export default function CartPage() {
                   
                   
                   {/* Trust Badges */}
-                  <div className="mt-4 pt-4 border-t text-center">
-                    <div className="flex justify-center gap-3 text-xs text-gray-500">
-                      <span>✓ Money-back guarantee</span>
-                      <span>✓ 24/7 support</span>
-                      <span>✓ Instant booking</span>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
