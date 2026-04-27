@@ -9,12 +9,56 @@ const sitemap = new SitemapStream({
 // ✅ Static pages (IMPORTANT)
 const staticPages = [
   "/",
-  "/about",
-  "/services",
-  "/contact",
-  "/blog"
-];
 
+  // Main
+  "/about",
+  "/location",
+  "/industries",
+  "/clients",
+  "/contact",
+
+  // Services
+  "/accounting",
+  "/bookkeeping",
+  "/payroll",
+  "/financial",
+  "/software",
+  "/taxation",
+  "/cooperative",
+  "/individual",
+  "/business",
+  "/webdesign",
+  "/seo",
+  "/social",
+  "/email",
+  "/linkedin",
+  "/rpo",
+  "/ms365",
+  "/mobile",
+  "/network",
+  "/automation",
+  "/cloud",
+  "/ai",
+  "/process",
+  "/virtualassistance",
+
+  // Pricing
+  "/pricing/development",
+  "/pricing/marketing",
+  "/pricing/accounting",
+
+  // Blog
+  "/blog",
+
+  // Policies
+  "/privacy",
+  "/terms",
+  "/cookies",
+  "/datasecurity",
+  "/intellectual",
+  "/complaint",
+  "/disclaimer"
+];
 // 🔥 Fetch blog pages dynamically
 async function getBlogUrls() {
   try {

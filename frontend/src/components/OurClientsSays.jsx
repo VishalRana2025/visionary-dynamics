@@ -417,9 +417,9 @@ export default function OurClients() {
   const testimonials = [
     {
       id: 1,
-      name: "James",
-      position: "President",
-      company: "",
+      name: "James Kneblik, Jr.",
+      position: "Vice President",
+      company: "Surgical Resources Group LLC",
       content:
         "Visionary Dynamics has been an outstanding partner—highly supportive, reliable, and dedicated to driving real efficiency and transformation in our business. Their professionalism, collaboration, and commitment to delivering results have made a significant impact. We truly value the work they’ve done and look forward to many more great achievements together. ",
       rating: 5,
@@ -430,8 +430,8 @@ export default function OurClients() {
     {
       id: 2,
       name: "Brad Coffman",
-      position: "Ceo",
-      company: "valorembrokers",
+      position: "CEO",
+      company: "Valorem Brokers",
       content:
         "Visionary Dynamics has been a truly reliable partner, consistently demonstrating exceptional professionalism and a strong commitment to delivering results. Their ability to execute on time and maintain high standards has made a meaningful impact on our business, clients, and referrals. We genuinely appreciate their dedication, growth, and the value they continue to bring. ",
       rating: 5,
@@ -442,7 +442,7 @@ export default function OurClients() {
     },
     {
       id: 3,
-      name: "Saket  ",
+      name: " Saket Gunjan ",
       position: "President",
       company: "Squegg",
       content:
