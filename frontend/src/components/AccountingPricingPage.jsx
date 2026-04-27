@@ -326,21 +326,33 @@ const handlePlanClick = (plan) => {
 
 <div className="mt-8 flex gap-3">
 
-  {/* ADD TO CART */}
-  <button
-  onClick={() => handleAddToCart(plan, section.id)}
-  className="w-1/2 py-3 rounded-xl bg-slate-800 text-white font-semibold hover:bg-slate-700 transition"
->
-  Add to Cart
-</button>
+  {typeof plan.price === "number" ? (
+    <>
+      {/* ADD TO CART */}
+      <button
+        onClick={() => handleAddToCart(plan, section.id)}
+        className="w-1/2 py-3 rounded-xl bg-slate-800 text-white font-semibold hover:bg-slate-700 transition"
+      >
+        Add to Cart
+      </button>
 
-  {/* BUY NOW */}
-  <button
-    onClick={() => handlePlanClick(plan)}
-    className={`w-1/2 py-3 rounded-xl text-white font-semibold bg-gradient-to-r ${section.gradient} hover:opacity-90 transition`}
-  >
-    Buy Now
-  </button>
+      {/* BUY NOW */}
+      <button
+        onClick={() => handlePlanClick(plan)}
+        className={`w-1/2 py-3 rounded-xl text-white font-semibold bg-gradient-to-r ${section.gradient} hover:opacity-90 transition`}
+      >
+        Buy Now
+      </button>
+    </>
+  ) : (
+    /* CONTACT BUTTON */
+    <button
+      onClick={() => navigate("/contact")}
+      className={`w-full py-3 rounded-xl text-white font-semibold bg-gradient-to-r ${section.gradient} hover:opacity-90 transition`}
+    >
+      Contact Us
+    </button>
+  )}
 
 </div>
                     </div>
