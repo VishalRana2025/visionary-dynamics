@@ -124,7 +124,7 @@ const Footer = () => {
               <li className="flex items-start gap-3">
   <MapPin size={16} className="text-sky-400 mt-1" />
   <p> 7901 4th St N STE 300 St. Petersburg, Florida-33702 USA <br />
-  St. Petersburg, Florida-33702 USA</p>
+ </p>
 </li>
             </ul>
 

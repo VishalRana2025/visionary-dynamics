@@ -162,6 +162,7 @@
     "use-sync-external-store": "^1.6.0",
     "util-deprecate": "^1.0.2",
     "victory-vendor": "^37.3.6",
+    "vite-plugin-sitemap": "^0.8.2",
     "yallist": "^3.1.1"
   },
   "scripts": {

@@ -141,7 +141,7 @@ const handlePlanClick = (plan) => {
       plans: [
         {
           name: "first Pack",
-          price: 399,
+          price: 999,
           features: [
             "Basic KPI Tracking",
             "Monthly Insights",
@@ -151,7 +151,7 @@ const handlePlanClick = (plan) => {
         },
         {
           name: "Pro Pack",
-          price: 699,
+          price: 1999,
           popular: true,
           features: [
             "Forecasting",
@@ -162,7 +162,7 @@ const handlePlanClick = (plan) => {
         },
         {
           name: "Enterprise Pack",
-          price: 1199,
+          price: "Contact Us",
           features: [
             "Advanced Analytics",
             "Custom Dashboards",
@@ -175,8 +175,9 @@ const handlePlanClick = (plan) => {
   ];
 
   const getYearlyPrice = (monthlyPrice) => {
-    return Math.round(monthlyPrice * 12 * 0.85);
-  };
+  if (typeof monthlyPrice !== "number") return monthlyPrice;
+  return Math.round(monthlyPrice * 12 * 0.85);
+};
 
   const getDisplayPrice = (price) => {
     return billingCycle === "monthly" ? price : getYearlyPrice(price);
@@ -280,8 +281,10 @@ const handlePlanClick = (plan) => {
 
                       <div className="text-center mt-6">
                         <h2 className="text-5xl font-extrabold text-slate-900 tracking-tight">
-                          ${displayPrice.toLocaleString()}
-                        </h2>
+  {typeof displayPrice === "number"
+    ? `$${displayPrice.toLocaleString()}`
+    : displayPrice}
+</h2>
                         <p className="text-slate-500 text-sm mt-1">
                           {getPeriodLabel()}
                         </p>
