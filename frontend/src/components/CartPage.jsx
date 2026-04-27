@@ -131,8 +131,8 @@ export default function CartPage() {
                 <div className="bg-white rounded-xl shadow-md p-4 mb-2">
                   <div className="grid grid-cols-3 text-sm font-semibold text-gray-600">
                     <span>Service Details</span>
-                    <span className="text-center">Price</span>
-                    <span className="text-right">Action</span>
+                    <span className="text-center"></span>
+                    <span className="text-right">Price</span>
                   </div>
                 </div>
                 
