@@ -321,9 +321,9 @@ const TestimonialCard = ({ testimonial, index }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
+      className="group relative h-full"
     >
-      <div className="relative bg-white/95 backdrop-blur-md rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+      <div className="relative h-full flex flex-col justify-between bg-white/95 backdrop-blur-md rounded-2xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
         <div className="h-1.5 bg-gradient-to-r from-purple-500 to-pink-500" />
 
         <div className="p-8">
@@ -387,10 +387,10 @@ const TestimonialCard = ({ testimonial, index }) => {
           </div>
 
           <p
-            className={`text-gray-600 leading-relaxed mb-4 ${
-              isExpanded ? "" : "line-clamp-3"
-            }`}
-          >
+  className={`text-gray-600 leading-relaxed mb-4 min-h-[72px] ${
+    isExpanded ? "" : "line-clamp-3"
+  }`}
+>
             {testimonial.content}
           </p>
           <div className="flex flex-wrap gap-2 mt-6">
@@ -540,7 +540,7 @@ export default function OurClients() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
             {filteredTestimonials.map((t, i) => (
               <TestimonialCard key={t.id} testimonial={t} index={i} />
             ))}
