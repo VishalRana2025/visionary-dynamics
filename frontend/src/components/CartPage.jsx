@@ -186,10 +186,7 @@ export default function CartPage() {
                       <span>Subtotal</span>
                       <span>${total}</span>
                     </div>
-                    <div className="flex justify-between text-gray-600">
-                      <span>Delivery Fee</span>
-                      <span>{deliveryFee === 0 ? "Free" : `$${deliveryFee}`}</span>
-                    </div>
+                   
                     {deliveryFee > 0 && total < 500 && (
                       <div className="text-xs text-orange-500 bg-orange-50 p-2 rounded-lg">
                         🚚 Add ${500 - total} more for free delivery
