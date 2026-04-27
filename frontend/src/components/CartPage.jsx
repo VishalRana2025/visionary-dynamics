@@ -158,7 +158,7 @@ export default function CartPage() {
                       {/* Price and Remove */}
                       <div className="text-right">
                         <div className="font-bold text-gray-900 text-xl">
-                          ₹{item.price}
+                          ${item.price}
                         </div>
                         <button
                           onClick={() => handleRemove(item.id)}
@@ -184,22 +184,22 @@ export default function CartPage() {
                   <div className="space-y-3 border-b pb-4">
                     <div className="flex justify-between text-gray-600">
                       <span>Subtotal</span>
-                      <span>₹{total}</span>
+                      <span>${total}</span>
                     </div>
                     <div className="flex justify-between text-gray-600">
                       <span>Delivery Fee</span>
-                      <span>{deliveryFee === 0 ? "Free" : `₹${deliveryFee}`}</span>
+                      <span>{deliveryFee === 0 ? "Free" : `$${deliveryFee}`}</span>
                     </div>
                     {deliveryFee > 0 && total < 500 && (
                       <div className="text-xs text-orange-500 bg-orange-50 p-2 rounded-lg">
-                        🚚 Add ₹{500 - total} more for free delivery
+                        🚚 Add ${500 - total} more for free delivery
                       </div>
                     )}
                   </div>
 
                   <div className="flex justify-between mt-4 pb-4 border-b">
                     <span className="font-bold text-gray-800 text-lg">Total</span>
-                    <span className="font-bold text-gray-900 text-2xl">₹{grandTotal}</span>
+                    <span className="font-bold text-gray-900 text-2xl">${grandTotal}</span>
                   </div>
 
                   <button
