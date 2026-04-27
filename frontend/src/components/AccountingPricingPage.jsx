@@ -95,7 +95,7 @@ const handlePlanClick = (plan) => {
       iconColor: "text-blue-600",
       plans: [
         {
-          name: "Starter Pack",
+          name: "Initial Pack",
           price: 299,
           features: [
             "Basic Tax Filing",
@@ -105,7 +105,7 @@ const handlePlanClick = (plan) => {
           ],
         },
         {
-          name: "Pro Pack",
+          name: "Boost Pack",
           price: 599,
           popular: true,
           features: [
@@ -116,7 +116,7 @@ const handlePlanClick = (plan) => {
           ],
         },
         {
-          name: "Enterprise Pack",
+          name: "Elite Pack",
           price: 999,
           features: [
             "Advanced Tax Strategy",
@@ -140,7 +140,7 @@ const handlePlanClick = (plan) => {
       iconColor: "text-amber-600",
       plans: [
         {
-          name: "first Pack",
+          name: "First Pack",
           price: 999,
           features: [
             "Basic KPI Tracking",
@@ -150,7 +150,7 @@ const handlePlanClick = (plan) => {
           ],
         },
         {
-          name: "Pro Pack",
+          name: "Growth Pack",
           price: 1999,
           popular: true,
           features: [
@@ -161,7 +161,7 @@ const handlePlanClick = (plan) => {
           ],
         },
         {
-          name: "Enterprise Pack",
+          name: "Ultimate Pack",
           price: "Contact Us",
           features: [
             "Advanced Analytics",

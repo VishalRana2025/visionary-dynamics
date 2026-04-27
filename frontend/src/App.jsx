@@ -24,7 +24,7 @@ import LinkedIn from "./pages/LinkedIn";
 import AI from "./pages/AI";
 import ContactUs from "./pages/ContactUs";
 import AccountingPricing from "./pages/AccountingPricing";
-import CartPage from "./pages/CartPage";
+import CartPage from "./pages/Cart";
 import DevelopmentPricing from "./pages/DevelopmentPricing";
 import MarketingPricing from "./pages/MarketingPricing";
 import BlogPage from "./pages/BlogPage";
