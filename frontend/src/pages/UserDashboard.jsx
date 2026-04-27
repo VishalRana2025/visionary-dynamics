@@ -514,13 +514,7 @@ try {
                         </div>
                       </div>
                       
-                      <div className="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
-                        <CreditCard className="w-5 h-5 text-purple-400" />
-                        <div className="flex-1">
-                          <p className="text-xs text-gray-400">Loyalty Points</p>
-                          <p className="text-white font-bold">{user.loyaltyPoints} points</p>
-                        </div>
-                      </div>
+                     
                       
                       <div className="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
                         <Shield className="w-5 h-5 text-purple-400" />
