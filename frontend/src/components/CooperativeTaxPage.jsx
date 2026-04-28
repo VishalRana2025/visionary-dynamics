@@ -224,7 +224,7 @@ const CooperativeTaxPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-7 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
             {taxBenefits.map((benefit, index) => (
               <div
                 key={index}
@@ -232,7 +232,7 @@ const CooperativeTaxPage = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                 
-                <div className="relative bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 lg:p-8 border border-gray-100 hover:border-transparent shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2">
+                <div className="relative h-full flex flex-col bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 lg:p-8 border border-gray-100 hover:border-transparent shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2">
                   <div className="relative mb-4 sm:mb-5 md:mb-6">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl sm:rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
                     <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white transform group-hover:rotate-6 transition-all duration-500 shadow-lg">
@@ -361,7 +361,7 @@ const CooperativeTaxPage = () => {
             <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4 sm:mt-6"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-7 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-7 lg:gap-8 auto-rows-fr">
             {services.map((service, index) => {
               const iconGradients = [
                 "from-blue-500 to-cyan-500",
