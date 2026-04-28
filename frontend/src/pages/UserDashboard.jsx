@@ -76,29 +76,38 @@ try {
     setUser(loggedInUser);
   }
 
-  // ✅ Fetch Offers
-  const fetchOffers = async () => {
-    try {
-      const res = await axios.get(`${API}/api/offers`);
-      setOffers(res.data);
-    } catch (error) {
-      console.log("Error fetching offers", error);
-    }
-  };
+  // ✅ Offers
+const fetchOffers = async () => {
+  try {
+    const res = await axios.get(`${API}/api/offers`);
+    console.log("OFFERS:", res.data);
 
-  // ✅ Fetch Payments
-  const fetchPayments = async () => {
-    try {
-      if (loggedInUser?._id) {
-        const res = await axios.get(
-          `${API}/api/payment/history/${loggedInUser._id}`
-        );
-        setPayments(res.data);
-      }
-    } catch (error) {
-      console.log("Error fetching payments", error);
+    // FIX HERE 👇
+    setOffers(Array.isArray(res.data) ? res.data : res.data.offers || []);
+  } catch (error) {
+    console.log("Error fetching offers", error);
+    setOffers([]); // safety
+  }
+};
+
+  
+ // ✅ Payments
+const fetchPayments = async () => {
+  try {
+    if (loggedInUser?._id) {
+      const res = await axios.get(
+        `${API}/api/payment/history/${loggedInUser._id}`
+      );
+      console.log("PAYMENTS:", res.data);
+
+      // FIX HERE 👇
+      setPayments(Array.isArray(res.data) ? res.data : res.data.payments || []);
     }
-  };
+  } catch (error) {
+    console.log("Error fetching payments", error);
+    setPayments([]); // safety
+  }
+};
 
   fetchOffers();
   fetchPayments();
@@ -219,9 +228,20 @@ try {
   };
 
   // Calculate totals
-  const totalSpent = payments.reduce((sum, p) => sum + (p.status === "completed" ? p.amount : 0), 0);
-  const activeOffers = offers.filter(o => o.status === "active").length;
-  const successfulPayments = payments.filter(p => p.status === "completed").length;
+ // ✅ SAFE VERSION
+const safePayments = Array.isArray(payments) ? payments : [];
+const safeOffers = Array.isArray(offers) ? offers : [];
+
+const totalSpent = safePayments.reduce(
+  (sum, p) => sum + (p.status === "completed" ? p.amount : 0),
+  0
+);
+
+const activeOffers = safeOffers.filter(o => o.status === "active").length;
+
+const successfulPayments = safePayments.filter(
+  p => p.status === "completed"
+).length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 flex">
@@ -563,7 +583,7 @@ try {
 
               {/* Offers Grid */}
               <div className="grid lg:grid-cols-2 gap-6">
-                {offers.map((offer) => (
+               {safeOffers.map((offer) => (
                   <div key={offer._id} className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden hover:border-yellow-500/50 transition-all">
                     <div className="p-6">
                       <div className="flex items-start justify-between mb-4">
@@ -611,7 +631,7 @@ try {
                 </div>
                 <div className="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                   <p className="text-gray-400 text-sm">Total Transactions</p>
-                  <p className="text-2xl font-bold text-white">{payments.length}</p>
+                  <p className="text-2xl font-bold text-white">{safePayments.length}</p>
                 </div>
                 <div className="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                   <p className="text-gray-400 text-sm">Successful</p>
@@ -619,7 +639,9 @@ try {
                 </div>
                 <div className="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
                   <p className="text-gray-400 text-sm">Pending</p>
-                  <p className="text-2xl font-bold text-yellow-400">{payments.filter(p => p.status === "pending").length}</p>
+                  <p className="text-2xl font-bold text-yellow-400">
+  {safePayments.filter(p => p.status === "pending").length}
+</p>
                 </div>
               </div>
 
@@ -639,7 +661,7 @@ try {
                       </tr>
                     </thead>
                     <tbody>
-                      {payments.map((payment) => (
+                     {safePayments.map((payment) => (
                         <tr key={payment._id} className="border-b border-gray-700/50 hover:bg-gray-700/30 transition">
                           <td className="p-4">
                             <span className="text-sm font-mono text-gray-300">{payment._id}</span>
