@@ -1,69 +1,200 @@
 import React, { useEffect, useState } from "react";
 import { API } from "../api";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function BlogDetails() {
-  const { id } = useParams();
-  const [blog, setBlog] = useState(null);
+  const { slug } = useParams();
   const navigate = useNavigate();
-  const generateAI = async () => {
-  const res = await API.post("/blogs/generate", {
-    topic: form.title,
-  });
 
-  setForm({ ...form, content: res.data.content });
-};
-  const handleDelete = async () => {
-  if (!window.confirm("Delete this blog?")) return;
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  await API.delete(`/blogs/${id}`);
-  navigate("/blog");
-};
-
+  // 📡 Fetch Blog
   useEffect(() => {
-    API.get(`/blogs/${id}`).then((res) => setBlog(res.data));
-  }, [id]);
+    if (!slug) return;
 
-  if (!blog) return <p className="text-white text-center mt-20">Loading...</p>;
+    setLoading(true);
+
+    API.get(`/blogs/slug/${slug}`)
+      .then((res) => {
+        if (!res.data) {
+          setBlog("not-found");
+        } else {
+          setBlog(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setBlog("error");
+      })
+      .finally(() => setLoading(false));
+  }, [slug]);
+
+  // ❌ Delete Blog
+  const handleDelete = async () => {
+    if (!window.confirm("Delete this blog?")) return;
+
+    try {
+      await API.delete(`/blogs/${blog._id}`);
+      navigate("/blog");
+    } catch (err) {
+      console.error(err);
+      alert("Delete failed");
+    }
+  };
+
+  // 🤖 AI Generate
+  const generateAI = async () => {
+    if (!blog?.title) return;
+
+    try {
+      const res = await API.post("/blogs/generate", {
+        topic: blog.title,
+      });
+
+      setBlog((prev) => ({
+        ...prev,
+        content: res.data.content,
+      }));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // ========================
+  // 🔥 CLEAN CONTENT (FIX)
+  // ========================
+  const cleanContent = (blog?.content || "")
+  // ❌ remove markdown H1 like "# Title"
+  .replace(/^#\s.*$/gm, "")
+
+  // ❌ remove bad ending line
+  .replace(/## Key Points ## Details ## Conclusion.*$/g, "")
+
+  // ❌ remove leftover ##
+  .replace(/##\s?/g, "")
+
+  // ✅ clean spacing
+  .trim();
+  // ========================
+  // 🔥 UI STATES
+  // ========================
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white bg-[#0B1F3A]">
+        Loading...
+      </div>
+    );
+  }
+
+  if (blog === "not-found") {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white bg-[#0B1F3A]">
+        Blog not found ❌
+      </div>
+    );
+  }
+
+  if (blog === "error") {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white bg-[#0B1F3A]">
+        Something went wrong ⚠️
+      </div>
+    );
+  }
+
+  // ========================
+  // ✅ MAIN UI
+  // ========================
 
   return (
-    <div className="bg-[#0B1F3A] min-h-screen text-white">
+    <div className="bg-[#0B1F3A] min-h-screen text-white flex flex-col">
+      
+      {/* HEADER */}
+      <Header />
 
-<div className="max-w-5xl mx-auto px-6 pt-28">
-  <div className="w-[500px] h-[260px] md:h-[320px] bg-black rounded-2xl flex items-center justify-center overflow-hidden">
+      <main className="flex-grow">
 
-    <img
-      src={blog.image}
-      className="max-h-full max-w-full object-contain"
-    />
+        {/* IMAGE */}
+        <div className="max-w-6xl mx-auto px-6 pt-28">
+          <div className="w-full md:w-[700px] h-[350px] bg-gray-900 rounded-2xl flex items-center justify-center overflow-hidden shadow-lg">
+            {blog.image ? (
+              <img
+                src={blog.image}
+                alt={blog.imageAlt || blog.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <p className="text-gray-500">No Image</p>
+            )}
+          </div>
+        </div>
 
+        {/* CONTENT */}
+        <div className="max-w-6xl mx-auto px-6 py-8">
+
+          {/* TITLE */}
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            {blog.title}
+          </h1>
+
+          {/* META */}
+          <div className="flex items-center gap-4 text-sm text-gray-400 mb-6 border-b border-gray-700 pb-4">
+            {blog.category && (
+              <span className="bg-purple-500/20 px-3 py-1 rounded-full text-purple-300">
+                {blog.category}
+              </span>
+            )}
+            {blog.createdAt && (
+              <span>
+                📅 {new Date(blog.createdAt).toLocaleDateString()}
+              </span>
+            )}
+          </div>
+
+          {/* BUTTONS */}
+          {localStorage.getItem("role") === "admin" && (
+  <div className="flex gap-3 mb-8 flex-wrap">
+    <button
+      onClick={handleDelete}
+      className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+    >
+      Delete
+    </button>
+
+    <button
+      onClick={() => navigate(`/edit/${blog._id}`)}
+      className="bg-green-500 px-4 py-2 rounded hover:bg-green-600"
+    >
+      Edit
+    </button>
+
+    <button
+      onClick={generateAI}
+      className="bg-purple-500 px-4 py-2 rounded hover:bg-purple-600"
+    >
+      Generate AI 🤖
+    </button>
   </div>
-</div>
+)}
 
-      <div className="max-w-3xl mx-auto p-6">
-        <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
-        <button
-  onClick={handleDelete}
-  className="bg-red-500 px-4 py-2 rounded mb-6"
->
-  Delete
-</button>
+          {/* BLOG CONTENT */}
+          <div
+            className="blog-content prose prose-invert max-w-none"
+            dangerouslySetInnerHTML={{
+              __html: cleanContent || "<p>No content available</p>",
+            }}
+          />
 
-           <button
-  onClick={() => navigate(`/edit/${blog._id}`)}
-  className="bg-green-500 px-4 py-2 rounded mr-3"
->
-  Edit
-</button>
+        </div>
 
+      </main>
 
-<button onClick={generateAI}>Generate AI 🤖</button>
-        <p className="text-gray-400 mb-6">{blog.category}</p>
-        <p className="text-lg leading-8 whitespace-pre-line">
-          {blog.content}
-        </p>
-      </div>
+      {/* FOOTER */}
+      <Footer />
     </div>
   );
 }

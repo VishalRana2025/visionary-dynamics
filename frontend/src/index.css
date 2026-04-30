@@ -225,3 +225,55 @@ html {
   width: max-content;
   animation: marquee 15s linear infinite;
 }
+
+/* ===== BLOG CONTENT STYLE ===== */
+
+.blog-content {
+  color: #d1d5db;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* Headings */
+.blog-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 20px 0 10px;
+  color: #fff;
+}
+
+.blog-content h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 18px 0 8px;
+  color: #fff;
+}
+
+.blog-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 16px 0 6px;
+  color: #fff;
+}
+
+/* Paragraph */
+.blog-content p {
+  margin-bottom: 14px;
+}
+
+/* Lists */
+.blog-content ul {
+  padding-left: 22px;
+  margin-bottom: 14px;
+}
+
+.blog-content li {
+  margin-bottom: 6px;
+  list-style-type: disc;
+}
+
+/* Bold */
+.blog-content strong {
+  color: #fff;
+  font-weight: 600;
+}

@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { useState, useEffect } from "react";
 
 // Pages
 import Home from "./pages/Home";
@@ -64,11 +65,25 @@ import AdminDashboard from "./pages/AdminDashboard";
 export default function App() {
 
   // ✅ Get user safely
-  const storedUser = localStorage.getItem("user");
-  const user =
-    storedUser && storedUser !== "undefined"
-      ? JSON.parse(storedUser)
-      : null;
+  const [user, setUser] = useState(null);
+
+useEffect(() => {
+  const updateUser = () => {
+    const storedUser = localStorage.getItem("user");
+
+    if (storedUser && storedUser !== "undefined") {
+      setUser(JSON.parse(storedUser));
+    } else {
+      setUser(null);
+    }
+  };
+
+  updateUser(); // initial load
+
+  window.addEventListener("storage", updateUser);
+
+  return () => window.removeEventListener("storage", updateUser);
+}, []);
 
  
 
@@ -109,9 +124,27 @@ return (
 
         {/* 📝 BLOG */}
         <Route path="/blog" element={<BlogPage />} />
-        <Route path="/create" element={<CreateBlog />} />
-        <Route path="/blog/:id" element={<BlogDetails />} />
-        <Route path="/edit/:id" element={<EditBlog />} />
+        <Route
+  path="/create"
+  element={
+    user && user.role === "admin" ? (
+      <CreateBlog />
+    ) : (
+      <Navigate to="/login" />
+    )
+  }
+/>
+        <Route path="/blog/:slug" element={<BlogDetails />} />
+        <Route
+  path="/edit/:id"
+  element={
+    user && user.role === "admin" ? (
+      <EditBlog />
+    ) : (
+      <Navigate to="/login" />
+    )
+  }
+/>
 
         {/* 👑 ADMIN */}
         <Route

@@ -119,10 +119,14 @@ const Header = () => {
 
   /* 🔴 LOGOUT */
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate("/");
-  };
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+
+  // 🔥 trigger update everywhere
+  window.dispatchEvent(new Event("storage"));
+
+  navigate("/login");
+};
 
   return (
 <header className="fixed top-0 left-0 w-full h-14 md:h-16 z-50 bg-[#0B1F3A] backdrop-blur-md">

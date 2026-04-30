@@ -12,31 +12,46 @@ import {
 
 export default function AdminPage() {
   const navigate = useNavigate();
+
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const token = localStorage.getItem("token");
 
+  // 🔒 PROTECT PAGE
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
+  // 🔥 LOGOUT
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    window.dispatchEvent(new Event("storage"));
+
     navigate("/login");
   };
 
-  // 🔥 FETCH USERS FROM BACKEND
+  // 📡 FETCH USERS
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/users",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        setLoading(true);
+
+        const res = await axios.get("/api/users", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         setUsers(res.data);
       } catch (err) {
         console.log("Error fetching users:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -54,6 +69,14 @@ export default function AdminPage() {
       value: users.filter((u) => u.role === "admin").length,
     },
   ];
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        Loading dashboard...
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex bg-gray-100">
@@ -76,14 +99,14 @@ export default function AdminPage() {
         </button>
       </div>
 
-      {/* MAIN CONTENT */}
+      {/* MAIN */}
       <div className="flex-1 p-8">
 
         <h1 className="text-3xl font-bold mb-6">
           Admin Dashboard 👑
         </h1>
 
-        {/* 📊 STATS CARDS */}
+        {/* STATS */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 
           <div className="bg-white p-6 rounded-xl shadow">
@@ -107,7 +130,7 @@ export default function AdminPage() {
 
         </div>
 
-        {/* 📊 BAR CHART */}
+        {/* CHART */}
         <div className="bg-white p-6 rounded-xl shadow mb-8">
           <h2 className="text-xl font-semibold mb-4">
             User Analytics 📊
@@ -123,7 +146,7 @@ export default function AdminPage() {
           </ResponsiveContainer>
         </div>
 
-        {/* 👥 USERS TABLE */}
+        {/* TABLE */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-xl font-semibold mb-4">
             All Users 👥
@@ -143,13 +166,7 @@ export default function AdminPage() {
                 <tr key={user._id} className="border-b">
                   <td className="py-2">{user.name}</td>
                   <td>{user.email}</td>
-                  <td
-                    className={
-                      user.role === "admin"
-                        ? "text-purple-600 font-semibold"
-                        : "text-gray-600"
-                    }
-                  >
+                  <td className={user.role === "admin" ? "text-purple-600 font-semibold" : ""}>
                     {user.role}
                   </td>
                 </tr>

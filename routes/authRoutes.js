@@ -14,11 +14,13 @@ router.post("/register", async (req, res) => {
   try {
     const { name, email, password, adminCode } = req.body;
 
+const normalizedEmail = email.toLowerCase().trim();
+
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email: normalizedEmail });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
@@ -30,7 +32,7 @@ router.post("/register", async (req, res) => {
 
     const user = await User.create({
       name,
-      email,
+      email: normalizedEmail,
       password: hashed,
       role,
     });
@@ -54,9 +56,11 @@ router.post("/register", async (req, res) => {
 // 🔐 LOGIN
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+const user = await User.findOne({
+  email: email.toLowerCase().trim(),
+});
     if (!user) {
       return res.status(400).json({ message: "Invalid email or password" });
     }

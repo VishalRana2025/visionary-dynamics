@@ -20,14 +20,20 @@ export default function LoginPage() {
     try {
       setLoading(true);
 
-      const res = await axios.post(
+const res = await axios.post(
   "https://visionarydynamicsas.com/api/login",
-  data
+  {
+    email: data.email.trim().toLowerCase(),
+    password: data.password.trim(),
+  }
 );
 
       // ✅ Save token + user
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+     localStorage.setItem("user", JSON.stringify(res.data.user));
+localStorage.setItem("token", res.data.token);
+
+// 🔥 ADD THIS (VERY IMPORTANT)
+window.dispatchEvent(new Event("storage"));
 
       // 🔄 Trigger UI update (optional)
       window.dispatchEvent(new Event("storage"));

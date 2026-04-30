@@ -1,147 +1,153 @@
 import React, { useEffect, useState } from "react";
 import { API } from "../api";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    API.get("/blogs").then((res) => setBlogs(res.data));
-  }, []);
+    fetchBlogs();
+  }, [page]);
 
-  const filtered = blogs.filter((b) =>
-    b.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const fetchBlogs = async () => {
+    try {
+      setLoading(true);
+      const res = await API.get(`/blogs?page=${page}`);
+      setBlogs(res.data.blogs || []);
+      setTotalPages(res.data.totalPages || 1);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const featured = filtered[0];
+  const filteredBlogs = Array.isArray(blogs)
+    ? blogs.filter((blog) =>
+        blog.title.toLowerCase().includes(search.toLowerCase())
+      )
+    : [];
 
   return (
-    <div className="pt-28 bg-gradient-to-b from-[#0B1F3A] to-black min-h-screen text-white">
-      
-       
-     
-     {/* 🔥 HERO */}
-<div className="text-center px-6 pt-24">
+    <div className="min-h-screen flex flex-col bg-gray-50">
 
-  {/* 💎 BUTTON */}
-  <div className="flex justify-end max-w-6xl mx-auto mb-6">
-    <Link
-      to="/create"
-      className="group flex items-center gap-2 px-6 py-2.5 rounded-full 
-      bg-gradient-to-r from-sky-500 to-blue-600 
-      text-white font-semibold shadow-xl 
-      hover:shadow-sky-500/40 hover:scale-105 
-      transition-all duration-300"
-    >
-      <span className="text-lg group-hover:rotate-90 transition duration-300">
-        +
-      </span>
-      Add Blog
-    </Link>
-  </div>
+      {/* ✅ GLOBAL HEADER */}
+      <Header />
 
-  <h1 className="text-5xl font-bold mb-4">
-    Visionary <span className="text-sky-400">Dynamics Blogs</span>
-  </h1>
+      {/* MAIN */}
+      <main className="flex-grow px-4 py-24">
 
-  <p className="text-gray-300 max-w-xl mx-auto">
-    Explore expert insights, trends, and strategies to grow your business.
-  </p>
+        {/* Top Section */}
+        <div className="max-w-6xl mx-auto mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <h2 className="text-3xl font-bold">Blogs</h2>
 
-  {/* SEARCH */}
-  <div className="mt-8 max-w-md mx-auto">
-    <input
-      type="text"
-      placeholder="Search blogs..."
-      className="w-full px-5 py-3 rounded-full bg-white/10 border border-white/20 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-sky-500"
-      onChange={(e) => setSearch(e.target.value)}
-    />
-  </div>
-</div>
+          <div className="flex gap-3 w-full md:w-auto">
+            <input
+              type="text"
+              placeholder="Search blogs..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="p-3 border rounded-lg w-full md:w-64"
+            />
 
-      <div className="max-w-6xl mx-auto px-6 pb-20">
-
-        {/* 🌟 FEATURED BLOG */}
-        {featured && (
-         <div className="mb-16 group cursor-pointer">
-  <Link to={`/blog/${featured._id}`}>
-    
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-
-      {/* IMAGE */}
-     <img
-  src={featured.image}
-  className="w-full h-[420px] object-cover object-center 
-  scale-100 transition duration-500"
-/>
-      {/* DARK GRADIENT OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t 
-        from-black/90 via-black/40 to-transparent">
-      </div>
-
-      {/* CONTENT */}
-      <div className="absolute bottom-0 p-8">
-        <span className="text-sky-400 text-sm mb-2 block">
-          FEATURED
-        </span>
-
-        <h2 className="text-4xl font-bold leading-tight">
-          {featured.title}
-        </h2>
-      </div>
-
-    </div>
-
+            {localStorage.getItem("token") &&
+ localStorage.getItem("role") === "admin" && (
+  <Link
+    to="/create"
+    className="bg-sky-500 text-white px-4 py-3 rounded-lg hover:bg-sky-600"
+  >
+    + Add Blog
   </Link>
-</div>
+)}
+          </div>
+        </div>
+
+        {/* Loading */}
+        {loading && (
+          <p className="text-center text-gray-500">Loading blogs...</p>
         )}
 
-        {/* 📰 BLOG GRID */}
-        <div className="grid md:grid-cols-3 gap-8">
-  {filtered.slice(1).map((blog) => (
-    <div
-      key={blog._id}
-      className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden hover:scale-105 hover:shadow-xl transition duration-300"
-    >
-      {/* ✅ IMAGE FIX */}
-      <img
-        src={blog.image}
-        className="w-full h-48 object-cover object-center 
-        group-hover:scale-105 transition duration-500"
-      />
+        {/* Empty */}
+        {!loading && filteredBlogs.length === 0 && (
+  <div className="text-center mt-10 space-y-4">
+    <p className="text-gray-500">No blogs found</p>
 
-      <div className="p-5">
-        <span className="text-xs text-sky-400">
-          {blog.category || "General"}
-        </span>
+    {localStorage.getItem("token") &&
+     localStorage.getItem("role") === "admin" && (
+      <Link
+        to="/create"
+        className="bg-sky-500 text-white px-5 py-2 rounded"
+      >
+        + Create Blog
+      </Link>
+    )}
+  </div>
+)}
 
-        <h3 className="text-lg font-bold mt-2 mb-2">
-          {blog.title}
-        </h3>
+        {/* Blog Grid */}
+        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {filteredBlogs.map((blog) => {
+            const link = `/blog/${blog.slug}`;
 
-        <p className="text-gray-400 text-sm line-clamp-3">
-          {blog.content}
-        </p>
+            return (
+              <Link to={link} key={blog._id}>
+                <div className="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
 
-        <Link
-          to={`/blog/${blog._id}`}
-          className="inline-block mt-4 text-sky-400 hover:underline"
-        >
-          Read More →
-        </Link>
-      </div>
-    </div>
-  ))}
-</div>
+                  {blog.image && (
+                    <img
+                      src={blog.image}
+                      alt={blog.title}
+                      className="h-40 w-full object-cover"
+                    />
+                  )}
 
-        {/* ❌ EMPTY STATE */}
-        {filtered.length === 0 && (
-          <p className="text-center text-gray-400 mt-10">
-            No blogs found.
-          </p>
-        )}
-      </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold text-lg line-clamp-2">
+                      {blog.title}
+                    </h3>
+
+                    <p className="text-sm text-gray-500 mt-2 line-clamp-3">
+                      {blog.excerpt}
+                    </p>
+
+                    <div className="mt-3 text-xs text-gray-400">
+                      {new Date(blog.createdAt).toDateString()}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center mt-10 gap-2 flex-wrap">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage(i + 1)}
+              className={`px-4 py-2 rounded ${
+                page === i + 1
+                  ? "bg-sky-500 text-white"
+                  : "bg-white border"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+
+      </main>
+
+      {/* ✅ GLOBAL FOOTER */}
+      <Footer />
+
     </div>
   );
 }

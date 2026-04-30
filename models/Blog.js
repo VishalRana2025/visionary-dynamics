@@ -1,26 +1,35 @@
+// models/Blog.js
 const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema(
   {
-    title: String,
-    content: String,
-    category: String,
-    image: String,
-    slug: { type: String, unique: true }, // ✅ slug added
+    // 🔹 Basic Fields
+    title: { type: String, required: true },
+    slug: { type: String, unique: true },
+
+    content: { type: String, required: true },
+    category: { type: String },
+    image: { type: String },
+
+    excerpt: { type: String },
+
+    // 🔥 SEO FIELDS (NEW)
+    metaTitle: {
+      type: String,
+      default: "",
+    },
+    metaDescription: {
+      type: String,
+      default: "",
+    },
+
+    // 🖼 Image ALT (SEO + Accessibility)
+    imageAlt: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
-
-// ✅ Auto generate slug
-blogSchema.pre("save", function (next) {
-  if (this.title) {
-    this.slug = this.title
-      .toLowerCase()
-      .trim()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-  }
-  next();
-});
 
 module.exports = mongoose.model("Blog", blogSchema);
