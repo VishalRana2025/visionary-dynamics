@@ -204,7 +204,9 @@ const PricingPage = () => {
 
   // ✅ LOGGED IN → CONTINUE PAYMENT
   try {
-    const res = await fetch("http://localhost:5000/api/payment/create-checkout-session", {
+    const res = await fetch(
+      "https://visionarydynamicsas.com/api/payment/create-checkout-session",
+      {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
