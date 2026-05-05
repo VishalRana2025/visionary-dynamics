@@ -11,6 +11,9 @@ export default function BlogPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
 
+  // ✅ GET USER FROM LOCALSTORAGE (FIX)
+  const user = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     fetchBlogs();
   }, [page]);
@@ -37,13 +40,13 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
 
-      {/* ✅ GLOBAL HEADER */}
+      {/* HEADER */}
       <Header />
 
       {/* MAIN */}
       <main className="flex-grow px-4 py-24">
 
-        {/* Top Section */}
+        {/* TOP SECTION */}
         <div className="max-w-6xl mx-auto mb-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <h2 className="text-3xl font-bold">Blogs</h2>
 
@@ -56,41 +59,40 @@ export default function BlogPage() {
               className="p-3 border rounded-lg w-full md:w-64"
             />
 
-            {localStorage.getItem("token") &&
- localStorage.getItem("role") === "admin" && (
-  <Link
-    to="/create"
-    className="bg-sky-500 text-white px-4 py-3 rounded-lg hover:bg-sky-600"
-  >
-    + Add Blog
-  </Link>
-)}
+            {/* ✅ FIXED ADMIN CHECK */}
+            {user?.role === "admin" && (
+              <Link
+                to="/create"
+                className="bg-sky-500 text-white px-4 py-3 rounded-lg hover:bg-sky-600"
+              >
+                + Add Blog
+              </Link>
+            )}
           </div>
         </div>
 
-        {/* Loading */}
+        {/* LOADING */}
         {loading && (
           <p className="text-center text-gray-500">Loading blogs...</p>
         )}
 
-        {/* Empty */}
+        {/* EMPTY STATE */}
         {!loading && filteredBlogs.length === 0 && (
-  <div className="text-center mt-10 space-y-4">
-    <p className="text-gray-500">No blogs found</p>
+          <div className="text-center mt-10 space-y-4">
+            <p className="text-gray-500">No blogs found</p>
 
-    {localStorage.getItem("token") &&
-     localStorage.getItem("role") === "admin" && (
-      <Link
-        to="/create"
-        className="bg-sky-500 text-white px-5 py-2 rounded"
-      >
-        + Create Blog
-      </Link>
-    )}
-  </div>
-)}
+            {user?.role === "admin" && (
+              <Link
+                to="/create"
+                className="bg-sky-500 text-white px-5 py-2 rounded"
+              >
+                + Create Blog
+              </Link>
+            )}
+          </div>
+        )}
 
-        {/* Blog Grid */}
+        {/* BLOG GRID */}
         <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredBlogs.map((blog) => {
             const link = `/blog/${blog.slug}`;
@@ -126,7 +128,7 @@ export default function BlogPage() {
           })}
         </div>
 
-        {/* Pagination */}
+        {/* PAGINATION */}
         <div className="flex justify-center mt-10 gap-2 flex-wrap">
           {Array.from({ length: totalPages }, (_, i) => (
             <button
@@ -145,7 +147,7 @@ export default function BlogPage() {
 
       </main>
 
-      {/* ✅ GLOBAL FOOTER */}
+      {/* FOOTER */}
       <Footer />
 
     </div>

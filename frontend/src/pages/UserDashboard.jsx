@@ -27,6 +27,7 @@ import {
   Save,
   X as XIcon,
 } from "lucide-react";
+import Header from "../components/Header"; // adjust path if needed
 
 const UserPanel = () => {
   const [activePage, setActivePage] = useState("profile");
@@ -244,9 +245,16 @@ const successfulPayments = safePayments.filter(
 ).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 flex">
+    <>
+
+      <Header />
+
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 flex pt-16">
       {/* Sidebar */}
-      <div className={`${sidebarOpen ? "w-72" : "w-20"} bg-gray-900/95 backdrop-blur-sm border-r border-gray-700 transition-all duration-300 fixed h-full z-20`}>
+      {/* Sidebar */}
+<div
+  className={`${sidebarOpen ? "w-72" : "w-20"} bg-gray-900/95 backdrop-blur-sm border-r border-gray-700 transition-all duration-300 fixed top-16 h-[calc(100%-4rem)] z-20`}
+>
         <div className="p-6">
           {/* Logo */}
           <div className="flex items-center justify-between mb-8">
@@ -434,7 +442,17 @@ const successfulPayments = safePayments.filter(
                           <p className="text-purple-400">{user.role}</p>
                         </div>
                         <button
-                           onClick={() => setIsEditing(!isEditing)}
+                           onClick={() => {
+  if (!isEditing) {
+    setEditForm({
+      name: user.name || "",
+      email: user.email || "",
+      phone: user.phone || "",
+      location: user.location || "",
+    });
+  }
+  setIsEditing(!isEditing);
+}}
                           className="-mt-16 px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-lg text-white text-sm font-medium transition"
                           >
                              {isEditing ? "Cancel" : "Edit Profile"}
@@ -699,6 +717,7 @@ const successfulPayments = safePayments.filter(
         </div>
       </div>
     </div>
+    </>
   );
 };
 

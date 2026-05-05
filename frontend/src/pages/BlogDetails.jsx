@@ -11,6 +11,9 @@ export default function BlogDetails() {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const user = JSON.parse(localStorage.getItem("user"));
+const isAdmin = user?.role === "admin";
+
   // 📡 Fetch Blog
   useEffect(() => {
     if (!slug) return;
@@ -156,7 +159,7 @@ export default function BlogDetails() {
           </div>
 
           {/* BUTTONS */}
-          {localStorage.getItem("role") === "admin" && (
+          {isAdmin && (
   <div className="flex gap-3 mb-8 flex-wrap">
     <button
       onClick={handleDelete}
@@ -180,6 +183,7 @@ export default function BlogDetails() {
     </button>
   </div>
 )}
+  
 
           {/* BLOG CONTENT */}
           <div
