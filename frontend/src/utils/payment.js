@@ -3,11 +3,12 @@ import axios from "axios";
 export const startPayment = async (plan) => {
   try {
     const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/payment/create-checkout-session`,
+      `${import.meta.env.VITE_API_URL}/payment/create-checkout-session`,
       {
-       plans: Array.isArray(plan) ? plan : [plan],
+        plans: Array.isArray(plan) ? plan : [plan],
       }
     );
+
     console.log("API URL:", import.meta.env.VITE_API_URL);
 
     // 🔥 Redirect to Stripe Checkout Page
@@ -15,6 +16,6 @@ export const startPayment = async (plan) => {
 
   } catch (err) {
     console.error("Payment Error:", err);
-    alert("Payment failed");
+    alert("Payment failed ❌");
   }
 };
