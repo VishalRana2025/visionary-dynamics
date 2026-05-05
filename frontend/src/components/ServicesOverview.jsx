@@ -128,7 +128,8 @@ const ServicesOverview = () => {
   const active = services[activeService];
 
   return (
-    <section className="bg-[#0B1F3A] w-full min-h-screen pt-16 pb-24 px-4 sm:px-8 lg:px-16 relative">
+    <section className="bg-[#0B1F3A] w-full min-h-screen 
+pt-10 sm:pt-16 pb-16 sm:pb-24 px-3 sm:px-8 lg:px-16 relative">
       
       {/* ===== TOP FADE BLEND IN ===== */}
       <div className="absolute top-0 left-0 w-full h-40 pointer-events-none z-[5]">

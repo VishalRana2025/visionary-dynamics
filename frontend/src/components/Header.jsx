@@ -216,12 +216,12 @@ const Header = () => {
     <MenuWithSub menu="Who We Are" data={MENU_DATA["Who We Are"]} />
     <MenuWithSub menu="What We Do" data={MENU_DATA["What We Do"]} />
     <MenuWithSub menu="How We Do" data={MENU_DATA["How We Do"]} />
-    <MenuWithSub menu="PRICING" data={MENU_DATA["PRICING"]} />
+    <MenuWithSub menu="Pricing" data={MENU_DATA["Pricing"]} />
 
     {/* 🔹 CART BUTTON */}
     <Link
       to="/cart"
-      className="flex items-center gap-2 mt-4 bg-purple-600 px-4 py-2 rounded"
+      className="flex items-center justify-center gap-2 mt-4 bg-purple-600 px-4 py-2 rounded w-full"
     >
       <ShoppingCart size={18} />
       Cart
