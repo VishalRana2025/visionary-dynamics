@@ -71,6 +71,16 @@ if (savedPlan) {
       <div className="w-full lg:w-1/2 flex items-center justify-center bg-white px-8">
         <div className="w-full max-w-md">
 
+          {/* LOGO */}
+          <div className="flex justify-center mb-6 bg-gray-400 p-3 rounded-lg">
+  <img
+    src="/VD-Logo-e1737873827576.png"
+    alt="Logo"
+    className="h-12 object-contain"
+  />
+</div>
+
+
           <h2 className="text-3xl font-bold mb-2">Welcome Back!</h2>
           <p className="text-gray-500 mb-6">
             Please enter your details

@@ -9,7 +9,7 @@ export default function Signup() {
     name: "",
     email: "",
     password: "",
-    adminCode: "", // ✅ NEW
+    adminCode: "",
   });
 
   const [error, setError] = useState("");
@@ -30,17 +30,16 @@ export default function Signup() {
       setError("");
 
       const res = await axios.post(
-  "https://visionarydynamicsas.com/api/register",
-  formData
-);
+        "https://visionarydynamicsas.com/api/register",
+        formData
+      );
+
       console.log(res.data);
 
-      // redirect to login
       navigate("/login");
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Signup failed"
-      );
+      console.log("ERROR:", err);
+      setError(err.response?.data?.message || "Signup failed");
     } finally {
       setLoading(false);
     }
@@ -50,9 +49,23 @@ export default function Signup() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
 
-        <h2 className="text-2xl font-bold text-center mb-6">
+        {/* 🔥 LOGO (FIXED VISIBILITY) */}
+        <div className="flex justify-center mb-6">
+          <div className="bg-gray-400 px-6 py-3 rounded-xl">
+            <img
+              src="/VD-Logo-e1737873827576.png"
+              alt="Logo"
+              className="h-14 object-contain"
+            />
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-center mb-2">
           Create an account
         </h2>
+        <p className="text-center text-gray-500 mb-6">
+          Start your journey with us
+        </p>
 
         {/* ERROR */}
         {error && (
@@ -69,9 +82,9 @@ export default function Signup() {
             <input
               type="text"
               name="name"
-               value={formData.name} 
+              value={formData.name}
               placeholder="Enter your name"
-              className="w-full mt-1 px-4 py-2 border rounded-lg"
+              className="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
               onChange={handleChange}
               required
             />
@@ -83,52 +96,39 @@ export default function Signup() {
             <input
               type="email"
               name="email"
-               value={formData.email} 
+              value={formData.email}
               placeholder="Enter your email"
-              className="w-full mt-1 px-4 py-2 border rounded-lg"
+              className="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
               onChange={handleChange}
               required
             />
           </div>
 
           {/* PASSWORD */}
-          <div className="mb-4">
+          <div className="mb-5">
             <label className="text-sm">Password</label>
             <input
               type="password"
               name="password"
-               value={formData.password}
+              value={formData.password}
               placeholder="Enter password"
-              className="w-full mt-1 px-4 py-2 border rounded-lg"
+              className="w-full mt-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
               onChange={handleChange}
               required
             />
           </div>
 
-          {/* 🔐 ADMIN CODE */}
-          {/* <div className="mb-6">
-            <label className="text-sm">Admin Code (optional)</label>
-            <input
-              type="text"
-              name="adminCode"
-              value={formData.adminCode}
-              placeholder="Enter admin code"
-              className="w-full mt-1 px-4 py-2 border rounded-lg"
-              onChange={handleChange}
-            />
-          </div> */}
-
           {/* BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-2 rounded-lg text-white ${
+            className={`w-full py-2 rounded-lg text-white transition ${
               loading
                 ? "bg-blue-400"
                 : "bg-blue-600 hover:bg-blue-700"
             }`}
           >
-            {loading ? "Creating..." : "Sign Up"}
+            {loading ? "Creating..." : "Sign Up →"}
           </button>
         </form>
 
@@ -137,7 +137,7 @@ export default function Signup() {
           Already have an account?{" "}
           <span
             onClick={() => navigate("/login")}
-            className="text-blue-600 cursor-pointer"
+            className="text-blue-600 cursor-pointer hover:underline"
           >
             Login
           </span>
