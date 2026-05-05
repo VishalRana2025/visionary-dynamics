@@ -69,18 +69,7 @@ const isAdmin = user?.role === "admin";
   // ========================
   // 🔥 CLEAN CONTENT (FIX)
   // ========================
-  const cleanContent = (blog?.content || "")
-  // ❌ remove markdown H1 like "# Title"
-  .replace(/^#\s.*$/gm, "")
-
-  // ❌ remove bad ending line
-  .replace(/## Key Points ## Details ## Conclusion.*$/g, "")
-
-  // ❌ remove leftover ##
-  .replace(/##\s?/g, "")
-
-  // ✅ clean spacing
-  .trim();
+  
   // ========================
   // 🔥 UI STATES
   // ========================
@@ -175,24 +164,18 @@ const isAdmin = user?.role === "admin";
       Edit
     </button>
 
-    <button
-      onClick={generateAI}
-      className="bg-purple-500 px-4 py-2 rounded hover:bg-purple-600"
-    >
-      Generate AI 🤖
-    </button>
+   
   </div>
 )}
   
 
           {/* BLOG CONTENT */}
           <div
-            className="blog-content prose prose-invert max-w-none"
-            dangerouslySetInnerHTML={{
-              __html: cleanContent || "<p>No content available</p>",
-            }}
-          />
-
+  className="blog-content prose prose-invert max-w-none text-gray-300"
+  dangerouslySetInnerHTML={{
+    __html: blog.content || "<p>No content available</p>",
+  }}
+/>
         </div>
 
       </main>

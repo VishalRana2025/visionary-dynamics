@@ -115,8 +115,14 @@ export default function BlogPage() {
                     </h3>
 
                     <p className="text-sm text-gray-500 mt-2 line-clamp-3">
-                      {blog.excerpt}
-                    </p>
+  {(
+    blog.excerpt || blog.content || ""
+  )
+    .replace(/<[^>]*>?/gm, "")   // ✅ stronger regex
+    .replace(/&nbsp;/g, " ")     // clean spaces
+    .trim()
+    .slice(0, 150)}
+</p>
 
                     <div className="mt-3 text-xs text-gray-400">
                       {new Date(blog.createdAt).toDateString()}

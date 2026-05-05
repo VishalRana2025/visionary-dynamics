@@ -12,6 +12,7 @@ export default function CreateBlog() {
   metaTitle: "",
   metaDescription: "",
   content: "",
+   excerpt: "", 
   category: "",
   image: "",
   imageAlt: "",
@@ -23,32 +24,33 @@ export default function CreateBlog() {
   // ========================
   // 📸 Upload Image
   // ========================
-  const handleUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+const handleUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    try {
-      setUploading(true);
+  try {
+    setUploading(true);
 
-      const formData = new FormData();
-      formData.append("image", file);
+    const formData = new FormData();
+    formData.append("image", file);
 
-      const res = await API.post("/blogs/upload", formData);
+    const res = await API.post("/blogs/upload", formData);
 
-      setForm((prev) => ({
-  ...prev,
-  content: res.data.content,
-  metaTitle: prev.title,
-  metaDescription: res.data.content.slice(0, 150),
-  imageAlt: prev.title,
-}));
-    } catch (err) {
-      console.error(err);
-      alert("❌ Image upload failed");
-    } finally {
-      setUploading(false);
-    }
-  };
+    console.log("UPLOAD:", res.data);
+
+    setForm((prev) => ({
+      ...prev,
+      image: res.data.imageUrl, // ✅ FIXED
+    }));
+
+  } catch (err) {
+    console.error(err);
+    alert("❌ Upload failed");
+  } finally {
+    setUploading(false);
+  }
+};
+
 
   // ========================
   // 🤖 AI Generate Content
@@ -81,27 +83,33 @@ export default function CreateBlog() {
   // 🚀 Submit Blog
   // ========================
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!form.title || !form.content) {
-      return alert("⚠️ Title and content are required");
-    }
+  // 🔥 MUST ADD THIS
+  console.log("FORM DATA:", form);
 
-    try {
-      setLoading(true);
+  if (!form.title) return alert("Title required");
+  if (!form.content) return alert("Content required");
+  if (!form.category) return alert("Select category");
+  if (!form.image) return alert("Upload image first");
 
-      await API.post("/blogs", form);
+  try {
+    setLoading(true);
 
-      alert("✅ Blog Created Successfully!");
-      navigate("/blog");
-    } catch (err) {
-      console.error(err);
-      alert("❌ Error creating blog");
-    } finally {
-      setLoading(false);
-    }
-  };
+    const res = await API.post("/blogs", form);
+    console.log("SUCCESS:", res.data);
 
+    alert("✅ Blog Created Successfully!");
+    navigate("/blog");
+
+  } catch (err) {
+    // 🔥 MUST ADD THIS
+    console.error("FULL BACKEND ERROR:", err.response?.data || err.message);
+    alert("❌ Error creating blog");
+  } finally {
+    setLoading(false);
+  }
+};
   // ========================
   // 🔥 QUILL TOOLBAR
   // ========================
@@ -153,15 +161,17 @@ export default function CreateBlog() {
   }
 />
 
+<textarea
+  placeholder="Short description (excerpt)"
+  value={form.excerpt}
+  onChange={(e) =>
+    setForm({ ...form, excerpt: e.target.value })
+  }
+  className="w-full p-3 rounded bg-white/10 border border-white/20 text-white placeholder-gray-400"
+/>
+
         {/* AI Generate */}
-        <button
-          type="button"
-          onClick={handleGenerate}
-          disabled={generating}
-          className="w-full bg-purple-500 py-2 rounded hover:bg-purple-600"
-        >
-          {generating ? "Generating..." : "🤖 Generate Content"}
-        </button>
+       
 
         {/* Image Upload */}
         <input
@@ -199,7 +209,10 @@ export default function CreateBlog() {
           onChange={(e) =>
             setForm({ ...form, category: e.target.value })
           }
-          className="w-full p-3 rounded bg-white text-black border border-gray-300"
+              style={{ backgroundColor: "#1e293b", color: "white" }}
+  className="w-full p-3 rounded border border-white/20"
+
+
         >
           <option value="">Select Category</option>
           <option value="Technology">Technology</option>
@@ -212,7 +225,7 @@ export default function CreateBlog() {
         <div className="bg-white rounded text-black">
           <ReactQuill
             theme="snow"
-            value={form.content}
+            value={form.content || ""}
             onChange={(value) =>
               setForm({ ...form, content: value })
             }

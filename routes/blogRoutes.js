@@ -149,7 +149,7 @@ const blog = await Blog.create({
   metaTitle,
   metaDescription,
   imageAlt,
-  excerpt: content.slice(0, 150),
+   excerpt: cleanText.slice(0, 150),
 });
     res.status(201).json(blog);
 
