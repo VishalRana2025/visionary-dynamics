@@ -8,11 +8,16 @@ router.post("/create-checkout-session", async (req, res) => {
   try {
     const { plans } = req.body;
 
+    // ✅ Validation
+    if (!plans || !Array.isArray(plans)) {
+      return res.status(400).json({ error: "Invalid plans data" });
+    }
+
     const line_items = plans.map((plan) => ({
       price_data: {
         currency: "inr",
         product_data: {
-          name: plan.name,
+          name: plan.name || "Service",
         },
         unit_amount: Math.round(plan.price * 100),
       },
@@ -23,8 +28,10 @@ router.post("/create-checkout-session", async (req, res) => {
       payment_method_types: ["card"],
       mode: "payment",
       line_items,
-      success_url: "http://localhost:5173/success",
-      cancel_url: "http://localhost:5173/cancel",
+
+      // ✅ FIXED LIVE URLS
+      success_url: "https://visionarydynamicsas.com/success",
+      cancel_url: "https://visionarydynamicsas.com/cancel",
     });
 
     res.json({ url: session.url });
@@ -33,8 +40,6 @@ router.post("/create-checkout-session", async (req, res) => {
     console.error("Stripe Error:", error.message);
     res.status(500).json({ error: error.message });
   }
-
-  console.log("STRIPE KEY:", process.env.STRIPE_SECRET_KEY);
 });
 
 module.exports = router;

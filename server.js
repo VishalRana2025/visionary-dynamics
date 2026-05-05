@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const app = express(); // ✅ FIXED
+const app = express();
 
 const cors = require("cors");
 const path = require("path");
@@ -20,6 +20,7 @@ require("./config/passport");
 const { SitemapStream, streamToPromise } = require("sitemap");
 const routes = require("./config/routes");
 const Blog = require("./models/Blog");
+
 // ========================
 // ✅ CONNECT DATABASE
 // ========================
@@ -28,7 +29,16 @@ connectDB();
 // ========================
 // ✅ MIDDLEWARE
 // ========================
-app.use(cors({ origin: "*", credentials: true }));
+
+// 🔥 FIXED CORS
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://visionarydynamicsas.com"
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -57,6 +67,11 @@ app.use("/api/offers", require("./routes/offerRoutes"));
 app.use("/api/payment", paymentRoutes);
 app.use("/api", require("./routes/authRoutes"));
 
+// ✅ TEST ROUTE (IMPORTANT)
+app.get("/api", (req, res) => {
+  res.send("API is running...");
+});
+
 // ========================
 // 📸 STATIC FILES
 // ========================
@@ -66,16 +81,14 @@ const distPath = path.join(__dirname, "dist");
 app.use(express.static(distPath));
 
 // ========================
-// 🧠 SITEMAP (🔥 FIXED)
+// 🧠 SITEMAP
 // ========================
 app.get("/sitemap.xml", async (req, res) => {
-  console.log("🔥 NEW SITEMAP RUNNING");
   try {
     const smStream = new SitemapStream({
       hostname: "https://visionarydynamicsas.com",
     });
 
-    // ✅ Auto static routes
     routes.forEach((route) => {
       smStream.write({
         url: route,
@@ -84,7 +97,6 @@ app.get("/sitemap.xml", async (req, res) => {
       });
     });
 
-    // ✅ Auto blog routes
     const blogs = await Blog.find();
 
     blogs.forEach((blog) => {
@@ -99,7 +111,6 @@ app.get("/sitemap.xml", async (req, res) => {
     });
 
     smStream.end();
-
     const sitemap = await streamToPromise(smStream);
 
     res.header("Content-Type", "application/xml");
@@ -110,6 +121,7 @@ app.get("/sitemap.xml", async (req, res) => {
     res.status(500).end();
   }
 });
+
 // ========================
 // 🌐 FRONTEND ROUTE
 // ========================
