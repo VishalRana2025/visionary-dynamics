@@ -23,7 +23,7 @@ export default function LoginPage() {
 const res = await axios.post(
   "https://visionarydynamicsas.com/api/login",
   {
-    email: data.email.trim().toLowerCase(),
+    email: data.email.trim(),
     password: data.password.trim(),
   }
 );
@@ -52,9 +52,14 @@ if (savedPlan) {
 }
 
     } catch (err) {
-      console.error(err);
-      setError("Invalid email or password");
-    } finally {
+  console.error("FULL ERROR:", err);
+
+  // 🔥 ADD THIS
+  console.log("BACKEND ERROR:", err.response?.data);
+
+  // show real message if exists
+  setError(err.response?.data?.message || "Login failed");
+} finally {
       setLoading(false);
     }
   };
