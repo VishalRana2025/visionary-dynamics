@@ -75,7 +75,10 @@ app.get("/api", (req, res) => {
 // ========================
 // 📸 STATIC FILES
 // ========================
-app.use("/uploads", express.static("uploads"));
+app.use(
+  "/uploads",
+  express.static(path.join(__dirname, "uploads"))
+);
 
 const distPath = path.join(__dirname, "dist");
 app.use(express.static(distPath));

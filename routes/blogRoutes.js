@@ -39,11 +39,14 @@ router.post("/upload", upload.single("image"), (req, res) => {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    const baseUrl = `${req.protocol}://${req.get("host")}`;
+    const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://visionarydynamicsas.com"
+    : "http://localhost:5000";
 
-    res.json({
-      imageUrl: `${baseUrl}/uploads/${req.file.filename}`,
-    });
+res.json({
+  imageUrl: `${baseUrl}/uploads/${req.file.filename}`,
+});
 
   } catch (err) {
     console.error("UPLOAD ERROR:", err);
