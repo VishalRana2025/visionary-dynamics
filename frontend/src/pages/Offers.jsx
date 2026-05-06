@@ -46,7 +46,7 @@ export default function Offers() {
       {offers.map((offer) => (
         <div key={offer.id} className="p-4 border mb-3 rounded">
           <h2>{offer.title}</h2>
-          <p>₹{offer.price}</p>
+          <p>${offer.price}</p>
 
           <button
             onClick={() => handlePayment(offer)}

@@ -19,7 +19,7 @@ export default function PaymentHistory() {
       {payments.map(p => (
         <div key={p._id} className="p-4 border mb-3 rounded">
           <p>{p.offer.title}</p>
-          <p>₹{p.amount}</p>
+          <p>${p.amount}</p>
           <p>{new Date(p.date).toLocaleDateString()}</p>
         </div>
       ))}

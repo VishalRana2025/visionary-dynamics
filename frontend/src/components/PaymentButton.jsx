@@ -19,7 +19,7 @@ const PaymentButton = () => {
       onClick={handlePayment}
       className="px-6 py-2 bg-green-500 text-white rounded"
     >
-      Pay ₹999
+      Pay $999
     </button>
   );
 };

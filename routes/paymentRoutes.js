@@ -15,7 +15,7 @@ router.post("/create-checkout-session", async (req, res) => {
 
     const line_items = plans.map((plan) => ({
       price_data: {
-        currency: "inr",
+        currency: "usd",
         product_data: {
           name: plan.name || "Service",
         },

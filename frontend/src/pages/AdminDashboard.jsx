@@ -118,7 +118,7 @@ export default function AdminDashboard() {
         <div className="bg-green-500 text-white p-6 rounded-xl">
           <h2>Total Revenue</h2>
           <p className="text-2xl font-bold">
-            ₹ {analytics?.totalAmount || 0}
+            $ {analytics?.totalAmount || 0}
           </p>
         </div>
 
@@ -183,7 +183,7 @@ export default function AdminDashboard() {
           >
             <div>
               <p className="font-bold">{offer.title}</p>
-              <p>₹ {offer.price}</p>
+              <p>$ {offer.price}</p>
             </div>
 
             <div className="flex gap-2">
