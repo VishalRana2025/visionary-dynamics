@@ -143,11 +143,12 @@ ${rest}
 ## Conclusion
 This concludes ${title}.
 `;
+const cleanText = content.replace(/[#-*]/g, "").trim();
 
 const blog = await Blog.create({
   title,
   slug,
-  content,
+  content: formattedContent,
   category,
   image,
   metaTitle,
