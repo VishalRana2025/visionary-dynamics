@@ -394,7 +394,15 @@ const successfulPayments = safePayments.filter(
       </div>
 
       {/* Main Content */}
-      <div className={`${sidebarOpen ? "ml-64" : "ml-20"} flex-1 transition-all duration-300`}>
+      <div
+  className={`
+    ${sidebarOpen ? "ml-64" : "ml-20"}
+    flex-1
+    transition-all
+    duration-300
+    pl-4 md:pl-8
+  `}
+>
         {/* Top Bar */}
         <div className="bg-gray-900/50 backdrop-blur-md border-b border-gray-700 sticky top-0 z-10">
           <div className="px-8 py-4">
@@ -433,7 +441,7 @@ const successfulPayments = safePayments.filter(
         </div>
 
         {/* Page Content */}
-        <div className="p-4 md:p-6">
+        <div className="px-6 md:px-10 py-6">
           
           {/* MY PROFILE PAGE */}
           {activePage === "profile" && (
