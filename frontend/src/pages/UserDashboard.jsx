@@ -47,20 +47,45 @@ const UserPanel = () => {
   const API = import.meta.env.VITE_API_URL;
   // Edit form states
   const [editForm, setEditForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    location: "",
-  });
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  countryCode: "+1",
+  address: "",
+  dob: "",
+  state: "",
+  country: "",
+  postalCode: "",
+  companyName: "",
+  industry: "",
+  designation: "",
+  website: "",
+  timezone: "",
+  instagram: "",
+  facebook: "",
+  linkedin: "",
+  twitter: "",
+});
 
   // Default avatar options
-  const defaultAvatars = [
-    "https://ui-avatars.com/api/?name=User&background=8b5cf6&color=fff&size=120",
-    "https://ui-avatars.com/api/?name=User&background=ec4899&color=fff&size=120",
-    "https://ui-avatars.com/api/?name=User&background=06b6d4&color=fff&size=120",
-    "https://ui-avatars.com/api/?name=User&background=f59e0b&color=fff&size=120",
-    "https://ui-avatars.com/api/?name=User&background=10b981&color=fff&size=120",
-  ];
+const avatarLetter = `${(
+  user?.firstName ||
+  user?.name ||
+  "U"
+)
+  .charAt(0)
+  .toUpperCase()}${(user?.lastName || "")
+  .charAt(0)
+  .toUpperCase()}`;
+
+const defaultAvatars = [
+  `https://ui-avatars.com/api/?name=${avatarLetter}&background=8b5cf6&color=fff&size=120`,
+  `https://ui-avatars.com/api/?name=${avatarLetter}&background=ec4899&color=fff&size=120`,
+  `https://ui-avatars.com/api/?name=${avatarLetter}&background=06b6d4&color=fff&size=120`,
+  `https://ui-avatars.com/api/?name=${avatarLetter}&background=f59e0b&color=fff&size=120`,
+  `https://ui-avatars.com/api/?name=${avatarLetter}&background=10b981&color=fff&size=120`,
+];
 
   // Get user from localStorage
  useEffect(() => {
@@ -174,25 +199,29 @@ const fetchPayments = async () => {
 
   // Handle edit form changes
   const handleEditChange = (e) => {
-    setEditForm({
-      ...editForm,
-      [e.target.name]: e.target.value,
-    });
-  };
+  setEditForm({
+    ...editForm,
+    [e.target.name]: e.target.value,
+  });
+};
 
   const handleSaveProfile = () => {
-    const updatedUser = { 
-      ...user, 
-      name: editForm.name,
-      email: editForm.email,
-      phone: editForm.phone,
-      location: editForm.location,
-    };
-    setUser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-    setIsEditing(false);
-    alert("✅ Profile updated successfully!");
+  if (!editForm.companyName.trim()) {
+    alert("❌ Company Name is required");
+    return;
+  }
+
+  const updatedUser = {
+    ...user,
+    ...editForm,
   };
+
+  setUser(updatedUser);
+  localStorage.setItem("user", JSON.stringify(updatedUser));
+  setIsEditing(false);
+
+  alert("✅ Profile updated successfully!");
+};
 
   // Protect route
   if (user === null) {
@@ -281,10 +310,20 @@ const successfulPayments = safePayments.filter(
           {sidebarOpen && (
             <div className="mb-8 p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl border border-purple-500/20">
               <div className="flex items-center gap-3">
-                <img src={profileImage || user.avatar} alt="Avatar" className="w-12 h-12 rounded-full object-cover" />
+                {profileImage || user.avatar ? (
+  <img
+    src={profileImage || user.avatar}
+    alt="Avatar"
+    className="w-12 h-12 rounded-full object-cover"
+  />
+) : (
+  <div className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold">
+    {avatarLetter}
+  </div>
+)}
                 <div>
-                  <p className="text-white font-medium">{user.name}</p>
-                  <p className="text-purple-400 text-xs">{user.role}</p>
+                  <p className="text-white font-medium">{user.firstName || user.name || "User"} {user.lastName || ""}</p>
+                  
                 </div>
               </div>
             </div>
@@ -317,6 +356,18 @@ const successfulPayments = safePayments.filter(
             </button>
 
             <button
+  onClick={() => setActivePage("support")}
+  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+    activePage === "support"
+      ? "bg-purple-600 text-white"
+      : "text-gray-400 hover:bg-gray-800 hover:text-white"
+  }`}
+>
+  <Shield className="w-5 h-5" />
+  {sidebarOpen && <span>Help & Support</span>}
+</button>
+
+            <button
               onClick={() => setActivePage("payments")}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${
                 activePage === "payments"
@@ -343,7 +394,7 @@ const successfulPayments = safePayments.filter(
       </div>
 
       {/* Main Content */}
-      <div className={`${sidebarOpen ? "ml-72" : "ml-20"} flex-1 transition-all duration-300`}>
+      <div className={`${sidebarOpen ? "ml-64" : "ml-20"} flex-1 transition-all duration-300`}>
         {/* Top Bar */}
         <div className="bg-gray-900/50 backdrop-blur-md border-b border-gray-700 sticky top-0 z-10">
           <div className="px-8 py-4">
@@ -362,26 +413,32 @@ const successfulPayments = safePayments.filter(
               </div>
               <div className="flex items-center gap-3">
                 <div className="text-right hidden md:block">
-                  <p className="text-white text-sm font-medium">{user.name}</p>
-                  <p className="text-gray-400 text-xs">{user.role}</p>
+                  <p className="text-white text-sm font-medium">{user.firstName || user.name || "User"} {user.lastName || ""}</p>
+                  
                 </div>
-                <img
-                  src={profileImage || user.avatar}
-                  alt="Profile"
-                  className="w-10 h-10 rounded-full border-2 border-purple-500 object-cover"
-                />
+                {profileImage || user.avatar ? (
+  <img
+    src={profileImage || user.avatar}
+    alt="Profile"
+    className="w-10 h-10 rounded-full border-2 border-gray-800 bg-gray-800 object-cover"
+  />
+) : (
+  <div className="w-10 h-10 rounded-full border-2 border-gray-800 bg-purple-600 flex items-center justify-center text-white text-sm font-bold">
+    {avatarLetter}
+  </div>
+)}
               </div>
             </div>
           </div>
         </div>
 
         {/* Page Content */}
-        <div className="p-8">
+        <div className="p-4 md:p-6">
           
           {/* MY PROFILE PAGE */}
           {activePage === "profile" && (
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden">
+  <div className="w-full px-2 md:px-4">
+              <div className="w-full bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden">
                 {/* Cover Image */}
                 <div 
                   className="h-32 bg-gradient-to-r from-purple-600 to-pink-600 relative"
@@ -405,11 +462,17 @@ const successfulPayments = safePayments.filter(
                 <div className="px-8 pb-8 relative">
                   <div className="flex flex-col md:flex-row gap-6 -mt-16 mb-6">
                     <div className="relative">
-                      <img
-                        src={profileImage || user.avatar}
-                        alt="Profile"
-                        className="w-32 h-32 rounded-full border-4 border-gray-800 bg-gray-800 object-cover"
-                      />
+{profileImage || user.avatar ? (
+  <img
+    src={profileImage || user.avatar}
+    alt="Profile"
+    className="w-32 h-32 rounded-full border-4 border-gray-800 bg-gray-800 object-cover"
+  />
+) : (
+  <div className="w-32 h-32 rounded-full border-4 border-gray-800 bg-purple-600 flex items-center justify-center text-white text-5xl font-bold">
+    {avatarLetter}
+  </div>
+)}
                       <input
                         type="file"
                         ref={fileInputRef}
@@ -427,29 +490,34 @@ const successfulPayments = safePayments.filter(
                     <div className="flex-1 mt-12 md:mt-0">
                       <div className="flex items-center justify-between flex-wrap gap-4">
                         <div>
-                          {isEditing ? (
-                            <input
-                              type="text"
-                              name="name"
-                              value={editForm.name}
-                              onChange={handleEditChange}
-                              className="text-2xl font-bold text-white bg-gray-700 rounded px-3 py-1 mb-1 w-full"
-                              placeholder="Your Name"
-                            />
-                          ) : (
-                            <h2 className="text-2xl font-bold text-white">{user.name}</h2>
-                          )}
-                          <p className="text-purple-400">{user.role}</p>
+                          <h2 className="text-2xl font-bold text-white">
+  {user.firstName || user.name || "User"} {user.lastName || ""}
+</h2>
                         </div>
                         <button
                            onClick={() => {
   if (!isEditing) {
-    setEditForm({
-      name: user.name || "",
-      email: user.email || "",
-      phone: user.phone || "",
-      location: user.location || "",
-    });
+   setEditForm({
+  firstName: user.firstName || "",
+  lastName: user.lastName || "",
+  email: user.email || "",
+  phone: user.phone || "",
+  countryCode: user.countryCode || "+1",
+  address: user.address || "",
+  dob: user.dob || "",
+  state: user.state || "",
+  country: user.country || "",
+  postalCode: user.postalCode || "",
+  companyName: user.companyName || "",
+  industry: user.industry || "",
+  designation: user.designation || "",
+  website: user.website || "",
+  timezone: user.timezone || "",
+  instagram: user.instagram || "",
+  facebook: user.facebook || "",
+  linkedin: user.linkedin || "",
+  twitter: user.twitter || "",
+});
   }
   setIsEditing(!isEditing);
 }}
@@ -485,85 +553,412 @@ const successfulPayments = safePayments.filter(
                     </div>
                   </div>
 
-                  {/* Profile Details */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
-                        <Mail className="w-5 h-5 text-purple-400" />
-                        <div className="flex-1">
-                          <p className="text-xs text-gray-400">Email Address</p>
-                          {isEditing ? (
-                            <input
-                              type="email"
-                              name="email"
-                              value={editForm.email}
-                              onChange={handleEditChange}
-                              className="bg-gray-700 text-white rounded px-2 py-1 w-full"
-                            />
-                          ) : (
-                            <p className="text-white">{user.email}</p>
-                          )}
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
-                        <Phone className="w-5 h-5 text-purple-400" />
-                        <div className="flex-1">
-                          <p className="text-xs text-gray-400">Phone Number</p>
-                          {isEditing ? (
-                            <input
-                              type="tel"
-                              name="phone"
-                              value={editForm.phone}
-                              onChange={handleEditChange}
-                              className="bg-gray-700 text-white rounded px-2 py-1 w-full"
-                            />
-                          ) : (
-                            <p className="text-white">{user.phone}</p>
-                          )}
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
-                        <MapPin className="w-5 h-5 text-purple-400" />
-                        <div className="flex-1">
-                          <p className="text-xs text-gray-400">Location</p>
-                          {isEditing ? (
-                            <input
-                              type="text"
-                              name="location"
-                              value={editForm.location}
-                              onChange={handleEditChange}
-                              className="bg-gray-700 text-white rounded px-2 py-1 w-full"
-                            />
-                          ) : (
-                            <p className="text-white">{user.location}</p>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+                 
+                 {/* Profile Details */}
+{/* PROFILE INFORMATION SECTIONS */}
+<div className="grid md:grid-cols-2 gap-6">
 
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
-                        <Calendar className="w-5 h-5 text-purple-400" />
-                        <div className="flex-1">
-                          <p className="text-xs text-gray-400">Member Since</p>
-                          <p className="text-white">{new Date(user.memberSince).toLocaleDateString()}</p>
-                        </div>
-                      </div>
-                      
-                     
-                      
-                      <div className="flex items-center gap-3 p-3 bg-gray-700/30 rounded-lg">
-                        <Shield className="w-5 h-5 text-purple-400" />
-                        <div className="flex-1">
-                          <p className="text-xs text-gray-400">Account Status</p>
-                          <p className="text-green-400">Verified ✓</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+  {/* PRIMARY DETAILS */}
+  <div className="bg-gray-800/40 border border-gray-700 rounded-2xl p-6 shadow-lg">
+    
+    <div className="flex items-center justify-between mb-6">
+      <h3 className="text-xl font-semibold text-white">
+        Primary Details
+      </h3>
 
+      <button
+        onClick={() => setIsEditing(!isEditing)}
+        className="text-purple-400 hover:text-purple-300 text-sm"
+      >
+        {isEditing ? "Cancel" : "Edit"}
+      </button>
+    </div>
+
+    <div className="grid grid-cols-2 gap-8">
+
+      {/* First Name */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          First Name
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="firstName"
+            value={editForm.firstName}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.firstName || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* Last Name */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Last Name
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="lastName"
+            value={editForm.lastName}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.lastName || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* Gender */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Gender
+        </p>
+
+        {isEditing ? (
+          <select
+            name="gender"
+            value={editForm.gender}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          >
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.gender || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* DOB */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          DOB
+        </p>
+
+        {isEditing ? (
+          <input
+            type="date"
+            name="dob"
+            value={editForm.dob}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.dob || "-"}
+          </p>
+        )}
+      </div>
+
+    </div>
+  </div>
+
+  {/* CONTACT DETAILS */}
+  <div className="bg-gray-800/40 border border-gray-700 rounded-2xl p-6 shadow-lg">
+
+    <div className="flex items-center justify-between mb-6">
+      <h3 className="text-xl font-semibold text-white">
+        Contact Details
+      </h3>
+
+      <button
+        onClick={() => setIsEditing(!isEditing)}
+        className="text-purple-400 hover:text-purple-300 text-sm"
+      >
+        {isEditing ? "Cancel" : "Edit"}
+      </button>
+    </div>
+
+    <div className="grid grid-cols-2 gap-8">
+
+      {/* Email */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Work Email
+        </p>
+
+        {isEditing ? (
+          <input
+            type="email"
+            name="email"
+            value={editForm.email}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium break-all">
+            {user.email || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* Mobile */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Mobile
+        </p>
+
+        {isEditing ? (
+          <div className="flex gap-2">
+            <select
+              name="countryCode"
+              value={editForm.countryCode}
+              onChange={handleEditChange}
+              className="bg-gray-700 text-white rounded-lg px-3 h-11"
+            >
+              <option value="+1">+1</option>
+              <option value="+91">+91</option>
+              <option value="+44">+44</option>
+            </select>
+
+            <input
+              type="tel"
+              name="phone"
+              value={editForm.phone}
+              onChange={handleEditChange}
+              className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+            />
+          </div>
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.phone || "-"}
+          </p>
+        )}
+      </div>
+
+    </div>
+  </div>
+
+  {/* COMPANY DETAILS */}
+  <div className="bg-gray-800/40 border border-gray-700 rounded-2xl p-6 shadow-lg">
+
+    <div className="flex items-center justify-between mb-6">
+      <h3 className="text-xl font-semibold text-white">
+        Company Details
+      </h3>
+
+      <button
+        onClick={() => setIsEditing(!isEditing)}
+        className="text-purple-400 hover:text-purple-300 text-sm"
+      >
+        {isEditing ? "Cancel" : "Edit"}
+      </button>
+    </div>
+
+    <div className="grid grid-cols-2 gap-8">
+
+      {/* Company Name */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Company Name
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="companyName"
+            value={editForm.companyName}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.companyName || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* Designation */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Designation
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="designation"
+            value={editForm.designation}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.designation || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* Industry */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Industry
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="industry"
+            value={editForm.industry}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.industry || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* Website */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Website
+        </p>
+
+        {isEditing ? (
+          <input
+            type="url"
+            name="website"
+            value={editForm.website}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <a
+            href={user.website}
+            target="_blank"
+            rel="noreferrer"
+            className="text-purple-400 hover:underline text-lg font-medium break-all"
+          >
+            {user.website || "-"}
+          </a>
+        )}
+      </div>
+
+    </div>
+  </div>
+
+  {/* ADDRESS DETAILS */}
+  <div className="bg-gray-800/40 border border-gray-700 rounded-2xl p-6 shadow-lg">
+
+    <div className="flex items-center justify-between mb-6">
+      <h3 className="text-xl font-semibold text-white">
+        Address Details
+      </h3>
+
+      <button
+        onClick={() => setIsEditing(!isEditing)}
+        className="text-purple-400 hover:text-purple-300 text-sm"
+      >
+        {isEditing ? "Cancel" : "Edit"}
+      </button>
+    </div>
+
+    <div className="grid grid-cols-2 gap-8">
+
+      {/* Address */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Address
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="address"
+            value={editForm.address}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.address || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* State */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          State
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="state"
+            value={editForm.state}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.state || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* Country */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Country
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="country"
+            value={editForm.country}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.country || "-"}
+          </p>
+        )}
+      </div>
+
+      {/* Postal Code */}
+      <div>
+        <p className="text-sm text-gray-400 mb-1">
+          Postal Code
+        </p>
+
+        {isEditing ? (
+          <input
+            type="text"
+            name="postalCode"
+            value={editForm.postalCode}
+            onChange={handleEditChange}
+            className="bg-gray-700 text-white rounded-lg px-3 h-11 w-full"
+          />
+        ) : (
+          <p className="text-white text-lg font-medium">
+            {user.postalCode || "-"}
+          </p>
+        )}
+      </div>
+
+    </div>
+  </div>
+
+</div>
                   {isEditing && (
                     <div className="mt-6 flex justify-end gap-3">
                       <button
@@ -641,27 +1036,91 @@ const successfulPayments = safePayments.filter(
           {/* PAYMENT HISTORY PAGE */}
           {activePage === "payments" && (
             <div>
-              {/* Summary Cards */}
-              <div className="grid md:grid-cols-4 gap-5 mb-6">
-                <div className="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
-                  <p className="text-gray-400 text-sm">Total Spent</p>
-                  <p className="text-2xl font-bold text-white">${totalSpent.toLocaleString()}</p>
-                </div>
-                <div className="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
-                  <p className="text-gray-400 text-sm">Total Transactions</p>
-                  <p className="text-2xl font-bold text-white">{safePayments.length}</p>
-                </div>
-                <div className="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
-                  <p className="text-gray-400 text-sm">Successful</p>
-                  <p className="text-2xl font-bold text-green-400">{successfulPayments}</p>
-                </div>
-                <div className="bg-gray-800/50 rounded-xl p-5 border border-gray-700">
-                  <p className="text-gray-400 text-sm">Pending</p>
-                  <p className="text-2xl font-bold text-yellow-400">
-  {safePayments.filter(p => p.status === "pending").length}
-</p>
-                </div>
-              </div>
+            
+             {/* Subscription & Payment Method */}
+<div className="grid md:grid-cols-2 gap-6 mb-6">
+
+  {/* Active Subscription */}
+  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-6">
+    <div className="flex items-center gap-3 mb-4">
+      <CreditCard className="w-6 h-6 text-purple-400" />
+      <h3 className="text-xl font-semibold text-white">
+        Active Subscription
+      </h3>
+    </div>
+
+    <div className="space-y-3">
+      <div>
+        <p className="text-sm text-gray-400">Current Plan</p>
+        <p className="text-white font-medium">
+          {user?.subscriptionPlan || "No Active Plan"}
+        </p>
+      </div>
+
+      <div>
+        <p className="text-sm text-gray-400">Billing Status</p>
+        <p className="text-green-400 font-medium">
+          {user?.subscriptionPlan ? "Active" : "Inactive"}
+        </p>
+      </div>
+
+      <div>
+        <p className="text-sm text-gray-400">Renewal Date</p>
+        <p className="text-white">
+          {user?.renewalDate
+            ? new Date(user.renewalDate).toLocaleDateString()
+            : "N/A"}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Saved Payment Method */}
+  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-6">
+    <div className="flex items-center gap-3 mb-4">
+      <Shield className="w-6 h-6 text-purple-400" />
+      <h3 className="text-xl font-semibold text-white">
+        Saved Payment Method
+      </h3>
+    </div>
+
+    {user?.savedCard ? (
+      <div className="space-y-3">
+        <div>
+          <p className="text-sm text-gray-400">Card</p>
+          <p className="text-white font-medium">
+            **** **** **** {user.savedCard.last4}
+          </p>
+        </div>
+
+        <div>
+          <p className="text-sm text-gray-400">Card Holder</p>
+          <p className="text-white">
+            {user.savedCard.name}
+          </p>
+        </div>
+
+        <div>
+          <p className="text-sm text-gray-400">Expiry</p>
+          <p className="text-white">
+            {user.savedCard.expiry}
+          </p>
+        </div>
+      </div>
+    ) : (
+      <div className="text-gray-400">
+        No saved payment method
+      </div>
+    )}
+
+    <button className="mt-5 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-white text-sm transition">
+      Save Payment Method
+    </button>
+  </div>
+
+</div>
+
+    
 
               {/* Transactions Table */}
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 overflow-hidden">
@@ -715,6 +1174,70 @@ const successfulPayments = safePayments.filter(
             </div>
           )}
         </div>
+
+
+
+        {/* HELP & SUPPORT PAGE */}
+{activePage === "support" && (
+  <div className="max-w-4xl mx-auto">
+    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-8">
+
+      <h2 className="text-2xl font-bold text-white mb-6">
+        Help & Support
+      </h2>
+
+      <div className="space-y-6">
+
+        <div className="bg-gray-700/30 rounded-lg p-5">
+          <h3 className="text-lg font-semibold text-white mb-2">
+            Email Support
+          </h3>
+
+          <p className="text-gray-400 mb-3">
+            Reach out to our support team anytime.
+          </p>
+
+          <a
+            href="mailto:connect@visionarydynamicsas.com"
+            className="text-purple-400 hover:underline"
+          >
+            connect@visionarydynamicsas.com
+          </a>
+        </div>
+
+        <div className="bg-gray-700/30 rounded-lg p-5">
+          <h3 className="text-lg font-semibold text-white mb-2">
+            Contact Number
+          </h3>
+
+          <p className="text-gray-400 mb-3">
+            Available Monday - Friday
+          </p>
+
+          <p className="text-white">
+          <li className="flex items-center gap-3">
+  <Phone size={16} className="text-sky-400" />
+  <a href="tel:+17275649476" className="hover:text-white">
+   +1(727) 564-9476
+  </a>
+</li>
+          </p>
+        </div>
+
+        {/* <div className="bg-gray-700/30 rounded-lg p-5">
+          <h3 className="text-lg font-semibold text-white mb-2">
+            FAQ
+          </h3>
+
+          <p className="text-gray-400">
+            Visit our FAQ section for quick answers to common questions.
+          </p>
+        </div> */}
+
+      </div>
+    </div>
+  </div>
+)}
       </div>
     </div>
     </>
