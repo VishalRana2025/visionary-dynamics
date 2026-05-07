@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -46,6 +47,8 @@ export default function Signup() {
   };
 
   return (
+    <>
+    <Header />
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
 
@@ -144,5 +147,6 @@ export default function Signup() {
         </p>
       </div>
     </div>
+    </>
   );
 }

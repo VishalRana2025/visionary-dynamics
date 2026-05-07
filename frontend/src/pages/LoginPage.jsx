@@ -3,6 +3,8 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { startPayment } from "../utils/payment";
+import Header from "../components/Header";
+// import { head } from "../../../routes/paymentRoutes";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
@@ -65,6 +67,8 @@ if (savedPlan) {
   };
 
   return (
+  <>
+    <Header />
     <div className="min-h-screen flex">
 
       {/* LEFT SIDE */}
@@ -176,5 +180,6 @@ if (savedPlan) {
         </div>
       </div>
     </div>
+    </>
   );
 }
